@@ -92,7 +92,7 @@ O projeto utiliza GitHub Actions para deploy automático:
 
 ## 📄 Licença
 
-© 2024 Orddum. Todos os direitos reservados.
+© 2025 Orddum. Todos os direitos reservados.
 
 ---
 
