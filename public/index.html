@@ -4,14 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Igreja Presbiteriana de Itabira - IPI</title>
+  <title>Orddum - Desenvolvimento de Aplicativos Mobile</title>
   <meta name="description"
-    content="Igreja Presbiteriana de Itabira - Uma comunidade cristã comprometida com a Palavra de Deus e o amor ao próximo.">
+    content="Orddum - Especializada em desenvolvimento de aplicativos mobile. Transforme sua ideia em um app profissional para iOS e Android.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/x-icon" href="logo.png">
+  <!-- Font Awesome para ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
@@ -20,14 +22,13 @@
     <nav class="nav">
       <div class="nav-container">
         <div class="nav-logo">
-          <img src="logo.png" alt="IPI Logo" class="logo">
-          <span class="logo-text">IPI</span>
+          <img src="logo.png" alt="Orddum Logo" class="logo">
+          <span class="logo-text">ORDDUM</span>
         </div>
         <ul class="nav-menu">
           <li><a href="#inicio" class="nav-link">Início</a></li>
           <li><a href="#sobre" class="nav-link">Sobre</a></li>
-          <li><a href="#cultos" class="nav-link">Cultos</a></li>
-          <li><a href="#ministerios" class="nav-link">Ministérios</a></li>
+          <li><a href="#servicos" class="nav-link">Serviços</a></li>
           <li><a href="#contato" class="nav-link">Contato</a></li>
         </ul>
         <div class="nav-toggle">
@@ -43,15 +44,18 @@
   <section id="inicio" class="hero">
     <div class="hero-container">
       <div class="hero-content">
-        <h1 class="hero-title">Bem-vindo à Igreja Presbiteriana de Itabira</h1>
-        <p class="hero-subtitle">Uma comunidade cristã comprometida com a Palavra de Deus e o amor ao próximo</p>
-        <div class="hero-buttons">
-          <a href="#cultos" class="btn btn-primary">Horários dos Cultos</a>
-          <a href="#contato" class="btn btn-secondary">Entre em Contato</a>
+        <div class="hero-logo">
+          <img src="logo_large.png" alt="Orddum Logo" class="hero-logo-img">
         </div>
-      </div>
-      <div class="hero-image">
-        <img src="church.jpg" alt="Igreja Presbiteriana de Itabira" class="church-img">
+        <h1 class="hero-title">Desenvolvimento de Aplicativos Mobile</h1>
+        <p class="hero-subtitle">Transforme sua ideia em um aplicativo profissional para iOS e Android</p>
+        <div class="hero-buttons">
+          <a href="#servicos" class="btn btn-primary">Nossos Serviços</a>
+          <a href="https://www.linkedin.com/in/luizgonzagabn/" target="_blank" class="btn btn-secondary">
+            <i class="fab fa-linkedin"></i>
+            LinkedIn
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -60,41 +64,42 @@
   <section id="sobre" class="about">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Sobre Nós</h2>
-        <p class="section-subtitle">Conheça nossa história e missão</p>
+        <h2 class="section-title">Sobre a Orddum</h2>
+        <p class="section-subtitle">Especialistas em desenvolvimento mobile</p>
       </div>
       <div class="about-content">
         <div class="about-text">
-          <h3>Nossa História</h3>
-          <p>A Igreja Presbiteriana de Itabira é uma comunidade cristã que busca viver e proclamar o Evangelho de Jesus
-            Cristo. Fundada com o propósito de servir a Deus e ao próximo, nossa igreja tem sido um farol de esperança
-            na cidade de Itabira.</p>
-
           <h3>Nossa Missão</h3>
-          <p>Proclamar o Evangelho de Jesus Cristo, fazer discípulos e servir a comunidade com amor e compaixão, sempre
-            fundamentados na Palavra de Deus.</p>
+          <p>Criar aplicativos mobile inovadores e funcionais que transformam ideias em soluções digitais de sucesso.
+          </p>
+
+          <h3>Nossa Especialidade</h3>
+          <p>Desenvolvimento de aplicativos nativos e híbridos para iOS e Android, com foco em experiência do usuário e
+            performance.</p>
 
           <h3>Nossos Valores</h3>
           <ul>
-            <li>Fidelidade à Palavra de Deus</li>
-            <li>Amor ao próximo</li>
-            <li>Excelência no serviço</li>
-            <li>Comunhão e unidade</li>
-            <li>Compromisso com a missão</li>
+            <li><i class="fas fa-check"></i> Qualidade e excelência técnica</li>
+            <li><i class="fas fa-check"></i> Inovação e criatividade</li>
+            <li><i class="fas fa-check"></i> Compromisso com o cliente</li>
+            <li><i class="fas fa-check"></i> Prazos e resultados</li>
           </ul>
         </div>
         <div class="about-stats">
           <div class="stat">
-            <h4>Anos de História</h4>
-            <p class="stat-number">30+</p>
+            <i class="fas fa-mobile-alt"></i>
+            <h4>Aplicativos</h4>
+            <p class="stat-number">20+</p>
           </div>
           <div class="stat">
-            <h4>Famílias</h4>
-            <p class="stat-number">100+</p>
+            <i class="fas fa-users"></i>
+            <h4>Clientes</h4>
+            <p class="stat-number">15+</p>
           </div>
           <div class="stat">
-            <h4>Ministérios</h4>
-            <p class="stat-number">8</p>
+            <i class="fas fa-star"></i>
+            <h4>Experiência</h4>
+            <p class="stat-number">5+</p>
           </div>
         </div>
       </div>
@@ -102,78 +107,81 @@
   </section>
 
   <!-- Services Section -->
-  <section id="cultos" class="services">
+  <section id="servicos" class="services">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Horários dos Cultos</h2>
-        <p class="section-subtitle">Junte-se a nós em adoração</p>
+        <h2 class="section-title">Nossos Serviços</h2>
+        <p class="section-subtitle">Soluções completas para aplicativos mobile</p>
       </div>
       <div class="services-grid">
         <div class="service-card">
-          <div class="service-icon">🌅</div>
-          <h3>Culto Matutino</h3>
-          <p class="service-time">Domingo às 9:00h</p>
-          <p class="service-description">Culto principal com pregação da Palavra e adoração</p>
+          <div class="service-icon">
+            <i class="fab fa-apple"></i>
+          </div>
+          <h3>Aplicativos iOS</h3>
+          <p class="service-description">Desenvolvimento de aplicativos nativos para iPhone e iPad usando Swift e
+            SwiftUI.</p>
         </div>
         <div class="service-card">
-          <div class="service-icon">🌆</div>
-          <h3>Culto Vespertino</h3>
-          <p class="service-time">Domingo às 18:00h</p>
-          <p class="service-description">Culto de celebração e comunhão</p>
+          <div class="service-icon">
+            <i class="fab fa-android"></i>
+          </div>
+          <h3>Aplicativos Android</h3>
+          <p class="service-description">Criação de aplicativos nativos para dispositivos Android usando Kotlin e
+            Jetpack Compose.</p>
         </div>
         <div class="service-card">
-          <div class="service-icon">🙏</div>
-          <h3>Reunião de Oração</h3>
-          <p class="service-time">Quarta às 19:30h</p>
-          <p class="service-description">Momento de oração e intercessão</p>
+          <div class="service-icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h3>Aplicativos Híbridos</h3>
+          <p class="service-description">Desenvolvimento multiplataforma com React Native, Flutter ou Ionic.</p>
         </div>
         <div class="service-card">
-          <div class="service-icon">📖</div>
-          <h3>Escola Bíblica</h3>
-          <p class="service-time">Domingo às 10:30h</p>
-          <p class="service-description">Estudo bíblico para todas as idades</p>
+          <div class="service-icon">
+            <i class="fas fa-cogs"></i>
+          </div>
+          <h3>Manutenção e Suporte</h3>
+          <p class="service-description">Atualizações, correções e suporte técnico contínuo para seus aplicativos.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Ministries Section -->
-  <section id="ministerios" class="ministries">
+  <!-- Technologies Section -->
+  <section id="tecnologias" class="technologies">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Nossos Ministérios</h2>
-        <p class="section-subtitle">Encontre seu lugar para servir</p>
+        <h2 class="section-title">Tecnologias</h2>
+        <p class="section-subtitle">Utilizamos as melhores ferramentas do mercado</p>
       </div>
-      <div class="ministries-grid">
-        <div class="ministry-card">
-          <div class="ministry-icon">👶</div>
-          <h3>Ministério Infantil</h3>
-          <p>Cuidado e ensino bíblico para crianças de 0 a 12 anos</p>
+      <div class="tech-grid">
+        <div class="tech-category">
+          <h3>iOS</h3>
+          <div class="tech-items">
+            <span class="tech-item">Swift</span>
+            <span class="tech-item">SwiftUI</span>
+            <span class="tech-item">UIKit</span>
+            <span class="tech-item">Xcode</span>
+          </div>
         </div>
-        <div class="ministry-card">
-          <div class="ministry-icon">🎵</div>
-          <h3>Ministério de Música</h3>
-          <p>Adoração através da música e louvor</p>
+        <div class="tech-category">
+          <h3>Android</h3>
+          <div class="tech-items">
+            <span class="tech-item">Kotlin</span>
+            <span class="tech-item">Jetpack Compose</span>
+            <span class="tech-item">Android Studio</span>
+            <span class="tech-item">Material Design</span>
+          </div>
         </div>
-        <div class="ministry-card">
-          <div class="ministry-icon">👥</div>
-          <h3>Grupos de Crescimento</h3>
-          <p>Comunhão e estudo bíblico em pequenos grupos</p>
-        </div>
-        <div class="ministry-card">
-          <div class="ministry-icon">🤝</div>
-          <h3>Ministério Social</h3>
-          <p>Ação social e assistência à comunidade</p>
-        </div>
-        <div class="ministry-card">
-          <div class="ministry-icon">📚</div>
-          <h3>Ensino</h3>
-          <p>Formação bíblica e teológica</p>
-        </div>
-        <div class="ministry-card">
-          <div class="ministry-icon">🌍</div>
-          <h3>Missões</h3>
-          <p>Compromisso com a evangelização</p>
+        <div class="tech-category">
+          <h3>Cross-Platform</h3>
+          <div class="tech-items">
+            <span class="tech-item">React Native</span>
+            <span class="tech-item">Flutter</span>
+            <span class="tech-item">Ionic</span>
+            <span class="tech-item">Xamarin</span>
+          </div>
         </div>
       </div>
     </div>
@@ -184,36 +192,44 @@
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Entre em Contato</h2>
-        <p class="section-subtitle">Estamos aqui para você</p>
+        <p class="section-subtitle">Vamos transformar sua ideia em realidade</p>
       </div>
       <div class="contact-content">
         <div class="contact-info">
           <div class="contact-item">
-            <div class="contact-icon">📍</div>
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
             <div>
-              <h4>Endereço</h4>
-              <p>Rua Platina, 410<br>Major Lage de Baixo<br>Itabira - MG</p>
+              <h4>Localização</h4>
+              <p>Itabira - MG<br>Brasil</p>
             </div>
           </div>
           <div class="contact-item">
-            <div class="contact-icon">📞</div>
-            <div>
-              <h4>Telefone</h4>
-              <p>(31) 3834-5026</p>
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
             </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">📱</div>
-            <div>
-              <h4>WhatsApp</h4>
-              <p>(31) 3834-5026</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">✉️</div>
             <div>
               <h4>Email</h4>
-              <p>igrejapresbiterianadeitabira@gmail.com</p>
+              <p>luiz.gonzaga@orddum.com</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fab fa-linkedin"></i>
+            </div>
+            <div>
+              <h4>LinkedIn</h4>
+              <p>luizgonzagabn</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fab fa-whatsapp"></i>
+            </div>
+            <div>
+              <h4>WhatsApp</h4>
+              <p>(31) 99527-9032</p>
             </div>
           </div>
         </div>
@@ -229,7 +245,8 @@
               <input type="tel" id="phone" name="phone" placeholder="Seu telefone">
             </div>
             <div class="form-group">
-              <textarea id="message" name="message" placeholder="Sua mensagem" rows="5" required></textarea>
+              <textarea id="message" name="message" placeholder="Descreva seu projeto de aplicativo" rows="5"
+                required></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
           </form>
@@ -244,31 +261,42 @@
       <div class="footer-content">
         <div class="footer-section">
           <div class="footer-logo">
-            <img src="logo.png" alt="IPI Logo" class="logo">
-            <span class="logo-text">IPI</span>
+            <img src="logo.png" alt="Orddum Logo" class="logo">
+            <span class="logo-text">ORDDUM</span>
           </div>
-          <p>Igreja Presbiteriana de Itabira - Uma comunidade cristã comprometida com a Palavra de Deus.</p>
+          <p>Especialistas em desenvolvimento de aplicativos mobile. Transformando ideias em soluções digitais.</p>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/luizgonzagabn/" target="_blank" class="social-link">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </div>
         </div>
         <div class="footer-section">
-          <h4>Links Rápidos</h4>
+          <h4>Serviços</h4>
           <ul>
-            <li><a href="#inicio">Início</a></li>
-            <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#cultos">Cultos</a></li>
-            <li><a href="#ministerios">Ministérios</a></li>
+            <li><a href="#servicos">Aplicativos iOS</a></li>
+            <li><a href="#servicos">Aplicativos Android</a></li>
+            <li><a href="#servicos">Aplicativos Híbridos</a></li>
+            <li><a href="#servicos">Manutenção</a></li>
           </ul>
         </div>
         <div class="footer-section">
           <h4>Contato</h4>
-          <p>Rua Platina, 410<br>Major Lage de Baixo<br>Itabira - MG</p>
-          <p>📞 (31) 3834-5026</p>
+          <p><i class="fas fa-envelope"></i> luiz.gonzaga@orddum.com</p>
+          <p><i class="fas fa-map-marker-alt"></i> Itabira - MG</p>
+          <p><i class="fab fa-whatsapp"></i> (31) 99527-9032</p>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2024 Igreja Presbiteriana de Itabira. Todos os direitos reservados.</p>
+        <p>&copy; 2024 Orddum. Todos os direitos reservados.</p>
       </div>
     </div>
   </footer>
+
+  <!-- WhatsApp Float Button -->
+  <a href="https://wa.me/5531995279032" target="_blank" class="whatsapp-float">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 
   <script src="script.js"></script>
 </body>

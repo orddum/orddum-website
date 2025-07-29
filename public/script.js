@@ -1,76 +1,98 @@
-// Mobile Menu Toggle
+// Orddum Website - JavaScript Simplificado
+
 document.addEventListener('DOMContentLoaded', function () {
+   // Elementos do DOM
    const navToggle = document.querySelector('.nav-toggle');
    const navMenu = document.querySelector('.nav-menu');
+   const navLinks = document.querySelectorAll('.nav-link');
+   const sections = document.querySelectorAll('section');
+   const contactForm = document.getElementById('contactForm');
+   const whatsappFloat = document.querySelector('.whatsapp-float');
 
-   if (navToggle && navMenu) {
+   // Mobile Menu Toggle
+   if (navToggle) {
       navToggle.addEventListener('click', function () {
          navMenu.classList.toggle('active');
-
-         // Animate hamburger menu
-         const spans = navToggle.querySelectorAll('span');
-         spans.forEach(span => span.classList.toggle('active'));
+         navToggle.classList.toggle('active');
       });
    }
 
-   // Close mobile menu when clicking on a link
-   const navLinks = document.querySelectorAll('.nav-link');
+   // Fechar menu mobile ao clicar em um link
    navLinks.forEach(link => {
       link.addEventListener('click', function () {
          navMenu.classList.remove('active');
+         navToggle.classList.remove('active');
       });
    });
 
-   // Smooth scrolling for anchor links
-   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-         e.preventDefault();
-         const target = document.querySelector(this.getAttribute('href'));
-         if (target) {
-            const headerHeight = document.querySelector('.header').offsetHeight;
-            const targetPosition = target.offsetTop - headerHeight;
+   // Smooth scrolling para links internos
+   navLinks.forEach(link => {
+      link.addEventListener('click', function (e) {
+         const targetId = this.getAttribute('href');
+         if (targetId.startsWith('#')) {
+            e.preventDefault();
+            const targetSection = document.querySelector(targetId);
 
-            window.scrollTo({
-               top: targetPosition,
-               behavior: 'smooth'
+            if (targetSection) {
+               const headerHeight = document.querySelector('.header').offsetHeight;
+               const targetPosition = targetSection.offsetTop - headerHeight;
+
+               window.scrollTo({
+                  top: targetPosition,
+                  behavior: 'smooth'
+               });
+            }
+         }
+      });
+   });
+
+   // Active navigation link based on scroll position
+   function updateActiveNavLink() {
+      const scrollPosition = window.scrollY + 100;
+
+      sections.forEach(section => {
+         const sectionTop = section.offsetTop;
+         const sectionHeight = section.offsetHeight;
+         const sectionId = section.getAttribute('id');
+
+         if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            navLinks.forEach(link => {
+               link.classList.remove('active');
+               if (link.getAttribute('href') === `#${sectionId}`) {
+                  link.classList.add('active');
+               }
             });
          }
       });
-   });
+   }
 
    // Header background on scroll
-   const header = document.querySelector('.header');
-   window.addEventListener('scroll', function () {
-      if (window.scrollY > 100) {
+   function updateHeaderBackground() {
+      const header = document.querySelector('.header');
+      if (window.scrollY > 50) {
          header.style.background = 'rgba(255, 255, 255, 0.98)';
+         header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
       } else {
-         header.style.background = 'rgba(255, 255, 255, 0.95)';
+         header.style.background = 'rgba(255, 255, 255, 0.98)';
+         header.style.boxShadow = 'none';
       }
-   });
+   }
 
-   // Intersection Observer for fade-in animations
-   const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-   };
+   // Animate elements on scroll
+   function animateOnScroll() {
+      const elements = document.querySelectorAll('.service-card, .stat, .tech-category, .contact-item');
 
-   const observer = new IntersectionObserver(function (entries) {
-      entries.forEach(entry => {
-         if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+      elements.forEach(element => {
+         const elementTop = element.getBoundingClientRect().top;
+         const elementVisible = 150;
+
+         if (elementTop < window.innerHeight - elementVisible) {
+            element.classList.add('fade-in-up');
          }
       });
-   }, observerOptions);
+   }
 
-   // Observe elements for animation
-   const animateElements = document.querySelectorAll('.service-card, .ministry-card, .stat, .contact-item');
-   animateElements.forEach(el => {
-      el.classList.add('fade-in');
-      observer.observe(el);
-   });
-
-   // Contact form handling
-   const contactForm = document.getElementById('contactForm');
+   // Contact Form Handling
    if (contactForm) {
       contactForm.addEventListener('submit', function (e) {
          e.preventDefault();
@@ -82,264 +104,292 @@ document.addEventListener('DOMContentLoaded', function () {
          const phone = formData.get('phone');
          const message = formData.get('message');
 
-         // Simple validation
+         // Validate form
          if (!name || !email || !message) {
-            alert('Por favor, preencha todos os campos obrigatórios.');
+            showNotification('Por favor, preencha todos os campos obrigatórios.', 'error');
             return;
          }
 
          // Email validation
          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
          if (!emailRegex.test(email)) {
-            alert('Por favor, insira um email válido.');
+            showNotification('Por favor, insira um email válido.', 'error');
             return;
          }
 
-         // Here you would typically send the data to a server
-         // For now, we'll just show a success message
-         alert('Obrigado pela sua mensagem! Entraremos em contato em breve.');
+         // Simulate form submission
+         const submitButton = this.querySelector('button[type="submit"]');
+         const originalText = submitButton.textContent;
 
-         // Reset form
-         this.reset();
-      });
-   }
+         submitButton.textContent = 'Enviando...';
+         submitButton.disabled = true;
 
-   // Add loading animation to buttons
-   const buttons = document.querySelectorAll('.btn');
-   buttons.forEach(button => {
-      button.addEventListener('click', function () {
-         if (!this.classList.contains('btn-secondary')) {
-            this.style.transform = 'scale(0.95)';
+         // Simulate API call
+         setTimeout(() => {
+            // Create WhatsApp message
+            const whatsappMessage = `Olá! Recebi uma nova mensagem do site:
+
+*Nome:* ${name}
+*Email:* ${email}
+*Telefone:* ${phone || 'Não informado'}
+*Mensagem:* ${message}
+
+Por favor, entre em contato o mais breve possível.`;
+
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            const whatsappUrl = `https://wa.me/5531995279032?text=${encodedMessage}`;
+
+            // Show success message
+            showNotification('Mensagem enviada com sucesso! Redirecionando para o WhatsApp...', 'success');
+
+            // Reset form
+            this.reset();
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+
+            // Redirect to WhatsApp after 2 seconds
             setTimeout(() => {
-               this.style.transform = '';
-            }, 150);
-         }
-      });
-   });
+               window.open(whatsappUrl, '_blank');
+            }, 2000);
 
-   // Parallax effect for hero section
-   const hero = document.querySelector('.hero');
-   if (hero) {
-      window.addEventListener('scroll', function () {
-         const scrolled = window.pageYOffset;
-         const rate = scrolled * -0.5;
-         hero.style.transform = `translateY(${rate}px)`;
+         }, 1500);
       });
    }
 
-   // Add active class to navigation links based on scroll position
-   const sections = document.querySelectorAll('section[id]');
-   const navLinksForScroll = document.querySelectorAll('.nav-link');
+   // Notification system
+   function showNotification(message, type = 'info') {
+      // Remove existing notifications
+      const existingNotification = document.querySelector('.notification');
+      if (existingNotification) {
+         existingNotification.remove();
+      }
 
-   window.addEventListener('scroll', function () {
-      let current = '';
-      const headerHeight = document.querySelector('.header').offsetHeight;
+      // Create notification element
+      const notification = document.createElement('div');
+      notification.className = `notification notification-${type}`;
+      notification.innerHTML = `
+            <div class="notification-content">
+                <span class="notification-message">${message}</span>
+                <button class="notification-close">&times;</button>
+            </div>
+        `;
 
-      sections.forEach(section => {
-         const sectionTop = section.offsetTop - headerHeight - 100;
-         const sectionHeight = section.offsetHeight;
+      // Add styles
+      notification.style.cssText = `
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: ${type === 'success' ? '#000000' : type === 'error' ? '#cc0000' : '#666666'};
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            z-index: 10000;
+            max-width: 400px;
+            animation: slideInRight 0.3s ease-out;
+        `;
 
-         if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
-            current = section.getAttribute('id');
-         }
+      // Add to page
+      document.body.appendChild(notification);
+
+      // Close button functionality
+      const closeButton = notification.querySelector('.notification-close');
+      closeButton.addEventListener('click', () => {
+         notification.remove();
       });
 
-      navLinksForScroll.forEach(link => {
-         link.classList.remove('active');
-         if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
+      // Auto remove after 5 seconds
+      setTimeout(() => {
+         if (notification.parentNode) {
+            notification.style.animation = 'slideOutRight 0.3s ease-out';
+            setTimeout(() => {
+               if (notification.parentNode) {
+                  notification.remove();
+               }
+            }, 300);
+         }
+      }, 5000);
+   }
+
+   // WhatsApp float button animation
+   if (whatsappFloat) {
+      whatsappFloat.addEventListener('mouseenter', function () {
+         this.style.transform = 'scale(1.1)';
+      });
+
+      whatsappFloat.addEventListener('mouseleave', function () {
+         this.style.transform = 'scale(1)';
+      });
+   }
+
+   // Counter animation for stats
+   function animateCounters() {
+      const counters = document.querySelectorAll('.stat-number');
+
+      counters.forEach(counter => {
+         const target = parseInt(counter.textContent.replace(/\D/g, ''));
+         const suffix = counter.textContent.replace(/\d/g, '');
+         let current = 0;
+         const increment = target / 50;
+
+         const updateCounter = () => {
+            if (current < target) {
+               current += increment;
+               counter.textContent = Math.ceil(current) + suffix;
+               requestAnimationFrame(updateCounter);
+            } else {
+               counter.textContent = target + suffix;
+            }
+         };
+
+         updateCounter();
+      });
+   }
+
+   // Intersection Observer for animations
+   const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+   };
+
+   const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+         if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in-up');
+
+            // Animate counters when about section is visible
+            if (entry.target.id === 'sobre') {
+               animateCounters();
+            }
          }
       });
+   }, observerOptions);
+
+   // Observe elements for animation
+   document.querySelectorAll('.service-card, .stat, .tech-category, .contact-item').forEach(el => {
+      observer.observe(el);
    });
 
-   // Add CSS for active navigation link
+   // Performance optimization: Throttle scroll events
+   let ticking = false;
+
+   function updateOnScroll() {
+      updateActiveNavLink();
+      updateHeaderBackground();
+      animateOnScroll();
+      ticking = false;
+   }
+
+   function requestTick() {
+      if (!ticking) {
+         requestAnimationFrame(updateOnScroll);
+         ticking = true;
+      }
+   }
+
+   // Event listeners
+   window.addEventListener('scroll', requestTick);
+   window.addEventListener('resize', updateOnScroll);
+
+   // Initialize on page load
+   updateOnScroll();
+
+   // Add CSS animations
    const style = document.createElement('style');
    style.textContent = `
-        .nav-link.active {
-            color: #2563eb !important;
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
-        .nav-link.active::after {
-            width: 100% !important;
+        
+        @keyframes slideOutRight {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
         }
-        .nav-toggle span.active:nth-child(1) {
+        
+        .notification-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-left: 1rem;
+            padding: 0;
+            line-height: 1;
+        }
+        
+        .notification-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .nav-toggle.active span:nth-child(1) {
             transform: rotate(45deg) translate(5px, 5px);
         }
-        .nav-toggle span.active:nth-child(2) {
+        
+        .nav-toggle.active span:nth-child(2) {
             opacity: 0;
         }
-        .nav-toggle span.active:nth-child(3) {
+        
+        .nav-toggle.active span:nth-child(3) {
             transform: rotate(-45deg) translate(7px, -6px);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 2rem;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+                border-top: 1px solid var(--gray-200);
+            }
         }
     `;
    document.head.appendChild(style);
 
-   // Add WhatsApp floating button
-   const whatsappButton = document.createElement('a');
-   whatsappButton.href = 'https://wa.me/553138345026';
-   whatsappButton.target = '_blank';
-   whatsappButton.rel = 'noopener noreferrer';
-   whatsappButton.innerHTML = '💬';
-   whatsappButton.className = 'whatsapp-float';
-   whatsappButton.title = 'Fale conosco no WhatsApp';
-
-   const whatsappStyle = document.createElement('style');
-   whatsappStyle.textContent = `
-        .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background: #25d366;
-            color: white;
-            border-radius: 50%;
-            text-align: center;
-            font-size: 30px;
-            line-height: 60px;
-            text-decoration: none;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
-            z-index: 1000;
-            transition: all 0.3s ease;
-            animation: pulse 2s infinite;
-        }
-        
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
-        }
-        
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
-            }
-            70% {
-                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.6);
-            }
-            100% {
-                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .whatsapp-float {
-                width: 50px;
-                height: 50px;
-                font-size: 25px;
-                line-height: 50px;
-                bottom: 15px;
-                right: 15px;
-            }
-        }
-    `;
-
-   document.head.appendChild(whatsappStyle);
-   document.body.appendChild(whatsappButton);
-
-   // Add scroll to top button
-   const scrollTopButton = document.createElement('button');
-   scrollTopButton.innerHTML = '↑';
-   scrollTopButton.className = 'scroll-top';
-   scrollTopButton.title = 'Voltar ao topo';
-
-   const scrollTopStyle = document.createElement('style');
-   scrollTopStyle.textContent = `
-        .scroll-top {
-            position: fixed;
-            bottom: 90px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            background: #2563eb;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            font-size: 20px;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3);
-        }
-        
-        .scroll-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .scroll-top:hover {
-            background: #1d4ed8;
-            transform: translateY(-2px);
-        }
-        
-        @media (max-width: 768px) {
-            .scroll-top {
-                bottom: 80px;
-                right: 15px;
-                width: 45px;
-                height: 45px;
-                font-size: 18px;
-            }
-        }
-    `;
-
-   document.head.appendChild(scrollTopStyle);
-   document.body.appendChild(scrollTopButton);
-
-   // Show/hide scroll to top button
-   window.addEventListener('scroll', function () {
-      if (window.pageYOffset > 300) {
-         scrollTopButton.classList.add('visible');
-      } else {
-         scrollTopButton.classList.remove('visible');
-      }
-   });
-
-   // Scroll to top functionality
-   scrollTopButton.addEventListener('click', function () {
-      window.scrollTo({
-         top: 0,
-         behavior: 'smooth'
-      });
-   });
-
-   // Add loading animation for images
-   const images = document.querySelectorAll('img');
-   images.forEach(img => {
-      img.addEventListener('load', function () {
-         this.style.opacity = '1';
-      });
-
-      img.style.opacity = '0';
-      img.style.transition = 'opacity 0.3s ease';
-   });
-
-   // Add counter animation for stats
-   const stats = document.querySelectorAll('.stat-number');
-   const animateCounter = (element, target) => {
-      let current = 0;
-      const increment = target / 50;
-      const timer = setInterval(() => {
-         current += increment;
-         if (current >= target) {
-            current = target;
-            clearInterval(timer);
-         }
-         element.textContent = Math.floor(current) + (target === 8 ? '' : '+');
-      }, 30);
-   };
-
-   const statsObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(entry => {
-         if (entry.isIntersecting) {
-            const target = parseInt(entry.target.textContent.replace('+', ''));
-            animateCounter(entry.target, target);
-            statsObserver.unobserve(entry.target);
-         }
-      });
-   }, { threshold: 0.5 });
-
-   stats.forEach(stat => {
-      statsObserver.observe(stat);
-   });
+   // Console welcome message
+   console.log(`
+    🚀 Orddum Website - Carregado com sucesso!
+    
+    📱 Especialistas em Aplicativos Mobile
+    📧 Contato: luiz.gonzaga@orddum.com
+    📱 WhatsApp: (31) 99527-9032
+    🌐 Site: www.orddum.com
+    💼 LinkedIn: https://www.linkedin.com/in/luizgonzagabn/
+    
+    Desenvolvido com ❤️ pela Orddum
+    `);
 }); 
