@@ -137,4 +137,4 @@ Para dúvidas ou problemas:
 
 ---
 
-**Desenvolvido com ❤️ para a Igreja Presbiteriana de Itabira** 
+**Desenvolvido com ❤️ para a Igreja Presbiteriana de Itabira** # Teste de deploy automático
