@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
             position: fixed;
             top: 20px;
             right: 20px;
-            background: ${type === 'success' ? '#00ff00' : type === 'error' ? '#ff4444' : '#666666'};
+            background: ${type === 'success' ? '#4ade80' : type === 'error' ? '#f87171' : '#0f3460'};
             color: white;
             padding: 1rem 1.5rem;
             border-radius: 8px;

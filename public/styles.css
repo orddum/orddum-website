@@ -6,31 +6,31 @@
 }
 
 :root {
-   --primary-color: #ffffff;
-   --primary-light: #cccccc;
-   --secondary-color: #999999;
-   --accent-color: #000000;
-   --success-color: #00ff00;
-   --warning-color: #ffaa00;
-   --danger-color: #ff4444;
-   --dark-color: #000000;
+   --primary-color: #1a1a2e;
+   --primary-light: #16213e;
+   --secondary-color: #0f3460;
+   --accent-color: #e94560;
+   --success-color: #4ade80;
+   --warning-color: #fbbf24;
+   --danger-color: #f87171;
+   --dark-color: #0f0f23;
    --light-color: #ffffff;
-   --gray-100: #1a1a1a;
-   --gray-200: #2a2a2a;
-   --gray-300: #3a3a3a;
-   --gray-400: #4a4a4a;
-   --gray-500: #666666;
-   --gray-600: #888888;
-   --gray-700: #aaaaaa;
-   --gray-800: #cccccc;
-   --gray-900: #ffffff;
+   --gray-100: #1a1a2e;
+   --gray-200: #16213e;
+   --gray-300: #0f3460;
+   --gray-400: #2d3748;
+   --gray-500: #4a5568;
+   --gray-600: #718096;
+   --gray-700: #a0aec0;
+   --gray-800: #cbd5e0;
+   --gray-900: #f7fafc;
    --white: #ffffff;
-   --black: #000000;
-   --shadow-sm: 0 1px 2px 0 rgba(255, 255, 255, 0.05);
-   --shadow: 0 1px 3px 0 rgba(255, 255, 255, 0.1), 0 1px 2px -1px rgba(255, 255, 255, 0.1);
-   --shadow-md: 0 4px 6px -1px rgba(255, 255, 255, 0.1), 0 2px 4px -2px rgba(255, 255, 255, 0.1);
-   --shadow-lg: 0 10px 15px -3px rgba(255, 255, 255, 0.1), 0 4px 6px -4px rgba(255, 255, 255, 0.1);
-   --shadow-xl: 0 20px 25px -5px rgba(255, 255, 255, 0.1), 0 8px 10px -6px rgba(255, 255, 255, 0.1);
+   --black: #0f0f23;
+   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+   --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
    --border-radius: 0.5rem;
    --border-radius-lg: 0.75rem;
    --border-radius-xl: 1rem;
@@ -57,7 +57,7 @@ body {
    top: 0;
    left: 0;
    right: 0;
-   background: rgba(0, 0, 0, 0.98);
+   background: rgba(15, 15, 35, 0.98);
    backdrop-filter: blur(10px);
    border-bottom: 1px solid var(--gray-300);
    z-index: 1000;
@@ -84,8 +84,8 @@ body {
 }
 
 .logo {
-   width: 50px;
-   height: 50px;
+   width: 40px;
+   height: 40px;
    border-radius: var(--border-radius);
 }
 
@@ -122,7 +122,7 @@ body {
    left: 0;
    width: 0;
    height: 2px;
-   background: var(--white);
+   background: var(--accent-color);
    transition: var(--transition);
 }
 
@@ -147,7 +147,7 @@ body {
 /* Hero Section */
 .hero {
    padding: 8rem 0 4rem;
-   background: var(--black);
+   background: linear-gradient(135deg, var(--black) 0%, var(--gray-100) 100%);
    color: var(--white);
    position: relative;
    text-align: center;
@@ -208,12 +208,12 @@ body {
 }
 
 .btn-primary {
-   background: var(--white);
-   color: var(--black);
+   background: var(--accent-color);
+   color: var(--white);
 }
 
 .btn-primary:hover {
-   background: var(--gray-200);
+   background: #d63384;
    transform: translateY(-2px);
    box-shadow: var(--shadow-lg);
 }
@@ -221,12 +221,12 @@ body {
 .btn-secondary {
    background: transparent;
    color: var(--white);
-   border: 2px solid var(--white);
+   border: 2px solid var(--gray-600);
 }
 
 .btn-secondary:hover {
-   background: var(--white);
-   color: var(--black);
+   background: var(--gray-600);
+   color: var(--white);
    transform: translateY(-2px);
 }
 
@@ -268,59 +268,7 @@ section {
    margin: 0 auto;
 }
 
-/* About Section */
-.about {
-   background: var(--gray-100);
-}
-
-.about-content {
-   display: grid;
-   grid-template-columns: 2fr 1fr;
-   gap: 4rem;
-   align-items: start;
-}
-
-.about-text h3 {
-   font-size: 1.5rem;
-   font-weight: 600;
-   color: var(--white);
-   margin-bottom: 1rem;
-   margin-top: 2rem;
-}
-
-.about-text h3:first-child {
-   margin-top: 0;
-}
-
-.about-text p {
-   margin-bottom: 1.5rem;
-   color: var(--gray-600);
-   line-height: 1.7;
-}
-
-.about-text ul {
-   list-style: none;
-   margin-top: 1rem;
-}
-
-.about-text li {
-   display: flex;
-   align-items: center;
-   gap: 0.5rem;
-   margin-bottom: 0.5rem;
-   color: var(--gray-600);
-}
-
-.about-text li i {
-   color: var(--white);
-   font-size: 0.875rem;
-}
-
-.about-stats {
-   display: grid;
-   gap: 2rem;
-}
-
+/* Stats Section (moved from About) */
 .stat {
    text-align: center;
    padding: 2rem;
@@ -337,7 +285,7 @@ section {
 
 .stat i {
    font-size: 2rem;
-   color: var(--white);
+   color: var(--accent-color);
    margin-bottom: 1rem;
 }
 
@@ -355,6 +303,10 @@ section {
 }
 
 /* Services Section */
+.services {
+   background: var(--gray-100);
+}
+
 .services-grid {
    display: grid;
    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -374,13 +326,13 @@ section {
 .service-card:hover {
    transform: translateY(-5px);
    box-shadow: var(--shadow-xl);
-   border-color: var(--white);
+   border-color: var(--accent-color);
 }
 
 .service-icon {
    width: 60px;
    height: 60px;
-   background: var(--white);
+   background: var(--accent-color);
    border-radius: var(--border-radius-lg);
    display: flex;
    align-items: center;
@@ -390,7 +342,7 @@ section {
 
 .service-icon i {
    font-size: 1.5rem;
-   color: var(--black);
+   color: var(--white);
 }
 
 .service-card h3 {
@@ -439,8 +391,8 @@ section {
 }
 
 .tech-item {
-   background: var(--white);
-   color: var(--black);
+   background: var(--accent-color);
+   color: var(--white);
    padding: 0.5rem 1rem;
    border-radius: var(--border-radius);
    font-size: 0.875rem;
@@ -449,11 +401,15 @@ section {
 }
 
 .tech-item:hover {
-   background: var(--gray-200);
+   background: #d63384;
    transform: translateY(-2px);
 }
 
 /* Contact Section */
+.contact {
+   background: var(--gray-100);
+}
+
 .contact-content {
    display: grid;
    grid-template-columns: 1fr 1fr;
@@ -470,13 +426,13 @@ section {
    align-items: flex-start;
    gap: 1rem;
    padding: 1.5rem;
-   background: var(--gray-100);
+   background: var(--gray-200);
    border-radius: var(--border-radius-lg);
    transition: var(--transition);
 }
 
 .contact-item:hover {
-   background: var(--gray-200);
+   background: var(--gray-300);
    box-shadow: var(--shadow);
    transform: translateY(-2px);
 }
@@ -484,7 +440,7 @@ section {
 .contact-icon {
    width: 50px;
    height: 50px;
-   background: var(--white);
+   background: var(--accent-color);
    border-radius: var(--border-radius);
    display: flex;
    align-items: center;
@@ -494,7 +450,7 @@ section {
 
 .contact-icon i {
    font-size: 1.25rem;
-   color: var(--black);
+   color: var(--white);
 }
 
 .contact-item h4 {
@@ -539,8 +495,8 @@ section {
 .form-group select:focus,
 .form-group textarea:focus {
    outline: none;
-   border-color: var(--white);
-   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+   border-color: var(--accent-color);
+   box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.1);
 }
 
 .form-group input::placeholder,
@@ -636,8 +592,8 @@ section {
 }
 
 .social-link:hover {
-   background: var(--white);
-   color: var(--black);
+   background: var(--accent-color);
+   color: var(--white);
    transform: translateY(-2px);
 }
 
@@ -648,19 +604,20 @@ section {
    color: var(--gray-600);
 }
 
-/* WhatsApp Float Button */
+/* WhatsApp Float Button - Mais sóbrio */
 .whatsapp-float {
    position: fixed;
    bottom: 2rem;
    right: 2rem;
    width: 60px;
    height: 60px;
-   background: #25d366;
+   background: var(--gray-200);
+   border: 2px solid var(--accent-color);
    border-radius: 50%;
    display: flex;
    align-items: center;
    justify-content: center;
-   color: var(--white);
+   color: var(--accent-color);
    text-decoration: none;
    font-size: 1.5rem;
    box-shadow: var(--shadow-lg);
@@ -669,7 +626,8 @@ section {
 }
 
 .whatsapp-float:hover {
-   background: #128c7e;
+   background: var(--accent-color);
+   color: var(--white);
    transform: scale(1.1);
    box-shadow: var(--shadow-xl);
 }
@@ -690,11 +648,6 @@ section {
 
    .hero-buttons {
       justify-content: center;
-   }
-
-   .about-content {
-      grid-template-columns: 1fr;
-      gap: 2rem;
    }
 
    .services-grid {
