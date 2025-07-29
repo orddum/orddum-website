@@ -1,140 +1,99 @@
-# Site da Igreja Presbiteriana de Itabira
+# Orddum - Desenvolvimento de Aplicativos Mobile
 
-Este é o site oficial da Igreja Presbiteriana de Itabira, hospedado no Firebase Hosting.
+Site institucional da Orddum, especializada em desenvolvimento de aplicativos mobile com Flutter e Firebase.
 
-## 🚀 Status do Deploy
+## 🚀 Sobre
 
-✅ **Site Deployado com Sucesso!**
-- **URL do Firebase:** https://ipi-app-b298b.web.app
-- **URL de Preview:** https://ipi-app-b298b--preview-dqr1uzhv.web.app
+A Orddum é uma empresa especializada em desenvolvimento de aplicativos mobile multiplataforma usando Flutter e Firebase. Nossa missão é transformar ideias em aplicativos profissionais para iOS e Android com arquitetura limpa e integração nativa.
 
-## 🌐 Configuração do Domínio Personalizado
+## 🛠️ Tecnologias
 
-### Passo 1: Adicionar Domínio no Firebase Console
+- **Flutter & Dart** - Framework multiplataforma para desenvolvimento mobile
+- **Firebase** - Backend como serviço (Authentication, Firestore, Cloud Functions, Analytics)
+- **Clean Architecture** - Padrões de arquitetura limpa e SOLID
+- **HTML5, CSS3, JavaScript** - Frontend do site institucional
 
-1. Acesse o [Firebase Console](https://console.firebase.google.com/project/ipi-app-b298b/overview)
-2. Vá para **Hosting** no menu lateral
-3. Clique em **Adicionar domínio personalizado**
-4. Digite: `www.orddum.com`
-5. Clique em **Continuar**
+## 📱 Serviços
 
-### Passo 2: Configurar DNS
+- **Aplicativos Flutter** - Desenvolvimento multiplataforma para iOS e Android
+- **Integração Firebase** - Implementação completa do ecossistema Firebase
+- **Arquitetura Limpa** - Código escalável e manutenível seguindo padrões SOLID
+- **Manutenção e Suporte** - Atualizações e suporte técnico contínuo
 
-O Firebase fornecerá os seguintes registros DNS que você deve adicionar no seu provedor de DNS:
+## 🌐 Deploy
 
-#### Registros A (para o domínio raiz):
+O site está hospedado no Firebase Hosting e é acessível através de:
+- **URL Principal**: https://orddum.web.app
+- **Domínio Personalizado**: https://www.orddum.com
+
+## 📞 Contato
+
+- **Email**: luiz.gonzaga@orddum.com
+- **Localização**: Itabira - MG, Brasil
+- **WhatsApp**: (31) 99527-9032
+- **LinkedIn**: [luizgonzagabn](https://www.linkedin.com/in/luizgonzagabn/)
+
+## 🔧 Desenvolvimento
+
+### Pré-requisitos
+- Node.js
+- Firebase CLI
+
+### Instalação
+```bash
+# Instalar Firebase CLI
+npm install -g firebase-tools
+
+# Fazer login no Firebase
+firebase login
+
+# Inicializar o projeto (já configurado)
+firebase init hosting
 ```
-Tipo: A
-Nome: @
-Valor: 151.101.1.195
-TTL: 1 hora
 
-Tipo: A
-Nome: @
-Valor: 151.101.65.195
-TTL: 1 hora
+### Deploy Local
+```bash
+# Servir localmente
+firebase serve
+
+# Deploy para produção
+firebase deploy
 ```
 
-#### Registro CNAME (para www):
-```
-Tipo: CNAME
-Nome: www
-Valor: ipi-app-b298b.web.app
-TTL: 1 hora
-```
-
-### Passo 3: Verificar Configuração
-
-Após adicionar os registros DNS, aguarde alguns minutos e verifique se o domínio está funcionando.
-
-## 📁 Estrutura do Projeto
+## 📋 Estrutura do Projeto
 
 ```
 orddum-website/
-├── public/
-│   ├── index.html          # Página principal
-│   ├── styles.css          # Estilos CSS
-│   ├── script.js           # JavaScript
-│   ├── logo.png            # Logo da igreja
-│   └── church.jpg          # Imagem da igreja
-├── firebase.json           # Configuração do Firebase
-├── .firebaserc            # Configuração do projeto
+├── public/                 # Arquivos públicos do site
+│   ├── index.html         # Página principal
+│   ├── styles.css         # Estilos CSS
+│   ├── script.js          # JavaScript
+│   ├── logo.png           # Logo da empresa
+│   └── logo_large.png     # Logo grande
+├── .firebaserc            # Configuração do projeto Firebase
+├── firebase.json          # Configuração do Firebase Hosting
 └── README.md              # Este arquivo
 ```
 
-## 🛠️ Comandos Úteis
+## 🎨 Design
 
-### Deploy do Site
-```bash
-firebase deploy --only hosting
-```
+O site utiliza um tema dark moderno com:
+- **Cores**: Preto e branco (baseado na identidade visual da Orddum)
+- **Tipografia**: Inter (Google Fonts)
+- **Layout**: Responsivo e otimizado para mobile
+- **Animações**: Suaves e profissionais
 
-### Deploy de Preview
-```bash
-firebase hosting:channel:deploy preview
-```
+## 🔄 CI/CD
 
-### Servidor Local
-```bash
-firebase serve
-```
+O projeto utiliza GitHub Actions para deploy automático:
+- Deploy automático na branch `main`
+- Preview automático em Pull Requests
+- Integração com Firebase Hosting
 
-## 🎨 Características do Site
+## 📄 Licença
 
-- ✅ Design responsivo e moderno
-- ✅ Navegação suave
-- ✅ Animações CSS
-- ✅ Formulário de contato
-- ✅ Botão flutuante do WhatsApp
-- ✅ SEO otimizado
-- ✅ Performance otimizada
-- ✅ Acessibilidade
-
-## 📱 Seções do Site
-
-1. **Hero Section** - Boas-vindas e chamada para ação
-2. **Sobre Nós** - História, missão e valores da igreja
-3. **Horários dos Cultos** - Informações sobre os serviços
-4. **Ministérios** - Diferentes áreas de atuação
-5. **Contato** - Formulário e informações de contato
-
-## 🔧 Tecnologias Utilizadas
-
-- **HTML5** - Estrutura semântica
-- **CSS3** - Estilos modernos com Flexbox e Grid
-- **JavaScript** - Interatividade e animações
-- **Firebase Hosting** - Hospedagem e CDN
-- **Google Fonts** - Tipografia (Inter)
-
-## 📞 Informações de Contato
-
-- **Endereço:** Rua Platina, 410, Major Lage de Baixo, Itabira - MG
-- **Telefone:** (31) 3834-5026
-- **WhatsApp:** (31) 3834-5026
-- **Email:** igrejapresbiterianadeitabira@gmail.com
-
-## 🚀 Próximos Passos
-
-1. ✅ Configurar domínio personalizado no Firebase
-2. ✅ Adicionar registros DNS no provedor
-3. 🔄 Configurar SSL automático (Firebase faz automaticamente)
-4. 🔄 Configurar redirecionamento de HTTP para HTTPS
-5. 🔄 Adicionar analytics (Google Analytics)
-
-## 📝 Notas Importantes
-
-- O Firebase Hosting fornece SSL gratuito automaticamente
-- O site é otimizado para SEO e performance
-- Todas as imagens são otimizadas para web
-- O formulário de contato está configurado para validação básica
-
-## 🆘 Suporte
-
-Para dúvidas ou problemas:
-1. Verifique os logs do Firebase Console
-2. Teste localmente com `firebase serve`
-3. Verifique a configuração DNS com ferramentas online
+© 2024 Orddum. Todos os direitos reservados.
 
 ---
 
-**Desenvolvido com ❤️ para a Igreja Presbiteriana de Itabira** # Teste de deploy automático
+**Transforme sua ideia em um aplicativo profissional com Flutter e Firebase!** 🚀

@@ -6,31 +6,31 @@
 }
 
 :root {
-   --primary-color: #000000;
-   --primary-light: #333333;
-   --secondary-color: #666666;
-   --accent-color: #ffffff;
-   --success-color: #000000;
-   --warning-color: #666666;
-   --danger-color: #cc0000;
+   --primary-color: #ffffff;
+   --primary-light: #cccccc;
+   --secondary-color: #999999;
+   --accent-color: #000000;
+   --success-color: #00ff00;
+   --warning-color: #ffaa00;
+   --danger-color: #ff4444;
    --dark-color: #000000;
    --light-color: #ffffff;
-   --gray-100: #f8f8f8;
-   --gray-200: #eeeeee;
-   --gray-300: #dddddd;
-   --gray-400: #cccccc;
-   --gray-500: #999999;
-   --gray-600: #666666;
-   --gray-700: #333333;
-   --gray-800: #222222;
-   --gray-900: #000000;
+   --gray-100: #1a1a1a;
+   --gray-200: #2a2a2a;
+   --gray-300: #3a3a3a;
+   --gray-400: #4a4a4a;
+   --gray-500: #666666;
+   --gray-600: #888888;
+   --gray-700: #aaaaaa;
+   --gray-800: #cccccc;
+   --gray-900: #ffffff;
    --white: #ffffff;
    --black: #000000;
-   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-   --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+   --shadow-sm: 0 1px 2px 0 rgba(255, 255, 255, 0.05);
+   --shadow: 0 1px 3px 0 rgba(255, 255, 255, 0.1), 0 1px 2px -1px rgba(255, 255, 255, 0.1);
+   --shadow-md: 0 4px 6px -1px rgba(255, 255, 255, 0.1), 0 2px 4px -2px rgba(255, 255, 255, 0.1);
+   --shadow-lg: 0 10px 15px -3px rgba(255, 255, 255, 0.1), 0 4px 6px -4px rgba(255, 255, 255, 0.1);
+   --shadow-xl: 0 20px 25px -5px rgba(255, 255, 255, 0.1), 0 8px 10px -6px rgba(255, 255, 255, 0.1);
    --border-radius: 0.5rem;
    --border-radius-lg: 0.75rem;
    --border-radius-xl: 1rem;
@@ -40,8 +40,8 @@
 body {
    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
    line-height: 1.6;
-   color: var(--gray-700);
-   background-color: var(--white);
+   color: var(--white);
+   background-color: var(--black);
    overflow-x: hidden;
 }
 
@@ -57,9 +57,9 @@ body {
    top: 0;
    left: 0;
    right: 0;
-   background: rgba(255, 255, 255, 0.98);
+   background: rgba(0, 0, 0, 0.98);
    backdrop-filter: blur(10px);
-   border-bottom: 1px solid var(--gray-200);
+   border-bottom: 1px solid var(--gray-300);
    z-index: 1000;
    transition: var(--transition);
 }
@@ -84,15 +84,15 @@ body {
 }
 
 .logo {
-   width: 40px;
-   height: 40px;
+   width: 50px;
+   height: 50px;
    border-radius: var(--border-radius);
 }
 
 .logo-text {
    font-size: 1.5rem;
    font-weight: 700;
-   color: var(--black);
+   color: var(--white);
    letter-spacing: -0.025em;
 }
 
@@ -112,7 +112,7 @@ body {
 }
 
 .nav-link:hover {
-   color: var(--black);
+   color: var(--white);
 }
 
 .nav-link::after {
@@ -122,7 +122,7 @@ body {
    left: 0;
    width: 0;
    height: 2px;
-   background: var(--black);
+   background: var(--white);
    transition: var(--transition);
 }
 
@@ -147,8 +147,8 @@ body {
 /* Hero Section */
 .hero {
    padding: 8rem 0 4rem;
-   background: var(--white);
-   color: var(--black);
+   background: var(--black);
+   color: var(--white);
    position: relative;
    text-align: center;
 }
@@ -175,7 +175,7 @@ body {
    line-height: 1.1;
    margin-bottom: 1.5rem;
    letter-spacing: -0.025em;
-   color: var(--black);
+   color: var(--white);
 }
 
 .hero-subtitle {
@@ -208,25 +208,25 @@ body {
 }
 
 .btn-primary {
-   background: var(--black);
-   color: var(--white);
+   background: var(--white);
+   color: var(--black);
 }
 
 .btn-primary:hover {
-   background: var(--gray-800);
+   background: var(--gray-200);
    transform: translateY(-2px);
    box-shadow: var(--shadow-lg);
 }
 
 .btn-secondary {
    background: transparent;
-   color: var(--black);
-   border: 2px solid var(--black);
+   color: var(--white);
+   border: 2px solid var(--white);
 }
 
 .btn-secondary:hover {
-   background: var(--black);
-   color: var(--white);
+   background: var(--white);
+   color: var(--black);
    transform: translateY(-2px);
 }
 
@@ -256,7 +256,7 @@ section {
 .section-title {
    font-size: 2.5rem;
    font-weight: 700;
-   color: var(--black);
+   color: var(--white);
    margin-bottom: 1rem;
    letter-spacing: -0.025em;
 }
@@ -283,7 +283,7 @@ section {
 .about-text h3 {
    font-size: 1.5rem;
    font-weight: 600;
-   color: var(--black);
+   color: var(--white);
    margin-bottom: 1rem;
    margin-top: 2rem;
 }
@@ -312,7 +312,7 @@ section {
 }
 
 .about-text li i {
-   color: var(--black);
+   color: var(--white);
    font-size: 0.875rem;
 }
 
@@ -324,7 +324,7 @@ section {
 .stat {
    text-align: center;
    padding: 2rem;
-   background: var(--white);
+   background: var(--gray-200);
    border-radius: var(--border-radius-lg);
    box-shadow: var(--shadow);
    transition: var(--transition);
@@ -337,7 +337,7 @@ section {
 
 .stat i {
    font-size: 2rem;
-   color: var(--black);
+   color: var(--white);
    margin-bottom: 1rem;
 }
 
@@ -351,7 +351,7 @@ section {
 .stat-number {
    font-size: 2.5rem;
    font-weight: 700;
-   color: var(--black);
+   color: var(--white);
 }
 
 /* Services Section */
@@ -362,25 +362,25 @@ section {
 }
 
 .service-card {
-   background: var(--white);
+   background: var(--gray-200);
    padding: 2.5rem;
    border-radius: var(--border-radius-lg);
    box-shadow: var(--shadow);
    transition: var(--transition);
-   border: 1px solid var(--gray-200);
+   border: 1px solid var(--gray-300);
    text-align: center;
 }
 
 .service-card:hover {
    transform: translateY(-5px);
    box-shadow: var(--shadow-xl);
-   border-color: var(--black);
+   border-color: var(--white);
 }
 
 .service-icon {
    width: 60px;
    height: 60px;
-   background: var(--black);
+   background: var(--white);
    border-radius: var(--border-radius-lg);
    display: flex;
    align-items: center;
@@ -390,13 +390,13 @@ section {
 
 .service-icon i {
    font-size: 1.5rem;
-   color: var(--white);
+   color: var(--black);
 }
 
 .service-card h3 {
    font-size: 1.25rem;
    font-weight: 600;
-   color: var(--black);
+   color: var(--white);
    margin-bottom: 1rem;
 }
 
@@ -417,7 +417,7 @@ section {
 }
 
 .tech-category {
-   background: var(--white);
+   background: var(--gray-200);
    padding: 2rem;
    border-radius: var(--border-radius-lg);
    box-shadow: var(--shadow);
@@ -426,7 +426,7 @@ section {
 .tech-category h3 {
    font-size: 1.25rem;
    font-weight: 600;
-   color: var(--black);
+   color: var(--white);
    margin-bottom: 1.5rem;
    text-align: center;
 }
@@ -439,8 +439,8 @@ section {
 }
 
 .tech-item {
-   background: var(--black);
-   color: var(--white);
+   background: var(--white);
+   color: var(--black);
    padding: 0.5rem 1rem;
    border-radius: var(--border-radius);
    font-size: 0.875rem;
@@ -449,7 +449,7 @@ section {
 }
 
 .tech-item:hover {
-   background: var(--gray-800);
+   background: var(--gray-200);
    transform: translateY(-2px);
 }
 
@@ -476,7 +476,7 @@ section {
 }
 
 .contact-item:hover {
-   background: var(--white);
+   background: var(--gray-200);
    box-shadow: var(--shadow);
    transform: translateY(-2px);
 }
@@ -484,7 +484,7 @@ section {
 .contact-icon {
    width: 50px;
    height: 50px;
-   background: var(--black);
+   background: var(--white);
    border-radius: var(--border-radius);
    display: flex;
    align-items: center;
@@ -494,13 +494,13 @@ section {
 
 .contact-icon i {
    font-size: 1.25rem;
-   color: var(--white);
+   color: var(--black);
 }
 
 .contact-item h4 {
    font-size: 1.125rem;
    font-weight: 600;
-   color: var(--black);
+   color: var(--white);
    margin-bottom: 0.5rem;
 }
 
@@ -511,11 +511,11 @@ section {
 
 /* Contact Form */
 .contact-form {
-   background: var(--white);
+   background: var(--gray-200);
    padding: 2.5rem;
    border-radius: var(--border-radius-lg);
    box-shadow: var(--shadow-lg);
-   border: 1px solid var(--gray-200);
+   border: 1px solid var(--gray-300);
 }
 
 .form-group {
@@ -531,15 +531,21 @@ section {
    border-radius: var(--border-radius);
    font-size: 1rem;
    transition: var(--transition);
-   background: var(--white);
+   background: var(--gray-100);
+   color: var(--white);
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
    outline: none;
-   border-color: var(--black);
-   box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+   border-color: var(--white);
+   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+   color: var(--gray-500);
 }
 
 .form-group textarea {
@@ -552,6 +558,7 @@ section {
    background: var(--black);
    color: var(--white);
    padding: 4rem 0 2rem;
+   border-top: 1px solid var(--gray-300);
 }
 
 .footer-content {
@@ -569,8 +576,8 @@ section {
 }
 
 .footer-logo .logo {
-   width: 40px;
-   height: 40px;
+   width: 50px;
+   height: 50px;
 }
 
 .footer-logo .logo-text {
@@ -580,7 +587,7 @@ section {
 }
 
 .footer-section p {
-   color: var(--gray-400);
+   color: var(--gray-600);
    line-height: 1.6;
    margin-bottom: 1.5rem;
 }
@@ -601,7 +608,7 @@ section {
 }
 
 .footer-section ul li a {
-   color: var(--gray-400);
+   color: var(--gray-600);
    text-decoration: none;
    transition: var(--transition);
 }
@@ -618,12 +625,12 @@ section {
 .social-link {
    width: 40px;
    height: 40px;
-   background: var(--gray-800);
+   background: var(--gray-300);
    border-radius: var(--border-radius);
    display: flex;
    align-items: center;
    justify-content: center;
-   color: var(--white);
+   color: var(--black);
    text-decoration: none;
    transition: var(--transition);
 }
@@ -635,10 +642,10 @@ section {
 }
 
 .footer-bottom {
-   border-top: 1px solid var(--gray-800);
+   border-top: 1px solid var(--gray-300);
    padding-top: 2rem;
    text-align: center;
-   color: var(--gray-400);
+   color: var(--gray-600);
 }
 
 /* WhatsApp Float Button */
@@ -765,7 +772,7 @@ html {
 
 /* Estilos para elementos ativos */
 .nav-link.active {
-   color: var(--black);
+   color: var(--white);
 }
 
 .nav-link.active::after {
