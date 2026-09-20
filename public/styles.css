@@ -881,3 +881,8 @@ html {
       padding-left: 1rem;
    }
 }
+/* O segundo título dentro de uma coluna do rodapé (os links legais do Lastro).
+   Sem a margem ele encosta na lista de cima e os dois grupos viram um só. */
+.footer-app-heading {
+  margin-top: 1.5rem;
+}
