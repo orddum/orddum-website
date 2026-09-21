@@ -1,99 +1,98 @@
-# Orddum - Desenvolvimento de Aplicativos Mobile
+# Orddum — site institucional
 
-Site institucional da Orddum, especializada em desenvolvimento de aplicativos mobile com Flutter e Firebase.
+Site estático da **Orddum Serviços de Tecnologia LTDA** (Itabira, MG), hospedado
+no Firebase Hosting em [orddum.com](https://orddum.com).
 
-## 🚀 Sobre
+Ele é um **portfólio**: apresenta os apps da empresa, leva para as lojas e
+publica a política de privacidade e os termos de cada um.
 
-A Orddum é uma empresa especializada em desenvolvimento de aplicativos mobile multiplataforma usando Flutter e Firebase. Nossa missão é transformar ideias em aplicativos profissionais para iOS e Android com arquitetura limpa e integração nativa.
+## As URLs que NÃO podem quebrar
 
-## 🛠️ Tecnologias
+Estas quatro estão gravadas em app publicado e/ou nos painéis das lojas. Mudar
+qualquer uma delas derruba a ficha de um app em produção — e a revisão das lojas
+**abre o link**.
 
-- **Flutter & Dart** - Framework multiplataforma para desenvolvimento mobile
-- **Firebase** - Backend como serviço (Authentication, Firestore, Cloud Functions, Analytics)
-- **Clean Architecture** - Padrões de arquitetura limpa e SOLID
-- **HTML5, CSS3, JavaScript** - Frontend do site institucional
+| URL | Quem depende dela |
+|---|---|
+| `/lastro/privacidade/` | App Store Connect e Play Console do Lastro; a `PaywallScreen` do app |
+| `/lastro/termos/` | idem |
+| `/#contato` | URL de suporte na ficha da App Store do Lastro |
+| `/` (raiz) | **URL de política de privacidade registrada nas duas lojas para o IPI App**, e o destino do link "Política de Privacidade" dentro do próprio app |
 
-## 📱 Serviços
+A forma **com barra final** é a que vai nos painéis. Sem a barra, o Hosting
+responde 301 para a versão com barra — funciona, mas os três lugares devem dizer
+a mesma coisa.
 
-- **Aplicativos Flutter** - Desenvolvimento multiplataforma para iOS e Android
-- **Integração Firebase** - Implementação completa do ecossistema Firebase
-- **Arquitetura Limpa** - Código escalável e manutenível seguindo padrões SOLID
-- **Manutenção e Suporte** - Atualizações e suporte técnico contínuo
+> A raiz na tabela acima é um remendo herdado, não um desenho. O certo é apontar
+> as duas lojas do IPI e o `AppConfig.orddumSite` do `ipi_app` para
+> `/ipi/privacidade/`, que existe desde o redesign. Enquanto isso não for feito,
+> a seção `id="privacidade"` da home **não pode ser renomeada**: ela é o que
+> leva um revisor da raiz até a política em um clique.
 
-## 🌐 Deploy
+## Identidade visual
 
-O site está hospedado no Firebase Hosting e é acessível através de:
-- **URL Principal**: https://orddum.web.app
-- **Domínio Personalizado**: https://www.orddum.com
+A paleta sai do **logo**, não de uma referência externa. Os valores foram
+amostrados pixel a pixel de `public/logo_large.png` e estão documentados no topo
+de [`public/styles.css`](public/styles.css):
 
-## 📞 Contato
+| Cor | Onde está no logo |
+|---|---|
+| `#D1CDB6` | o corpo do wordmark ORDDUM — o bege da carcaça do Super Famicom |
+| `#05A83F` `#1581DF` `#F20103` `#FFD604` | as quatro barras, de cima para baixo: as cores dos botões do Super Famicom (Y verde, X azul, A vermelho, B amarelo) |
+| `#000000` | o fundo |
 
-- **Email**: luiz.gonzaga@orddum.com
-- **Localização**: Itabira - MG, Brasil
-- **WhatsApp**: (31) 99527-9032
-- **LinkedIn**: [luizgonzagabn](https://www.linkedin.com/in/luizgonzagabn/)
+São a família **japonesa/europeia**. O SNES norte-americano é o do roxo e
+lavanda, e não é o que este logo usa.
 
-## 🔧 Desenvolvimento
+**As quatro são acento, nunca superfície.** O logo é 81% preto, 14% bege e 0,4%
+colorido; inverter essa proporção transforma a marca num arco-íris.
 
-### Pré-requisitos
-- Node.js
-- Firebase CLI
+## Estrutura
 
-### Instalação
+```
+public/
+├── index.html                    # portfólio (hero, apps, Lastro, contato, legal)
+├── styles.css                    # tokens da marca + toda a landing page
+├── legal.css                     # só o texto corrido das páginas legais
+├── script.js                     # menu mobile e marcação da seção ativa
+├── logo.png  logo_large.png      # material da marca, fundo preto chapado
+├── img/
+│   ├── logo-mark.png             # os mesmos logos com alfa, para uso na página
+│   ├── logo-wordmark.png
+│   ├── og.png                    # capa de compartilhamento 1200×630
+│   ├── lastro/{icon,capa}.png    # ícone e feature graphic, de lastro/store/
+│   ├── lastro/screens/*.webp     # as 6 capturas da App Store, reduzidas
+│   └── ipi/icon.png
+├── lastro/{privacidade,termos}/  # texto legal do Lastro
+└── ipi/privacidade/              # texto legal do IPI App
+```
+
+As imagens dos apps são **cópias**, geradas a partir de
+`~/projects/lastro/store/` e `~/projects/ipi_app/assets/images/`. Para regerar,
+veja o cabeçalho do commit do redesign.
+
+## Rodar local
+
 ```bash
-# Instalar Firebase CLI
-npm install -g firebase-tools
-
-# Fazer login no Firebase
-firebase login
-
-# Inicializar o projeto (já configurado)
-firebase init hosting
+firebase emulators:start --only hosting     # replica rewrites e index de diretório
 ```
 
-### Deploy Local
-```bash
-# Servir localmente
-firebase serve
+`python3 -m http.server` também serve, mas **não** reproduz o 301 da URL sem
+barra final nem o rewrite do `firebase.json` — e é justamente aí que mora o
+contrato de URLs acima.
 
-# Deploy para produção
-firebase deploy
-```
+## Deploy
 
-## 📋 Estrutura do Projeto
+**Automático no merge da `main`**, por GitHub Actions
+(`.github/workflows/firebase-hosting-merge.yml`). Pull request ganha um canal de
+preview. Não rode `firebase deploy` à mão: o que está na `main` é o que está no
+ar.
 
-```
-orddum-website/
-├── public/                 # Arquivos públicos do site
-│   ├── index.html         # Página principal
-│   ├── styles.css         # Estilos CSS
-│   ├── script.js          # JavaScript
-│   ├── logo.png           # Logo da empresa
-│   └── logo_large.png     # Logo grande
-├── .firebaserc            # Configuração do projeto Firebase
-├── firebase.json          # Configuração do Firebase Hosting
-└── README.md              # Este arquivo
-```
+## Contato
 
-## 🎨 Design
-
-O site utiliza um tema dark moderno com:
-- **Cores**: Preto e branco (baseado na identidade visual da Orddum)
-- **Tipografia**: Inter (Google Fonts)
-- **Layout**: Responsivo e otimizado para mobile
-- **Animações**: Suaves e profissionais
-
-## 🔄 CI/CD
-
-O projeto utiliza GitHub Actions para deploy automático:
-- Deploy automático na branch `main`
-- Preview automático em Pull Requests
-- Integração com Firebase Hosting
-
-## 📄 Licença
-
-© 2025 Orddum. Todos os direitos reservados.
+- luiz.gonzaga@orddum.com · Itabira — MG, Brasil
+- WhatsApp (31) 99527-9032 · [LinkedIn](https://www.linkedin.com/in/luizgonzagabn/)
 
 ---
 
-**Transforme sua ideia em um aplicativo profissional com Flutter e Firebase!** 🚀
+© 2026 Orddum Serviços de Tecnologia LTDA
