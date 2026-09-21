@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidade — IPI App | Orddum</title>
+  <meta name="description"
+    content="Política de privacidade do IPI App, aplicativo de gestão de informações e atividades da Igreja Presbiteriana de Itabira.">
+  <meta name="theme-color" content="#000000">
+  <link rel="canonical" href="https://orddum.com/ipi/privacidade/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/legal.css">
+  <link rel="icon" type="image/png" href="/img/logo-mark.png">
+</head>
+
+<!--
+  ============================================================================
+  DE ONDE VEIO ESTE TEXTO — leia antes de editar
+  ============================================================================
+
+  O texto abaixo NÃO é novo. Ele é, palavra por palavra, a seção
+  "Política de Privacidade" que estava na página inicial de orddum.com desde
+  29/07/2025 (commit 6cd61bd). Ele foi MOVIDO para cá, não reescrito.
+
+  Por que ele é do IPI App: o que a seção descreve — login por e-mail, Firebase,
+  notificações push, Firebase Analytics, Crashlytics — é exatamente a pilha do
+  IPI App, e nada disso existe no Lastro, que não tem servidor nem cadastro. A
+  seção foi escrita genericamente ("nossos aplicativos Flutter"), mas o app que
+  ela descreve é este.
+
+  Por que a página existe: em 21/09/2026, a URL de política de privacidade
+  registrada nas DUAS lojas para o com.orddum.ipi era `https://www.orddum.com`
+  — a home. Isso é frágil: a home é a página que mais muda, e uma política tem
+  que morar numa URL estável que abra DIRETO no texto.
+
+  DUAS PENDÊNCIAS PARA O DONO, e a segunda depende da primeira:
+
+  1. REVISAR O TEXTO. Ele foi escrito genericamente e nunca conferido contra o
+     que o IPI App realmente faz. Pontos a checar, no mínimo: prazos de retenção
+     (12 meses / 30 dias / 90 dias), a menção a "criptografia de ponta a ponta"
+     do Firebase, e se o app ainda usa Crashlytics e push. A data no rodapé é a
+     da redação original e só deve mudar quando o texto mudar.
+
+  2. TROCAR A URL NOS PAINÉIS, depois da revisão:
+     - Play Console -> Política de privacidade -> https://orddum.com/ipi/privacidade/
+     - App Store Connect -> Informações do app -> mesma URL
+     - ipi_app: `AppConfig.orddumSite` hoje é 'https://www.orddum.com', e é ele
+       que o "Política de Privacidade" do `AppAboutDialog` abre. O link deveria
+       apontar para esta página.
+
+  Enquanto (2) não acontecer, a home PRECISA continuar levando aqui em um
+  clique — é o que a seção #privacidade da index.html faz, e é por isso que
+  aquele id não pode ser renomeado.
+  ============================================================================
+-->
+
+<body class="legal-page">
+  <header class="legal-header">
+    <a class="legal-brand" href="/">
+      <img src="/img/logo-mark.png" alt="Orddum" class="legal-logo">
+      <span>ORDDUM</span>
+    </a>
+    <a class="legal-back" href="/">← Voltar ao site</a>
+  </header>
+
+  <div class="legal-rule" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+
+  <main class="legal-main">
+    <p class="legal-kicker">IPI App</p>
+    <h1>Política de Privacidade</h1>
+    <p class="legal-updated">Última atualização: 29 de julho de 2025</p>
+
+    <div class="legal-callout">
+      <p>O <strong>IPI App</strong> é o aplicativo de gestão de informações e atividades da Igreja Presbiteriana de
+        Itabira, desenvolvido pela <strong>Orddum</strong>. Esta política descreve quais dados o app coleta, como eles
+        são guardados e quais são os seus direitos sobre eles.</p>
+    </div>
+
+    <h2>1. Coleta de Dados</h2>
+      <p>Nossos aplicativos Flutter coletam apenas os dados necessários para o funcionamento adequado do serviço:
+      </p>
+      <ul>
+      <li><strong>Dados de Autenticação:</strong> Email e informações básicas de perfil para login seguro</li>
+      <li><strong>Dados de Uso:</strong> Informações sobre funcionalidades utilizadas para melhorar a experiência
+      </li>
+      <li><strong>Dados Técnicos:</strong> Informações do dispositivo para otimização de performance</li>
+      <li><strong>Notificações Push:</strong> Token para envio de notificações importantes</li>
+      </ul>
+
+    <h2>2. Armazenamento e Segurança</h2>
+      <p>Utilizamos tecnologias seguras para proteger seus dados:</p>
+      <ul>
+      <li><strong>Firebase:</strong> Serviços Google com criptografia de ponta a ponta</li>
+      <li><strong>Local Storage:</strong> Dados sensíveis armazenados localmente no dispositivo</li>
+      <li><strong>Criptografia:</strong> Todos os dados transmitidos são criptografados</li>
+      <li><strong>Backup Seguro:</strong> Backups automáticos com proteção adicional</li>
+      </ul>
+
+    <h2>3. Compartilhamento de Dados</h2>
+      <p>Seus dados são protegidos e não são compartilhados com terceiros, exceto:</p>
+      <ul>
+      <li>Quando exigido por lei ou ordem judicial</li>
+      <li>Para prestadores de serviços essenciais (Firebase, Google Cloud)</li>
+      <li>Com seu consentimento explícito</li>
+      </ul>
+
+    <h2>4. Seus Direitos</h2>
+      <p>Você tem direito a:</p>
+      <ul>
+      <li><strong>Acesso:</strong> Solicitar cópia dos dados coletados</li>
+      <li><strong>Correção:</strong> Atualizar informações incorretas</li>
+      <li><strong>Exclusão:</strong> Solicitar remoção de dados pessoais</li>
+      <li><strong>Portabilidade:</strong> Transferir dados para outro serviço</li>
+      <li><strong>Revogação:</strong> Cancelar consentimento a qualquer momento</li>
+      </ul>
+
+    <h2>5. Cookies e Rastreamento</h2>
+      <p>Nossos aplicativos podem utilizar:</p>
+      <ul>
+      <li><strong>Cookies Essenciais:</strong> Para funcionamento básico do app</li>
+      <li><strong>Analytics:</strong> Firebase Analytics para melhorias de performance</li>
+      <li><strong>Crashlytics:</strong> Relatórios de erro para estabilidade</li>
+      <li><strong>Sem Rastreamento:</strong> Não coletamos dados para publicidade</li>
+      </ul>
+
+    <h2>6. Retenção de Dados</h2>
+      <p>Mantemos seus dados apenas pelo tempo necessário:</p>
+      <ul>
+      <li><strong>Dados Ativos:</strong> Enquanto sua conta estiver ativa</li>
+      <li><strong>Dados Inativos:</strong> Até 12 meses após último acesso</li>
+      <li><strong>Backups:</strong> Até 30 dias após exclusão da conta</li>
+      <li><strong>Logs Técnicos:</strong> Até 90 dias para segurança</li>
+      </ul>
+
+    <h2>7. Conformidade Legal</h2>
+      <p>Nossos aplicativos seguem as principais regulamentações:</p>
+      <ul>
+      <li><strong>LGPD:</strong> Lei Geral de Proteção de Dados (Brasil)</li>
+      <li><strong>GDPR:</strong> Regulamento Geral de Proteção de Dados (UE)</li>
+      <li><strong>App Store:</strong> Diretrizes de Privacidade da Apple</li>
+      <li><strong>Google Play:</strong> Políticas de Privacidade do Google</li>
+      </ul>
+
+    <h2>8. Contato sobre Privacidade</h2>
+      <p>Para questões sobre privacidade e proteção de dados:</p>
+      <p><strong>Email:</strong> luiz.gonzaga@orddum.com</p>
+      <p><strong>Endereço:</strong> Itabira - MG, Brasil</p>
+      <p><strong>Resposta:</strong> Até 30 dias úteis</p>
+
+    <p class="legal-crosslink">Esta política trata do <strong>IPI App</strong>. O <strong>Lastro</strong>, o outro
+      aplicativo da Orddum, tem a <a href="/lastro/privacidade/">política dele</a> — ele não tem servidor nem cadastro,
+      e por isso o texto é outro.</p>
+    <p class="legal-crosslink" style="margin-top:1rem;padding-top:0;border-top:0">Esta política pode ser atualizada
+      periodicamente. Recomendamos verificar regularmente.</p>
+  </main>
+
+  <footer class="legal-footer">
+    <p>© 2026 Orddum · Itabira, MG · <a href="mailto:luiz.gonzaga@orddum.com">luiz.gonzaga@orddum.com</a></p>
+  </footer>
+
+</body>
+
+</html>
