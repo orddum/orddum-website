@@ -62,14 +62,29 @@ public/
 │   ├── og.png                    # capa de compartilhamento 1200×630
 │   ├── lastro/{icon,capa}.png    # ícone e feature graphic, de lastro/store/
 │   ├── lastro/screens/*.webp     # as 6 capturas da App Store, reduzidas
-│   └── ipi/icon.png
+│   ├── ipi/{icon,capa}.png       # idem, de ipi_app/store/
+│   └── ipi/screens/*.webp
 ├── lastro/{privacidade,termos}/  # texto legal do Lastro
 └── ipi/privacidade/              # texto legal do IPI App
 ```
 
 As imagens dos apps são **cópias**, geradas a partir de
-`~/projects/lastro/store/` e `~/projects/ipi_app/assets/images/`. Para regerar,
-veja o cabeçalho do commit do redesign.
+`~/projects/lastro/store/` e `~/projects/ipi_app/store/`. Os dois apps têm
+vitrine própria na home (`#ipi` e `#lastro`), com a mesma estrutura: a capa é o
+*feature graphic* 1024×500 da Play Store, e as telas são as capturas da App
+Store (1242×2688) reduzidas para 540 de largura e convertidas em webp:
+
+```python
+from PIL import Image
+image = Image.open(origem).convert('RGB')
+image = image.resize((540, round(image.height * 540 / image.width)), Image.LANCZOS)
+image.save(destino, 'WEBP', quality=82, method=6)
+```
+
+Sai em torno de 30–75 KB por tela. Quando as capturas de loja mudarem, estas
+mudam junto — elas são a mesma imagem, e uma ficha de loja nova com a vitrine
+do site velha é a inconsistência que ninguém vai reparar até um visitante
+reparar.
 
 ## Rodar local
 
