@@ -68,23 +68,11 @@ public/
 └── ipi/privacidade/              # texto legal do IPI App
 ```
 
-As imagens dos apps são **cópias**, geradas a partir de
-`~/projects/lastro/store/` e `~/projects/ipi_app/store/`. Os dois apps têm
-vitrine própria na home (`#ipi` e `#lastro`), com a mesma estrutura: a capa é o
-*feature graphic* 1024×500 da Play Store, e as telas são as capturas da App
-Store (1242×2688) reduzidas para 540 de largura e convertidas em webp:
-
-```python
-from PIL import Image
-image = Image.open(origem).convert('RGB')
-image = image.resize((540, round(image.height * 540 / image.width)), Image.LANCZOS)
-image.save(destino, 'WEBP', quality=82, method=6)
-```
-
-Sai em torno de 30–75 KB por tela. Quando as capturas de loja mudarem, estas
-mudam junto — elas são a mesma imagem, e uma ficha de loja nova com a vitrine
-do site velha é a inconsistência que ninguém vai reparar até um visitante
-reparar.
+As imagens dos apps são **cópias**. Cada app tem vitrine própria na home
+(`#lastro` e `#ipi`), e quem gera essas imagens é o repositório do app — o
+passo que as copia para cá está no `store/README.md` de cada um. Não edite nem
+regere nada de `img/lastro/` ou `img/ipi/` por aqui: este repositório é o site,
+e o que ele sabe sobre um app é só onde a imagem dele mora.
 
 ## Rodar local
 
