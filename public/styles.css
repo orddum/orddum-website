@@ -1,888 +1,712 @@
-/* Reset e configurações básicas */
-* {
+/* ============================================================================
+   Orddum — identidade visual
+   ----------------------------------------------------------------------------
+   A PALETA SAIU DO LOGO, não de uma referência externa. Os valores abaixo foram
+   amostrados pixel a pixel de `logo_large.png`:
+
+     #D1CDB6  o corpo do wordmark ORDDUM — o bege-acinzentado da carcaça do
+              Super Famicom, e a cor com mais área depois do preto
+     #05A83F  #1581DF  #F20103  #FFD604
+              as quatro barras à esquerda do wordmark, de cima para baixo.
+              São as cores dos quatro botões do Super Famicom (Y verde, X azul,
+              A vermelho, B amarelo) — a família japonesa/europeia. O SNES
+              norte-americano é o do roxo e lavanda, e NÃO é o que o logo usa.
+     #000000  o fundo, preto puro
+
+   Regra de uso: as quatro cores são ACENTO, nunca superfície. Elas aparecem em
+   barras finas, marcadores e realces — do mesmo jeito que aparecem no logo, que
+   é 81% preto, 14% bege e 0,4% colorido. Inverter essa proporção transformaria
+   a marca num arco-íris.
+
+   As quatro em cima de preto não têm todas contraste de texto (o vermelho puro
+   dá 3,4:1). Por isso existem variantes `-ink` para texto e link, e as puras
+   ficam para o que é decorativo.
+   ========================================================================== */
+
+:root {
+   /* --- amostradas do logo --------------------------------------------- */
+   --sfc-green: #05A83F;
+   --sfc-blue: #1581DF;
+   --sfc-red: #F20103;
+   --sfc-yellow: #FFD604;
+   --shell: #D1CDB6;
+
+   /* --- variantes legíveis sobre preto (>= 4.5:1) ------------------------ */
+   --sfc-green-ink: #35CC70;
+   --sfc-blue-ink: #5FAEF2;
+   --sfc-red-ink: #FF6163;
+   --sfc-yellow-ink: #FFD604;
+
+   /* --- base: o preto do logo e uma rampa quente puxada do bege ---------- */
+   --bg: #000000;
+   --bg-raised: #101010;
+   --surface: #191917;
+   --surface-2: #24241F;
+   --line: rgba(209, 205, 182, 0.14);
+   --line-strong: rgba(209, 205, 182, 0.28);
+
+   --text: #E8E5D6;
+   --text-dim: #A8A494;
+   --text-faint: #878473;   /* 4,7:1 sobre .surface — os rótulos monoespaçados
+                               são texto pequeno, e #797668 dava 3,9:1 */
+
+   /* --- tipografia ------------------------------------------------------- */
+   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+   /* O wordmark é pixel art. Uma fonte de pixel no texto corrido seria
+      ilegível; o monoespaçado dá o mesmo recado de "console" e se lê. */
+   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+   /* --- geometria: cantos quase retos, como um cartucho ------------------ */
+   --r: 4px;
+   --r-lg: 8px;
+   --ring: 0 0 0 2px var(--shell);
+
+   --page: 1140px;
+   --transition: 180ms ease;
+}
+
+*,
+*::before,
+*::after {
    margin: 0;
    padding: 0;
    box-sizing: border-box;
 }
 
-:root {
-   --primary-color: #1a1a2e;
-   --primary-light: #16213e;
-   --secondary-color: #0f3460;
-   --accent-color: #e94560;
-   --success-color: #4ade80;
-   --warning-color: #fbbf24;
-   --danger-color: #f87171;
-   --dark-color: #0f0f23;
-   --light-color: #ffffff;
-   --gray-100: #1a1a2e;
-   --gray-200: #16213e;
-   --gray-300: #0f3460;
-   --gray-400: #2d3748;
-   --gray-500: #4a5568;
-   --gray-600: #718096;
-   --gray-700: #a0aec0;
-   --gray-800: #cbd5e0;
-   --gray-900: #f7fafc;
-   --white: #ffffff;
-   --black: #0f0f23;
-   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-   --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-   --border-radius: 0.5rem;
-   --border-radius-lg: 0.75rem;
-   --border-radius-xl: 1rem;
-   --transition: all 0.3s ease;
+html {
+   scroll-behavior: smooth;
+   /* O cabeçalho é fixo: sem isso a âncora para embaixo dele. */
+   scroll-padding-top: 88px;
+   -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+   html { scroll-behavior: auto; }
+   *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+   }
 }
 
 body {
-   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-   line-height: 1.6;
-   color: var(--white);
-   background-color: var(--black);
+   font-family: var(--font-sans);
+   font-size: 1rem;
+   line-height: 1.65;
+   color: var(--text-dim);
+   background: var(--bg);
    overflow-x: hidden;
+   -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+a { color: var(--shell); }
+
+:focus-visible {
+   outline: 2px solid var(--sfc-yellow);
+   outline-offset: 3px;
+   border-radius: 2px;
 }
 
 .container {
-   max-width: 1200px;
+   max-width: var(--page);
    margin: 0 auto;
-   padding: 0 1rem;
+   padding: 0 1.25rem;
 }
 
-/* Header e Navegação */
+.skip-link {
+   position: absolute;
+   left: -9999px;
+   top: 0;
+   background: var(--shell);
+   color: #000;
+   padding: 0.75rem 1.25rem;
+   z-index: 2000;
+   font-family: var(--font-mono);
+   font-size: 0.85rem;
+}
+.skip-link:focus { left: 0; }
+
+/* ---------------------------------------------------------------------------
+   A marca das quatro barras
+   As mesmas quatro cores, na mesma ordem em que estão no logo. É o elemento que
+   amarra as seções: onde ele aparece, a página diz "isto é Orddum".
+   ------------------------------------------------------------------------- */
+.bars {
+   display: flex;
+   flex-direction: column;
+   gap: 3px;
+   width: 14px;
+   flex-shrink: 0;
+}
+.bars span { display: block; height: 4px; border-radius: 1px; }
+.bars span:nth-child(1) { background: var(--sfc-green); }
+.bars span:nth-child(2) { background: var(--sfc-blue); }
+.bars span:nth-child(3) { background: var(--sfc-red); }
+.bars span:nth-child(4) { background: var(--sfc-yellow); }
+
+.bars-h {
+   display: flex;
+   gap: 0;
+   height: 3px;
+   width: 100%;
+}
+.bars-h span { flex: 1; }
+.bars-h span:nth-child(1) { background: var(--sfc-green); }
+.bars-h span:nth-child(2) { background: var(--sfc-blue); }
+.bars-h span:nth-child(3) { background: var(--sfc-red); }
+.bars-h span:nth-child(4) { background: var(--sfc-yellow); }
+
+/* ---------------------------------------------------------------------------
+   Cabeçalho
+   ------------------------------------------------------------------------- */
 .header {
    position: fixed;
-   top: 0;
-   left: 0;
-   right: 0;
-   background: rgba(15, 15, 35, 0.98);
-   backdrop-filter: blur(10px);
-   border-bottom: 1px solid var(--gray-300);
+   inset: 0 0 auto 0;
+   background: rgba(0, 0, 0, 0.92);
+   backdrop-filter: blur(12px);
+   -webkit-backdrop-filter: blur(12px);
+   border-bottom: 1px solid var(--line);
    z-index: 1000;
-   transition: var(--transition);
-}
-
-.nav {
-   padding: 1rem 0;
 }
 
 .nav-container {
    display: flex;
-   justify-content: space-between;
    align-items: center;
-   max-width: 1200px;
+   justify-content: space-between;
+   gap: 1rem;
+   max-width: var(--page);
    margin: 0 auto;
-   padding: 0 1rem;
+   padding: 0.85rem 1.25rem;
 }
 
 .nav-logo {
    display: flex;
    align-items: center;
-   gap: 0.5rem;
+   gap: 0.6rem;
+   text-decoration: none;
 }
-
-.logo {
-   width: 40px;
-   height: 40px;
-   border-radius: var(--border-radius);
-}
-
+.nav-logo img { height: 30px; width: auto; }
 .logo-text {
-   font-size: 1.5rem;
+   font-family: var(--font-mono);
    font-weight: 700;
-   color: var(--white);
-   letter-spacing: -0.025em;
+   letter-spacing: 0.16em;
+   font-size: 0.95rem;
+   color: var(--shell);
 }
 
 .nav-menu {
    display: flex;
-   list-style: none;
-   gap: 2rem;
    align-items: center;
+   gap: 1.75rem;
+   list-style: none;
 }
 
 .nav-link {
+   font-family: var(--font-mono);
+   font-size: 0.8rem;
+   letter-spacing: 0.08em;
+   text-transform: uppercase;
+   color: var(--text-faint);
    text-decoration: none;
-   color: var(--gray-600);
-   font-weight: 500;
-   transition: var(--transition);
-   position: relative;
+   padding: 0.35rem 0;
+   border-bottom: 2px solid transparent;
+   transition: color var(--transition), border-color var(--transition);
 }
-
-.nav-link:hover {
-   color: var(--white);
-}
-
-.nav-link::after {
-   content: '';
-   position: absolute;
-   bottom: -0.5rem;
-   left: 0;
-   width: 0;
-   height: 2px;
-   background: var(--accent-color);
-   transition: var(--transition);
-}
-
-.nav-link:hover::after {
-   width: 100%;
+.nav-link:hover,
+.nav-link.active {
+   color: var(--text);
+   border-bottom-color: var(--sfc-yellow);
 }
 
 .nav-toggle {
    display: none;
    flex-direction: column;
-   cursor: pointer;
-   gap: 4px;
-}
-
-.nav-toggle span {
-   width: 25px;
-   height: 3px;
-   background: var(--gray-600);
-   transition: var(--transition);
-}
-
-/* Hero Section */
-.hero {
-   padding: 8rem 0 4rem;
-   background: linear-gradient(135deg, var(--black) 0%, var(--gray-100) 100%);
-   color: var(--white);
-   position: relative;
-   text-align: center;
-}
-
-.hero-container {
-   max-width: 800px;
-   margin: 0 auto;
-   padding: 0 1rem;
-}
-
-.hero-logo {
-   margin-bottom: 2rem;
-}
-
-.hero-logo-img {
-   max-width: 200px;
-   height: auto;
-   border-radius: var(--border-radius-lg);
-}
-
-.hero-title {
-   font-size: 3rem;
-   font-weight: 700;
-   line-height: 1.1;
-   margin-bottom: 1.5rem;
-   letter-spacing: -0.025em;
-   color: var(--white);
-}
-
-.hero-subtitle {
-   font-size: 1.25rem;
-   margin-bottom: 2rem;
-   color: var(--gray-600);
-   line-height: 1.6;
-}
-
-.hero-buttons {
-   display: flex;
-   gap: 1rem;
-   flex-wrap: wrap;
    justify-content: center;
+   gap: 5px;
+   width: 42px;
+   height: 42px;
+   padding: 0 9px;
+   background: none;
+   border: 1px solid var(--line-strong);
+   border-radius: var(--r);
+   cursor: pointer;
 }
+.nav-toggle span {
+   display: block;
+   height: 2px;
+   background: var(--shell);
+   transition: transform var(--transition), opacity var(--transition);
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* Botões */
+/* ---------------------------------------------------------------------------
+   Botões
+   O primário é a carcaça do console: bege sólido com texto preto. É o mesmo
+   contraste do logo, invertido.
+   ------------------------------------------------------------------------- */
 .btn {
    display: inline-flex;
    align-items: center;
-   gap: 0.5rem;
-   padding: 0.75rem 1.5rem;
-   border-radius: var(--border-radius);
+   justify-content: center;
+   gap: 0.55rem;
+   padding: 0.8rem 1.4rem;
+   font-family: var(--font-mono);
+   font-size: 0.82rem;
+   font-weight: 500;
+   letter-spacing: 0.06em;
+   text-transform: uppercase;
    text-decoration: none;
-   font-weight: 600;
-   transition: var(--transition);
-   border: none;
+   border: 1px solid transparent;
+   border-radius: var(--r);
    cursor: pointer;
-   font-size: 1rem;
+   transition: background var(--transition), color var(--transition),
+      border-color var(--transition), transform var(--transition);
 }
+.btn:active { transform: translateY(1px); }
 
 .btn-primary {
-   background: var(--accent-color);
-   color: var(--white);
+   background: var(--shell);
+   color: #000;
+   border-color: var(--shell);
 }
-
-.btn-primary:hover {
-   background: #d63384;
-   transform: translateY(-2px);
-   box-shadow: var(--shadow-lg);
-}
+.btn-primary:hover { background: #E8E5D6; border-color: #E8E5D6; }
 
 .btn-secondary {
    background: transparent;
-   color: var(--white);
-   border: 2px solid var(--gray-600);
+   color: var(--text);
+   border-color: var(--line-strong);
+}
+.btn-secondary:hover { border-color: var(--shell); color: var(--shell); }
+
+.btn-sm { padding: 0.6rem 1rem; font-size: 0.76rem; }
+
+/* Botão desativado: a loja ainda não publicou. Não é link, é estado. */
+.btn-pending {
+   background: transparent;
+   color: var(--text-faint);
+   border: 1px dashed var(--line-strong);
+   cursor: default;
 }
 
-.btn-secondary:hover {
-   background: var(--gray-600);
-   color: var(--white);
-   transform: translateY(-2px);
-}
+/* ---------------------------------------------------------------------------
+   Seções
+   ------------------------------------------------------------------------- */
+section { padding: 5.5rem 0; }
 
-.btn-whatsapp {
-   background: #25d366;
-   color: var(--white);
-   font-size: 1.1rem;
-   padding: 1rem 2rem;
-}
+.section-head { margin-bottom: 3rem; max-width: 64ch; }
 
-.btn-whatsapp:hover {
-   background: #128c7e;
-   transform: translateY(-2px);
-   box-shadow: var(--shadow-lg);
+.kicker {
+   display: flex;
+   align-items: center;
+   gap: 0.7rem;
+   font-family: var(--font-mono);
+   font-size: 0.74rem;
+   font-weight: 500;
+   letter-spacing: 0.22em;
+   text-transform: uppercase;
+   color: var(--text-faint);
+   margin-bottom: 1rem;
 }
+.kicker .bars { flex-direction: row; width: auto; gap: 3px; }
+.kicker .bars span { width: 4px; height: 12px; }
 
-/* Seções gerais */
-section {
-   padding: 5rem 0;
-}
-
-.section-header {
-   text-align: center;
-   margin-bottom: 4rem;
-}
+h1, h2, h3, h4 { color: var(--text); font-weight: 600; line-height: 1.2; }
 
 .section-title {
-   font-size: 2.5rem;
-   font-weight: 700;
-   color: var(--white);
-   margin-bottom: 1rem;
-   letter-spacing: -0.025em;
+   font-size: clamp(1.75rem, 4vw, 2.4rem);
+   letter-spacing: -0.02em;
+   margin-bottom: 0.85rem;
 }
 
-.section-subtitle {
-   font-size: 1.25rem;
-   color: var(--gray-600);
-   max-width: 600px;
-   margin: 0 auto;
+.section-sub { color: var(--text-dim); font-size: 1.05rem; }
+
+/* ---------------------------------------------------------------------------
+   Hero
+   ------------------------------------------------------------------------- */
+.hero {
+   padding: 11rem 0 6rem;
+   position: relative;
+   overflow: hidden;
 }
 
-/* Stats Section (moved from About) */
-.stat {
-   text-align: center;
-   padding: 2rem;
-   background: var(--gray-200);
-   border-radius: var(--border-radius-lg);
-   box-shadow: var(--shadow);
-   transition: var(--transition);
+/* Um brilho quente atrás do logo, na cor da carcaça. Sutil de propósito: o
+   logo é 81% preto, e o fundo tem que continuar sendo. */
+.hero::before {
+   content: "";
+   position: absolute;
+   top: -30%;
+   left: 50%;
+   transform: translateX(-50%);
+   width: min(900px, 120vw);
+   height: 620px;
+   background: radial-gradient(ellipse at center, rgba(209, 205, 182, 0.09), transparent 68%);
+   pointer-events: none;
 }
 
-.stat:hover {
-   transform: translateY(-5px);
-   box-shadow: var(--shadow-lg);
+.hero-inner { position: relative; max-width: 780px; }
+
+.hero-logo { margin-bottom: 2.25rem; }
+.hero-logo img { width: min(420px, 82vw); }
+
+.hero-title {
+   font-size: clamp(2rem, 5.6vw, 3.4rem);
+   letter-spacing: -0.03em;
+   margin-bottom: 1.25rem;
+}
+.hero-title em {
+   font-style: normal;
+   color: var(--shell);
 }
 
-.stat i {
-   font-size: 2rem;
-   color: var(--accent-color);
-   margin-bottom: 1rem;
+.hero-sub {
+   font-size: clamp(1.02rem, 2.2vw, 1.2rem);
+   color: var(--text-dim);
+   max-width: 58ch;
+   margin-bottom: 2.25rem;
 }
 
-.stat h4 {
-   font-size: 1rem;
-   font-weight: 600;
-   color: var(--gray-700);
-   margin-bottom: 0.5rem;
-}
+.hero-actions { display: flex; flex-wrap: wrap; gap: 0.85rem; }
 
-.stat-number {
-   font-size: 2.5rem;
-   font-weight: 700;
-   color: var(--white);
-}
+/* ---------------------------------------------------------------------------
+   Portfólio — os cards de app
+   ------------------------------------------------------------------------- */
+.apps { background: var(--bg-raised); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 
-/* Services Section */
-.services {
-   background: var(--gray-100);
-}
-
-.services-grid {
+.app-grid {
    display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-   gap: 2rem;
+   grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+   gap: 1.5rem;
 }
 
-.service-card {
-   background: var(--gray-200);
-   padding: 2.5rem;
-   border-radius: var(--border-radius-lg);
-   box-shadow: var(--shadow);
-   transition: var(--transition);
-   border: 1px solid var(--gray-300);
-   text-align: center;
-}
-
-.service-card:hover {
-   transform: translateY(-5px);
-   box-shadow: var(--shadow-xl);
-   border-color: var(--accent-color);
-}
-
-.service-icon {
-   width: 60px;
-   height: 60px;
-   background: var(--accent-color);
-   border-radius: var(--border-radius-lg);
+.app-card {
+   position: relative;
    display: flex;
-   align-items: center;
-   justify-content: center;
-   margin: 0 auto 1.5rem;
+   flex-direction: column;
+   background: var(--surface);
+   border: 1px solid var(--line);
+   border-radius: var(--r-lg);
+   padding: 2rem 1.75rem 1.75rem;
+   overflow: hidden;
+   transition: border-color var(--transition), transform var(--transition);
 }
+.app-card:hover { border-color: var(--line-strong); transform: translateY(-2px); }
 
-.service-icon i {
-   font-size: 1.5rem;
-   color: var(--white);
-}
+/* As quatro barras no topo do card: a assinatura da marca, repetida. */
+.app-card > .bars-h { position: absolute; inset: 0 0 auto 0; }
 
-.service-card h3 {
-   font-size: 1.25rem;
-   font-weight: 600;
-   color: var(--white);
-   margin-bottom: 1rem;
-}
+.app-head { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
 
-.service-description {
-   color: var(--gray-600);
-   line-height: 1.6;
-}
-
-/* Technologies Section */
-.technologies {
-   background: var(--gray-100);
-}
-
-.tech-grid {
-   display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-   gap: 2rem;
-}
-
-.tech-category {
-   background: var(--gray-200);
-   padding: 2rem;
-   border-radius: var(--border-radius-lg);
-   box-shadow: var(--shadow);
-}
-
-.tech-category h3 {
-   font-size: 1.25rem;
-   font-weight: 600;
-   color: var(--white);
-   margin-bottom: 1.5rem;
-   text-align: center;
-}
-
-.tech-items {
-   display: flex;
-   flex-wrap: wrap;
-   gap: 0.5rem;
-   justify-content: center;
-}
-
-.tech-item {
-   background: var(--accent-color);
-   color: var(--white);
-   padding: 0.5rem 1rem;
-   border-radius: var(--border-radius);
-   font-size: 0.875rem;
-   font-weight: 500;
-   transition: var(--transition);
-}
-
-.tech-item:hover {
-   background: #d63384;
-   transform: translateY(-2px);
-}
-
-/* Contact Section */
-.contact {
-   background: var(--gray-100);
-}
-
-.contact-content {
-   display: grid;
-   grid-template-columns: 1fr 1fr;
-   gap: 4rem;
-}
-
-.contact-info {
-   display: grid;
-   gap: 2rem;
-}
-
-.contact-item {
-   display: flex;
-   align-items: flex-start;
-   gap: 1rem;
-   padding: 1.5rem;
-   background: var(--gray-200);
-   border-radius: var(--border-radius-lg);
-   transition: var(--transition);
-}
-
-.contact-item:hover {
-   background: var(--gray-300);
-   box-shadow: var(--shadow);
-   transform: translateY(-2px);
-}
-
-.contact-icon {
-   width: 50px;
-   height: 50px;
-   background: var(--accent-color);
-   border-radius: var(--border-radius);
-   display: flex;
-   align-items: center;
-   justify-content: center;
+.app-icon {
+   width: 64px;
+   height: 64px;
+   border-radius: 14px;
+   border: 1px solid var(--line);
    flex-shrink: 0;
 }
 
-.contact-icon i {
-   font-size: 1.25rem;
-   color: var(--white);
+.app-name { font-size: 1.4rem; letter-spacing: -0.01em; margin-bottom: 0.15rem; }
+
+.app-tag {
+   font-family: var(--font-mono);
+   font-size: 0.72rem;
+   letter-spacing: 0.1em;
+   text-transform: uppercase;
+   color: var(--text-faint);
 }
 
-.contact-item h4 {
-   font-size: 1.125rem;
-   font-weight: 600;
-   color: var(--white);
-   margin-bottom: 0.5rem;
+.app-desc { margin-bottom: 1.25rem; }
+
+.app-points { list-style: none; margin-bottom: 1.75rem; }
+.app-points li {
+   position: relative;
+   padding-left: 1.15rem;
+   margin-bottom: 0.45rem;
+   font-size: 0.94rem;
+}
+.app-points li::before {
+   content: "";
+   position: absolute;
+   left: 0;
+   top: 0.62em;
+   width: 6px;
+   height: 6px;
+   border-radius: 1px;
+   background: var(--sfc-green);
+}
+.app-points li:nth-child(2)::before { background: var(--sfc-blue); }
+.app-points li:nth-child(3)::before { background: var(--sfc-red); }
+.app-points li:nth-child(4)::before { background: var(--sfc-yellow); }
+
+/* O selo empurra a si mesmo e aos botões para o rodapé do card: as duas listas
+   têm tamanhos diferentes, e sem isso os botões de um card ficam na altura do
+   texto do outro. */
+.app-status { margin-top: auto; padding-top: 0.5rem; margin-bottom: 1rem; }
+
+.app-actions {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 0.6rem;
 }
 
-.contact-item p {
-   color: var(--gray-600);
-   line-height: 1.5;
+.app-note {
+   margin-top: 1rem;
+   padding-top: 1rem;
+   border-top: 1px solid var(--line);
+   font-size: 0.85rem;
+   color: var(--text-faint);
 }
+.app-note a { color: var(--text-dim); }
 
-/* Contact Form */
-.contact-form {
-   background: var(--gray-200);
-   padding: 2.5rem;
-   border-radius: var(--border-radius-lg);
-   box-shadow: var(--shadow-lg);
-   border: 1px solid var(--gray-300);
+/* Selo de situação na loja */
+.badge {
+   display: inline-flex;
+   align-items: center;
+   gap: 0.4rem;
+   font-family: var(--font-mono);
+   font-size: 0.68rem;
+   font-weight: 500;
+   letter-spacing: 0.1em;
+   text-transform: uppercase;
+   padding: 0.28rem 0.6rem;
+   border-radius: 3px;
+   border: 1px solid;
 }
+.badge-live { color: var(--sfc-green-ink); border-color: rgba(53, 204, 112, 0.4); background: rgba(5, 168, 63, 0.1); }
+.badge-soon { color: var(--sfc-yellow); border-color: rgba(255, 214, 4, 0.38); background: rgba(255, 214, 4, 0.08); }
 
-.form-group {
-   margin-bottom: 1.5rem;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
+/* ---------------------------------------------------------------------------
+   Vitrine do Lastro — a capa e as capturas
+   ------------------------------------------------------------------------- */
+.showcase-capa {
    width: 100%;
-   padding: 0.75rem 1rem;
-   border: 1px solid var(--gray-300);
-   border-radius: var(--border-radius);
-   font-size: 1rem;
-   transition: var(--transition);
-   background: var(--gray-100);
-   color: var(--white);
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-   outline: none;
-   border-color: var(--accent-color);
-   box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.1);
-}
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-   color: var(--gray-500);
-}
-
-.form-group textarea {
-   resize: vertical;
-   min-height: 120px;
-}
-
-/* Footer */
-.footer {
-   background: var(--black);
-   color: var(--white);
-   padding: 4rem 0 2rem;
-   border-top: 1px solid var(--gray-300);
-}
-
-.footer-content {
-   display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-   gap: 3rem;
+   max-width: 1024px;
+   border-radius: var(--r-lg);
+   border: 1px solid var(--line);
    margin-bottom: 3rem;
 }
 
-.footer-logo {
+/* Rolagem horizontal: seis telas de celular não cabem lado a lado num desktop,
+   e empilhá-las faria a seção ter três metros. */
+.shots {
+   display: grid;
+   grid-auto-flow: column;
+   grid-auto-columns: 270px;
+   gap: 1.25rem;
+   overflow-x: auto;
+   padding-bottom: 1.25rem;
+   scroll-snap-type: x mandatory;
+   scrollbar-width: thin;
+   scrollbar-color: var(--line-strong) transparent;
+}
+.shots::-webkit-scrollbar { height: 8px; }
+.shots::-webkit-scrollbar-track { background: var(--surface); border-radius: 4px; }
+.shots::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 4px; }
+
+.shots img {
+   width: 100%;
+   border-radius: var(--r-lg);
+   border: 1px solid var(--line);
+   scroll-snap-align: start;
+}
+
+.shots-hint {
+   font-family: var(--font-mono);
+   font-size: 0.72rem;
+   letter-spacing: 0.1em;
+   text-transform: uppercase;
+   color: var(--text-faint);
+   margin-top: 0.5rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Como trabalhamos
+   ------------------------------------------------------------------------- */
+.pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+
+.pillar {
+   background: var(--surface);
+   border: 1px solid var(--line);
+   border-left: 3px solid var(--sfc-green);
+   border-radius: var(--r);
+   padding: 1.5rem;
+}
+.pillar:nth-child(2) { border-left-color: var(--sfc-blue); }
+.pillar:nth-child(3) { border-left-color: var(--sfc-red); }
+.pillar:nth-child(4) { border-left-color: var(--sfc-yellow); }
+
+.pillar h3 { font-size: 1.05rem; margin-bottom: 0.6rem; }
+.pillar p { font-size: 0.94rem; }
+
+.stack {
    display: flex;
-   align-items: center;
+   flex-wrap: wrap;
    gap: 0.5rem;
-   margin-bottom: 1rem;
+   margin-top: 2.5rem;
+}
+.stack-item {
+   font-family: var(--font-mono);
+   font-size: 0.76rem;
+   letter-spacing: 0.04em;
+   color: var(--text-dim);
+   background: var(--surface);
+   border: 1px solid var(--line);
+   border-radius: 3px;
+   padding: 0.4rem 0.7rem;
 }
 
-.footer-logo .logo {
-   width: 50px;
-   height: 50px;
-}
+/* ---------------------------------------------------------------------------
+   Contato
+   ------------------------------------------------------------------------- */
+.contact { background: var(--bg-raised); border-top: 1px solid var(--line); }
 
-.footer-logo .logo-text {
-   font-size: 1.5rem;
-   font-weight: 700;
-   color: var(--white);
-}
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.25rem; }
 
-.footer-section p {
-   color: var(--gray-600);
-   line-height: 1.6;
-   margin-bottom: 1.5rem;
-}
-
-.footer-section h4 {
-   font-size: 1.125rem;
-   font-weight: 600;
-   margin-bottom: 1rem;
-   color: var(--white);
-}
-
-.footer-section ul {
-   list-style: none;
-}
-
-.footer-section ul li {
-   margin-bottom: 0.5rem;
-}
-
-.footer-section ul li a {
-   color: var(--gray-600);
-   text-decoration: none;
-   transition: var(--transition);
-}
-
-.footer-section ul li a:hover {
-   color: var(--white);
-}
-
-.social-links {
+.contact-card {
    display: flex;
-   gap: 1rem;
-}
-
-.social-link {
-   width: 40px;
-   height: 40px;
-   background: var(--gray-300);
-   border-radius: var(--border-radius);
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   color: var(--black);
+   flex-direction: column;
+   gap: 0.4rem;
+   background: var(--surface);
+   border: 1px solid var(--line);
+   border-radius: var(--r);
+   padding: 1.4rem;
    text-decoration: none;
-   transition: var(--transition);
+   transition: border-color var(--transition), background var(--transition);
+}
+a.contact-card:hover { border-color: var(--shell); background: var(--surface-2); }
+
+.contact-label {
+   font-family: var(--font-mono);
+   font-size: 0.7rem;
+   letter-spacing: 0.16em;
+   text-transform: uppercase;
+   color: var(--text-faint);
+}
+.contact-value { color: var(--text); font-size: 1rem; word-break: break-word; }
+
+/* ---------------------------------------------------------------------------
+   Central legal — as políticas dos dois apps
+   ------------------------------------------------------------------------- */
+.legal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.25rem; }
+
+.legal-card {
+   background: var(--surface);
+   border: 1px solid var(--line);
+   border-radius: var(--r);
+   padding: 1.5rem;
+}
+.legal-card h3 { font-size: 1.1rem; margin-bottom: 0.9rem; display: flex; align-items: center; gap: 0.6rem; }
+.legal-card-icon { border-radius: 6px; flex-shrink: 0; }
+.legal-card ul { list-style: none; }
+.legal-card li { margin-bottom: 0.55rem; }
+.legal-card li a {
+   color: var(--text-dim);
+   text-decoration: none;
+   border-bottom: 1px solid var(--line-strong);
+   transition: color var(--transition), border-color var(--transition);
+}
+.legal-card li a:hover { color: var(--shell); border-bottom-color: var(--shell); }
+.legal-card li span.pending {
+   color: var(--text-faint);
+   font-size: 0.92rem;
 }
 
-.social-link:hover {
-   background: var(--accent-color);
-   color: var(--white);
-   transform: translateY(-2px);
+/* ---------------------------------------------------------------------------
+   Rodapé
+   ------------------------------------------------------------------------- */
+.footer {
+   border-top: 1px solid var(--line);
+   padding: 3.5rem 0 2rem;
+   background: var(--bg);
 }
+
+.footer-grid {
+   display: grid;
+   grid-template-columns: 1.6fr 1fr 1fr;
+   gap: 2.5rem;
+   margin-bottom: 2.5rem;
+}
+
+.footer-brand img { height: 34px; width: auto; margin-bottom: 1rem; }
+.footer-brand p { font-size: 0.92rem; max-width: 42ch; }
+
+.footer h4 {
+   font-family: var(--font-mono);
+   font-size: 0.74rem;
+   letter-spacing: 0.16em;
+   text-transform: uppercase;
+   color: var(--text-faint);
+   margin-bottom: 1rem;
+   font-weight: 500;
+}
+.footer ul { list-style: none; }
+.footer li { margin-bottom: 0.55rem; font-size: 0.92rem; }
+.footer a { color: var(--text-dim); text-decoration: none; transition: color var(--transition); }
+.footer a:hover { color: var(--shell); }
 
 .footer-bottom {
-   border-top: 1px solid var(--gray-300);
-   padding-top: 2rem;
-   text-align: center;
-   color: var(--gray-600);
-}
-
-/* WhatsApp Float Button - Mais sóbrio */
-.whatsapp-float {
-   position: fixed;
-   bottom: 2rem;
-   right: 2rem;
-   width: 60px;
-   height: 60px;
-   background: var(--gray-200);
-   border: 2px solid var(--accent-color);
-   border-radius: 50%;
+   border-top: 1px solid var(--line);
+   padding-top: 1.75rem;
    display: flex;
+   flex-wrap: wrap;
    align-items: center;
-   justify-content: center;
-   color: var(--accent-color);
-   text-decoration: none;
-   font-size: 1.5rem;
-   box-shadow: var(--shadow-lg);
-   transition: var(--transition);
-   z-index: 1000;
+   justify-content: space-between;
+   gap: 0.75rem;
+   font-size: 0.85rem;
+   color: var(--text-faint);
+}
+.footer-bottom .bars { flex-direction: row; width: auto; }
+.footer-bottom .bars span { width: 4px; height: 12px; }
+
+/* ---------------------------------------------------------------------------
+   Responsivo
+   ------------------------------------------------------------------------- */
+@media (max-width: 860px) {
+   .footer-grid { grid-template-columns: 1fr 1fr; }
+   .footer-brand { grid-column: 1 / -1; }
 }
 
-.whatsapp-float:hover {
-   background: var(--accent-color);
-   color: var(--white);
-   transform: scale(1.1);
-   box-shadow: var(--shadow-xl);
-}
-
-/* Responsividade */
 @media (max-width: 768px) {
+   section { padding: 4rem 0; }
+   .hero { padding: 8.5rem 0 4rem; }
+
+   .nav-toggle { display: flex; }
+
    .nav-menu {
       display: none;
-   }
-
-   .nav-toggle {
-      display: flex;
-   }
-
-   .hero-title {
-      font-size: 2.5rem;
-   }
-
-   .hero-buttons {
-      justify-content: center;
-   }
-
-   .services-grid {
-      grid-template-columns: 1fr;
-   }
-
-   .tech-grid {
-      grid-template-columns: 1fr;
-   }
-
-   .contact-content {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-   }
-
-   .footer-content {
-      grid-template-columns: 1fr;
-      text-align: center;
-   }
-
-   .social-links {
-      justify-content: center;
-   }
-}
-
-@media (max-width: 480px) {
-   .hero-title {
-      font-size: 2rem;
-   }
-
-   .section-title {
-      font-size: 2rem;
-   }
-
-   .btn {
-      padding: 0.625rem 1.25rem;
-      font-size: 0.875rem;
-   }
-
-   .service-card,
-   .contact-form {
-      padding: 1.5rem;
-   }
-
-   .whatsapp-float {
-      width: 50px;
-      height: 50px;
-      font-size: 1.25rem;
-      bottom: 1rem;
-      right: 1rem;
-   }
-}
-
-/* Animações */
-@keyframes fadeInUp {
-   from {
-      opacity: 0;
-      transform: translateY(30px);
-   }
-
-   to {
-      opacity: 1;
-      transform: translateY(0);
-   }
-}
-
-.fade-in-up {
-   animation: fadeInUp 0.6s ease-out;
-}
-
-/* Scroll suave */
-html {
-   scroll-behavior: smooth;
-}
-
-/* Estilos para elementos ativos */
-.nav-link.active {
-   color: var(--white);
-}
-
-.nav-link.active::after {
-   width: 100%;
-}
-
-/* Privacy Policy Section */
-.privacy-policy {
-   padding: 6rem 0;
-   background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
-}
-
-.privacy-content {
-   max-width: 900px;
-   margin: 0 auto;
-}
-
-.privacy-section {
-   background: rgba(255, 255, 255, 0.05);
-   border: 1px solid var(--gray-300);
-   border-radius: var(--border-radius-lg);
-   padding: 2rem;
-   margin-bottom: 2rem;
-   backdrop-filter: blur(10px);
-   transition: var(--transition);
-}
-
-.privacy-section:hover {
-   transform: translateY(-2px);
-   box-shadow: var(--shadow-lg);
-   border-color: var(--accent-color);
-}
-
-.privacy-section h3 {
-   color: var(--accent-color);
-   font-size: 1.25rem;
-   font-weight: 600;
-   margin-bottom: 1rem;
-   display: flex;
-   align-items: center;
-   gap: 0.75rem;
-}
-
-.privacy-section h3 i {
-   font-size: 1.1rem;
-   color: var(--accent-color);
-}
-
-.privacy-section p {
-   color: var(--gray-700);
-   margin-bottom: 1rem;
-   line-height: 1.7;
-}
-
-.privacy-section ul {
-   list-style: none;
-   padding: 0;
-}
-
-.privacy-section ul li {
-   color: var(--gray-700);
-   margin-bottom: 0.75rem;
-   padding-left: 1.5rem;
-   position: relative;
-   line-height: 1.6;
-}
-
-.privacy-section ul li::before {
-   content: "•";
-   color: var(--accent-color);
-   font-weight: bold;
-   position: absolute;
-   left: 0;
-   top: 0;
-}
-
-.privacy-section ul li strong {
-   color: var(--white);
-   font-weight: 600;
-}
-
-.privacy-contact {
-   background: rgba(233, 69, 96, 0.1);
-   border: 1px solid rgba(233, 69, 96, 0.3);
-   border-radius: var(--border-radius);
-   padding: 1.5rem;
-   margin-top: 1rem;
-}
-
-.privacy-contact p {
-   margin-bottom: 0.75rem;
-   display: flex;
-   align-items: center;
-   gap: 0.75rem;
-}
-
-.privacy-contact p i {
-   color: var(--accent-color);
-   width: 20px;
-}
-
-.privacy-update {
-   background: rgba(74, 222, 128, 0.1);
-   border: 1px solid rgba(74, 222, 128, 0.3);
-   border-radius: var(--border-radius);
-   padding: 1.5rem;
-   margin-top: 2rem;
-   text-align: center;
-}
-
-.privacy-update p {
-   color: var(--gray-700);
-   margin-bottom: 0.5rem;
-}
-
-.privacy-update p:last-child {
-   margin-bottom: 0;
-   font-size: 0.9rem;
-   opacity: 0.8;
-}
-
-/* Responsive Privacy Policy */
-@media (max-width: 768px) {
-   .privacy-section {
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-   }
-
-   .privacy-section h3 {
-      font-size: 1.1rem;
-   }
-
-   .privacy-contact,
-   .privacy-update {
-      padding: 1rem;
-   }
-}
-
-@media (max-width: 480px) {
-   .privacy-section {
-      padding: 1rem;
-      margin-bottom: 1rem;
-   }
-
-   .privacy-section h3 {
-      font-size: 1rem;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
       flex-direction: column;
-      align-items: flex-start;
-      gap: 0.5rem;
+      align-items: stretch;
+      gap: 0;
+      /* Opaco de verdade, não 98%: o cabeçalho pai já tem `backdrop-filter`,
+         e sobre ele qualquer transparência deixa o wordmark do hero aparecer
+         atrás dos itens do menu. */
+      background: #000;
+      border-bottom: 1px solid var(--line);
+      padding: 0.5rem 1.25rem 1.25rem;
    }
+   .nav-menu.open { display: flex; }
+   .nav-link {
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--line);
+   }
+   .nav-link:hover,
+   .nav-link.active { border-bottom-color: var(--line); color: var(--sfc-yellow); }
 
-   .privacy-section ul li {
-      padding-left: 1rem;
-   }
+   .hero-actions .btn,
+   .app-actions .btn { flex: 1 1 100%; }
+
+   .app-card { padding: 1.75rem 1.25rem 1.5rem; }
+   .shots { grid-auto-columns: 210px; }
 }
-/* O segundo título dentro de uma coluna do rodapé (os links legais do Lastro).
-   Sem a margem ele encosta na lista de cima e os dois grupos viram um só. */
-.footer-app-heading {
-  margin-top: 1.5rem;
+
+@media (max-width: 420px) {
+   .app-head { gap: 0.8rem; }
+   .app-icon { width: 54px; height: 54px; }
+   .app-name { font-size: 1.2rem; }
 }

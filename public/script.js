@@ -1,258 +1,84 @@
-// Smooth scrolling para links de navegação
+/* Orddum — o pouco de JavaScript que a página precisa.
+ *
+ * O que saiu daqui, e por quê:
+ *
+ *  - O FORMULÁRIO DE CONTATO. Ele dizia "Mensagem enviada com sucesso!" e não
+ *    enviava nada: não havia backend. Depois abria o WhatsApp. Uma confirmação
+ *    de envio que não corresponde a envio nenhum é a pior coisa que uma página
+ *    de contato pode fazer, porque quem acredita nela não tenta de novo. No
+ *    lugar dele ficaram os canais diretos, que abrem o app certo.
+ *  - A ROLAGEM SUAVE em JavaScript, que `scroll-behavior: smooth` no CSS faz
+ *    melhor — e com `scroll-padding-top`, que a versão em JS não tinha, então a
+ *    âncora parava embaixo do cabeçalho fixo.
+ *  - O CABEÇALHO QUE SUMIA ao rolar para baixo: numa página curta ele piscava.
+ *  - O CSS injetado por JS, que agora mora no `styles.css`.
+ */
+
 document.addEventListener('DOMContentLoaded', function () {
-   // Smooth scrolling
-   const navLinks = document.querySelectorAll('a[href^="#"]');
-   navLinks.forEach(link => {
-      link.addEventListener('click', function (e) {
-         e.preventDefault();
-         const targetId = this.getAttribute('href');
-         const targetSection = document.querySelector(targetId);
-         if (targetSection) {
-            targetSection.scrollIntoView({
-               behavior: 'smooth',
-               block: 'start'
-            });
+   var toggle = document.getElementById('navToggle');
+   var menu = document.getElementById('navMenu');
+
+   if (toggle && menu) {
+      toggle.addEventListener('click', function () {
+         var open = menu.classList.toggle('open');
+         toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+         toggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+      });
+
+      var close = function () {
+         if (!menu.classList.contains('open')) return;
+         menu.classList.remove('open');
+         toggle.setAttribute('aria-expanded', 'false');
+         toggle.setAttribute('aria-label', 'Abrir menu');
+      };
+
+      // Tocar num item fecha o menu — senão ele cobre a seção recém-aberta.
+      menu.addEventListener('click', function (event) {
+         if (event.target.closest('a')) close();
+      });
+
+      // Esc fecha, e devolve o foco ao botão: quem abriu pelo teclado precisa
+      // de um jeito de sair sem percorrer o menu inteiro.
+      document.addEventListener('keydown', function (event) {
+         if (event.key === 'Escape' && menu.classList.contains('open')) {
+            close();
+            toggle.focus();
          }
       });
+   }
+
+   // Marcar no menu a seção que está na tela. IntersectionObserver em vez de
+   // listener de scroll: o listener roda a cada quadro e recalcula offsets.
+   var links = Array.prototype.slice.call(document.querySelectorAll('.nav-link'));
+   var byId = {};
+   links.forEach(function (link) {
+      var href = link.getAttribute('href') || '';
+      if (href.charAt(0) === '#') byId[href.slice(1)] = link;
    });
 
-   // Navegação mobile
-   const navToggle = document.querySelector('.nav-toggle');
-   const navMenu = document.querySelector('.nav-menu');
+   var sections = Object.keys(byId)
+      .map(function (id) { return document.getElementById(id); })
+      .filter(Boolean);
 
-   if (navToggle && navMenu) {
-      navToggle.addEventListener('click', function () {
-         navMenu.classList.toggle('active');
-         navToggle.classList.toggle('active');
-      });
-   }
+   if (sections.length && 'IntersectionObserver' in window) {
+      var visible = new Set();
 
-   // Formulário de contato
-   const contactForm = document.getElementById('contactForm');
-   if (contactForm) {
-      contactForm.addEventListener('submit', function (e) {
-         e.preventDefault();
+      var observer = new IntersectionObserver(function (entries) {
+         entries.forEach(function (entry) {
+            if (entry.isIntersecting) visible.add(entry.target.id);
+            else visible.delete(entry.target.id);
+         });
 
-         // Coletar dados do formulário
-         const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            phone: document.getElementById('phone').value,
-            message: document.getElementById('message').value
-         };
-
-         // Validar campos obrigatórios
-         if (!formData.name || !formData.email || !formData.message) {
-            showNotification('Por favor, preencha todos os campos obrigatórios.', 'error');
-            return;
+         // A primeira visível na ordem do documento é a que o menu marca.
+         var current = null;
+         for (var i = 0; i < sections.length; i++) {
+            if (visible.has(sections[i].id)) { current = sections[i].id; break; }
          }
 
-         // Simular envio (em produção, aqui seria uma chamada para API)
-         showNotification('Mensagem enviada com sucesso! Entraremos em contato em breve.', 'success');
+         links.forEach(function (link) { link.classList.remove('active'); });
+         if (current && byId[current]) byId[current].classList.add('active');
+      }, { rootMargin: '-45% 0px -45% 0px' });
 
-         // Limpar formulário
-         contactForm.reset();
-
-         // Redirecionar para WhatsApp com mensagem pré-formatada
-         const whatsappMessage = `Olá! Sou ${formData.name} e gostaria de falar sobre desenvolvimento de aplicativo Flutter. ${formData.message}`;
-         const whatsappUrl = `https://wa.me/5531995279032?text=${encodeURIComponent(whatsappMessage)}`;
-
-         // Aguardar um pouco antes de redirecionar
-         setTimeout(() => {
-            window.open(whatsappUrl, '_blank');
-         }, 2000);
-      });
+      sections.forEach(function (section) { observer.observe(section); });
    }
-
-   // Sistema de notificações
-   function showNotification(message, type = 'info') {
-      // Remover notificação existente
-      const existingNotification = document.querySelector('.notification');
-      if (existingNotification) {
-         existingNotification.remove();
-      }
-
-      // Criar nova notificação
-      const notification = document.createElement('div');
-      notification.className = `notification notification-${type}`;
-      notification.innerHTML = `
-            <div class="notification-content">
-                <span class="notification-message">${message}</span>
-                <button class="notification-close">&times;</button>
-            </div>
-        `;
-
-      // Adicionar estilos
-      notification.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: ${type === 'success' ? '#4ade80' : type === 'error' ? '#f87171' : '#0f3460'};
-            color: white;
-            padding: 1rem 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            z-index: 10000;
-            max-width: 400px;
-            animation: slideInRight 0.3s ease-out;
-        `;
-
-      // Adicionar ao DOM
-      document.body.appendChild(notification);
-
-      // Botão de fechar
-      const closeBtn = notification.querySelector('.notification-close');
-      closeBtn.addEventListener('click', () => {
-         notification.remove();
-      });
-
-      // Auto-remover após 5 segundos
-      setTimeout(() => {
-         if (notification.parentNode) {
-            notification.remove();
-         }
-      }, 5000);
-   }
-
-   // Animação do botão WhatsApp
-   const whatsappFloat = document.querySelector('.whatsapp-float');
-   if (whatsappFloat) {
-      whatsappFloat.addEventListener('mouseenter', function () {
-         this.style.transform = 'scale(1.1)';
-      });
-
-      whatsappFloat.addEventListener('mouseleave', function () {
-         this.style.transform = 'scale(1)';
-      });
-   }
-
-   // Navegação ativa baseada no scroll
-   const sections = document.querySelectorAll('section[id]');
-
-   function updateActiveNavLink() {
-      let current = '';
-      sections.forEach(section => {
-         const sectionTop = section.offsetTop;
-         const sectionHeight = section.clientHeight;
-         if (window.pageYOffset >= sectionTop - 200) {
-            current = section.getAttribute('id');
-         }
-      });
-
-      navLinks.forEach(link => {
-         link.classList.remove('active');
-         if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-         }
-      });
-   }
-
-   window.addEventListener('scroll', updateActiveNavLink);
-   updateActiveNavLink(); // Executar uma vez no carregamento
-
-   // Header com scroll
-   const header = document.querySelector('.header');
-   let lastScrollTop = 0;
-
-   window.addEventListener('scroll', function () {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-      if (scrollTop > lastScrollTop && scrollTop > 100) {
-         // Scroll para baixo
-         header.style.transform = 'translateY(-100%)';
-      } else {
-         // Scroll para cima
-         header.style.transform = 'translateY(0)';
-      }
-
-      lastScrollTop = scrollTop;
-   });
-
-   // Animações de entrada
-   const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-   };
-
-   const observer = new IntersectionObserver(function (entries) {
-      entries.forEach(entry => {
-         if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in-up');
-         }
-      });
-   }, observerOptions);
-
-   // Observar elementos para animação
-   const animateElements = document.querySelectorAll('.service-card, .tech-category, .contact-item, .stat');
-   animateElements.forEach(el => {
-      observer.observe(el);
-   });
-
-   // Mensagem de boas-vindas no console
-   console.log(`
-    🚀 Bem-vindo ao site da Orddum!
-    
-    📱 Especialistas em desenvolvimento de aplicativos mobile com Flutter e Firebase
-    
-    📧 Contato: luiz.gonzaga@orddum.com
-    📍 Localização: Itabira - MG
-    💬 Suporte WhatsApp: (31) 99527-9032
-    🔗 LinkedIn: https://www.linkedin.com/in/luizgonzagabn/
-    
-    Transforme sua ideia em um aplicativo profissional! 🎯
-    `);
 });
-
-// CSS para animações
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes slideInRight {
-        from {
-            transform: translateX(100%);
-            opacity: 0;
-        }
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
-    
-    .fade-in-up {
-        animation: fadeInUp 0.6s ease-out;
-    }
-    
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    
-    .nav-menu.active {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: rgba(0, 0, 0, 0.98);
-        backdrop-filter: blur(10px);
-        padding: 1rem;
-        border-top: 1px solid var(--gray-300);
-    }
-    
-    @media (max-width: 768px) {
-        .nav-menu {
-            display: none;
-        }
-        
-        .nav-menu.active {
-            display: flex;
-        }
-    }
-`;
-document.head.appendChild(style); 

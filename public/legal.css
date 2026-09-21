@@ -1,0 +1,191 @@
+/* Páginas legais — privacidade e termos, de todos os apps.
+ *
+ * Elas existem fora da página principal de propósito: as duas lojas pedem uma
+ * URL que abra DIRETO no texto, e um link que cai numa âncora de uma landing
+ * page longa é reprovado na revisão — o revisor precisa ver a política, não
+ * rolar até ela.
+ *
+ * Este arquivo mora na RAIZ (`/legal.css`) e não dentro de `/lastro/`, porque
+ * agora serve também o IPI App. As URLs das páginas em si não mudaram: elas
+ * continuam em /lastro/privacidade/, /lastro/termos/ e /ipi/privacidade/, que
+ * é o que está gravado nos apps publicados e nos painéis das lojas.
+ *
+ * Herda os tokens de `styles.css`; aqui só mora o que é de texto corrido longo,
+ * que a landing page não tem.
+ */
+
+.legal-page {
+   background: var(--bg);
+   color: var(--text-dim);
+   line-height: 1.75;
+}
+
+.legal-header {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   gap: 1rem;
+   padding: 1rem 1.5rem;
+   border-bottom: 1px solid var(--line);
+   background: rgba(0, 0, 0, 0.94);
+   backdrop-filter: blur(12px);
+   -webkit-backdrop-filter: blur(12px);
+   position: sticky;
+   top: 0;
+   z-index: 10;
+}
+
+.legal-brand {
+   display: flex;
+   align-items: center;
+   gap: 0.6rem;
+   color: var(--shell);
+   text-decoration: none;
+   font-family: var(--font-mono);
+   font-weight: 700;
+   letter-spacing: 0.16em;
+   font-size: 0.9rem;
+}
+
+.legal-logo { height: 28px; width: auto; }
+
+.legal-back {
+   font-family: var(--font-mono);
+   font-size: 0.76rem;
+   letter-spacing: 0.06em;
+   text-transform: uppercase;
+   color: var(--text-faint);
+   text-decoration: none;
+   transition: color var(--transition);
+}
+.legal-back:hover { color: var(--shell); }
+
+/* As quatro barras da marca, atravessando a página inteira abaixo do
+   cabeçalho. É o único enfeite aqui: o resto é texto. */
+.legal-rule { height: 3px; display: flex; }
+.legal-rule span { flex: 1; }
+.legal-rule span:nth-child(1) { background: var(--sfc-green); }
+.legal-rule span:nth-child(2) { background: var(--sfc-blue); }
+.legal-rule span:nth-child(3) { background: var(--sfc-red); }
+.legal-rule span:nth-child(4) { background: var(--sfc-yellow); }
+
+.legal-main {
+   /* 68ch: a medida em que um parágrafo longo continua legível. Uma política de
+      privacidade que ocupa a largura inteira de um monitor não é lida. */
+   max-width: 68ch;
+   margin: 0 auto;
+   padding: 3.5rem 1.5rem 4rem;
+}
+
+.legal-kicker {
+   display: inline-block;
+   font-family: var(--font-mono);
+   text-transform: uppercase;
+   letter-spacing: 0.2em;
+   font-size: 0.72rem;
+   font-weight: 500;
+   color: var(--sfc-yellow);
+   margin: 0 0 0.75rem;
+}
+
+.legal-main h1 {
+   color: var(--text);
+   font-size: clamp(1.9rem, 5vw, 2.5rem);
+   letter-spacing: -0.02em;
+   line-height: 1.15;
+   margin: 0 0 0.6rem;
+}
+
+.legal-updated {
+   font-family: var(--font-mono);
+   color: var(--text-faint);
+   font-size: 0.8rem;
+   margin: 0 0 2.5rem;
+}
+
+.legal-main h2 {
+   color: var(--text);
+   font-size: 1.2rem;
+   margin: 2.75rem 0 0.75rem;
+   padding-top: 1.75rem;
+   border-top: 1px solid var(--line);
+}
+
+.legal-main h3 {
+   color: var(--text);
+   font-size: 1.02rem;
+   margin: 1.75rem 0 0.5rem;
+}
+
+.legal-main p,
+.legal-main li { color: var(--text-dim); }
+
+.legal-main p { margin-bottom: 1rem; }
+
+.legal-main ul {
+   padding-left: 1.25rem;
+   margin: 0.75rem 0 1.25rem;
+}
+.legal-main li { margin-bottom: 0.6rem; }
+.legal-main li::marker { color: var(--text-faint); }
+
+.legal-main strong { color: var(--text); font-weight: 600; }
+
+.legal-main a {
+   color: var(--shell);
+   text-decoration: underline;
+   text-underline-offset: 0.2em;
+   text-decoration-color: var(--line-strong);
+   transition: text-decoration-color var(--transition);
+}
+.legal-main a:hover { text-decoration-color: var(--shell); }
+
+/* O resumo do topo. Ele carrega o peso da página: quem lê uma política de
+   privacidade quase sempre lê só as primeiras linhas, e num app que vende
+   privacidade essas linhas são a resposta inteira. */
+.legal-callout {
+   background: var(--surface);
+   border: 1px solid var(--line);
+   border-left: 3px solid var(--sfc-yellow);
+   border-radius: var(--r);
+   padding: 1.25rem 1.5rem;
+   margin: 0 0 1rem;
+}
+.legal-callout p { margin: 0; }
+
+/* Aviso de página cujo conteúdo ainda está em revisão do dono. Visível de
+   propósito: melhor dizer que o texto é provisório do que deixar alguém supor
+   que ele foi revisado. */
+.legal-flag {
+   background: rgba(255, 214, 4, 0.07);
+   border: 1px dashed rgba(255, 214, 4, 0.4);
+   border-radius: var(--r);
+   padding: 1rem 1.25rem;
+   margin: 0 0 2rem;
+   font-size: 0.92rem;
+   color: var(--text-dim);
+}
+.legal-flag p { margin: 0; }
+
+.legal-crosslink {
+   margin-top: 3rem;
+   padding-top: 1.5rem;
+   border-top: 1px solid var(--line);
+   color: var(--text-faint);
+   font-size: 0.92rem;
+}
+
+.legal-footer {
+   border-top: 1px solid var(--line);
+   padding: 2rem 1.5rem;
+   text-align: center;
+   color: var(--text-faint);
+   font-size: 0.85rem;
+}
+.legal-footer a { color: var(--text-dim); }
+
+@media (max-width: 520px) {
+   .legal-header { padding: 0.85rem 1rem; }
+   .legal-brand span { display: none; }
+   .legal-main { padding: 2.5rem 1.25rem 3rem; }
+}
