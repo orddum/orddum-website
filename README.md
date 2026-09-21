@@ -17,17 +17,21 @@ qualquer uma delas derruba a ficha de um app em produção — e a revisão das 
 | `/lastro/privacidade/` | App Store Connect e Play Console do Lastro; a `PaywallScreen` do app |
 | `/lastro/termos/` | idem |
 | `/#contato` | URL de suporte na ficha da App Store do Lastro |
-| `/` (raiz) | **URL de política de privacidade registrada nas duas lojas para o IPI App**, e o destino do link "Política de Privacidade" dentro do próprio app |
+| `/ipi/privacidade/` | Play Console e App Store Connect do IPI App; o link "Política de Privacidade" do app a partir da 1.14.3 |
+| `/` (raiz) | as versões do IPI App **já instaladas** (até a 1.14.1): o link do diálogo "Sobre" delas abre `www.orddum.com`, e vai continuar abrindo por todo o tempo em que alguém não atualizar |
 
 A forma **com barra final** é a que vai nos painéis. Sem a barra, o Hosting
 responde 301 para a versão com barra — funciona, mas os três lugares devem dizer
 a mesma coisa.
 
-> A raiz na tabela acima é um remendo herdado, não um desenho. O certo é apontar
-> as duas lojas do IPI e o `AppConfig.orddumSite` do `ipi_app` para
-> `/ipi/privacidade/`, que existe desde o redesign. Enquanto isso não for feito,
-> a seção `id="privacidade"` da home **não pode ser renomeada**: ela é o que
-> leva um revisor da raiz até a política em um clique.
+> O remendo da raiz foi desfeito em 21/09/2026: as duas lojas do IPI e o app
+> (agora `AppConfig.privacyPolicy`) apontam para `/ipi/privacidade/`.
+>
+> **A raiz continua na tabela mesmo assim**, e essa é a parte que se esquece: a
+> troca no app só chega a quem atualizar, e uma loja leva o que foi enviado, não
+> o que está instalado. Enquanto houver 1.14.1 em uso, a seção
+> `id="privacidade"` da home **não pode ser renomeada** — é ela que leva da raiz
+> até a política em um clique.
 
 ## Identidade visual
 
