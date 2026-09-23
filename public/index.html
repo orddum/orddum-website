@@ -105,23 +105,19 @@
               <li>Exportação completa e gratuita — o backup é seu, num arquivo que você leva</li>
             </ul>
 
-            <!-- SITUAÇÃO DAS LOJAS — verificado em 21/09/2026.
-                 O Lastro ainda NÃO está público em nenhuma das duas:
-                   https://apps.apple.com/app/id6814238551                      -> HTTP 404
-                   https://play.google.com/store/apps/details?id=com.orddum.lastro -> HTTP 404
-                 A ficha existe nos dois painéis (App ID 6814238551 / package
-                 com.orddum.lastro), mas a distribuição ainda não foi liberada.
-                 Link de loja quebrado num portfólio é pior que link nenhum, então
-                 aqui fica o estado, não o link.
-
-                 QUANDO PUBLICAR, troque os dois <span> abaixo por:
-                 <a class="btn btn-primary btn-sm" href="https://apps.apple.com/br/app/id6814238551" target="_blank" rel="noopener">App Store</a>
-                 <a class="btn btn-secondary btn-sm" href="https://play.google.com/store/apps/details?id=com.orddum.lastro" target="_blank" rel="noopener">Google Play</a>
-                 e confira o link ANTES de commitar. -->
-            <p class="app-status"><span class="badge badge-soon">Em breve nas lojas</span></p>
+            <!-- SITUAÇÃO DAS LOJAS — verificado em 23/09/2026: as duas respondem 200.
+                   Play  ...details?id=com.orddum.lastro                               -> 200
+                   Apple apps.apple.com/br/app/lastro-controle-financeiro/id6814238551 -> 200 (v1.0.0)
+                 A URL da App Store PRECISA do /br/: o app é distribuído só no
+                 Brasil, e a forma sem país (apps.apple.com/app/id6814238551)
+                 devolve 404. O nome na App Store é "Lastro: Controle Financeiro";
+                 na Play o título recebeu o mesmo descritor em 23/09/2026. -->
+            <p class="app-status"><span class="badge badge-live">Disponível</span></p>
             <div class="app-actions">
-              <span class="btn btn-pending btn-sm">App Store</span>
-              <span class="btn btn-pending btn-sm">Google Play</span>
+              <a class="btn btn-primary btn-sm" href="https://apps.apple.com/br/app/lastro-controle-financeiro/id6814238551"
+                target="_blank" rel="noopener">App Store</a>
+              <a class="btn btn-secondary btn-sm" href="https://play.google.com/store/apps/details?id=com.orddum.lastro"
+                target="_blank" rel="noopener">Google Play</a>
             </div>
             <p class="app-note">
               <a href="/lastro/privacidade/">Privacidade</a> · <a href="/lastro/termos/">Termos de uso</a>
@@ -349,7 +345,10 @@
         <div>
           <h4>Apps</h4>
           <ul>
-            <li><a href="#lastro">Lastro</a></li>
+            <li><a href="https://apps.apple.com/br/app/lastro-controle-financeiro/id6814238551" target="_blank"
+                rel="noopener">Lastro — App Store</a></li>
+            <li><a href="https://play.google.com/store/apps/details?id=com.orddum.lastro" target="_blank"
+                rel="noopener">Lastro — Google Play</a></li>
             <li><a href="https://apps.apple.com/br/app/ipi-app/id6741813317" target="_blank" rel="noopener">IPI App —
                 App Store</a></li>
             <li><a href="https://play.google.com/store/apps/details?id=com.orddum.ipi" target="_blank"
