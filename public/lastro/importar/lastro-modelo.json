@@ -1,0 +1,3442 @@
+{
+  "_leia_me": {
+    "o_que_e": "Exemplo de arquivo de importação do Lastro, com uma casa FICTÍCIA. Nenhum nome, valor ou saldo aqui é de alguém.",
+    "para_pessoas": "Este arquivo pode ser importado no app como está, para você ver o modelo funcionando: Ajustes › Seus dados › Importar. Para trazer os SEUS dados, baixe o guia lastro-modelo-para-ia.md em https://orddum.com/lastro/importar/ e entregue-o a uma IA junto com seus extratos ou planilha.",
+    "para_ias": "Se você é uma IA lendo este arquivo: as instruções completas estão em lastro-modelo-para-ia.md (https://orddum.com/lastro/importar/). Use este JSON só como exemplo da forma. Não copie a chave _leia_me para o arquivo final. Os campos de total de cada mês (incomePlanned, actualByAccountId etc.) são recalculados pelo app na importação e podem ser omitidos.",
+    "formato": 1
+  },
+  "schemaVersion": 1,
+  "exportedAt": "2026-09-23T12:00:00.000Z",
+  "appVersion": "modelo",
+  "household": {
+    "id": "casa-aurora",
+    "displayName": "Casa Aurora",
+    "people": [
+      {
+        "id": "ana",
+        "name": "Ana",
+        "shortCode": "A",
+        "colorValue": 4282285211,
+        "isOwner": true,
+        "active": true,
+        "sortHint": 0
+      },
+      {
+        "id": "bruno",
+        "name": "Bruno",
+        "shortCode": "B",
+        "colorValue": 4288372542,
+        "isOwner": false,
+        "active": true,
+        "sortHint": 1
+      }
+    ],
+    "accounts": [
+      {
+        "id": "nenhuma",
+        "name": "Sem meio definido",
+        "kind": "nenhuma",
+        "colorValue": 4288585374,
+        "producesBill": false,
+        "active": true,
+        "legacyTags": [],
+        "sortHint": -1
+      },
+      {
+        "id": "dinheiro",
+        "name": "Dinheiro",
+        "kind": "dinheiro",
+        "colorValue": 4281556224,
+        "producesBill": false,
+        "active": true,
+        "legacyTags": [],
+        "sortHint": 0
+      },
+      {
+        "id": "pix",
+        "name": "Pix",
+        "kind": "pix",
+        "colorValue": 4281515181,
+        "producesBill": false,
+        "active": true,
+        "legacyTags": [],
+        "sortHint": 10
+      },
+      {
+        "id": "bb-conta",
+        "name": "Banco do Brasil",
+        "kind": "debito",
+        "colorValue": 4294631720,
+        "producesBill": false,
+        "active": true,
+        "legacyTags": [],
+        "sortHint": 20
+      },
+      {
+        "id": "nubank-ana",
+        "name": "Nubank",
+        "kind": "cartaoCredito",
+        "colorValue": 4286712529,
+        "ownerPersonId": "ana",
+        "statementClosingDay": 3,
+        "dueDay": 10,
+        "producesBill": true,
+        "active": true,
+        "legacyTags": [],
+        "sortHint": 30
+      },
+      {
+        "id": "itau-bruno",
+        "name": "Itaú",
+        "kind": "cartaoCredito",
+        "colorValue": 4293685248,
+        "ownerPersonId": "bruno",
+        "statementClosingDay": 25,
+        "dueDay": 5,
+        "producesBill": true,
+        "active": true,
+        "legacyTags": [],
+        "sortHint": 40
+      },
+      {
+        "id": "alelo",
+        "name": "Alelo",
+        "kind": "beneficio",
+        "colorValue": 4278232655,
+        "producesBill": false,
+        "active": true,
+        "legacyTags": [],
+        "sortHint": 50
+      },
+      {
+        "id": "santander-antigo",
+        "name": "Santander",
+        "kind": "cartaoCredito",
+        "colorValue": 4293068307,
+        "ownerPersonId": "bruno",
+        "producesBill": true,
+        "active": false,
+        "closedOnMonth": "2026-07",
+        "legacyTags": [],
+        "sortHint": 60
+      }
+    ],
+    "categories": [
+      {
+        "id": "moradia",
+        "name": "Moradia",
+        "role": "despesa",
+        "colorValue": 4285222819,
+        "sortHint": 310
+      },
+      {
+        "id": "mercado",
+        "name": "Mercado",
+        "role": "despesa",
+        "colorValue": 4281236827,
+        "sortHint": 320
+      },
+      {
+        "id": "transporte",
+        "name": "Transporte",
+        "role": "despesa",
+        "colorValue": 4282150559,
+        "sortHint": 330
+      },
+      {
+        "id": "assinaturas",
+        "name": "Assinaturas",
+        "role": "despesa",
+        "colorValue": 4282262854,
+        "sortHint": 340
+      }
+    ],
+    "firstMonth": "2026-07",
+    "lastOpenedMonthId": "2026-09",
+    "currencyCode": "BRL",
+    "canonicalSortHints": {},
+    "categorySortHints": {},
+    "configRevision": 0
+  },
+  "catalog": {
+    "income_sources": [
+      {
+        "id": "salario-ana",
+        "name": "Salário",
+        "kind": "salario",
+        "personId": "ana",
+        "defaultPlannedCents": 650000,
+        "payDay": 5,
+        "destinationAccountId": "bb-conta",
+        "startMonth": "2026-01",
+        "endMonth": null,
+        "lineTemplate": [],
+        "sortHint": 0,
+        "active": true,
+        "frequency": "mensal"
+      },
+      {
+        "id": "pj-bruno",
+        "name": "Consultoria PJ",
+        "kind": "pj",
+        "personId": "bruno",
+        "defaultPlannedCents": 420000,
+        "payDay": 10,
+        "destinationAccountId": "pix",
+        "startMonth": "2025-08",
+        "endMonth": null,
+        "lineTemplate": [],
+        "sortHint": 10,
+        "active": true,
+        "frequency": "mensal"
+      },
+      {
+        "id": "vale-ana",
+        "name": "Vale-alimentação",
+        "kind": "beneficio",
+        "personId": "ana",
+        "defaultPlannedCents": 80000,
+        "payDay": 1,
+        "destinationAccountId": "alelo",
+        "startMonth": "2026-01",
+        "endMonth": null,
+        "lineTemplate": [],
+        "sortHint": 20,
+        "active": true,
+        "frequency": "mensal"
+      },
+      {
+        "id": "bonus-ana",
+        "name": "Bônus anual",
+        "kind": "eventual",
+        "personId": "ana",
+        "defaultPlannedCents": 300000,
+        "payDay": null,
+        "destinationAccountId": "bb-conta",
+        "startMonth": "2025-12",
+        "endMonth": null,
+        "lineTemplate": [],
+        "sortHint": 30,
+        "active": true,
+        "frequency": "anual"
+      },
+      {
+        "id": "freela-bruno",
+        "name": "Freelas de design",
+        "kind": "eventual",
+        "personId": "bruno",
+        "defaultPlannedCents": 150000,
+        "payDay": null,
+        "destinationAccountId": "pix",
+        "startMonth": "2025-06",
+        "endMonth": "2026-02",
+        "lineTemplate": [],
+        "sortHint": 40,
+        "active": false,
+        "frequency": "mensal"
+      }
+    ],
+    "withholding_rules": [
+      {
+        "id": "inss-ana",
+        "name": "INSS",
+        "kind": "fixo",
+        "rateHistory": [],
+        "baseIncomeSourceIds": [
+          "salario-ana"
+        ],
+        "fixedAmountCents": 71408,
+        "accountId": "nenhuma",
+        "personId": "ana",
+        "startMonth": "2026-01",
+        "lineTemplate": [],
+        "sortHint": 0,
+        "active": true,
+        "frequency": "mensal"
+      },
+      {
+        "id": "irrf-ana",
+        "name": "IRRF",
+        "kind": "fixo",
+        "rateHistory": [],
+        "baseIncomeSourceIds": [
+          "salario-ana"
+        ],
+        "fixedAmountCents": 42000,
+        "accountId": "nenhuma",
+        "personId": "ana",
+        "startMonth": "2026-01",
+        "lineTemplate": [],
+        "sortHint": 10,
+        "active": true,
+        "frequency": "mensal"
+      },
+      {
+        "id": "saude-ana",
+        "name": "Plano de saúde",
+        "kind": "fixo",
+        "rateHistory": [],
+        "baseIncomeSourceIds": [
+          "salario-ana"
+        ],
+        "fixedAmountCents": 38000,
+        "accountId": "nenhuma",
+        "personId": "ana",
+        "startMonth": "2026-01",
+        "lineTemplate": [
+          {
+            "label": "Titular",
+            "amountCents": 25000,
+            "sortHint": 0
+          },
+          {
+            "label": "Dependente",
+            "amountCents": 13000,
+            "sortHint": 100
+          }
+        ],
+        "sortHint": 20,
+        "active": true,
+        "frequency": "mensal"
+      },
+      {
+        "id": "das-bruno",
+        "name": "DAS (Simples Nacional)",
+        "kind": "calculado",
+        "rateHistory": [
+          {
+            "rateBasisPoints": 600,
+            "startMonth": "2025-08",
+            "endMonth": "2025-12"
+          },
+          {
+            "rateBasisPoints": 800,
+            "startMonth": "2026-01"
+          }
+        ],
+        "baseIncomeSourceIds": [
+          "pj-bruno"
+        ],
+        "accountId": "nenhuma",
+        "personId": "bruno",
+        "startMonth": "2025-08",
+        "lineTemplate": [],
+        "sortHint": 30,
+        "active": true,
+        "frequency": "mensal"
+      }
+    ],
+    "recurrences": [
+      {
+        "id": "aluguel",
+        "title": "Aluguel",
+        "labelSlug": "aluguel",
+        "categoryId": "moradia",
+        "split": {
+          "mode": "casa",
+          "sharesByPersonId": {}
+        },
+        "accountId": "bb-conta",
+        "expectedAmountCents": 210000,
+        "expectedStrategy": "valorFixo",
+        "lineTemplate": [],
+        "deviationAlertBasisPoints": 2000,
+        "frequency": "mensal",
+        "skipMonths": [],
+        "dueDay": 10,
+        "startMonth": "2025-08",
+        "sortHint": 100
+      },
+      {
+        "id": "energia",
+        "title": "Energia",
+        "labelSlug": "energia",
+        "categoryId": "moradia",
+        "split": {
+          "mode": "casa",
+          "sharesByPersonId": {}
+        },
+        "accountId": "bb-conta",
+        "expectedAmountCents": 21000,
+        "expectedStrategy": "ultimoRealizado",
+        "lineTemplate": [],
+        "deviationAlertBasisPoints": 2000,
+        "frequency": "mensal",
+        "skipMonths": [],
+        "dueDay": 15,
+        "startMonth": "2025-08",
+        "sortHint": 110
+      },
+      {
+        "id": "internet",
+        "title": "Internet",
+        "labelSlug": "internet",
+        "categoryId": "moradia",
+        "split": {
+          "mode": "casa",
+          "sharesByPersonId": {}
+        },
+        "accountId": "nubank-ana",
+        "expectedAmountCents": 11990,
+        "expectedStrategy": "valorFixo",
+        "lineTemplate": [],
+        "deviationAlertBasisPoints": 2000,
+        "frequency": "mensal",
+        "skipMonths": [],
+        "startMonth": "2025-08",
+        "sortHint": 120
+      },
+      {
+        "id": "streaming",
+        "title": "Streaming",
+        "labelSlug": "streaming",
+        "categoryId": "assinaturas",
+        "split": {
+          "mode": "compartilhado",
+          "sharesByPersonId": {
+            "ana": 5000,
+            "bruno": 5000
+          }
+        },
+        "accountId": "nubank-ana",
+        "expectedAmountCents": 10270,
+        "expectedStrategy": "valorFixo",
+        "lineTemplate": [
+          {
+            "label": "Netflix",
+            "amountCents": 5590,
+            "sortHint": 0
+          },
+          {
+            "label": "Spotify",
+            "amountCents": 2190,
+            "sortHint": 100
+          },
+          {
+            "label": "YouTube Premium",
+            "amountCents": 2490,
+            "sortHint": 200
+          }
+        ],
+        "deviationAlertBasisPoints": 2000,
+        "frequency": "mensal",
+        "skipMonths": [],
+        "startMonth": "2025-08",
+        "sortHint": 200
+      },
+      {
+        "id": "academia-bruno",
+        "title": "Academia",
+        "labelSlug": "academia",
+        "categoryId": "despesas",
+        "split": {
+          "mode": "individual",
+          "personId": "bruno",
+          "sharesByPersonId": {
+            "bruno": 10000
+          }
+        },
+        "accountId": "itau-bruno",
+        "expectedAmountCents": 12990,
+        "expectedStrategy": "valorFixo",
+        "lineTemplate": [],
+        "deviationAlertBasisPoints": 2000,
+        "frequency": "mensal",
+        "skipMonths": [],
+        "startMonth": "2025-08",
+        "sortHint": 210
+      },
+      {
+        "id": "natacao-ana",
+        "title": "Natação",
+        "labelSlug": "natacao",
+        "categoryId": "despesas",
+        "split": {
+          "mode": "individual",
+          "personId": "ana",
+          "sharesByPersonId": {
+            "ana": 10000
+          }
+        },
+        "accountId": "pix",
+        "expectedAmountCents": 18000,
+        "expectedStrategy": "valorFixo",
+        "lineTemplate": [],
+        "deviationAlertBasisPoints": 2000,
+        "frequency": "mensal",
+        "skipMonths": [
+          1
+        ],
+        "startMonth": "2025-08",
+        "sortHint": 220
+      },
+      {
+        "id": "reserva",
+        "title": "Reserva de emergência",
+        "labelSlug": "reserva-de-emergencia",
+        "categoryId": "patrimonio",
+        "split": {
+          "mode": "casa",
+          "sharesByPersonId": {}
+        },
+        "accountId": "bb-conta",
+        "expectedAmountCents": 0,
+        "incomePercent": {
+          "rateBasisPoints": 1000,
+          "base": "liquida"
+        },
+        "expectedStrategy": "valorFixo",
+        "lineTemplate": [],
+        "deviationAlertBasisPoints": 2000,
+        "frequency": "mensal",
+        "skipMonths": [],
+        "startMonth": "2025-08",
+        "sortHint": 300
+      },
+      {
+        "id": "ipva",
+        "title": "IPVA",
+        "labelSlug": "ipva",
+        "categoryId": "transporte",
+        "split": {
+          "mode": "casa",
+          "sharesByPersonId": {}
+        },
+        "accountId": "bb-conta",
+        "expectedAmountCents": 185000,
+        "expectedStrategy": "valorFixo",
+        "lineTemplate": [],
+        "deviationAlertBasisPoints": 2000,
+        "frequency": "anual",
+        "anchorMonth": 3,
+        "skipMonths": [],
+        "startMonth": "2025-03",
+        "sortHint": 400
+      }
+    ],
+    "installment_plans": [
+      {
+        "id": "geladeira",
+        "title": "Geladeira",
+        "installmentAmountCents": 31990,
+        "installmentCount": 10,
+        "firstMonth": "2026-07",
+        "accountId": "nubank-ana",
+        "categoryId": "despesas",
+        "split": {
+          "mode": "casa",
+          "sharesByPersonId": {}
+        },
+        "labelSlug": "geladeira",
+        "schedule": [
+          {
+            "number": 6,
+            "monthRef": "2026-07",
+            "amountCents": 31990,
+            "status": "paga",
+            "entryId": "inst_geladeira_6"
+          },
+          {
+            "number": 7,
+            "monthRef": "2026-08",
+            "amountCents": 31990,
+            "status": "paga",
+            "entryId": "inst_geladeira_7"
+          },
+          {
+            "number": 8,
+            "monthRef": "2026-09",
+            "amountCents": 31990,
+            "status": "lancada",
+            "entryId": "inst_geladeira_8"
+          },
+          {
+            "number": 9,
+            "monthRef": "2026-10",
+            "amountCents": 31990,
+            "status": "agendada"
+          },
+          {
+            "number": 10,
+            "monthRef": "2026-11",
+            "amountCents": 31990,
+            "status": "agendada"
+          }
+        ],
+        "status": "ativo"
+      },
+      {
+        "id": "celular-bruno",
+        "title": "Celular",
+        "installmentAmountCents": 20825,
+        "installmentCount": 12,
+        "totalAmountCents": 249990,
+        "firstMonth": "2026-08",
+        "accountId": "itau-bruno",
+        "categoryId": "despesas",
+        "split": {
+          "mode": "individual",
+          "personId": "bruno",
+          "sharesByPersonId": {
+            "bruno": 10000
+          }
+        },
+        "labelSlug": "celular",
+        "schedule": [
+          {
+            "number": 1,
+            "monthRef": "2026-08",
+            "amountCents": 20825,
+            "status": "paga",
+            "entryId": "inst_celular-bruno_1"
+          },
+          {
+            "number": 2,
+            "monthRef": "2026-09",
+            "amountCents": 20825,
+            "status": "lancada",
+            "entryId": "inst_celular-bruno_2"
+          },
+          {
+            "number": 3,
+            "monthRef": "2026-10",
+            "amountCents": 20825,
+            "status": "agendada"
+          },
+          {
+            "number": 4,
+            "monthRef": "2026-11",
+            "amountCents": 20825,
+            "status": "agendada"
+          },
+          {
+            "number": 5,
+            "monthRef": "2026-12",
+            "amountCents": 20825,
+            "status": "agendada"
+          },
+          {
+            "number": 6,
+            "monthRef": "2027-01",
+            "amountCents": 20825,
+            "status": "agendada"
+          },
+          {
+            "number": 7,
+            "monthRef": "2027-02",
+            "amountCents": 20825,
+            "status": "agendada"
+          },
+          {
+            "number": 8,
+            "monthRef": "2027-03",
+            "amountCents": 20825,
+            "status": "agendada"
+          },
+          {
+            "number": 9,
+            "monthRef": "2027-04",
+            "amountCents": 20825,
+            "status": "agendada"
+          },
+          {
+            "number": 10,
+            "monthRef": "2027-05",
+            "amountCents": 20825,
+            "status": "agendada"
+          },
+          {
+            "number": 11,
+            "monthRef": "2027-06",
+            "amountCents": 20825,
+            "status": "agendada"
+          },
+          {
+            "number": 12,
+            "monthRef": "2027-07",
+            "amountCents": 20915,
+            "status": "agendada"
+          }
+        ],
+        "status": "ativo",
+        "finalResidualCents": 90
+      }
+    ],
+    "wealth_items": [
+      {
+        "id": "cdb-nubank",
+        "institution": "Nubank",
+        "kind": "dinheiro",
+        "description": "CDB 100% do CDI",
+        "active": true,
+        "closedOnMonth": null,
+        "lastKnownBalance": 1235000,
+        "lastKnownBalanceMonthId": "2026-09",
+        "sortHint": 0
+      },
+      {
+        "id": "tesouro-selic",
+        "institution": "Tesouro Direto",
+        "kind": "dinheiro",
+        "description": "Tesouro Selic 2029",
+        "active": true,
+        "closedOnMonth": null,
+        "lastKnownBalance": 840000,
+        "lastKnownBalanceMonthId": "2026-09",
+        "sortHint": 10
+      },
+      {
+        "id": "carro",
+        "institution": "Carro",
+        "kind": "bem",
+        "description": "Hatch 2021",
+        "active": true,
+        "closedOnMonth": null,
+        "lastKnownBalance": 5800000,
+        "lastKnownBalanceMonthId": "2026-07",
+        "sortHint": 20
+      },
+      {
+        "id": "poupanca-caixa",
+        "institution": "Caixa",
+        "kind": "dinheiro",
+        "description": "Poupança",
+        "active": false,
+        "closedOnMonth": "2026-07",
+        "lastKnownBalance": 0,
+        "lastKnownBalanceMonthId": "2026-07",
+        "sortHint": 30
+      }
+    ]
+  },
+  "months": [
+    {
+      "id": "2026-07",
+      "ref": "2026-07",
+      "householdId": "casa-aurora",
+      "isImported": true,
+      "incomePlanned": 1195000,
+      "incomeActual": 1195000,
+      "withholdingPlanned": 185008,
+      "withholdingActual": 185008,
+      "expensePlanned": 454790,
+      "expenseActual": 456780,
+      "wealthActual": 150999,
+      "wealthPlanned": 150999,
+      "actualByAccountId": {
+        "nenhuma": 185008,
+        "bb-conta": 384449,
+        "nubank-ana": 126900,
+        "itau-bruno": 44530,
+        "pix": 43000,
+        "santander-antigo": 8900
+      },
+      "plannedByAccountId": {
+        "nenhuma": 185008,
+        "bb-conta": 381999,
+        "nubank-ana": 126900,
+        "itau-bruno": 44990,
+        "pix": 43000,
+        "santander-antigo": 8900
+      },
+      "actualByPersonId": {
+        "ana": 31785,
+        "bruno": 49665
+      },
+      "plannedByPersonId": {
+        "ana": 31785,
+        "bruno": 50125
+      },
+      "actualByCategoryId": {
+        "retencoes": 185008,
+        "moradia": 245440,
+        "assinaturas": 10270,
+        "despesas": 96630,
+        "patrimonio": 150999,
+        "mercado": 64000,
+        "transporte": 40440
+      },
+      "plannedByCategoryId": {
+        "retencoes": 185008,
+        "moradia": 242990,
+        "assinaturas": 10270,
+        "despesas": 96630,
+        "patrimonio": 150999,
+        "mercado": 64000,
+        "transporte": 40900
+      },
+      "actualByLabelSlug": {
+        "aluguel": 210000,
+        "energia": 23450,
+        "internet": 11990,
+        "streaming": 10270,
+        "netflix": 5590,
+        "spotify": 2190,
+        "youtube-premium": 2490,
+        "academia": 12990,
+        "natacao": 18000,
+        "reserva-de-emergencia": 100999,
+        "geladeira": 31990,
+        "mercado": 64000,
+        "supermercado": 43210,
+        "feira": 8750,
+        "padaria": 12040,
+        "farmacia": 8650,
+        "combustivel": 31540,
+        "presentes": 25000,
+        "seguro-do-carro": 8900,
+        "tesouro-selic": 50000
+      },
+      "labelTitleBySlug": {
+        "aluguel": "Aluguel",
+        "energia": "Energia",
+        "internet": "Internet",
+        "streaming": "Streaming",
+        "netflix": "Netflix",
+        "spotify": "Spotify",
+        "youtube-premium": "YouTube Premium",
+        "academia": "Academia",
+        "natacao": "Natação",
+        "reserva-de-emergencia": "Reserva de emergência",
+        "geladeira": "Geladeira",
+        "mercado": "Mercado",
+        "supermercado": "Supermercado",
+        "feira": "Feira",
+        "padaria": "Padaria",
+        "farmacia": "Farmácia",
+        "combustivel": "Combustível",
+        "presentes": "Presentes",
+        "seguro-do-carro": "Seguro do carro",
+        "tesouro-selic": "Tesouro Selic"
+      },
+      "entryCount": 22,
+      "lineCount": 8,
+      "pendingIncomeCount": 0,
+      "aggregateRevision": 1,
+      "openedAt": "2026-07-01T00:00:00.000Z",
+      "closedAt": null,
+      "entries": [
+        {
+          "id": "inc_salario-ana",
+          "householdId": "casa-aurora",
+          "monthId": "2026-07",
+          "type": "receita",
+          "categoryId": "receitas",
+          "title": "Salário",
+          "labelSlug": null,
+          "amount": {
+            "plannedCents": 650000,
+            "actualCents": 650000
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "bb-conta",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "fonteReceita",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": "salario-ana",
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 0
+        },
+        {
+          "id": "inc_pj-bruno",
+          "householdId": "casa-aurora",
+          "monthId": "2026-07",
+          "type": "receita",
+          "categoryId": "receitas",
+          "title": "Consultoria PJ",
+          "labelSlug": null,
+          "amount": {
+            "plannedCents": 420000,
+            "actualCents": 420000
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "pix",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "fonteReceita",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": "pj-bruno",
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 10
+        },
+        {
+          "id": "inc_vale-ana",
+          "householdId": "casa-aurora",
+          "monthId": "2026-07",
+          "type": "receita",
+          "categoryId": "receitas",
+          "title": "Vale-alimentação",
+          "labelSlug": null,
+          "amount": {
+            "plannedCents": 80000,
+            "actualCents": 80000
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "alelo",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "fonteReceita",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": "vale-ana",
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 20
+        },
+        {
+          "id": "2026-07-venda-bicicleta",
+          "householdId": "casa-aurora",
+          "monthId": "2026-07",
+          "type": "receita",
+          "categoryId": "receitas",
+          "title": "Venda da bicicleta",
+          "labelSlug": "venda-da-bicicleta",
+          "amount": {
+            "plannedCents": 45000,
+            "actualCents": 45000
+          },
+          "status": "realizado",
+          "occurredOn": "2026-07-12T00:00:00.000Z",
+          "accountId": "pix",
+          "split": null,
+          "lines": [],
+          "note": "Anunciada em junho, paga por Pix",
+          "origin": "manual",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 40
+        },
+        {
+          "id": "ret_inss-ana",
+          "householdId": "casa-aurora",
+          "monthId": "2026-07",
+          "type": "retencao",
+          "categoryId": "retencoes",
+          "title": "INSS",
+          "labelSlug": null,
+          "amount": {
+            "plannedCents": 71408,
+            "actualCents": 71408
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "nenhuma",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "regraImposto",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": "inss-ana",
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 100
+        },
+        {
+          "id": "ret_irrf-ana",
+          "householdId": "casa-aurora",
+          "monthId": "2026-07",
+          "type": "retencao",
+          "categoryId": "retencoes",
+          "title": "IRRF",
+          "labelSlug": null,
+          "amount": {
+            "plannedCents": 42000,
+            "actualCents": 42000
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "nenhuma",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "regraImposto",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": "irrf-ana",
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 110
+        },
+        {
+          "id": "ret_saude-ana",
+          "householdId": "casa-aurora",
+          "monthId": "2026-07",
+          "type": "retencao",
+          "categoryId": "retencoes",
+          "title": "Plano de saúde",
+          "labelSlug": null,
+          "amount": {
+            "plannedCents": 38000,
+            "actualCents": 38000
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "nenhuma",
+          "split": null,
+          "lines": [
+            {
+              "label": "Titular",
+              "amountCents": 25000,
+              "labelSlug": "titular",
+              "occurredOn": null,
+              "isRefund": false,
+              "isSettled": true,
+              "note": null,
+              "sortHint": 0
+            },
+            {
+              "label": "Dependente",
+              "amountCents": 13000,
+              "labelSlug": "dependente",
+              "occurredOn": null,
+              "isRefund": false,
+              "isSettled": true,
+              "note": null,
+              "sortHint": 100
+            }
+          ],
+          "note": null,
+          "origin": "regraImposto",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": "saude-ana",
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 120
+        },
+        {
+          "id": "ret_das-bruno",
+          "householdId": "casa-aurora",
+          "monthId": "2026-07",
+          "type": "retencao",
+          "categoryId": "retencoes",
+          "title": "DAS (Simples Nacional) (8%)",
+          "labelSlug": null,
+          "amount": {
+            "plannedCents": 33600,
+            "actualCents": 33600
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "nenhuma",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "regraImposto",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": "das-bruno",
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 130
+        },
+        {
+          "id": "rec_aluguel",
+          "householdId": "casa-aurora",
+          "monthId": "2026-07",
+          "type": "despesa",
+          "categoryId": "moradia",
+          "title": "Aluguel",
+          "labelSlug": "aluguel",
+          "amount": {
+            "plannedCents": 210000,
+            "actualCents": 210000
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "bb-conta",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "recorrencia",
+          "recurrenceId": "aluguel",
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": true,
+          "sortHint": 100
+        },
+        {
+          "id": "rec_energia",
+          "householdId": "casa-aurora",
+          "monthId": "2026-07",
+          "type": "despesa",
+          "categoryId": "moradia",
+          "title": "Energia",
+          "labelSlug": "energia",
+          "amount": {
+            "plannedCents": 21000,
+            "actualCents": 23450
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "bb-conta",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "recorrencia",
+          "recurrenceId": "energia",
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 110
+        },
+        {
+          "id": "rec_internet",
+          "householdId": "casa-aurora",
+          "monthId": "2026-07",
+          "type": "despesa",
+          "categoryId": "moradia",
+          "title": "Internet",
+          "labelSlug": "internet",
+          "amount": {
+            "plannedCents": 11990,
+            "actualCents": 11990
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "nubank-ana",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "recorrencia",
+          "recurrenceId": "internet",
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 120
+        },
+        {
+          "id": "rec_streaming",
+          "householdId": "casa-aurora",
+          "monthId": "2026-07",
+          "type": "despesa",
+          "categoryId": "assinaturas",
+          "title": "Streaming",
+          "labelSlug": "streaming",
+          "amount": {
+            "plannedCents": 10270,
+            "actualCents": 10270
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "nubank-ana",
+          "split": {
+            "mode": "compartilhado",
+            "sharesByPersonId": {
+              "ana": 5000,
+              "bruno": 5000
+            }
+          },
+          "lines": [
+            {
+              "label": "Netflix",
+              "amountCents": 5590,
+              "labelSlug": "netflix",
+              "occurredOn": null,
+              "isRefund": false,
+              "isSettled": true,
+              "note": null,
+              "sortHint": 0
+            },
+            {
+              "label": "Spotify",
+              "amountCents": 2190,
+              "labelSlug": "spotify",
+              "occurredOn": null,
+              "isRefund": false,
+              "isSettled": true,
+              "note": null,
+              "sortHint": 100
+            },
+            {
+              "label": "YouTube Premium",
+              "amountCents": 2490,
+              "labelSlug": "youtube-premium",
+              "occurredOn": null,
+              "isRefund": false,
+              "isSettled": true,
+              "note": null,
+              "sortHint": 200
+            }
+          ],
+          "note": null,
+          "origin": "recorrencia",
+          "recurrenceId": "streaming",
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 200
+        },
+        {
+          "id": "rec_academia-bruno",
+          "householdId": "casa-aurora",
+          "monthId": "2026-07",
+          "type": "despesa",
+          "categoryId": "despesas",
+          "title": "Academia",
+          "labelSlug": "academia",
+          "amount": {
+            "plannedCents": 12990,
+            "actualCents": 12990
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "itau-bruno",
+          "split": {
+            "mode": "individual",
+            "personId": "bruno",
+            "sharesByPersonId": {
+              "bruno": 10000
+            }
+          },
+          "lines": [],
+          "note": null,
+          "origin": "recorrencia",
+          "recurrenceId": "academia-bruno",
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 210
+        },
+        {
+          "id": "rec_natacao-ana",
+          "householdId": "casa-aurora",
+          "monthId": "2026-07",
+          "type": "despesa",
+          "categoryId": "despesas",
+          "title": "Natação",
+          "labelSlug": "natacao",
+          "amount": {
+            "plannedCents": 18000,
+            "actualCents": 18000
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "pix",
+          "split": {
+            "mode": "individual",
+            "personId": "ana",
+            "sharesByPersonId": {
+              "ana": 10000
+            }
+          },
+          "lines": [],
+          "note": null,
+          "origin": "recorrencia",
+          "recurrenceId": "natacao-ana",
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 220
+        },
+        {
+          "id": "rec_reserva",
+          "householdId": "casa-aurora",
+          "monthId": "2026-07",
+          "type": "patrimonio",
+          "categoryId": "patrimonio",
+          "title": "Reserva de emergência",
+          "labelSlug": "reserva-de-emergencia",
+          "amount": {
+            "plannedCents": 100999,
+            "actualCents": 100999
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "bb-conta",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "recorrencia",
+          "recurrenceId": "reserva",
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": "cdb-nubank",
+          "counterpartyName": null,
+          "incomePercent": {
+            "rateBasisPoints": 1000,
+            "base": "liquida"
+          },
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 300
+        },
+        {
+          "id": "inst_geladeira_6",
+          "householdId": "casa-aurora",
+          "monthId": "2026-07",
+          "type": "despesa",
+          "categoryId": "despesas",
+          "title": "Geladeira",
+          "labelSlug": "geladeira",
+          "amount": {
+            "plannedCents": 31990,
+            "actualCents": 31990
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "nubank-ana",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "parcela",
+          "recurrenceId": null,
+          "installmentPlanId": "geladeira",
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": {
+            "number": 6,
+            "total": 10
+          },
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 906
+        },
+        {
+          "id": "2026-07-mercado",
+          "householdId": "casa-aurora",
+          "monthId": "2026-07",
+          "type": "despesa",
+          "categoryId": "mercado",
+          "title": "Mercado",
+          "labelSlug": "mercado",
+          "amount": {
+            "plannedCents": 64000,
+            "actualCents": 64000
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "nubank-ana",
+          "split": null,
+          "lines": [
+            {
+              "label": "Supermercado",
+              "amountCents": 43210,
+              "labelSlug": "supermercado",
+              "occurredOn": null,
+              "isRefund": false,
+              "note": null,
+              "sortHint": 0
+            },
+            {
+              "label": "Feira",
+              "amountCents": 8750,
+              "labelSlug": "feira",
+              "occurredOn": null,
+              "isRefund": false,
+              "note": null,
+              "sortHint": 100
+            },
+            {
+              "label": "Padaria",
+              "amountCents": 12040,
+              "labelSlug": "padaria",
+              "occurredOn": null,
+              "isRefund": false,
+              "note": null,
+              "sortHint": 200
+            }
+          ],
+          "note": null,
+          "origin": "manual",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 500
+        },
+        {
+          "id": "2026-07-farmacia",
+          "householdId": "casa-aurora",
+          "monthId": "2026-07",
+          "type": "despesa",
+          "categoryId": "despesas",
+          "title": "Farmácia",
+          "labelSlug": "farmacia",
+          "amount": {
+            "plannedCents": 8650,
+            "actualCents": 8650
+          },
+          "status": "realizado",
+          "occurredOn": "2026-07-14T00:00:00.000Z",
+          "accountId": "nubank-ana",
+          "split": {
+            "mode": "individual",
+            "personId": "ana",
+            "sharesByPersonId": {
+              "ana": 10000
+            }
+          },
+          "lines": [],
+          "note": null,
+          "origin": "manual",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 510
+        },
+        {
+          "id": "2026-07-combustivel",
+          "householdId": "casa-aurora",
+          "monthId": "2026-07",
+          "type": "despesa",
+          "categoryId": "transporte",
+          "title": "Combustível",
+          "labelSlug": "combustivel",
+          "amount": {
+            "plannedCents": 32000,
+            "actualCents": 31540
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "itau-bruno",
+          "split": {
+            "mode": "individual",
+            "personId": "bruno",
+            "sharesByPersonId": {
+              "bruno": 10000
+            }
+          },
+          "lines": [],
+          "note": null,
+          "origin": "manual",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 520
+        },
+        {
+          "id": "2026-07-presentes",
+          "householdId": "casa-aurora",
+          "monthId": "2026-07",
+          "type": "despesa",
+          "categoryId": "despesas",
+          "title": "Presentes",
+          "labelSlug": "presentes",
+          "amount": {
+            "plannedCents": 25000,
+            "actualCents": 25000
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "pix",
+          "split": null,
+          "lines": [],
+          "note": "Aniversário da mãe e amigo secreto",
+          "origin": "manual",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "amountExpression": "=150+100",
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 530
+        },
+        {
+          "id": "2026-07-seguro-carro",
+          "householdId": "casa-aurora",
+          "monthId": "2026-07",
+          "type": "despesa",
+          "categoryId": "transporte",
+          "title": "Seguro do carro",
+          "labelSlug": "seguro-do-carro",
+          "amount": {
+            "plannedCents": 8900,
+            "actualCents": 8900
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "santander-antigo",
+          "split": null,
+          "lines": [],
+          "note": "Última compra antes do cancelamento do cartão",
+          "origin": "manual",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 540
+        },
+        {
+          "id": "2026-07-tesouro",
+          "householdId": "casa-aurora",
+          "monthId": "2026-07",
+          "type": "patrimonio",
+          "categoryId": "patrimonio",
+          "title": "Tesouro Selic",
+          "labelSlug": "tesouro-selic",
+          "amount": {
+            "plannedCents": 50000,
+            "actualCents": 50000
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "bb-conta",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "manual",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": "tesouro-selic",
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 600
+        }
+      ],
+      "balances": [
+        {
+          "wealthItemId": "cdb-nubank",
+          "householdId": "casa-aurora",
+          "monthId": "2026-07",
+          "balance": 1100000,
+          "source": "manual",
+          "impliedYield": null,
+          "confirmedAt": null
+        },
+        {
+          "wealthItemId": "tesouro-selic",
+          "householdId": "casa-aurora",
+          "monthId": "2026-07",
+          "balance": 730000,
+          "source": "manual",
+          "impliedYield": null,
+          "confirmedAt": null
+        },
+        {
+          "wealthItemId": "carro",
+          "householdId": "casa-aurora",
+          "monthId": "2026-07",
+          "balance": 5800000,
+          "source": "manual",
+          "impliedYield": null,
+          "confirmedAt": null
+        },
+        {
+          "wealthItemId": "poupanca-caixa",
+          "householdId": "casa-aurora",
+          "monthId": "2026-07",
+          "balance": 0,
+          "source": "manual",
+          "impliedYield": null,
+          "confirmedAt": null
+        }
+      ]
+    },
+    {
+      "id": "2026-08",
+      "ref": "2026-08",
+      "householdId": "casa-aurora",
+      "isImported": true,
+      "incomePlanned": 1182000,
+      "incomeActual": 1150000,
+      "withholdingPlanned": 185008,
+      "withholdingActual": 185008,
+      "expensePlanned": 660145,
+      "expenseActual": 604545,
+      "wealthActual": 100000,
+      "wealthPlanned": 100000,
+      "actualByAccountId": {
+        "nenhuma": 185008,
+        "bb-conta": 329870,
+        "nubank-ana": 240880,
+        "itau-bruno": 63795,
+        "pix": 70000
+      },
+      "plannedByAccountId": {
+        "nenhuma": 185008,
+        "bb-conta": 333450,
+        "nubank-ana": 240880,
+        "itau-bruno": 65815,
+        "pix": 120000
+      },
+      "actualByPersonId": {
+        "ana": 93935,
+        "bruno": 108130
+      },
+      "plannedByPersonId": {
+        "ana": 93935,
+        "bruno": 110150
+      },
+      "actualByCategoryId": {
+        "retencoes": 185008,
+        "moradia": 241860,
+        "assinaturas": 10270,
+        "despesas": 95805,
+        "patrimonio": 100000,
+        "mercado": 88630,
+        "transporte": 167980
+      },
+      "plannedByCategoryId": {
+        "retencoes": 185008,
+        "moradia": 245440,
+        "assinaturas": 10270,
+        "despesas": 95805,
+        "patrimonio": 100000,
+        "mercado": 88630,
+        "transporte": 220000
+      },
+      "actualByLabelSlug": {
+        "aluguel": 210000,
+        "energia": 19870,
+        "internet": 11990,
+        "streaming": 10270,
+        "netflix": 5590,
+        "spotify": 2190,
+        "youtube-premium": 2490,
+        "academia": 12990,
+        "natacao": 18000,
+        "reserva-de-emergencia": 100000,
+        "geladeira": 31990,
+        "celular": 20825,
+        "mercado": 88630,
+        "supermercado": 51230,
+        "atacado": 38900,
+        "estorno-de-embalagem": -1500,
+        "combustivel": 29980,
+        "conserto-do-carro": 40000,
+        "passagens": 98000,
+        "presente-da-equipe": 12000
+      },
+      "labelTitleBySlug": {
+        "aluguel": "Aluguel",
+        "energia": "Energia",
+        "internet": "Internet",
+        "streaming": "Streaming",
+        "netflix": "Netflix",
+        "spotify": "Spotify",
+        "youtube-premium": "YouTube Premium",
+        "academia": "Academia",
+        "natacao": "Natação",
+        "reserva-de-emergencia": "Reserva de emergência",
+        "geladeira": "Geladeira",
+        "celular": "Celular",
+        "mercado": "Mercado",
+        "supermercado": "Supermercado",
+        "atacado": "Atacado",
+        "estorno-de-embalagem": "Estorno de embalagem",
+        "combustivel": "Combustível",
+        "conserto-do-carro": "Conserto do carro",
+        "passagens": "Passagens",
+        "presente-da-equipe": "Presente da equipe"
+      },
+      "entryCount": 22,
+      "lineCount": 8,
+      "pendingIncomeCount": 0,
+      "aggregateRevision": 1,
+      "openedAt": "2026-08-01T00:00:00.000Z",
+      "closedAt": null,
+      "entries": [
+        {
+          "id": "inc_salario-ana",
+          "householdId": "casa-aurora",
+          "monthId": "2026-08",
+          "type": "receita",
+          "categoryId": "receitas",
+          "title": "Salário",
+          "labelSlug": null,
+          "amount": {
+            "plannedCents": 650000,
+            "actualCents": 650000
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "bb-conta",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "fonteReceita",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": "salario-ana",
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 0
+        },
+        {
+          "id": "inc_pj-bruno",
+          "householdId": "casa-aurora",
+          "monthId": "2026-08",
+          "type": "receita",
+          "categoryId": "receitas",
+          "title": "Consultoria PJ",
+          "labelSlug": null,
+          "amount": {
+            "plannedCents": 420000,
+            "actualCents": 420000
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "pix",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "fonteReceita",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": "pj-bruno",
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 10
+        },
+        {
+          "id": "inc_vale-ana",
+          "householdId": "casa-aurora",
+          "monthId": "2026-08",
+          "type": "receita",
+          "categoryId": "receitas",
+          "title": "Vale-alimentação",
+          "labelSlug": null,
+          "amount": {
+            "plannedCents": 80000,
+            "actualCents": 80000
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "alelo",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "fonteReceita",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": "vale-ana",
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 20
+        },
+        {
+          "id": "2026-08-reembolso-empresa",
+          "householdId": "casa-aurora",
+          "monthId": "2026-08",
+          "type": "receita",
+          "categoryId": "receitas",
+          "title": "Reembolso da empresa",
+          "labelSlug": "reembolso-da-empresa",
+          "amount": {
+            "plannedCents": 32000,
+            "actualCents": null
+          },
+          "status": "naoEntrou",
+          "occurredOn": null,
+          "accountId": "bb-conta",
+          "split": null,
+          "lines": [],
+          "note": "A empresa não aprovou o relatório de despesas",
+          "origin": "manual",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 40
+        },
+        {
+          "id": "ret_inss-ana",
+          "householdId": "casa-aurora",
+          "monthId": "2026-08",
+          "type": "retencao",
+          "categoryId": "retencoes",
+          "title": "INSS",
+          "labelSlug": null,
+          "amount": {
+            "plannedCents": 71408,
+            "actualCents": 71408
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "nenhuma",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "regraImposto",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": "inss-ana",
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 100
+        },
+        {
+          "id": "ret_irrf-ana",
+          "householdId": "casa-aurora",
+          "monthId": "2026-08",
+          "type": "retencao",
+          "categoryId": "retencoes",
+          "title": "IRRF",
+          "labelSlug": null,
+          "amount": {
+            "plannedCents": 42000,
+            "actualCents": 42000
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "nenhuma",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "regraImposto",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": "irrf-ana",
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 110
+        },
+        {
+          "id": "ret_saude-ana",
+          "householdId": "casa-aurora",
+          "monthId": "2026-08",
+          "type": "retencao",
+          "categoryId": "retencoes",
+          "title": "Plano de saúde",
+          "labelSlug": null,
+          "amount": {
+            "plannedCents": 38000,
+            "actualCents": 38000
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "nenhuma",
+          "split": null,
+          "lines": [
+            {
+              "label": "Titular",
+              "amountCents": 25000,
+              "labelSlug": "titular",
+              "occurredOn": null,
+              "isRefund": false,
+              "isSettled": true,
+              "note": null,
+              "sortHint": 0
+            },
+            {
+              "label": "Dependente",
+              "amountCents": 13000,
+              "labelSlug": "dependente",
+              "occurredOn": null,
+              "isRefund": false,
+              "isSettled": true,
+              "note": null,
+              "sortHint": 100
+            }
+          ],
+          "note": null,
+          "origin": "regraImposto",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": "saude-ana",
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 120
+        },
+        {
+          "id": "ret_das-bruno",
+          "householdId": "casa-aurora",
+          "monthId": "2026-08",
+          "type": "retencao",
+          "categoryId": "retencoes",
+          "title": "DAS (Simples Nacional) (8%)",
+          "labelSlug": null,
+          "amount": {
+            "plannedCents": 33600,
+            "actualCents": 33600
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "nenhuma",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "regraImposto",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": "das-bruno",
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 130
+        },
+        {
+          "id": "rec_aluguel",
+          "householdId": "casa-aurora",
+          "monthId": "2026-08",
+          "type": "despesa",
+          "categoryId": "moradia",
+          "title": "Aluguel",
+          "labelSlug": "aluguel",
+          "amount": {
+            "plannedCents": 210000,
+            "actualCents": 210000
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "bb-conta",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "recorrencia",
+          "recurrenceId": "aluguel",
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": true,
+          "sortHint": 100
+        },
+        {
+          "id": "rec_energia",
+          "householdId": "casa-aurora",
+          "monthId": "2026-08",
+          "type": "despesa",
+          "categoryId": "moradia",
+          "title": "Energia",
+          "labelSlug": "energia",
+          "amount": {
+            "plannedCents": 23450,
+            "actualCents": 19870
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "bb-conta",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "recorrencia",
+          "recurrenceId": "energia",
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 110
+        },
+        {
+          "id": "rec_internet",
+          "householdId": "casa-aurora",
+          "monthId": "2026-08",
+          "type": "despesa",
+          "categoryId": "moradia",
+          "title": "Internet",
+          "labelSlug": "internet",
+          "amount": {
+            "plannedCents": 11990,
+            "actualCents": 11990
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "nubank-ana",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "recorrencia",
+          "recurrenceId": "internet",
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 120
+        },
+        {
+          "id": "rec_streaming",
+          "householdId": "casa-aurora",
+          "monthId": "2026-08",
+          "type": "despesa",
+          "categoryId": "assinaturas",
+          "title": "Streaming",
+          "labelSlug": "streaming",
+          "amount": {
+            "plannedCents": 10270,
+            "actualCents": 10270
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "nubank-ana",
+          "split": {
+            "mode": "compartilhado",
+            "sharesByPersonId": {
+              "ana": 5000,
+              "bruno": 5000
+            }
+          },
+          "lines": [
+            {
+              "label": "Netflix",
+              "amountCents": 5590,
+              "labelSlug": "netflix",
+              "occurredOn": null,
+              "isRefund": false,
+              "isSettled": true,
+              "note": null,
+              "sortHint": 0
+            },
+            {
+              "label": "Spotify",
+              "amountCents": 2190,
+              "labelSlug": "spotify",
+              "occurredOn": null,
+              "isRefund": false,
+              "isSettled": true,
+              "note": null,
+              "sortHint": 100
+            },
+            {
+              "label": "YouTube Premium",
+              "amountCents": 2490,
+              "labelSlug": "youtube-premium",
+              "occurredOn": null,
+              "isRefund": false,
+              "isSettled": true,
+              "note": null,
+              "sortHint": 200
+            }
+          ],
+          "note": null,
+          "origin": "recorrencia",
+          "recurrenceId": "streaming",
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 200
+        },
+        {
+          "id": "rec_academia-bruno",
+          "householdId": "casa-aurora",
+          "monthId": "2026-08",
+          "type": "despesa",
+          "categoryId": "despesas",
+          "title": "Academia",
+          "labelSlug": "academia",
+          "amount": {
+            "plannedCents": 12990,
+            "actualCents": 12990
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "itau-bruno",
+          "split": {
+            "mode": "individual",
+            "personId": "bruno",
+            "sharesByPersonId": {
+              "bruno": 10000
+            }
+          },
+          "lines": [],
+          "note": null,
+          "origin": "recorrencia",
+          "recurrenceId": "academia-bruno",
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 210
+        },
+        {
+          "id": "rec_natacao-ana",
+          "householdId": "casa-aurora",
+          "monthId": "2026-08",
+          "type": "despesa",
+          "categoryId": "despesas",
+          "title": "Natação",
+          "labelSlug": "natacao",
+          "amount": {
+            "plannedCents": 18000,
+            "actualCents": 18000
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "pix",
+          "split": {
+            "mode": "individual",
+            "personId": "ana",
+            "sharesByPersonId": {
+              "ana": 10000
+            }
+          },
+          "lines": [],
+          "note": null,
+          "origin": "recorrencia",
+          "recurrenceId": "natacao-ana",
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 220
+        },
+        {
+          "id": "rec_reserva",
+          "householdId": "casa-aurora",
+          "monthId": "2026-08",
+          "type": "patrimonio",
+          "categoryId": "patrimonio",
+          "title": "Reserva de emergência",
+          "labelSlug": "reserva-de-emergencia",
+          "amount": {
+            "plannedCents": 100000,
+            "actualCents": 100000
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "bb-conta",
+          "split": null,
+          "lines": [],
+          "note": "Arredondado à mão",
+          "origin": "recorrencia",
+          "recurrenceId": "reserva",
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": "cdb-nubank",
+          "counterpartyName": null,
+          "incomePercent": {
+            "rateBasisPoints": 1000,
+            "base": "liquida"
+          },
+          "isLocked": true,
+          "isPinned": false,
+          "sortHint": 300
+        },
+        {
+          "id": "inst_geladeira_7",
+          "householdId": "casa-aurora",
+          "monthId": "2026-08",
+          "type": "despesa",
+          "categoryId": "despesas",
+          "title": "Geladeira",
+          "labelSlug": "geladeira",
+          "amount": {
+            "plannedCents": 31990,
+            "actualCents": 31990
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "nubank-ana",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "parcela",
+          "recurrenceId": null,
+          "installmentPlanId": "geladeira",
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": {
+            "number": 7,
+            "total": 10
+          },
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 907
+        },
+        {
+          "id": "inst_celular-bruno_1",
+          "householdId": "casa-aurora",
+          "monthId": "2026-08",
+          "type": "despesa",
+          "categoryId": "despesas",
+          "title": "Celular",
+          "labelSlug": "celular",
+          "amount": {
+            "plannedCents": 20825,
+            "actualCents": 20825
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "itau-bruno",
+          "split": {
+            "mode": "individual",
+            "personId": "bruno",
+            "sharesByPersonId": {
+              "bruno": 10000
+            }
+          },
+          "lines": [],
+          "note": null,
+          "origin": "parcela",
+          "recurrenceId": null,
+          "installmentPlanId": "celular-bruno",
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": {
+            "number": 1,
+            "total": 12
+          },
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 901
+        },
+        {
+          "id": "2026-08-mercado",
+          "householdId": "casa-aurora",
+          "monthId": "2026-08",
+          "type": "despesa",
+          "categoryId": "mercado",
+          "title": "Mercado",
+          "labelSlug": "mercado",
+          "amount": {
+            "plannedCents": 88630,
+            "actualCents": 88630
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "nubank-ana",
+          "split": null,
+          "lines": [
+            {
+              "label": "Supermercado",
+              "amountCents": 51230,
+              "labelSlug": "supermercado",
+              "occurredOn": null,
+              "isRefund": false,
+              "note": null,
+              "sortHint": 0
+            },
+            {
+              "label": "Atacado",
+              "amountCents": 38900,
+              "labelSlug": "atacado",
+              "occurredOn": null,
+              "isRefund": false,
+              "note": null,
+              "sortHint": 100
+            },
+            {
+              "label": "Estorno de embalagem",
+              "amountCents": -1500,
+              "labelSlug": "estorno-de-embalagem",
+              "occurredOn": null,
+              "isRefund": true,
+              "note": null,
+              "sortHint": 200
+            }
+          ],
+          "note": null,
+          "origin": "manual",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 500
+        },
+        {
+          "id": "2026-08-combustivel",
+          "householdId": "casa-aurora",
+          "monthId": "2026-08",
+          "type": "despesa",
+          "categoryId": "transporte",
+          "title": "Combustível",
+          "labelSlug": "combustivel",
+          "amount": {
+            "plannedCents": 32000,
+            "actualCents": 29980
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "itau-bruno",
+          "split": {
+            "mode": "individual",
+            "personId": "bruno",
+            "sharesByPersonId": {
+              "bruno": 10000
+            }
+          },
+          "lines": [],
+          "note": null,
+          "origin": "manual",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 520
+        },
+        {
+          "id": "2026-08-conserto-carro",
+          "householdId": "casa-aurora",
+          "monthId": "2026-08",
+          "type": "despesa",
+          "categoryId": "transporte",
+          "title": "Conserto do carro",
+          "labelSlug": "conserto-do-carro",
+          "amount": {
+            "plannedCents": 90000,
+            "actualCents": null,
+            "paidCents": 40000
+          },
+          "status": "parcial",
+          "occurredOn": null,
+          "accountId": "pix",
+          "split": null,
+          "lines": [],
+          "note": "Restante na entrega",
+          "origin": "manual",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 530
+        },
+        {
+          "id": "2026-08-passagens",
+          "householdId": "casa-aurora",
+          "monthId": "2026-08",
+          "type": "despesa",
+          "categoryId": "transporte",
+          "title": "Passagens",
+          "labelSlug": "passagens",
+          "amount": {
+            "plannedCents": 98000,
+            "actualCents": 98000
+          },
+          "status": "realizado",
+          "occurredOn": "2026-08-03T00:00:00.000Z",
+          "accountId": "nubank-ana",
+          "split": {
+            "mode": "personalizado",
+            "sharesByPersonId": {
+              "ana": 6000,
+              "bruno": 4000
+            }
+          },
+          "lines": [],
+          "note": null,
+          "origin": "manual",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 540
+        },
+        {
+          "id": "2026-08-presente-equipe",
+          "householdId": "casa-aurora",
+          "monthId": "2026-08",
+          "type": "despesa",
+          "categoryId": "despesas",
+          "title": "Presente da equipe",
+          "labelSlug": "presente-da-equipe",
+          "amount": {
+            "plannedCents": 12000,
+            "actualCents": 12000
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "pix",
+          "split": {
+            "mode": "individual",
+            "personId": "ana",
+            "sharesByPersonId": {
+              "ana": 10000
+            }
+          },
+          "lines": [],
+          "note": "Cada um transferiu R$ 30 depois",
+          "origin": "manual",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": "Colegas do trabalho",
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 550
+        }
+      ],
+      "balances": [
+        {
+          "wealthItemId": "cdb-nubank",
+          "householdId": "casa-aurora",
+          "monthId": "2026-08",
+          "balance": 1210000,
+          "source": "manual",
+          "impliedYield": null,
+          "confirmedAt": null
+        },
+        {
+          "wealthItemId": "tesouro-selic",
+          "householdId": "casa-aurora",
+          "monthId": "2026-08",
+          "balance": 785000,
+          "source": "manual",
+          "impliedYield": null,
+          "confirmedAt": null
+        }
+      ]
+    },
+    {
+      "id": "2026-09",
+      "ref": "2026-09",
+      "householdId": "casa-aurora",
+      "isImported": false,
+      "incomePlanned": 1150000,
+      "incomeActual": 930000,
+      "withholdingPlanned": 185008,
+      "withholdingActual": 185008,
+      "expensePlanned": 437925,
+      "expenseActual": 327850,
+      "wealthActual": 50000,
+      "wealthPlanned": 146499,
+      "actualByAccountId": {
+        "nenhuma": 185008,
+        "bb-conta": 260000,
+        "nubank-ana": 69850,
+        "itau-bruno": 30000,
+        "pix": 18000
+      },
+      "plannedByAccountId": {
+        "nenhuma": 185008,
+        "bb-conta": 376369,
+        "nubank-ana": 126240,
+        "itau-bruno": 63815,
+        "pix": 18000
+      },
+      "actualByPersonId": {
+        "ana": 23135,
+        "bruno": 35135
+      },
+      "plannedByPersonId": {
+        "ana": 32135,
+        "bruno": 68950
+      },
+      "actualByCategoryId": {
+        "retencoes": 185008,
+        "moradia": 221990,
+        "assinaturas": 10270,
+        "despesas": 18000,
+        "patrimonio": 50000,
+        "mercado": 47590,
+        "transporte": 30000
+      },
+      "plannedByCategoryId": {
+        "retencoes": 185008,
+        "moradia": 241860,
+        "assinaturas": 10270,
+        "despesas": 92805,
+        "patrimonio": 146499,
+        "mercado": 62990,
+        "transporte": 30000
+      },
+      "actualByLabelSlug": {
+        "aluguel": 210000,
+        "energia": 0,
+        "internet": 11990,
+        "streaming": 10270,
+        "netflix": 5590,
+        "spotify": 2190,
+        "youtube-premium": 2490,
+        "academia": 0,
+        "natacao": 18000,
+        "reserva-de-emergencia": 0,
+        "geladeira": 0,
+        "celular": 0,
+        "mercado": 47590,
+        "supermercado": 39990,
+        "feira": 7600,
+        "acougue": 15400,
+        "farmacia": 0,
+        "combustivel": 30000,
+        "tesouro-selic": 50000
+      },
+      "labelTitleBySlug": {
+        "aluguel": "Aluguel",
+        "energia": "Energia",
+        "internet": "Internet",
+        "streaming": "Streaming",
+        "netflix": "Netflix",
+        "spotify": "Spotify",
+        "youtube-premium": "YouTube Premium",
+        "academia": "Academia",
+        "natacao": "Natação",
+        "reserva-de-emergencia": "Reserva de emergência",
+        "geladeira": "Geladeira",
+        "celular": "Celular",
+        "mercado": "Mercado",
+        "supermercado": "Supermercado",
+        "feira": "Feira",
+        "acougue": "Açougue",
+        "farmacia": "Farmácia",
+        "combustivel": "Combustível",
+        "tesouro-selic": "Tesouro Selic"
+      },
+      "entryCount": 20,
+      "lineCount": 8,
+      "pendingIncomeCount": 1,
+      "aggregateRevision": 1,
+      "openedAt": "2026-09-01T00:00:00.000Z",
+      "closedAt": null,
+      "entries": [
+        {
+          "id": "inc_salario-ana",
+          "householdId": "casa-aurora",
+          "monthId": "2026-09",
+          "type": "receita",
+          "categoryId": "receitas",
+          "title": "Salário",
+          "labelSlug": null,
+          "amount": {
+            "plannedCents": 650000,
+            "actualCents": 650000
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "bb-conta",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "fonteReceita",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": "salario-ana",
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 0
+        },
+        {
+          "id": "inc_pj-bruno",
+          "householdId": "casa-aurora",
+          "monthId": "2026-09",
+          "type": "receita",
+          "categoryId": "receitas",
+          "title": "Consultoria PJ",
+          "labelSlug": null,
+          "amount": {
+            "plannedCents": 420000,
+            "actualCents": null,
+            "paidCents": 200000
+          },
+          "status": "parcial",
+          "occurredOn": null,
+          "accountId": "pix",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "fonteReceita",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": "pj-bruno",
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 10
+        },
+        {
+          "id": "inc_vale-ana",
+          "householdId": "casa-aurora",
+          "monthId": "2026-09",
+          "type": "receita",
+          "categoryId": "receitas",
+          "title": "Vale-alimentação",
+          "labelSlug": null,
+          "amount": {
+            "plannedCents": 80000,
+            "actualCents": 80000
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "alelo",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "fonteReceita",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": "vale-ana",
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 20
+        },
+        {
+          "id": "ret_inss-ana",
+          "householdId": "casa-aurora",
+          "monthId": "2026-09",
+          "type": "retencao",
+          "categoryId": "retencoes",
+          "title": "INSS",
+          "labelSlug": null,
+          "amount": {
+            "plannedCents": 71408,
+            "actualCents": 71408
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "nenhuma",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "regraImposto",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": "inss-ana",
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 100
+        },
+        {
+          "id": "ret_irrf-ana",
+          "householdId": "casa-aurora",
+          "monthId": "2026-09",
+          "type": "retencao",
+          "categoryId": "retencoes",
+          "title": "IRRF",
+          "labelSlug": null,
+          "amount": {
+            "plannedCents": 42000,
+            "actualCents": 42000
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "nenhuma",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "regraImposto",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": "irrf-ana",
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 110
+        },
+        {
+          "id": "ret_saude-ana",
+          "householdId": "casa-aurora",
+          "monthId": "2026-09",
+          "type": "retencao",
+          "categoryId": "retencoes",
+          "title": "Plano de saúde",
+          "labelSlug": null,
+          "amount": {
+            "plannedCents": 38000,
+            "actualCents": 38000
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "nenhuma",
+          "split": null,
+          "lines": [
+            {
+              "label": "Titular",
+              "amountCents": 25000,
+              "labelSlug": "titular",
+              "occurredOn": null,
+              "isRefund": false,
+              "isSettled": true,
+              "note": null,
+              "sortHint": 0
+            },
+            {
+              "label": "Dependente",
+              "amountCents": 13000,
+              "labelSlug": "dependente",
+              "occurredOn": null,
+              "isRefund": false,
+              "isSettled": true,
+              "note": null,
+              "sortHint": 100
+            }
+          ],
+          "note": null,
+          "origin": "regraImposto",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": "saude-ana",
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 120
+        },
+        {
+          "id": "ret_das-bruno",
+          "householdId": "casa-aurora",
+          "monthId": "2026-09",
+          "type": "retencao",
+          "categoryId": "retencoes",
+          "title": "DAS (Simples Nacional) (8%)",
+          "labelSlug": null,
+          "amount": {
+            "plannedCents": 33600,
+            "actualCents": 33600
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "nenhuma",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "regraImposto",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": "das-bruno",
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 130
+        },
+        {
+          "id": "rec_aluguel",
+          "householdId": "casa-aurora",
+          "monthId": "2026-09",
+          "type": "despesa",
+          "categoryId": "moradia",
+          "title": "Aluguel",
+          "labelSlug": "aluguel",
+          "amount": {
+            "plannedCents": 210000,
+            "actualCents": 210000
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "bb-conta",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "recorrencia",
+          "recurrenceId": "aluguel",
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": true,
+          "sortHint": 100
+        },
+        {
+          "id": "rec_energia",
+          "householdId": "casa-aurora",
+          "monthId": "2026-09",
+          "type": "despesa",
+          "categoryId": "moradia",
+          "title": "Energia",
+          "labelSlug": "energia",
+          "amount": {
+            "plannedCents": 19870,
+            "actualCents": null
+          },
+          "status": "previsto",
+          "occurredOn": null,
+          "accountId": "bb-conta",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "recorrencia",
+          "recurrenceId": "energia",
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 110
+        },
+        {
+          "id": "rec_internet",
+          "householdId": "casa-aurora",
+          "monthId": "2026-09",
+          "type": "despesa",
+          "categoryId": "moradia",
+          "title": "Internet",
+          "labelSlug": "internet",
+          "amount": {
+            "plannedCents": 11990,
+            "actualCents": 11990
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "nubank-ana",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "recorrencia",
+          "recurrenceId": "internet",
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 120
+        },
+        {
+          "id": "rec_streaming",
+          "householdId": "casa-aurora",
+          "monthId": "2026-09",
+          "type": "despesa",
+          "categoryId": "assinaturas",
+          "title": "Streaming",
+          "labelSlug": "streaming",
+          "amount": {
+            "plannedCents": 10270,
+            "actualCents": 10270
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "nubank-ana",
+          "split": {
+            "mode": "compartilhado",
+            "sharesByPersonId": {
+              "ana": 5000,
+              "bruno": 5000
+            }
+          },
+          "lines": [
+            {
+              "label": "Netflix",
+              "amountCents": 5590,
+              "labelSlug": "netflix",
+              "occurredOn": null,
+              "isRefund": false,
+              "isSettled": true,
+              "note": null,
+              "sortHint": 0
+            },
+            {
+              "label": "Spotify",
+              "amountCents": 2190,
+              "labelSlug": "spotify",
+              "occurredOn": null,
+              "isRefund": false,
+              "isSettled": true,
+              "note": null,
+              "sortHint": 100
+            },
+            {
+              "label": "YouTube Premium",
+              "amountCents": 2490,
+              "labelSlug": "youtube-premium",
+              "occurredOn": null,
+              "isRefund": false,
+              "isSettled": true,
+              "note": null,
+              "sortHint": 200
+            }
+          ],
+          "note": null,
+          "origin": "recorrencia",
+          "recurrenceId": "streaming",
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 200
+        },
+        {
+          "id": "rec_academia-bruno",
+          "householdId": "casa-aurora",
+          "monthId": "2026-09",
+          "type": "despesa",
+          "categoryId": "despesas",
+          "title": "Academia",
+          "labelSlug": "academia",
+          "amount": {
+            "plannedCents": 12990,
+            "actualCents": null
+          },
+          "status": "previsto",
+          "occurredOn": null,
+          "accountId": "itau-bruno",
+          "split": {
+            "mode": "individual",
+            "personId": "bruno",
+            "sharesByPersonId": {
+              "bruno": 10000
+            }
+          },
+          "lines": [],
+          "note": null,
+          "origin": "recorrencia",
+          "recurrenceId": "academia-bruno",
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 210
+        },
+        {
+          "id": "rec_natacao-ana",
+          "householdId": "casa-aurora",
+          "monthId": "2026-09",
+          "type": "despesa",
+          "categoryId": "despesas",
+          "title": "Natação",
+          "labelSlug": "natacao",
+          "amount": {
+            "plannedCents": 18000,
+            "actualCents": 18000
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "pix",
+          "split": {
+            "mode": "individual",
+            "personId": "ana",
+            "sharesByPersonId": {
+              "ana": 10000
+            }
+          },
+          "lines": [],
+          "note": null,
+          "origin": "recorrencia",
+          "recurrenceId": "natacao-ana",
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 220
+        },
+        {
+          "id": "rec_reserva",
+          "householdId": "casa-aurora",
+          "monthId": "2026-09",
+          "type": "patrimonio",
+          "categoryId": "patrimonio",
+          "title": "Reserva de emergência",
+          "labelSlug": "reserva-de-emergencia",
+          "amount": {
+            "plannedCents": 96499,
+            "actualCents": null
+          },
+          "status": "previsto",
+          "occurredOn": null,
+          "accountId": "bb-conta",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "recorrencia",
+          "recurrenceId": "reserva",
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": "cdb-nubank",
+          "counterpartyName": null,
+          "incomePercent": {
+            "rateBasisPoints": 1000,
+            "base": "liquida"
+          },
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 300
+        },
+        {
+          "id": "inst_geladeira_8",
+          "householdId": "casa-aurora",
+          "monthId": "2026-09",
+          "type": "despesa",
+          "categoryId": "despesas",
+          "title": "Geladeira",
+          "labelSlug": "geladeira",
+          "amount": {
+            "plannedCents": 31990,
+            "actualCents": null
+          },
+          "status": "previsto",
+          "occurredOn": null,
+          "accountId": "nubank-ana",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "parcela",
+          "recurrenceId": null,
+          "installmentPlanId": "geladeira",
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": {
+            "number": 8,
+            "total": 10
+          },
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 908
+        },
+        {
+          "id": "inst_celular-bruno_2",
+          "householdId": "casa-aurora",
+          "monthId": "2026-09",
+          "type": "despesa",
+          "categoryId": "despesas",
+          "title": "Celular",
+          "labelSlug": "celular",
+          "amount": {
+            "plannedCents": 20825,
+            "actualCents": null
+          },
+          "status": "previsto",
+          "occurredOn": null,
+          "accountId": "itau-bruno",
+          "split": {
+            "mode": "individual",
+            "personId": "bruno",
+            "sharesByPersonId": {
+              "bruno": 10000
+            }
+          },
+          "lines": [],
+          "note": null,
+          "origin": "parcela",
+          "recurrenceId": null,
+          "installmentPlanId": "celular-bruno",
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": {
+            "number": 2,
+            "total": 12
+          },
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 902
+        },
+        {
+          "id": "2026-09-mercado",
+          "householdId": "casa-aurora",
+          "monthId": "2026-09",
+          "type": "despesa",
+          "categoryId": "mercado",
+          "title": "Mercado",
+          "labelSlug": "mercado",
+          "amount": {
+            "plannedCents": 62990,
+            "actualCents": null,
+            "paidCents": 47590
+          },
+          "status": "parcial",
+          "occurredOn": null,
+          "accountId": "nubank-ana",
+          "split": null,
+          "lines": [
+            {
+              "label": "Supermercado",
+              "amountCents": 39990,
+              "labelSlug": "supermercado",
+              "occurredOn": null,
+              "isRefund": false,
+              "isSettled": true,
+              "note": null,
+              "sortHint": 0
+            },
+            {
+              "label": "Feira",
+              "amountCents": 7600,
+              "labelSlug": "feira",
+              "occurredOn": null,
+              "isRefund": false,
+              "isSettled": true,
+              "note": null,
+              "sortHint": 100
+            },
+            {
+              "label": "Açougue",
+              "amountCents": 15400,
+              "labelSlug": "acougue",
+              "occurredOn": null,
+              "isRefund": false,
+              "note": null,
+              "sortHint": 200
+            }
+          ],
+          "note": null,
+          "origin": "manual",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 500
+        },
+        {
+          "id": "2026-09-farmacia",
+          "householdId": "casa-aurora",
+          "monthId": "2026-09",
+          "type": "despesa",
+          "categoryId": "despesas",
+          "title": "Farmácia",
+          "labelSlug": "farmacia",
+          "amount": {
+            "plannedCents": 9000,
+            "actualCents": null
+          },
+          "status": "previsto",
+          "occurredOn": null,
+          "accountId": "nubank-ana",
+          "split": {
+            "mode": "individual",
+            "personId": "ana",
+            "sharesByPersonId": {
+              "ana": 10000
+            }
+          },
+          "lines": [],
+          "note": null,
+          "origin": "manual",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 510
+        },
+        {
+          "id": "2026-09-combustivel",
+          "householdId": "casa-aurora",
+          "monthId": "2026-09",
+          "type": "despesa",
+          "categoryId": "transporte",
+          "title": "Combustível",
+          "labelSlug": "combustivel",
+          "amount": {
+            "plannedCents": 30000,
+            "actualCents": 30000
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "itau-bruno",
+          "split": {
+            "mode": "individual",
+            "personId": "bruno",
+            "sharesByPersonId": {
+              "bruno": 10000
+            }
+          },
+          "lines": [],
+          "note": null,
+          "origin": "manual",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 520
+        },
+        {
+          "id": "2026-09-show",
+          "householdId": "casa-aurora",
+          "monthId": "2026-09",
+          "type": "despesa",
+          "categoryId": "despesas",
+          "title": "Show",
+          "labelSlug": "show",
+          "amount": {
+            "plannedCents": 24000,
+            "actualCents": null
+          },
+          "status": "cancelado",
+          "occurredOn": null,
+          "accountId": "nubank-ana",
+          "split": null,
+          "lines": [],
+          "note": "Evento cancelado pela produtora",
+          "origin": "manual",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": null,
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 530
+        },
+        {
+          "id": "2026-09-tesouro",
+          "householdId": "casa-aurora",
+          "monthId": "2026-09",
+          "type": "patrimonio",
+          "categoryId": "patrimonio",
+          "title": "Tesouro Selic",
+          "labelSlug": "tesouro-selic",
+          "amount": {
+            "plannedCents": 50000,
+            "actualCents": 50000
+          },
+          "status": "realizado",
+          "occurredOn": null,
+          "accountId": "bb-conta",
+          "split": null,
+          "lines": [],
+          "note": null,
+          "origin": "manual",
+          "recurrenceId": null,
+          "installmentPlanId": null,
+          "withholdingRuleId": null,
+          "incomeSourceId": null,
+          "installment": null,
+          "wealthItemId": "tesouro-selic",
+          "counterpartyName": null,
+          "isLocked": false,
+          "isPinned": false,
+          "sortHint": 600
+        }
+      ],
+      "balances": [
+        {
+          "wealthItemId": "cdb-nubank",
+          "householdId": "casa-aurora",
+          "monthId": "2026-09",
+          "balance": 1235000,
+          "source": "manual",
+          "impliedYield": null,
+          "confirmedAt": null
+        },
+        {
+          "wealthItemId": "tesouro-selic",
+          "householdId": "casa-aurora",
+          "monthId": "2026-09",
+          "balance": 840000,
+          "source": "manual",
+          "impliedYield": null,
+          "confirmedAt": null
+        }
+      ]
+    }
+  ],
+  "years": []
+}

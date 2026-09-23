@@ -17,6 +17,7 @@ qualquer uma delas derruba a ficha de um app em produção — e a revisão das 
 | `/lastro/privacidade/` | App Store Connect e Play Console do Lastro; a `PaywallScreen` do app |
 | `/lastro/termos/` | idem |
 | `/#contato` | URL de suporte na ficha da App Store do Lastro |
+| `/lastro/importar/` | O app do Lastro (Ajustes › Seus dados › "Trazer dados de uma planilha ou de outro app", `AppConfig.importGuideUrl`). Os dois arquivos ao lado dela — `lastro-modelo-para-ia.md` e `lastro-modelo.json` — são **cópias** geradas em `lastro/tools/import-template/`; não edite aqui, regere lá e copie |
 | `/ipi/privacidade/` | Play Console e App Store Connect do IPI App; o link "Política de Privacidade" do app a partir da 1.14.3 |
 | `/app-ads.txt` | **AdMob**: é onde ele confere que o `pub-2322862933504397` pode vender o inventário do Lastro. Sem o arquivo, boa parte dos compradores não dá lance, e o painel avisa. Tem que ser `text/plain` na RAIZ do domínio da ficha, e a ficha diz `orddum.com` |
 | `/` (raiz) | as versões do IPI App **já instaladas** (até a 1.14.1): o link do diálogo "Sobre" delas abre `www.orddum.com`, e vai continuar abrindo por todo o tempo em que alguém não atualizar |
@@ -72,6 +73,7 @@ public/
 │   ├── ipi/{icon,capa}.png       # idem, de ipi_app/store/
 │   └── ipi/screens/*.webp
 ├── lastro/{privacidade,termos}/  # texto legal do Lastro
+├── lastro/importar/              # o modelo de importação para IA (página + .md + .json copiados do app)
 └── ipi/privacidade/              # texto legal do IPI App
 ```
 
