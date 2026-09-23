@@ -1,2 +1,2 @@
-# app-ads.txt — orddum.com (Lastro, AdMob)
+# app-ads.txt - orddum.com (Lastro, AdMob)
 google.com, pub-2322862933504397, DIRECT, f08c47fec0942fa0
