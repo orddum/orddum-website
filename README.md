@@ -61,6 +61,7 @@ public/
 ├── legal.css                     # só o texto corrido das páginas legais
 ├── script.js                     # menu mobile e marcação da seção ativa
 ├── app-ads.txt                   # autorização do AdMob (IAB app-ads.txt), lido pelo Google
+├── robots.txt                    # explícito: sem ele o rewrite ** devolvia a home em HTML no lugar dele
 ├── logo.png  logo_large.png      # material da marca, fundo preto chapado
 ├── img/
 │   ├── logo-mark.png             # os mesmos logos com alfa, para uso na página
