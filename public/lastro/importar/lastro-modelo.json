@@ -151,6 +151,26 @@
         "sortHint": 340
       }
     ],
+    "wealthCategories": [
+      {
+        "id": "investimentos",
+        "name": "Investimentos",
+        "colorValue": 4288314674,
+        "sortHint": 0
+      },
+      {
+        "id": "bens",
+        "name": "Bens",
+        "colorValue": 4286148967,
+        "sortHint": 100
+      },
+      {
+        "id": "cripto",
+        "name": "Cripto",
+        "colorValue": 4284250797,
+        "sortHint": 200
+      }
+    ],
     "firstMonth": "2026-07",
     "lastOpenedMonthId": "2026-09",
     "currencyCode": "BRL",
@@ -666,7 +686,7 @@
       {
         "id": "cdb-nubank",
         "institution": "Nubank",
-        "kind": "dinheiro",
+        "categoryId": "investimentos",
         "description": "CDB 100% do CDI",
         "active": true,
         "closedOnMonth": null,
@@ -677,7 +697,7 @@
       {
         "id": "tesouro-selic",
         "institution": "Tesouro Direto",
-        "kind": "dinheiro",
+        "categoryId": "investimentos",
         "description": "Tesouro Selic 2029",
         "active": true,
         "closedOnMonth": null,
@@ -688,7 +708,7 @@
       {
         "id": "carro",
         "institution": "Carro",
-        "kind": "bem",
+        "categoryId": "bens",
         "description": "Hatch 2021",
         "active": true,
         "closedOnMonth": null,
@@ -697,9 +717,20 @@
         "sortHint": 20
       },
       {
+        "id": "bitcoin",
+        "institution": "Corretora de cripto",
+        "categoryId": "cripto",
+        "description": "Bitcoin",
+        "active": true,
+        "closedOnMonth": null,
+        "lastKnownBalance": 310000,
+        "lastKnownBalanceMonthId": "2026-09",
+        "sortHint": 25
+      },
+      {
         "id": "poupanca-caixa",
         "institution": "Caixa",
-        "kind": "dinheiro",
+        "categoryId": "investimentos",
         "description": "Poupança",
         "active": false,
         "closedOnMonth": "2026-07",
@@ -1619,6 +1650,15 @@
           "householdId": "casa-aurora",
           "monthId": "2026-07",
           "balance": 5800000,
+          "source": "manual",
+          "impliedYield": null,
+          "confirmedAt": null
+        },
+        {
+          "wealthItemId": "bitcoin",
+          "householdId": "casa-aurora",
+          "monthId": "2026-07",
+          "balance": 250000,
           "source": "manual",
           "impliedYield": null,
           "confirmedAt": null
@@ -2550,6 +2590,15 @@
           "source": "manual",
           "impliedYield": null,
           "confirmedAt": null
+        },
+        {
+          "wealthItemId": "bitcoin",
+          "householdId": "casa-aurora",
+          "monthId": "2026-08",
+          "balance": 285000,
+          "source": "manual",
+          "impliedYield": null,
+          "confirmedAt": null
         }
       ]
     },
@@ -3431,6 +3480,15 @@
           "householdId": "casa-aurora",
           "monthId": "2026-09",
           "balance": 840000,
+          "source": "manual",
+          "impliedYield": null,
+          "confirmedAt": null
+        },
+        {
+          "wealthItemId": "bitcoin",
+          "householdId": "casa-aurora",
+          "monthId": "2026-09",
+          "balance": 310000,
           "source": "manual",
           "impliedYield": null,
           "confirmedAt": null

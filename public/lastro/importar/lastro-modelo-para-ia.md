@@ -76,7 +76,9 @@ recusar e que reproduza o que a pessoa tem — nem mais, nem menos.**
 ### O modelo em uma página
 
 - **A casa** (`household`): as pessoas, os meios de pagamento (cartões, conta,
-  Pix, dinheiro, vale) e as categorias de despesa que a pessoa usa.
+  Pix, dinheiro, vale), as categorias de despesa que a pessoa usa e as
+  divisões do patrimônio (`wealthCategories`: Investimentos, Bens, e o que
+  ela criar — Cripto, Previdência…).
 - **O catálogo** (`catalog`): as regras que se repetem — de onde entra
   dinheiro (`income_sources`), o que é retido antes de entrar
   (`withholding_rules`), despesas que voltam todo mês (`recurrences`), compras
@@ -112,7 +114,7 @@ recusar e que reproduza o que a pessoa tem — nem mais, nem menos.**
 | Transferência entre contas da própria pessoa | **não vira lançamento** |
 | Estorno ou reembolso de uma compra | parte negativa (`isRefund: true`) dentro do lançamento da compra; se veio de terceiro e não abate uma compra, `receita` com `counterpartyName` |
 | "3/12", "parc. 3 de 12", "3ª de 12" numa fatura | um `installment_plans` com o cronograma **e** um lançamento `despesa` por mês, com `installment` e `installmentPlanId` |
-| Saldo de investimento num extrato | `wealth_items` (o cadastro, uma vez) + uma `balances` no mês do extrato (a foto) |
+| Saldo de investimento, previdência, cripto ou o valor de um bem | `wealth_items` (o cadastro, uma vez, com o `categoryId` da divisão) + uma `balances` no mês do extrato (a foto) |
 | Aluguel, energia, internet, escola, academia que voltam todo mês | os lançamentos de cada mês **e**, só se ainda estiver valendo hoje, uma `recurrences` |
 | Uma compra com várias linhas no mesmo lugar (mercado três vezes no mês) | um lançamento com `lines` — uma parte por compra —, e o valor é a soma |
 
@@ -192,8 +194,12 @@ qual foi:
   Fonte de renda e retenção, ao contrário, **têm vigência**: uma que acabou
   fica com `endMonth` e `active: false`, porque as receitas antigas continuam
   apontando para ela.
-- **Patrimônio é uma série de fotos.** `wealth_items` é o cadastro; o saldo é
-  sempre uma `balances` num mês. Sem foto num mês, vale a anterior. Uma foto
+- **Patrimônio é uma série de fotos, dividido em categorias.** Todo
+  `wealth_items` aponta para uma `wealthCategories` da casa (`categoryId`);
+  cada categoria é uma seção da lista e uma linha do gráfico, na cor dela.
+  Copie as duas do exemplo (`investimentos`, `bens`) e crie outras só quando
+  a pessoa separa assim (cripto, previdência, imóveis). O saldo é sempre uma
+  `balances` num mês. Sem foto num mês, vale a anterior. Uma foto
   **zero** no mês em que a posição acabou é o que a tira da curva dali em
   diante. `lastKnownBalance` no cadastro é a foto mais recente, repetida.
 - **Percentual da receita** (`incomePercent`): use quando o valor da linha *é*
@@ -236,6 +242,7 @@ basis points; `mês` é `"AAAA-MM"`; `data` é texto ISO 8601; `bool` é
 | `people` | lista | sim | quem pode ser dono de um gasto |
 | `accounts` | lista | sim | os meios de pagamento — **inclui sempre `nenhuma` e `dinheiro`** |
 | `categories` | lista | sim | só as categorias de despesa da pessoa |
+| `wealthCategories` | lista | sim | as divisões do patrimônio; comece pelas duas do exemplo |
 | `firstMonth` | mês | sim | o primeiro mês do histórico |
 | `lastOpenedMonthId` | mês | sim | o mês atual |
 | `currencyCode` | texto | não | `"BRL"` (padrão) |
@@ -250,7 +257,7 @@ basis points; `mês` é `"AAAA-MM"`; `data` é texto ISO 8601; `bool` é
 | `colorValue` | int ARGB | não | cor da pessoa (ver *Cores*); padrão cinza |
 | `isOwner` | bool | não | `true` em uma pessoa; padrão `false` |
 | `active` | bool | não | `false` para quem saiu da casa; padrão `true` |
-| `sortHint` | int | não | ordem de exibição |
+| `sortHint` | int | não | a ordem em que aparece — em Ajustes, no seletor de rateio e em "quem gastou". Passos de 100, como no resto |
 
 #### `accounts[]` — o meio de pagamento
 
@@ -277,6 +284,19 @@ basis points; `mês` é `"AAAA-MM"`; `data` é texto ISO 8601; `bool` é
 | `role` | texto | sim | sempre `"despesa"` |
 | `colorValue` | int ARGB | não | cor da seção |
 | `sortHint` | int | não | ordem entre as seções de despesa; a `Despesas` do app é `300` |
+
+#### `wealthCategories[]` — a divisão do patrimônio
+
+| Campo | Tipo | Obrigatório | Significado |
+|---|---|---|---|
+| `id` | texto | sim | `"investimentos"`, `"bens"`, `"cripto"` |
+| `name` | texto | sim | `"Investimentos"` |
+| `colorValue` | int ARGB | sim | a cor da seção e da linha do gráfico (ver *Cores*) |
+| `sortHint` | int | não | a ordem das seções e das linhas |
+
+O app nasce com `investimentos` e `bens`, e a pessoa pode renomear, recolorir,
+reordenar e apagar as duas. Mantenha-as no arquivo com esses ids, e acrescente
+outras só para o que a pessoa separa de fato.
 
 ### `catalog.income_sources[]` — de onde entra dinheiro
 
@@ -367,7 +387,7 @@ existe; `throughNumber` só numa quitação em bloco (`6-12`).
 |---|---|---|---|
 | `id` | texto | sim | `"cdb-nubank"` |
 | `institution` | texto | sim | `"Nubank"`, `"Tesouro Direto"`, `"Carro"` |
-| `kind` | texto | não | `dinheiro` (investimento: rende e se saca; padrão) · `bem` (vale, mas tem de vender) |
+| `categoryId` | texto | sim | o `id` de uma `wealthCategories` da casa: `"investimentos"` (rende e se saca), `"bens"` (vale, mas tem de vender), ou uma criada |
 | `description` | texto | não | o que distingue: `"CDB 100% do CDI"` |
 | `active` | bool | não | `false` quando liquidado; padrão `true` |
 | `closedOnMonth` | mês | não | mês em que acabou — e ponha uma foto **zero** nesse mês |
@@ -509,8 +529,10 @@ A **Casa Aurora**: Ana (dona da conta) e Bruno. Três meses — julho e agosto d
   (reserva) e **anual ancorada em março** (IPVA);
 - **um parcelamento no meio da série** (geladeira: 6ª de 10 em julho) e outro
   com **total combinado e centavo de sobra** (celular);
-- **quatro peças de patrimônio**: dois investimentos, um bem com uma foto só e
-  uma poupança **encerrada com a foto zero** em julho;
+- **cinco peças de patrimônio em três categorias**: dois investimentos, um bem
+  com uma foto só, um bitcoin na categoria **Cripto** que a casa criou (a
+  terceira linha do gráfico) e uma poupança **encerrada com a foto zero** em
+  julho;
 - em **julho**: uma receita eventual, a **conta escrita no campo**
   (`amountExpression`), uma compra no **cartão encerrado**;
 - em **agosto**: um reembolso que **não entrou**, um conserto **pago em
@@ -658,6 +680,26 @@ A **Casa Aurora**: Ana (dona da conta) e Bruno. Três meses — julho e agosto d
         "role": "despesa",
         "colorValue": 4282262854,
         "sortHint": 340
+      }
+    ],
+    "wealthCategories": [
+      {
+        "id": "investimentos",
+        "name": "Investimentos",
+        "colorValue": 4288314674,
+        "sortHint": 0
+      },
+      {
+        "id": "bens",
+        "name": "Bens",
+        "colorValue": 4286148967,
+        "sortHint": 100
+      },
+      {
+        "id": "cripto",
+        "name": "Cripto",
+        "colorValue": 4284250797,
+        "sortHint": 200
       }
     ],
     "firstMonth": "2026-07",
@@ -1135,7 +1177,7 @@ A **Casa Aurora**: Ana (dona da conta) e Bruno. Três meses — julho e agosto d
       {
         "id": "cdb-nubank",
         "institution": "Nubank",
-        "kind": "dinheiro",
+        "categoryId": "investimentos",
         "description": "CDB 100% do CDI",
         "active": true,
         "lastKnownBalance": 1235000,
@@ -1145,7 +1187,7 @@ A **Casa Aurora**: Ana (dona da conta) e Bruno. Três meses — julho e agosto d
       {
         "id": "tesouro-selic",
         "institution": "Tesouro Direto",
-        "kind": "dinheiro",
+        "categoryId": "investimentos",
         "description": "Tesouro Selic 2029",
         "active": true,
         "lastKnownBalance": 840000,
@@ -1155,7 +1197,7 @@ A **Casa Aurora**: Ana (dona da conta) e Bruno. Três meses — julho e agosto d
       {
         "id": "carro",
         "institution": "Carro",
-        "kind": "bem",
+        "categoryId": "bens",
         "description": "Hatch 2021",
         "active": true,
         "lastKnownBalance": 5800000,
@@ -1163,9 +1205,19 @@ A **Casa Aurora**: Ana (dona da conta) e Bruno. Três meses — julho e agosto d
         "sortHint": 20
       },
       {
+        "id": "bitcoin",
+        "institution": "Corretora de cripto",
+        "categoryId": "cripto",
+        "description": "Bitcoin",
+        "active": true,
+        "lastKnownBalance": 310000,
+        "lastKnownBalanceMonthId": "2026-09",
+        "sortHint": 25
+      },
+      {
         "id": "poupanca-caixa",
         "institution": "Caixa",
-        "kind": "dinheiro",
+        "categoryId": "investimentos",
         "description": "Poupança",
         "active": false,
         "closedOnMonth": "2026-07",
@@ -1697,6 +1749,13 @@ A **Casa Aurora**: Ana (dona da conta) e Bruno. Três meses — julho e agosto d
           "householdId": "casa-aurora",
           "monthId": "2026-07",
           "balance": 5800000,
+          "source": "manual"
+        },
+        {
+          "wealthItemId": "bitcoin",
+          "householdId": "casa-aurora",
+          "monthId": "2026-07",
+          "balance": 250000,
           "source": "manual"
         },
         {
@@ -2242,6 +2301,13 @@ A **Casa Aurora**: Ana (dona da conta) e Bruno. Três meses — julho e agosto d
           "monthId": "2026-08",
           "balance": 785000,
           "source": "manual"
+        },
+        {
+          "wealthItemId": "bitcoin",
+          "householdId": "casa-aurora",
+          "monthId": "2026-08",
+          "balance": 285000,
+          "source": "manual"
         }
       ]
     },
@@ -2744,6 +2810,13 @@ A **Casa Aurora**: Ana (dona da conta) e Bruno. Três meses — julho e agosto d
           "monthId": "2026-09",
           "balance": 840000,
           "source": "manual"
+        },
+        {
+          "wealthItemId": "bitcoin",
+          "householdId": "casa-aurora",
+          "monthId": "2026-09",
+          "balance": 310000,
+          "source": "manual"
         }
       ]
     }
@@ -2762,6 +2835,7 @@ A **Casa Aurora**: Ana (dona da conta) e Bruno. Três meses — julho e agosto d
 - [ ] Toda `categoryId` citada é uma das quatro do app ou está em
       `household.categories`; nenhuma das quatro está em `categories`.
 - [ ] Todo `personId`/`sharesByPersonId` cita uma pessoa de `people`.
+- [ ] Todo `categoryId` de `wealth_items` está em `household.wealthCategories`.
 - [ ] Cada mês tem `id`, `ref`, `householdId` e `monthId` coerentes; ids de
       lançamento únicos no mês.
 - [ ] `status` e `actualCents`/`paidCents` combinam (tabela de `amount`).
