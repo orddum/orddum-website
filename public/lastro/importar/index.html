@@ -18,8 +18,15 @@
   <link rel="stylesheet" href="/legal.css">
   <link rel="icon" type="image/png" href="/img/logo-mark.png">
   <style>
-    /* Só o que esta página tem e as legais não: os dois botões de download. */
+    /* Só o que esta página tem e as legais não: os dois botões de download.
+       `.legal-main a` pinta todo link de bege e o sublinha — e vence o
+       `.btn-primary` por especificidade, o que deixava texto bege sobre fundo
+       bege. Os botões precisam da cor deles de volta. */
     .download-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1.5rem 0 0.5rem; }
+    .legal-main .download-row a.btn { text-decoration: none; }
+    .legal-main .download-row a.btn-primary { color: #000; }
+    .legal-main .download-row a.btn-secondary { color: var(--text); }
+    .legal-main .download-row a.btn-secondary:hover { color: var(--shell); }
     .download-meta { font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-faint); margin: 0 0 2rem; }
     .steps { counter-reset: passo; list-style: none; padding: 0; margin: 1rem 0 1.5rem; }
     .steps li { position: relative; padding-left: 2.6rem; margin-bottom: 1rem; }
