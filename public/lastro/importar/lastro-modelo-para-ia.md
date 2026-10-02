@@ -201,7 +201,9 @@ qual foi:
   a pessoa separa assim (cripto, previdência, imóveis). O saldo é sempre uma
   `balances` num mês. Sem foto num mês, vale a anterior. Uma foto
   **zero** no mês em que a posição acabou é o que a tira da curva dali em
-  diante. `lastKnownBalance` no cadastro é a foto mais recente, repetida.
+  diante. `lastKnownBalance` no cadastro é a foto mais recente, repetida — e
+  só isso: o app não o lê para mostrar saldo. Posição sem nenhuma `balances`
+  aparece sem saldo, por maior que seja o `lastKnownBalance`.
 - **Percentual da receita** (`incomePercent`): use quando o valor da linha *é*
   uma alíquota sobre a receita do mês (dízimo, reserva de 10%). O
   `plannedCents` é o que a alíquota deu **naquele** mês.
@@ -391,7 +393,7 @@ existe; `throughNumber` só numa quitação em bloco (`6-12`).
 | `description` | texto | não | o que distingue: `"CDB 100% do CDI"` |
 | `active` | bool | não | `false` quando liquidado; padrão `true` |
 | `closedOnMonth` | mês | não | mês em que acabou — e ponha uma foto **zero** nesse mês |
-| `lastKnownBalance` | cents | não | a foto mais recente, repetida aqui |
+| `lastKnownBalance` | cents | não | a foto mais recente, repetida aqui — **não substitui** a `balances` |
 | `lastKnownBalanceMonthId` | mês | não | de que mês é essa foto |
 | `sortHint` | int | não | ordem |
 
