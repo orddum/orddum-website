@@ -75,18 +75,28 @@ public/
 │   ├── lastro/{icon,capa}.png    # ícone e feature graphic, de lastro/store/
 │   ├── lastro/screens/*.webp     # as 6 capturas da App Store, reduzidas
 │   ├── ipi/{icon,capa}.png       # idem, de ipi_app/store/
-│   └── ipi/screens/*.webp
+│   ├── ipi/screens/*.webp
+│   ├── ararinha/{icon,capa}.png  # idem, de ararinha/store/
+│   └── ararinha/screens/*.webp
 ├── lastro/{privacidade,termos}/  # texto legal do Lastro
 ├── ordinal/{privacidade,termos}/ # texto legal do Ordinal (versão provisória)
 ├── lastro/importar/              # o modelo de importação para IA (página + .md + .json copiados do app)
-└── ipi/privacidade/              # texto legal do IPI App
+├── ipi/privacidade/              # texto legal do IPI App
+├── ararinha/privacidade/         # texto legal do Ararinha (canônico em ararinha/docs/)
+└── sinete/privacidade/           # texto legal do Sinete (canônico em sinete/docs/)
 ```
 
 As imagens dos apps são **cópias**. Cada app tem vitrine própria na home
-(`#lastro` e `#ipi`), e quem gera essas imagens é o repositório do app — o
+(`#lastro`, `#ipi` e `#ararinha`), e quem gera essas imagens é o repositório do app — o
 passo que as copia para cá está no `store/README.md` de cada um. Não edite nem
-regere nada de `img/lastro/` ou `img/ipi/` por aqui: este repositório é o site,
+regere nada de `img/<app>/` por aqui: este repositório é o site,
 e o que ele sabe sobre um app é só onde a imagem dele mora.
+
+**Quando um app entra aqui:** a política antes do primeiro envio a qualquer
+trilha das lojas (com a linha na tabela de URLs acima); o cartão e a vitrine
+quando a ficha fica pública. O passo a passo é da empresa, não deste
+repositório: `flutter-app-kit/docs/conformidade.md` § O site, conferido pelo
+`scripts/kit-audit.py` do kit.
 
 ## Rodar local
 
