@@ -19,6 +19,7 @@ qualquer uma delas derruba a ficha de um app em produção — e a revisão das 
 | `/#contato` | URL de suporte na ficha da App Store do Lastro |
 | `/lastro/importar/` | O app do Lastro (Ajustes › Seus dados › "Trazer dados de uma planilha ou de outro app", `AppConfig.importGuideUrl`). Os dois arquivos ao lado dela — `lastro-modelo-para-ia.md` e `lastro-modelo.json` — são **cópias** geradas em `lastro/tools/import-template/`; não edite aqui, regere lá e copie |
 | `/ipi/privacidade/` | Play Console e App Store Connect do IPI App; o link "Política de Privacidade" do app a partir da 1.14.3. A âncora `#exclusao` é a URL de exclusão de conta (Play › Segurança dos dados). Canônico: `ipi_app/docs/politica-de-privacidade.md` |
+| `/ipi/termos/` | O app IPI a partir da 1.15 (`AppConfig.termsOfUse`): cadastro, tela de aceite, Configurações › Privacidade e "Sobre"; o aceite pede a versão 1 (`LegalVersions.terms`). Canônico: `ipi_app/docs/termos-de-uso.md` |
 | `/ordinal/privacidade/` | `AppConfig.privacyPolicyUrl` e o aceite LGPD do app Ordinal; URL de privacidade e de exclusão de dados (âncora `#exclusao`) nas fichas das duas lojas |
 | `/ordinal/termos/` | `AppConfig.termsOfUseUrl` do Ordinal |
 | `/ararinha/privacidade/` | Play Console e App Store Connect do Ararinha (`AppConfig.privacyPolicyUrl`); o mesmo texto está dentro do app, na área dos adultos. Canônico: `ararinha/docs/politica-de-privacidade.md` |
@@ -81,7 +82,7 @@ public/
 ├── lastro/{privacidade,termos}/  # texto legal do Lastro
 ├── ordinal/{privacidade,termos}/ # texto legal do Ordinal (versão provisória)
 ├── lastro/importar/              # o modelo de importação para IA (página + .md + .json copiados do app)
-├── ipi/privacidade/              # texto legal do IPI App
+├── ipi/{privacidade,termos}/     # texto legal do IPI App (canônico em ipi_app/docs/)
 ├── ararinha/privacidade/         # texto legal do Ararinha (canônico em ararinha/docs/)
 └── sinete/privacidade/           # texto legal do Sinete (canônico em sinete/docs/)
 ```
