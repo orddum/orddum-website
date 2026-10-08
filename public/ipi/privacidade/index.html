@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Política de Privacidade — IPI App | Orddum</title>
   <meta name="description"
-    content="Política de privacidade do IPI App, o aplicativo da Igreja Presbiteriana de Itabira: o que a conta guarda, a ficha de membro, quem vê o quê e como excluir a conta.">
+    content="Política de privacidade do IPI App, o aplicativo da Igreja Presbiteriana de Itabira: o que a conta guarda, a ficha de membro, a autorização da área de membros, quem vê o quê e como excluir a conta.">
   <meta name="theme-color" content="#000000">
   <link rel="canonical" href="https://orddum.com/ipi/privacidade/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,9 +20,14 @@
 </head>
 
 <!--
-  Texto canônico: ipi_app/docs/politica-de-privacidade.md (versão 3,
-  06/10/2026). Esta página é a publicação dele — mude lá primeiro, depois aqui,
-  e as declarações das lojas pela tabela de manutenção de lá.
+  Texto canônico: ipi_app/docs/politica-de-privacidade.md (versão 4,
+  07/10/2026). Esta página é a publicação dele — mude lá primeiro, depois aqui,
+  e as declarações das lojas pela tabela de manutenção de lá. A versão 4 é a
+  que o app pede para aceitar (LegalVersions.privacy == "4").
+
+  Publicada em 08/10/2026 (decisão do Luiz, sem a revisão do advogado): CNPJ do
+  cartão CNPJ, encarregado só como canal. O purge dos autodesativados (item 8)
+  ainda não rodou — o canônico, em "Antes de publicar a versão 4", diz por quê.
 
   A URL não muda: está na Play Console, no App Store Connect e no app
   (AppConfig.privacyPolicy). A âncora #exclusao é a URL de exclusão de conta.
@@ -42,31 +47,37 @@
   <main class="legal-main">
     <p class="legal-kicker">IPI App</p>
     <h1>Política de Privacidade</h1>
-    <p class="legal-updated">Última atualização: 6 de outubro de 2026 · versão 3</p>
+    <p class="legal-updated">Última atualização: 7 de outubro de 2026 · versão 4</p>
 
     <div class="legal-callout">
       <p><strong>Resumo.</strong> O IPI App é o aplicativo da Igreja Presbiteriana de Itabira, feito pela Orddum. Sem
         conta, você lê o conteúdo da igreja sem nos dar nenhum dado pessoal. Com conta, guardamos o seu cadastro para
-        você entrar e usar a área de membros. A sua <strong>ficha de membro</strong> é do rol da igreja: ela é registrada
-        e mantida pela secretaria, e continua no rol se você apagar a conta. Você pode <strong>excluir a conta</strong>
-        pelo próprio app, em Perfil › Excluir conta.</p>
+        você entrar e usar a área de membros. A sua <strong>ficha de membro</strong> é do rol da igreja: ela é
+        registrada e mantida pela secretaria, e continua no rol se você apagar a conta. Ser membro revela a sua fé, um
+        dado sensível: o app só usa essa informação para abrir a área de membros se você autorizar, e você desfaz quando
+        quiser. Você pode <strong>excluir a conta</strong> pelo próprio app, em Perfil › Excluir conta. O uso do app
+        também segue os <a href="/ipi/termos/">Termos de Uso</a>.</p>
     </div>
 
     <h2>1. Quem somos</h2>
-    <p>O app é desenvolvido e operado pela <strong>Orddum Serviços de Tecnologia LTDA</strong>, de Itabira (MG), para a
-      <strong>Igreja Presbiteriana de Itabira</strong> (CNPJ 16.891.277/0001-91).</p>
+    <p>O app é desenvolvido e operado pela <strong>Orddum Serviços de Tecnologia LTDA</strong> (CNPJ 42.816.497/0001-60), de Itabira (MG), para a <strong>Igreja Presbiteriana de Itabira</strong> (CNPJ
+      16.891.277/0001-91).</p>
     <ul>
       <li><strong>A Orddum</strong> decide sobre a conta do app, as notificações e as estatísticas de uso. Para esses
         dados, ela é a controladora.</li>
-      <li><strong>A Igreja</strong> decide sobre o rol de membros, ou seja, a ficha de membro, e sobre os registros das
-        atividades dela: inscrições em eventos, biblioteca, escalas e pedidos de oração. Para esses dados, a
+      <li><strong>A Igreja</strong> decide sobre o rol de membros, ou seja, a ficha de membro, e sobre os registros
+        das atividades dela: inscrições em eventos, biblioteca, escalas e pedidos de oração. Para esses dados, a
         controladora é a Igreja; a Orddum guarda e processa em nome dela.</li>
     </ul>
-    <p>Pedidos e dúvidas sobre privacidade, inclusive sobre a ficha:
-      <a href="mailto:luiz.gonzaga@orddum.com">luiz.gonzaga@orddum.com</a>. Respondemos em até 15 dias e, quando o
-      assunto é da Igreja, encaminhamos à secretaria.</p>
+    <p>Pedidos e dúvidas sobre privacidade, inclusive sobre a ficha: <strong><a
+      href="mailto:luiz.gonzaga@orddum.com">luiz.gonzaga@orddum.com</a></strong>, que é o <strong>canal do
+      encarregado</strong> pelo tratamento de dados pessoais (LGPD, art. 41). Respondemos em até 15 dias e, quando o assunto é da Igreja, encaminhamos à secretaria. A secretaria
+      da Igreja, para o rol e a ficha: <a
+      href="mailto:igrejapresbiterianadeitabira@gmail.com">igrejapresbiterianadeitabira@gmail.com</a> · (31)
+      3834-5026.</p>
 
     <h2>2. O que o app guarda, e de onde vem</h2>
+
     <h3>2.1 A sua conta (você informa no cadastro)</h3>
     <p>Nome, data de nascimento, telefone, e-mail e senha. Nos servidores, a senha fica só com o serviço de login
       (Firebase Authentication), que não a mostra a ninguém; no aparelho, veja o item 6. Junto com a conta ficam:</p>
@@ -74,10 +85,13 @@
       <li>o seu papel no app (visitante, membro, gestor de alguma área ou administrador);</li>
       <li>se a conta está ligada a uma ficha de membro;</li>
       <li>os hinos que você favoritou e os vídeos do Acervo que marcou como assistidos;</li>
-      <li>o código do seu aparelho para notificações.</li>
+      <li>o código do seu aparelho para notificações;</li>
+      <li>o registro de que você aceitou os Termos de Uso e esta Política (as versões, a data e a hora do servidor, a
+        versão do app e o sistema do aparelho) e, se você respondeu, a autorização da área de membros (sim ou não, com a
+        data).</li>
     </ul>
-    <p>No Perfil você pode completar o cadastro, se quiser, com sexo, naturalidade, endereço, estado civil, cônjuge, data
-      de casamento, filhos, nomes do pai e da mãe, escolaridade e profissão.</p>
+    <p>No Perfil você pode completar o cadastro, se quiser, com sexo, naturalidade, endereço, estado civil, cônjuge,
+      data de casamento, filhos, nomes do pai e da mãe, escolaridade e profissão.</p>
 
     <h3>2.2 A sua ficha de membro (a secretaria registra)</h3>
     <p>É o registro da Igreja. Tem os mesmos dados pessoais acima, quando informados à Igreja, e os dados
@@ -89,30 +103,40 @@
       <li>os ministérios em que você serve.</li>
     </ul>
     <p>Ser membro de uma igreja revela convicção religiosa, que a LGPD trata como <strong>dado pessoal
-        sensível</strong>. As fichas vieram dos registros que a Igreja já tinha e são mantidas pela secretaria. Quando a
-      sua conta é ligada à sua ficha, você pode ver a sua ficha no Perfil e corrigir os dados pessoais dela; os dados
-      eclesiásticos só a secretaria altera.</p>
+      sensível</strong>. As fichas vieram dos registros que a Igreja já tinha e são mantidas pela secretaria. Quando a
+      sua conta é ligada à sua ficha, você pode corrigir no Perfil os dados pessoais dela; os dados eclesiásticos só a
+      secretaria altera, e o app os mostra no Perfil quando você autoriza a área de membros (item 2.5).</p>
 
     <h3>2.3 O que você faz no app</h3>
     <ul>
-      <li><strong>Inscrições em eventos</strong> (por exemplo, o acampamento): as respostas do formulário, que podem
-        incluir nome, idade, telefone, período e forma de pagamento. Quando você está logado, ficam ligadas à sua conta, e
-        os campos podem vir preenchidos com o seu cadastro. Também dá para se inscrever sem conta.</li>
+      <li><strong>Inscrições em eventos</strong> (por exemplo, o acampamento): as respostas que cada formulário pede,
+        por exemplo nome, idade, telefone, período e forma de pagamento. Quando você está logado, ficam ligadas à sua
+        conta, e os campos podem vir preenchidos com o seu cadastro. Também dá para se inscrever sem conta.</li>
       <li><strong>Favoritos e vídeos assistidos</strong>, como no item 2.1.</li>
     </ul>
 
     <h3>2.4 Registros da Igreja em que o seu nome pode aparecer</h3>
     <ul>
       <li><strong>Empréstimos da biblioteca:</strong> nome e telefone de quem pegou o livro, datas e o nome de quem
-        registrou. O app mostra os empréstimos só para quem administra a biblioteca.</li>
-      <li><strong>Escalas</strong> (louvor, diaconia, multimídia): o nome de quem serve, visível para quem está
-        logado.</li>
-      <li><strong>Grupos e Equipe ministerial:</strong> nome e telefone de contato dos líderes, que a liderança publica
-        para que as pessoas os encontrem. Visíveis para todos.</li>
-      <li><strong>Pedidos de oração:</strong> texto escrito pela liderança, visível só para membros com a conta ligada à
-        ficha. Deixa de aparecer na data de validade, quando há uma.</li>
+        registrou. Visíveis só para quem administra a biblioteca.</li>
+      <li><strong>Escalas</strong> (louvor, diaconia, multimídia): o nome de quem serve, visível para membros com a
+        conta ligada à ficha e para quem monta as escalas. A partir da versão 1.15, o app abre as escalas só para quem
+        autorizou a área de membros.</li>
+      <li><strong>Grupos e Equipe ministerial:</strong> nome e telefone de contato dos líderes, que a liderança
+        publica, com a autorização de cada líder, para que as pessoas os encontrem. Visíveis para todos.</li>
+      <li><strong>Pedidos de oração:</strong> texto escrito pela liderança <strong>com a autorização de quem
+        pediu</strong> (ou do responsável), sem detalhes de saúde; a partir da versão 1.15, quem escreve declara essa
+        autorização no app a cada pedido. Visíveis para membros com a conta ligada à ficha e, a partir da versão 1.15,
+        só para quem autorizou a área de membros. Deixam de aparecer na data de validade, quando há uma.</li>
       <li><strong>Autoria de alterações:</strong> os registros guardam o nome de quem os criou ou alterou no app.</li>
     </ul>
+
+    <h3>2.5 A área de membros (só com a sua autorização)</h3>
+    <p>A partir da versão 1.15, o app pergunta, em separado e sem a resposta vir marcada, se você autoriza o uso da
+      informação de que é membro da Igreja para abrir a área de membros: pedidos de oração, escalas, os dados
+      eclesiásticos da sua ficha no Perfil e os avisos para membros. Sem a autorização, a sua conta funciona como a de
+      um visitante, e a sua ficha continua no rol: a ficha é da Igreja (item 4) e não depende dessa resposta. Você dá ou
+      desfaz a autorização quando quiser, em Configurações › Privacidade.</p>
 
     <h2>3. O que os serviços técnicos recebem</h2>
     <p>O app usa serviços do Google Firebase, sem nenhum anúncio:</p>
@@ -121,39 +145,53 @@
       <li><strong>Firestore:</strong> o banco de dados.</li>
       <li><strong>Storage:</strong> as imagens de avisos, boletins e capas de livros. Nenhuma foto sua.</li>
       <li><strong>Cloud Messaging:</strong> as notificações.</li>
-      <li><strong>Cloud Functions:</strong> a exclusão de conta, o envio de notificações e a lista de nomes para montar
-        as escalas.</li>
+      <li><strong>Cloud Functions:</strong> a exclusão de conta, o envio de notificações e a lista de nomes para
+        montar as escalas.</li>
     </ul>
     <p>Dois desses serviços coletam por conta própria, e só na versão publicada do app:</p>
     <ul>
       <li><strong>Google Analytics:</strong> as telas abertas e os botões tocados, com o seu identificador interno de
-        conta e o seu papel no app quando você está logado. Serve para saber o que é usado. Não recebe e-mail nem
-        telefone. O botão tocado vai com o texto dele; até a versão 1.14.3, na tela em que a liderança monta uma
-        escala, tocar no nome de um membro mandava esse nome. A versão seguinte corrige isso.</li>
+        conta quando você está logado e aceitou estes textos, e se a conta é de gestor, de administrador ou outra. Serve
+        para saber o que é usado. Não recebe nome, e-mail nem telefone, nem se você é membro. Também conta, sem dado
+        pessoal, quantos aceites e autorizações da área de membros acontecem. Até a versão 1.14.3, ia o papel no app
+        (inclusive "membro"), e, na tela em que a liderança monta uma escala, tocar no nome de um membro mandava esse
+        nome. A versão 1.15 corrige as duas coisas.</li>
       <li><strong>Crashlytics:</strong> quando o app trava, envia o relatório técnico do erro (modelo e sistema do
         aparelho, versão do app, onde o código falhou), sem identificar você.</li>
     </ul>
     <p>Outros serviços veem só o endereço IP da conexão, como em qualquer acesso à internet:</p>
     <ul>
       <li>o servidor da <strong>Rádio IPB</strong>, quando você toca a rádio;</li>
-      <li>o <strong>YouTube</strong>, pelas miniaturas dos vídeos do Acervo. O vídeo abre no app ou no site do YouTube,
-        sob a política do Google.</li>
+      <li>o <strong>YouTube</strong>, pelas miniaturas dos vídeos do Acervo. O vídeo abre no app ou no site do
+        YouTube, sob a política do Google.</li>
       <li>as <strong>lojas de aplicativos</strong>, quando o app confere se há versão nova.</li>
     </ul>
-    <p>Quem cadastra livros na biblioteca envia o ISBN, o título e o autor ao Google Books e à Open Library, para buscar
-      os dados do livro. Nenhum dado pessoal vai junto.</p>
+    <p>Quem cadastra livros na biblioteca envia o ISBN, o título e o autor ao Google Books e à Open Library, para
+      buscar os dados do livro. Nenhum dado pessoal vai junto.</p>
     <p><strong>Não vendemos dados, não mostramos anúncios e não rastreamos você em outros apps ou sites.</strong></p>
 
     <h2>4. Para que usamos, e com qual base legal</h2>
     <ul>
-      <li><strong>Criar e manter a sua conta e o acesso por papel</strong> (item 2.1): execução do serviço que você
-        pediu (LGPD, art. 7º, V).</li>
-      <li><strong>Manter o rol de membros da Igreja</strong> (item 2.2): exercício regular de direitos da Igreja como
-        organização religiosa (art. 11, II, d).</li>
-      <li><strong>Inscrições em eventos</strong> (item 2.3): execução do que você pediu (art. 7º, V); para criança, a
-        inscrição é feita pelo responsável (art. 14).</li>
-      <li><strong>Biblioteca, escalas, pedidos de oração e contatos de líderes</strong> (item 2.4): legítimo interesse
-        da Igreja em organizar as suas atividades (art. 7º, IX).</li>
+      <li><strong>Criar e manter a sua conta e o acesso por papel</strong> (conta, item 2.1): execução do serviço que
+        você pediu (art. 7º, V).</li>
+      <li><strong>Registrar o seu aceite dos Termos e a ciência desta Política</strong> (versões, data, versão do
+        app): cumprimento da obrigação de comprovar (art. 7º, II, e art. 8º, § 2º) e exercício regular de direitos (art.
+        7º, VI).</li>
+      <li><strong>Área de membros: abrir pedidos de oração, escalas, os dados eclesiásticos no Perfil e os avisos para
+        membros</strong> (a condição de membro): <strong>consentimento específico</strong> (art. 11, I), revogável em
+        Configurações › Privacidade.</li>
+      <li><strong>Manter o rol de membros da Igreja</strong> (ficha, item 2.2): exercício regular de direitos da
+        Igreja como organização religiosa (art. 11, II, d).</li>
+      <li><strong>Inscrições em eventos</strong> (respostas do formulário, item 2.3): execução do que você pediu (art.
+        7º, V); para criança, a inscrição é feita pelo responsável (art. 14).</li>
+      <li><strong>Pedidos de oração</strong> (texto, item 2.4): <strong>consentimento de quem pediu</strong>, colhido
+        pela liderança (art. 11, I).</li>
+      <li><strong>Escalas</strong> (nome de quem serve, item 2.4): exercício regular de direitos da Igreja na
+        organização das suas atividades (art. 11, II, d).</li>
+      <li><strong>Contatos de líderes</strong> (nome e telefone, item 2.4): consentimento de cada líder (art. 7º,
+        I).</li>
+      <li><strong>Biblioteca</strong> (empréstimos, item 2.4): legítimo interesse da Igreja em organizar a biblioteca
+        (art. 7º, IX).</li>
       <li><strong>Notificações</strong> (código do aparelho): legítimo interesse (art. 7º, IX); você pode desligar nas
         configurações do aparelho ou do app.</li>
       <li><strong>Estatísticas de uso e relatórios de falha</strong> (item 3): legítimo interesse em manter o app
@@ -166,15 +204,18 @@
       <li><strong>A sua ficha:</strong> você, quando a conta está ligada a ela, e os administradores.</li>
       <li><strong>As suas inscrições:</strong> você e os administradores.</li>
       <li><strong>Os registros do item 2.4:</strong> o público descrito em cada linha.</li>
+      <li><strong>Quem gerencia uma área</strong> vê os dados daquela área: por exemplo, quem administra a biblioteca
+        vê os empréstimos, e quem monta as escalas vê os nomes de quem pode servir.</li>
     </ul>
-    <p>Os administradores são pessoas da liderança da Igreja designadas no app. Não compartilhamos dados com ninguém fora
-      da Igreja e da Orddum, além dos serviços do item 3 e do que a lei exigir.</p>
+    <p>Os administradores e os gestores são pessoas da liderança da Igreja designadas no app. Não compartilhamos dados
+      com ninguém fora da Igreja e da Orddum, além dos serviços do item 3 e do que a lei exigir.</p>
 
     <h2>6. No seu aparelho</h2>
     <ul>
-      <li><strong>A sessão:</strong> e-mail, senha e o seu cadastro, para você continuar conectado. Fica no
-        armazenamento seguro do sistema (Keychain no iPhone, Keystore no Android) e é apagada quando você sai da
-        conta.</li>
+      <li><strong>A sessão:</strong> o seu e-mail e o seu cadastro (com o registro do aceite), para você continuar
+        conectado. Fica no armazenamento seguro do sistema (Keychain no iPhone, Keystore no Android) e é apagada quando
+        você sai da conta. Até a versão 1.14.3, a senha também ficava guardada ali; a versão 1.15 a apaga na primeira
+        vez que abre.</li>
       <li><strong>Na mesma área segura:</strong> os favoritos, o tema e os canais de notificação.</li>
       <li><strong>Uma cópia do conteúdo da Igreja</strong> (avisos, boletins, agenda, biblioteca e o resto), com as
         imagens, para o app abrir rápido e funcionar sem internet.</li>
@@ -182,13 +223,15 @@
     <p>Desinstalar o app apaga tudo isso.</p>
 
     <h2>7. Onde fica e por quanto tempo</h2>
-    <p>Os dados ficam nos servidores do Google Cloud, que podem estar fora do Brasil, inclusive nos Estados Unidos, com
-      as garantias contratuais do Google (LGPD, art. 33).</p>
+    <p>Os dados ficam nos servidores do Google Cloud, que podem estar fora do Brasil, inclusive nos Estados Unidos,
+      com as garantias contratuais do Google (LGPD, art. 33).</p>
     <ul>
       <li><strong>Conta:</strong> enquanto ela existir; ao excluir, é apagada na hora (item 8).</li>
+      <li><strong>Registro do aceite e da autorização da área de membros:</strong> enquanto a conta existir; sai junto
+        com ela.</li>
       <li><strong>Ficha de membro:</strong> enquanto fizer parte do rol, conforme as regras da Igreja.</li>
-      <li><strong>Inscrições:</strong> enquanto a Igreja precisar delas para o evento e a prestação de contas; a pedido,
-        removemos o seu nome.</li>
+      <li><strong>Inscrições:</strong> enquanto a Igreja precisar delas para o evento e a prestação de contas; a
+        pedido, removemos o seu nome.</li>
       <li><strong>Empréstimos:</strong> o histórico da biblioteca; a pedido, removemos o seu nome dos empréstimos já
         devolvidos.</li>
       <li><strong>Estatísticas de uso:</strong> no máximo 14 meses, no Google Analytics.</li>
@@ -196,17 +239,23 @@
     </ul>
 
     <h2 id="exclusao">8. Como excluir a sua conta</h2>
-    <p><strong>No app:</strong> Perfil › <strong>Excluir conta</strong>. A tela mostra o que sai e o que fica, e pede a
-      sua senha para confirmar. A exclusão é imediata e não pode ser desfeita.</p>
-    <p><strong>Sem o app:</strong> escreva para <a href="mailto:luiz.gonzaga@orddum.com">luiz.gonzaga@orddum.com</a> a
-      partir do e-mail da conta, pedindo a exclusão. Fazemos em até 15 dias e confirmamos por e-mail.</p>
+    <p><strong>No app</strong> (a partir da versão 1.15): Perfil › <strong>Excluir conta</strong>, ou Configurações ›
+      Privacidade › Excluir conta, ou a partir da tela que pede o aceite destes textos, sem precisar aceitá-los. A tela
+      mostra o que sai e o que fica, e pede a sua senha para confirmar. A exclusão é imediata e não pode ser
+      desfeita.</p>
+    <p><strong>Sem o app:</strong> escreva para <strong><a
+      href="mailto:luiz.gonzaga@orddum.com">luiz.gonzaga@orddum.com</a></strong> a partir do e-mail da conta, pedindo a
+      exclusão. Fazemos em até 15 dias e confirmamos por e-mail.</p>
     <p><strong>O que é apagado:</strong></p>
     <ul>
-      <li>o login (e-mail e senha) e o cadastro da conta, com papel, favoritos, vídeos assistidos e o código do aparelho
-        para notificações;</li>
+      <li>o login (e-mail e senha) e o cadastro da conta, com papel, favoritos, vídeos assistidos e o código do
+        aparelho para notificações;</li>
       <li>a ligação da conta com a ficha e com as inscrições;</li>
+      <li>o registro dos seus aceites e da autorização da área de membros;</li>
       <li>no aparelho, a sessão e os favoritos.</li>
     </ul>
+    <p>As estatísticas de uso já enviadas ao Google Analytics, ligadas ao identificador interno da conta (sem nome nem
+      contato), não são apagadas na hora: expiram em até 14 meses.</p>
     <p><strong>O que fica com a Igreja, sem ligação com a conta:</strong></p>
     <ul>
       <li>a ficha de membro, que é do rol;</li>
@@ -215,8 +264,8 @@
     </ul>
     <p>Para pedir também a remoção da ficha, fale com a secretaria da Igreja ou escreva para nós, que encaminhamos. A
       decisão sobre o rol é da Igreja.</p>
-    <p>Se o seu app pede para confirmar a exclusão <strong>sem pedir a senha</strong>, ele é de uma versão anterior, em
-      que o botão só desativava o acesso. Atualize o app. Quem usou essa opção antiga recebe a exclusão completa, sem
+    <p>Se o seu app pede para confirmar a exclusão <strong>sem pedir a senha</strong>, ele é de uma versão anterior,
+      em que o botão só desativava o acesso. Atualize o app. Quem usou essa opção antiga recebe a exclusão completa, sem
       precisar pedir de novo.</p>
     <p>Se quiser voltar depois, crie uma conta nova e peça à secretaria para ligá-la à sua ficha.</p>
 
@@ -229,14 +278,19 @@
       <li>pedir portabilidade;</li>
       <li>saber com quem compartilhamos;</li>
       <li>se opor a um tratamento;</li>
+      <li>não consentir, sabendo o que acontece: sem a autorização da área de membros, a conta funciona como a de um
+        visitante;</li>
       <li>e, quando a base for o consentimento, revogá-lo.</li>
     </ul>
-    <p>Pelo app, você vê e corrige o seu cadastro no Perfil e exclui a conta (item 8). O resto é por e-mail, em
-      <a href="mailto:luiz.gonzaga@orddum.com">luiz.gonzaga@orddum.com</a>, respondido em até 15 dias. Você também pode
-      reclamar à Autoridade Nacional de Proteção de Dados (ANPD).</p>
+    <p>Pelo app, você vê e corrige o seu cadastro no Perfil e exclui a conta (item 8). A partir da versão 1.15, em
+      Configurações › Privacidade, você liga ou desliga a área de membros e vê o que aceitou e quando. O resto é por
+      e-mail, em <strong><a href="mailto:luiz.gonzaga@orddum.com">luiz.gonzaga@orddum.com</a></strong>, respondido em
+      até 15 dias. Você também pode reclamar à Autoridade Nacional de Proteção de Dados (ANPD).</p>
 
     <h2>10. Crianças e adolescentes</h2>
-    <p>O app não é feito para crianças. Dados de crianças entram por meio dos pais ou responsáveis:</p>
+    <p>O app não é feito para crianças. A conta é para quem tem 13 anos ou mais (a partir da versão 1.15, o cadastro
+      recusa idade menor); de 13 a 17 anos, com o conhecimento e a autorização dos responsáveis. Dados de crianças
+      entram por meio dos pais ou responsáveis:</p>
     <ul>
       <li>na ficha de membro (nome, sexo e data de nascimento dos filhos);</li>
       <li>nas inscrições de eventos, em que o responsável informa os dados da criança.</li>
@@ -250,13 +304,16 @@
       <li>Regras no banco de dados limitam quem lê cada coisa, como no item 5.</li>
       <li>A exclusão de conta exige a senha digitada na hora.</li>
     </ul>
-    <p>Nenhum sistema é infalível. Se houver um incidente que possa trazer risco a você, avisaremos você e a ANPD, como
-      manda a lei.</p>
+    <p>Nenhum sistema é infalível. Se houver um incidente que possa trazer risco a você, avisaremos você e a ANPD,
+      como manda a lei.</p>
 
     <h2>12. Mudanças nesta política</h2>
-    <p>A data e a versão no topo mudam a cada alteração. Mudança relevante será avisada no app antes de valer.</p>
+    <p>Cada versão tem número e data, no topo. O número muda quando o texto muda de forma relevante; nesse caso, o app
+      pede um novo aceite antes de a mudança valer para você, e mostra o que mudou. Correções de redação mudam só a
+      data. As versões anteriores ficam disponíveis a pedido.</p>
 
-    <p class="legal-crosslink">Esta política trata do <strong>IPI App</strong>. Os outros aplicativos da Orddum têm a
+    <p class="legal-crosslink">Veja também os <a href="/ipi/termos/">Termos de Uso do IPI App</a>. Esta política
+      trata do <strong>IPI App</strong>. Os outros aplicativos da Orddum têm a
       deles — o <a href="/lastro/privacidade/">Lastro</a>, por exemplo, não tem servidor nem cadastro, e por isso o
       texto é outro.</p>
   </main>
