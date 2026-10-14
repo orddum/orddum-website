@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Política de Privacidade — Lastro | Orddum</title>
   <meta name="description"
-    content="Política de privacidade do Lastro, o app de controle financeiro cujos dados nunca saem do aparelho. Sem conta, sem login, sem nuvem.">
+    content="Política de privacidade do Lastro, o app de controle financeiro cujos dados financeiros ficam no aparelho. Sem conta, sem login, sem nuvem nossa.">
   <meta name="theme-color" content="#000000">
   <link rel="canonical" href="https://orddum.com/lastro/privacidade/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,7 +33,7 @@
   <main class="legal-main">
     <p class="legal-kicker">Lastro</p>
     <h1>Política de Privacidade</h1>
-    <p class="legal-updated">Última atualização: 6 de outubro de 2026</p>
+    <p class="legal-updated">Última atualização: 14 de outubro de 2026</p>
 
     <div class="legal-callout">
       <p><strong>Resumo em três frases.</strong> O Lastro guarda todas as suas informações financeiras
@@ -47,18 +47,21 @@
     <p>O Lastro é desenvolvido pela <strong>Orddum</strong>. Para qualquer dúvida sobre esta política ou sobre seus
       dados, escreva para <a href="mailto:luiz.gonzaga@orddum.com">luiz.gonzaga@orddum.com</a>.</p>
 
-    <h2>2. Os seus dados financeiros nunca saem do seu aparelho</h2>
+    <h2>2. Os seus dados financeiros ficam no seu aparelho</h2>
     <p>Tudo o que você registra no Lastro — lançamentos, valores, títulos, observações, nomes de pessoas da casa,
       contas, cartões e patrimônio — é gravado <strong>exclusivamente</strong> num banco de dados dentro do seu
       celular.</p>
     <p>Isso não é uma promessa de conduta: é uma característica do app. Ele <strong>não tem servidor</strong> para
       onde enviar esses dados, <strong>não tem login</strong> e <strong>não cria conta</strong> para ninguém. Não há
       como recuperarmos, lermos ou repassarmos o que você registra, porque essa informação nunca chega até nós.</p>
+    <p><strong>No iPhone e no iPad</strong>, esse banco entra no backup do aparelho no iCloud, se você o mantém
+      ligado. Esse backup é seu, fica na sua conta Apple, e nós não temos acesso a ele. No Android, o banco fica fora
+      do backup automático.</p>
     <p>Consequências disso, e a segunda importa tanto quanto a primeira:</p>
     <ul>
       <li><strong>Ninguém além de você tem acesso ao que você lança.</strong></li>
-      <li><strong>Se você perder o aparelho sem ter exportado seus dados, eles se perdem.</strong> Não há cópia em
-        nuvem nossa para restaurar. É por isso que o app tem exportação de dados e insiste para que você a use.</li>
+      <li><strong>Se você perder o aparelho sem ter exportado seus dados, eles se perdem</strong>, a não ser que o
+        iPhone os traga de volta de um backup seu do iCloud. Não há cópia em nuvem nossa para restaurar. É por isso que o app tem exportação de dados e insiste para que você a use.</li>
     </ul>
 
     <h2>3. Quando os dados saem, quem os tira é você</h2>
@@ -76,7 +79,7 @@
 
     <h2>4. Anúncios</h2>
     <p>A versão gratuita do Lastro exibe um anúncio no rodapé da tela, fornecido pelo <strong>Google AdMob</strong>.</p>
-    <p><strong>Os anúncios não são personalizados.</strong> Escolhemos servir apenas anúncios não-personalizados, o
+    <p><strong>Os anúncios não são personalizados.</strong> Escolhemos servir apenas anúncios não personalizados, o
       que significa que eles não são escolhidos com base no seu histórico de navegação, nos seus interesses ou no seu
       identificador de publicidade. Concretamente:</p>
     <ul>
@@ -87,8 +90,10 @@
       <li>O app <strong>não rastreia</strong> você entre aplicativos ou sites.</li>
     </ul>
     <p>Para exibir e medir um anúncio, e para detectar fraude de cliques, o Google AdMob recebe informações técnicas
-      sobre o seu dispositivo, como endereço IP, tipo de aparelho, sistema operacional e a região aproximada derivada
-      do IP. Esses dados são tratados pelo Google conforme a política dele:
+      sobre o seu dispositivo, como endereço IP, tipo de aparelho, sistema operacional, a região aproximada derivada
+      do IP e um identificador do app no aparelho, que não é o identificador de publicidade. O SDK do AdMob também
+      registra aberturas do app, toques no anúncio e dados de desempenho e de falha dele mesmo. Esses dados são
+      tratados pelo Google conforme a política dele:
       <a href="https://policies.google.com/technologies/partner-sites" target="_blank"
         rel="noopener">policies.google.com/technologies/partner-sites</a>.
     </p>
@@ -101,29 +106,37 @@
       <strong>pagamento único</strong>, cobrado uma vez e sem renovação. As duas removem os anúncios, e é a única
       coisa que fazem.</p>
     <p>A compra é processada inteiramente pela <strong>App Store</strong> ou pelo <strong>Google Play</strong>,
-      conforme o aparelho. Usamos o <strong>RevenueCat</strong> para verificar junto à loja se você tem direito ao app
-      sem anúncios. Para isso, o RevenueCat recebe da loja os dados da compra (qual produto, quando foi feita, se está
-      ativa, se foi reembolsada), associados a um identificador aleatório criado pelo app — e não a um nome ou e-mail,
-      que o Lastro não tem. Nós <strong>não recebemos e não armazenamos</strong> dados do seu cartão, do seu meio de
-      pagamento ou da sua conta da loja: quem processa o pagamento é a Apple ou o Google, e o que chega até o app é
-      apenas a resposta "os anúncios devem aparecer ou não".</p>
+      conforme o aparelho. Usamos o <strong>RevenueCat</strong> para confirmar se você tem direito ao app sem anúncios.
+      Para isso, o app envia ao RevenueCat o comprovante da compra emitido pela loja, e o RevenueCat o confirma junto a
+      ela. O RevenueCat guarda o histórico dessa compra (qual produto, quando foi feita, se está ativa, se foi
+      reembolsada), associado a um identificador aleatório criado no aparelho — e não a um nome ou e-mail, que o Lastro
+      não tem. Junto vão dados técnicos de cada consulta: endereço IP, modelo do aparelho, versões do sistema e do app,
+      idioma, país da loja e, no iPhone e no iPad, o identificador que a Apple atribui ao app no aparelho (que não é o
+      de publicidade). Usamos esse histórico para confirmar compras e para acompanhar, no total, quantas compras e
+      reembolsos houve.</p>
+    <p>Nós <strong>não recebemos e não armazenamos</strong> dados do seu cartão, do seu meio de pagamento ou da sua
+      conta da loja: quem processa o pagamento é a Apple ou o Google. O que o app lê do RevenueCat é se você tem
+      direito ao app sem anúncios, por qual das duas formas e se a assinatura vai renovar. No painel do RevenueCat
+      vemos o histórico das compras pelo identificador aleatório, sem nome, e-mail ou conta da loja.</p>
     <p>Como não há conta, quem guarda a compra é a loja. Ao reinstalar o app ou trocar de aparelho, o botão
-      <strong>Restaurar compras</strong> pede à loja as compras da sua conta nela e devolve o direito. Reembolso e
-      cancelamento são pedidos à loja, como descrito nos <a href="../termos/">Termos de Uso</a>.</p>
-    <p>Política de privacidade do RevenueCat:
+      <strong>Restaurar compras</strong> pede à loja as compras da sua conta nela, e o app volta a ficar sem anúncios.
+      Reembolso e cancelamento são pedidos à loja, como descrito nos <a href="../termos/">Termos de Uso</a>.</p>
+    <p>O RevenueCat e o Google ficam nos Estados Unidos: os dados descritos nas seções 4 e 5 são tratados lá,
+      conforme a política de cada um. Política de privacidade do RevenueCat:
       <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">revenuecat.com/privacy</a>.
     </p>
 
     <h2>6. O que NÃO fazemos</h2>
     <p>Para ser explícito, porque a ausência de algo é difícil de perceber:</p>
     <ul>
-      <li><strong>Não há telemetria.</strong> O app não envia relatórios de erro, estatísticas de uso, nem informa
-        quais telas você abriu. Removemos essas ferramentas deliberadamente em setembro de 2026, porque o rastro de uma
-        falha carrega a sessão de alguém.</li>
+      <li><strong>Não há telemetria nossa.</strong> O app não envia relatórios de erro, estatísticas de uso, nem
+        informa quais telas você abriu. Removemos essas ferramentas deliberadamente em setembro de 2026, porque o rastro
+        de uma falha carrega a sessão de alguém. O único SDK que mede algo é o do anúncio: o AdMob registra aberturas do
+        app, toques no anúncio e dados de desempenho e de falha do próprio SDK (seção 4).</li>
       <li><strong>Não há cadastro, login ou conta.</strong> Não temos seu e-mail, seu nome ou qualquer forma de
         identificá-lo.</li>
       <li><strong>Não vendemos nem compartilhamos dados pessoais</strong> com terceiros, exceto o que o AdMob recebe
-        para exibir anúncios (seção 4) e o que o RevenueCat recebe da loja para confirmar uma compra (seção 5).</li>
+        para exibir anúncios (seção 4) e o que o RevenueCat recebe para confirmar uma compra (seção 5).</li>
       <li><strong>Não usamos cookies</strong> — o app não é um site.</li>
     </ul>
 
@@ -140,7 +153,8 @@
       contrário seria pior do que não proteger.</p>
 
     <h2>8. Crianças</h2>
-    <p>O Lastro não é direcionado a menores de 13 anos e não coleta intencionalmente informações de crianças.</p>
+    <p>O Lastro é feito para adultos. Não é direcionado a crianças nem a adolescentes, e não coleta intencionalmente
+      informações deles.</p>
 
     <h2>9. Seus direitos (LGPD)</h2>
     <p>A Lei Geral de Proteção de Dados garante a você direitos sobre seus dados pessoais. No caso do Lastro, a maior
@@ -148,8 +162,12 @@
     <ul>
       <li><strong>Acesso e portabilidade:</strong> use a função de exportar, que gera um arquivo completo e legível com
         tudo o que o app guarda.</li>
-      <li><strong>Exclusão:</strong> desinstalar o app apaga o banco de dados do aparelho. Não há cópia nossa a ser
-        apagada.</li>
+      <li><strong>Exclusão:</strong> desinstalar o app apaga o banco de dados do aparelho; os arquivos que você
+        exportou e, no iPhone, os backups do iCloud que você já fez continuam onde estão até você apagá-los. Se você
+        comprou a assinatura ou o pagamento único, o RevenueCat guarda o histórico da compra ligado ao identificador
+        aleatório. Para apagá-lo, escreva para o e-mail abaixo com o número do pedido que a loja enviou. Apagar esse
+        registro não cancela nem reembolsa a compra, que continua na sua conta da loja e volta com
+        <strong>Restaurar compras</strong>.</li>
       <li><strong>Anúncios:</strong> assine ou faça o pagamento único para removê-los, ou desinstale o app.</li>
     </ul>
     <p>Para exercer qualquer direito ou tirar dúvidas, escreva para
@@ -158,8 +176,8 @@
 
     <h2>10. Mudanças nesta política</h2>
     <p>Se esta política mudar de forma relevante — em especial se algum dia passarmos a coletar algo que hoje não
-      coletamos — atualizaremos esta página e a data no topo, e avisaremos dentro do app antes que a mudança passe a
-      valer.</p>
+      coletamos — atualizaremos esta página e a data no topo antes que a mudança passe a valer, e contaremos nas notas
+      da versão do app na loja.</p>
 
     <p class="legal-crosslink">Veja também os <a href="../termos/">Termos de Uso do Lastro</a>.</p>
   </main>
