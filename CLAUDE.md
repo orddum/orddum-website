@@ -1,6 +1,6 @@
 # CLAUDE.md — orddum-website (orddum.com)
 
-> Última atualização: 2026-10-03
+> Última atualização: 2026-10-15
 
 Site estático da Orddum no Firebase Hosting (projeto `orddum`). Repositório
 **PÚBLICO** com deploy automático a cada push na `main` (GitHub Actions): nada
@@ -26,6 +26,9 @@ versionado **no repositório do app** (`docs/politica-de-privacidade.md` etc.) e
 publicado aqui a partir dele; arquivos gerados (modelo de importação do Lastro)
 são cópias — regere no app e copie, não edite aqui. Quem decide o conteúdo
 legal: skill `legal` do kit e `docs/legal-compliance.md`.
+Não há molde de política neste repositório (o `privacy-policy-template.md`
+de 2025 saiu em 15/10/2026): o ponto de partida de uma política nova é o
+`legal-compliance.md` do kit.
 
 `public/app-ads.txt` é do AdMob: `text/plain`, ASCII puro, na raiz.
 
