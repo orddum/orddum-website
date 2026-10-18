@@ -2,12 +2,12 @@
   "$comment": "Settings do site (HTML estático no Firebase Hosting; cada push na main publica o orddum.com). Sandbox, deny e credenciais copiados de prompts/claude/settings.json do kit, sem hooks nem permissões de Flutter. O push fica em ask porque publica. Por que cada exceção existe: docs/ambiente-ia.md do kit.",
   "permissions": {
     "allow": [
-      "Bash(git status:*)",
-      "Bash(git diff:*)",
-      "Bash(git log:*)",
-      "Bash(git show:*)",
-      "Bash(git branch:*)",
-      "Bash(git fetch:*)",
+      "Bash(git status *)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git show *)",
+      "Bash(git branch *)",
+      "Bash(git fetch *)",
       "Bash(git add *)",
       "Bash(git commit *)",
       "Bash(firebase emulators:start --only hosting*)",
