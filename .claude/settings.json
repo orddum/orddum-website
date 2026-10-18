@@ -1,0 +1,124 @@
+{
+  "$comment": "Settings do site (HTML estático no Firebase Hosting; cada push na main publica o orddum.com). Sandbox, deny e credenciais copiados de prompts/claude/settings.json do kit, sem hooks nem permissões de Flutter. O push fica em ask porque publica. Por que cada exceção existe: docs/ambiente-ia.md do kit.",
+  "permissions": {
+    "allow": [
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+      "Bash(git branch:*)",
+      "Bash(git fetch:*)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(firebase emulators:start --only hosting*)",
+      "Bash(./check-*.sh)",
+      "Bash(./compare-domains.sh)"
+    ],
+    "ask": [
+      "Bash(git push)",
+      "Bash(git push *)",
+      "Bash(firebase deploy *)",
+      "Bash(gh pr merge *)",
+      "Bash(rm -r *)",
+      "Bash(rm -rf *)",
+      "Bash(rm -fr *)",
+      "Bash(rm -Rf *)",
+      "Bash(gh release *)",
+      "Bash(git push --tags*)",
+      "Bash(git push * --tags*)",
+      "Bash(git push origin v*)",
+      "Bash(git push origin refs/tags/*)",
+      "Read(~/Library/CloudStorage/OneDrive-Pessoal/Orddum/Projetos/*/* keys/**)"
+    ],
+    "deny": [
+      "Bash(sudo *)",
+      "Bash(chmod 777 *)",
+      "Bash(chmod -R 777 *)",
+      "Bash(git push --force*)",
+      "Bash(git push -f*)",
+      "Bash(git push * --force*)",
+      "Bash(git push * -f*)",
+      "Bash(git reset --hard*)",
+      "Read(~/.config/gcloud/**)",
+      "Read(~/.config/configstore/**)",
+      "Read(~/.config/gh/**)",
+      "Read(~/.ssh/**)",
+      "Edit(~/.ssh/**)",
+      "Read(~/projects/*/android/key.properties)",
+      "Read(~/projects/*/scripts/*/firebase-admin.json)",
+      "Read(~/projects/*/functions/.env*)"
+    ]
+  },
+  "sandbox": {
+    "enabled": true,
+    "allowUnsandboxedCommands": false,
+    "enableWeakerNetworkIsolation": true,
+    "filesystem": {
+      "allowWrite": [
+        "../../../.git/objects",
+        "../../../.git/refs",
+        "../../../.git/logs",
+        "../../../.git/worktrees"
+      ]
+    },
+    "credentials": {
+      "files": [
+        {
+          "path": "~/.config/gcloud",
+          "mode": "deny"
+        },
+        {
+          "path": "~/.config/configstore",
+          "mode": "deny"
+        },
+        {
+          "path": "~/.config/gh",
+          "mode": "deny"
+        },
+        {
+          "path": "~/.ssh",
+          "mode": "deny"
+        },
+        {
+          "path": "~/Library/CloudStorage/OneDrive-Pessoal/Orddum/Projetos",
+          "mode": "deny"
+        },
+        {
+          "path": "~/projects/*/android/key.properties",
+          "mode": "deny"
+        },
+        {
+          "path": "~/projects/*/scripts/*/firebase-admin.json",
+          "mode": "deny"
+        },
+        {
+          "path": "~/projects/*/functions/.env*",
+          "mode": "deny"
+        }
+      ]
+    },
+    "network": {
+      "allowedDomains": [
+        "orddum.com",
+        "www.orddum.com",
+        "orddum.web.app",
+        "github.com"
+      ]
+    },
+    "excludedCommands": [
+      "gh *",
+      "git push",
+      "git push *",
+      "git fetch*",
+      "git pull*",
+      "git ls-remote*",
+      "firebase *",
+      "gcloud *",
+      "open *",
+      "osascript *",
+      "ps *",
+      "./check-*.sh",
+      "./compare-domains.sh"
+    ]
+  }
+}
