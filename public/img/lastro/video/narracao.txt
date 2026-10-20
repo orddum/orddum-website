@@ -1,0 +1,10 @@
+Lastro — narração do vídeo (pt-BR)
+
+1. Lançar um gasto leva segundos
+Um gasto lançado em segundos, direto no cartão.
+
+2. A fatura fecha com um toque
+Um toque quita todas as compras daquela fatura.
+
+3. Quanto já gastei com isso?
+Busque e veja quanto já gastou, mês a mês.
