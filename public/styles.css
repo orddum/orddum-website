@@ -478,11 +478,13 @@ h1, h2, h3, h4 { color: var(--text); font-weight: 600; line-height: 1.2; }
 .badge-soon { color: var(--sfc-yellow); border-color: rgba(255, 214, 4, 0.38); background: rgba(255, 214, 4, 0.08); }
 
 /* ---------------------------------------------------------------------------
-   Vitrine do Lastro — a capa e as capturas
+   Vitrine por app — a capa, as capturas e o vídeo
+   Tudo é cópia do `store/` do app, gerado pelo kit (README § Estrutura): a capa
+   é a arte 16:9 (1600×900), as capturas são a fileira da App Store em 540×1174
+   e o vídeo é o explicativo em retrato (1080×1920), com legenda gravada.
    ------------------------------------------------------------------------- */
 .showcase-capa {
    width: 100%;
-   max-width: 1024px;
    border-radius: var(--r-lg);
    border: 1px solid var(--line);
    margin-bottom: 3rem;
@@ -520,6 +522,68 @@ h1, h2, h3, h4 { color: var(--text); font-weight: 600; line-height: 1.2; }
    color: var(--text-faint);
    margin-top: 0.5rem;
 }
+
+/* O vídeo em retrato ao lado do texto, num cartão como os do portfólio. No
+   celular ele empilha e fica centralizado, com a altura presa a 70vh: um
+   9:16 na largura da tela viraria uma coluna de dois viewports. */
+.showcase-video {
+   position: relative;
+   display: grid;
+   grid-template-columns: auto 1fr;
+   align-items: center;
+   gap: 2rem 3rem;
+   margin-top: 3rem;
+   padding: 2.25rem 2rem 2rem;
+   background: var(--surface);
+   border: 1px solid var(--line);
+   border-radius: var(--r-lg);
+   overflow: hidden;
+}
+.showcase-video > .bars-h { position: absolute; inset: 0 0 auto 0; }
+
+/* A largura NÃO pode ter `100%`: numa coluna `auto` a porcentagem é cíclica,
+   vira `auto`, e a coluna cresce até os 1080 px intrínsecos do <video>,
+   espremendo o texto. O teto do contêiner entra pelo max-width. */
+.showcase-video video {
+   display: block;
+   width: min(calc(70vh * 9 / 16), 360px);
+   max-width: 100%;
+   height: auto;
+   aspect-ratio: 9 / 16;
+   border-radius: var(--r-lg);
+   border: 1px solid var(--line);
+   background: #000;
+   color-scheme: dark;   /* os controles nativos no tom da página */
+}
+
+.showcase-video figcaption { max-width: 52ch; }
+
+.video-kicker {
+   font-family: var(--font-mono);
+   font-size: 0.72rem;
+   letter-spacing: 0.16em;
+   text-transform: uppercase;
+   color: var(--text-faint);
+   margin-bottom: 0.6rem;
+}
+.video-title { font-size: 1.35rem; letter-spacing: -0.01em; margin-bottom: 0.6rem; }
+
+.transcript {
+   margin-top: 1.25rem;
+   padding-top: 1rem;
+   border-top: 1px solid var(--line);
+}
+.transcript summary {
+   cursor: pointer;
+   font-family: var(--font-mono);
+   font-size: 0.76rem;
+   letter-spacing: 0.1em;
+   text-transform: uppercase;
+   color: var(--text-dim);
+   transition: color var(--transition);
+}
+.transcript summary:hover { color: var(--shell); }
+.transcript p { margin-top: 0.85rem; font-size: 0.94rem; }
 
 /* ---------------------------------------------------------------------------
    Como trabalhamos
@@ -703,6 +767,14 @@ a.contact-card:hover { border-color: var(--shell); background: var(--surface-2);
 
    .app-card { padding: 1.75rem 1.25rem 1.5rem; }
    .shots { grid-auto-columns: 210px; }
+
+   .showcase-video {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      gap: 1.5rem;
+      padding: 1.75rem 1.25rem 1.5rem;
+   }
+   .showcase-video figcaption { justify-self: stretch; max-width: none; }
 }
 
 @media (max-width: 420px) {
