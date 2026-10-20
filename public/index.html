@@ -230,15 +230,6 @@
         </div>
         <p class="shots-hint">Arraste para ver as seis telas</p>
 
-        <!-- VÍDEO EXPLICATIVO, desligado: lastro/store/video/ ainda não existia em 19/10/2026.
-             Quando o app tiver store/video/ com site.mp4, site.webm, poster.jpg,
-             legendas.vtt e narracao.txt (e o áudio NÃO for o substituto, que leva
-             `.placeholder` no nome), copiar os cinco para img/lastro/video/, colar o
-             texto de narracao.txt no <details> e trocar este comentário pelo bloco.
-             O mp4 vem antes do webm de propósito: todo navegador toca H.264, e o
-             Safari antigo não toca WebM. A legenda já vai gravada no vídeo; a
-             <track> é para leitor de tela e para quem liga a legenda do player.
-
         <figure class="showcase-video">
           <div class="bars-h" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
           <video controls playsinline preload="none" poster="img/lastro/video/poster.jpg" width="1080" height="1920">
@@ -250,14 +241,18 @@
           <figcaption>
             <p class="video-kicker">Em vídeo</p>
             <h3 class="video-title">O Lastro em meio minuto</h3>
-            <p>As seis telas em movimento, narradas em português. Sem som, a legenda conta a mesma história.</p>
+            <p>As seis telas em movimento, sem voz: a legenda conta a história, e a transcrição está logo abaixo.</p>
             <details class="transcript">
               <summary>Transcrição</summary>
-              <p>(o texto de narracao.txt, um parágrafo por frase)</p>
+              <p>O mês numa tela só: previsto e realizado lado a lado.</p>
+              <p>Sem conta e sem nuvem: seus dados ficam no aparelho.</p>
+              <p>Uma busca que atravessa todo o seu histórico.</p>
+              <p>Quem gastou o quê, e a fatura do cartão fechada.</p>
+              <p>Cartão, Pix e dinheiro, cada um com fatura e vencimento.</p>
+              <p>Investimentos e bens, mês a mês, sem conectar conta.</p>
             </details>
           </figcaption>
         </figure>
-        -->
       </div>
     </section>
 
@@ -271,32 +266,19 @@
           <p class="section-sub">O que antes se espalhava entre boletim impresso, mural da entrada e grupo de mensagem
             cabe numa tela — e quem atualiza é a própria liderança, sem passar por desenvolvedor.</p>
         </div>
-        <!-- ARTE ANTIGA (capa 1024×500 e capturas 540×1169, de 10/2026): o IPI ainda
-             não tem ipi_app/store/site/. Quando o kit gerar, copiar capa.webp
-             (1600×900) e screens/*.webp (540×1174) para img/ipi/, apagar a
-             capa.png e trocar width/height como no #lastro. -->
-        <img class="showcase-capa" src="img/ipi/capa.png"
-          alt="IPI App — tudo da igreja, num lugar só. Agenda, avisos, boletim, hinário e a Rádio IPB." width="1024"
-          height="500" loading="lazy">
+        <img class="showcase-capa" src="img/ipi/capa.webp"
+          alt="IPI App — tudo da igreja, num lugar só. Agenda, avisos, boletim, hinário e a Rádio IPB." width="1600"
+          height="900" loading="lazy">
 
         <div class="shots">
-          <img src="img/ipi/screens/01-home.webp" alt="Tela inicial: agenda da semana, avisos em destaque e o boletim" width="540" height="1169" loading="lazy">
-          <img src="img/ipi/screens/02-agenda.webp" alt="Agenda da semana: culto, EBD, oração e estudo, cada um com o seu horário" width="540" height="1169" loading="lazy">
-          <img src="img/ipi/screens/03-hinario.webp" alt="Hinário: os 400 hinos do Novo Cântico, com busca por número ou título" width="540" height="1169" loading="lazy">
-          <img src="img/ipi/screens/04-avisos.webp" alt="Avisos da igreja: estudo, projeto social, acampamento, cada um com imagem e detalhe" width="540" height="1169" loading="lazy">
-          <img src="img/ipi/screens/05-biblioteca.webp" alt="Biblioteca: o acervo com capa, busca e os livros emprestados" width="540" height="1169" loading="lazy">
-          <img src="img/ipi/screens/06-hino.webp" alt="Um hino aberto: estrofes completas e o controle para aumentar a letra" width="540" height="1169" loading="lazy">
+          <img src="img/ipi/screens/01-home.webp" alt="Tela inicial: agenda da semana, avisos em destaque e o boletim" width="540" height="1174" loading="lazy">
+          <img src="img/ipi/screens/02-agenda.webp" alt="Agenda da semana: culto, EBD, oração e estudo, cada um com o seu horário" width="540" height="1174" loading="lazy">
+          <img src="img/ipi/screens/03-hinario.webp" alt="Hinário: os 400 hinos do Novo Cântico, com busca por número ou título" width="540" height="1174" loading="lazy">
+          <img src="img/ipi/screens/04-avisos.webp" alt="Avisos da igreja: estudo, projeto social, acampamento, cada um com imagem e detalhe" width="540" height="1174" loading="lazy">
+          <img src="img/ipi/screens/05-biblioteca.webp" alt="Biblioteca: o acervo com capa, busca e os livros emprestados" width="540" height="1174" loading="lazy">
+          <img src="img/ipi/screens/06-hino.webp" alt="Um hino aberto: estrofes completas e o controle para aumentar a letra" width="540" height="1174" loading="lazy">
         </div>
         <p class="shots-hint">Arraste para ver as seis telas</p>
-
-        <!-- VÍDEO EXPLICATIVO, desligado: ipi_app/store/video/ ainda não existia em 19/10/2026. Mesmo padrão do #lastro.
-             Quando o app tiver store/video/ com site.mp4, site.webm, poster.jpg,
-             legendas.vtt e narracao.txt (e o áudio NÃO for o substituto, que leva
-             `.placeholder` no nome), copiar os cinco para img/ipi/video/, colar o
-             texto de narracao.txt no <details> e trocar este comentário pelo bloco.
-             O mp4 vem antes do webm de propósito: todo navegador toca H.264, e o
-             Safari antigo não toca WebM. A legenda já vai gravada no vídeo; a
-             <track> é para leitor de tela e para quem liga a legenda do player.
 
         <figure class="showcase-video">
           <div class="bars-h" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
@@ -309,14 +291,18 @@
           <figcaption>
             <p class="video-kicker">Em vídeo</p>
             <h3 class="video-title">O IPI App em meio minuto</h3>
-            <p>As seis telas em movimento, narradas em português. Sem som, a legenda conta a mesma história.</p>
+            <p>As seis telas em movimento, sem voz: a legenda conta a história, e a transcrição está logo abaixo.</p>
             <details class="transcript">
               <summary>Transcrição</summary>
-              <p>(o texto de narracao.txt, um parágrafo por frase)</p>
+              <p>A agenda, os avisos e o boletim da igreja num só lugar.</p>
+              <p>Veja o que tem esta semana, dia a dia.</p>
+              <p>O Novo Cântico inteiro, com busca por número ou título.</p>
+              <p>Todos os avisos da igreja reunidos numa tela.</p>
+              <p>A biblioteca da igreja no bolso, com busca.</p>
+              <p>A letra do hino inteira, no tamanho que você precisa.</p>
             </details>
           </figcaption>
         </figure>
-        -->
       </div>
     </section>
     <!-- Vitrine do Ararinha -->
@@ -345,15 +331,6 @@
         </div>
         <p class="shots-hint">Arraste para ver as seis telas</p>
 
-        <!-- VÍDEO EXPLICATIVO, desligado: ararinha/store/video/ ainda não existia em 19/10/2026. Mesmo padrão do #lastro.
-             Quando o app tiver store/video/ com site.mp4, site.webm, poster.jpg,
-             legendas.vtt e narracao.txt (e o áudio NÃO for o substituto, que leva
-             `.placeholder` no nome), copiar os cinco para img/ararinha/video/, colar o
-             texto de narracao.txt no <details> e trocar este comentário pelo bloco.
-             O mp4 vem antes do webm de propósito: todo navegador toca H.264, e o
-             Safari antigo não toca WebM. A legenda já vai gravada no vídeo; a
-             <track> é para leitor de tela e para quem liga a legenda do player.
-
         <figure class="showcase-video">
           <div class="bars-h" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
           <video controls playsinline preload="none" poster="img/ararinha/video/poster.jpg" width="1080" height="1920">
@@ -365,14 +342,18 @@
           <figcaption>
             <p class="video-kicker">Em vídeo</p>
             <h3 class="video-title">O Ararinha em meio minuto</h3>
-            <p>As seis telas em movimento, narradas em português. Sem som, a legenda conta a mesma história.</p>
+            <p>As seis telas em movimento, sem voz: a legenda conta a história, e a transcrição está logo abaixo.</p>
             <details class="transcript">
               <summary>Transcrição</summary>
-              <p>(o texto de narracao.txt, um parágrafo por frase)</p>
+              <p>Toque na foto e ouça o nome do bichinho.</p>
+              <p>Sem anúncio e sem internet, em qualquer lugar.</p>
+              <p>Ouça o som de verdade dos bichos e dos instrumentos.</p>
+              <p>Brinque de encontrar, sem pressa e sem pontos.</p>
+              <p>Português ou inglês, um idioma de cada vez.</p>
+              <p>Desenhe e trace letras e números por cima.</p>
             </details>
           </figcaption>
         </figure>
-        -->
       </div>
     </section>
     <!-- Como trabalhamos -->
