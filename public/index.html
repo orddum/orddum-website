@@ -214,19 +214,50 @@
             conduta — é como ele foi construído.</p>
         </div>
 
-        <img class="showcase-capa" src="img/lastro/capa.png"
-          alt="Lastro — controle financeiro que não sai do celular. Sem conta, sem login, sem nuvem." width="1024"
-          height="500" loading="lazy">
+        <!-- Capa 16:9 e capturas: cópias de lastro/store/site/ (gerado pelo kit,
+             flutter-app-kit/docs/store-mockups.md § 9). Copiadas em 19/10/2026. -->
+        <img class="showcase-capa" src="img/lastro/capa.webp"
+          alt="Lastro — controle financeiro que não sai do celular. Sem conta, sem login, sem nuvem." width="1600"
+          height="900" loading="lazy">
 
         <div class="shots">
-          <img src="img/lastro/screens/01-mes.webp" alt="Tela do mês: receita líquida, a barra que a divide e a lista de lançamentos" width="540" height="1169" loading="lazy">
-          <img src="img/lastro/screens/02-ano.webp" alt="Visão do ano inteiro, mês a mês" width="540" height="1169" loading="lazy">
-          <img src="img/lastro/screens/03-busca.webp" alt="Busca que atravessa todo o histórico" width="540" height="1169" loading="lazy">
-          <img src="img/lastro/screens/04-pessoas-fatura.webp" alt="Gasto por pessoa da casa e a fatura do cartão" width="540" height="1169" loading="lazy">
-          <img src="img/lastro/screens/05-carteira.webp" alt="Carteira: cartões, Pix e dinheiro, cada um com o seu vencimento" width="540" height="1169" loading="lazy">
-          <img src="img/lastro/screens/06-patrimonio.webp" alt="Patrimônio: investimentos e bens, mês a mês" width="540" height="1169" loading="lazy">
+          <img src="img/lastro/screens/01-mes.webp" alt="Tela do mês: receita líquida, a barra que a divide e a lista de lançamentos" width="540" height="1174" loading="lazy">
+          <img src="img/lastro/screens/02-ano.webp" alt="Visão do ano inteiro, mês a mês" width="540" height="1174" loading="lazy">
+          <img src="img/lastro/screens/03-busca.webp" alt="Busca que atravessa todo o histórico" width="540" height="1174" loading="lazy">
+          <img src="img/lastro/screens/04-pessoas-fatura.webp" alt="Gasto por pessoa da casa e a fatura do cartão" width="540" height="1174" loading="lazy">
+          <img src="img/lastro/screens/05-carteira.webp" alt="Carteira: cartões, Pix e dinheiro, cada um com o seu vencimento" width="540" height="1174" loading="lazy">
+          <img src="img/lastro/screens/06-patrimonio.webp" alt="Patrimônio: investimentos e bens, mês a mês" width="540" height="1174" loading="lazy">
         </div>
         <p class="shots-hint">Arraste para ver as seis telas</p>
+
+        <!-- VÍDEO EXPLICATIVO, desligado: lastro/store/video/ ainda não existia em 19/10/2026.
+             Quando o app tiver store/video/ com site.mp4, site.webm, poster.jpg,
+             legendas.vtt e narracao.txt (e o áudio NÃO for o substituto, que leva
+             `.placeholder` no nome), copiar os cinco para img/lastro/video/, colar o
+             texto de narracao.txt no <details> e trocar este comentário pelo bloco.
+             O mp4 vem antes do webm de propósito: todo navegador toca H.264, e o
+             Safari antigo não toca WebM. A legenda já vai gravada no vídeo; a
+             <track> é para leitor de tela e para quem liga a legenda do player.
+
+        <figure class="showcase-video">
+          <div class="bars-h" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+          <video controls playsinline preload="none" poster="img/lastro/video/poster.jpg" width="1080" height="1920">
+            <source src="img/lastro/video/site.mp4" type="video/mp4">
+            <source src="img/lastro/video/site.webm" type="video/webm">
+            <track kind="captions" srclang="pt-BR" label="Português" src="img/lastro/video/legendas.vtt">
+            Seu navegador não toca este vídeo. <a href="img/lastro/video/site.mp4">Baixe o arquivo</a>.
+          </video>
+          <figcaption>
+            <p class="video-kicker">Em vídeo</p>
+            <h3 class="video-title">O Lastro em meio minuto</h3>
+            <p>As seis telas em movimento, narradas em português. Sem som, a legenda conta a mesma história.</p>
+            <details class="transcript">
+              <summary>Transcrição</summary>
+              <p>(o texto de narracao.txt, um parágrafo por frase)</p>
+            </details>
+          </figcaption>
+        </figure>
+        -->
       </div>
     </section>
 
@@ -240,9 +271,14 @@
           <p class="section-sub">O que antes se espalhava entre boletim impresso, mural da entrada e grupo de mensagem
             cabe numa tela — e quem atualiza é a própria liderança, sem passar por desenvolvedor.</p>
         </div>
+        <!-- ARTE ANTIGA (capa 1024×500 e capturas 540×1169, de 10/2026): o IPI ainda
+             não tem ipi_app/store/site/. Quando o kit gerar, copiar capa.webp
+             (1600×900) e screens/*.webp (540×1174) para img/ipi/, apagar a
+             capa.png e trocar width/height como no #lastro. -->
         <img class="showcase-capa" src="img/ipi/capa.png"
           alt="IPI App — tudo da igreja, num lugar só. Agenda, avisos, boletim, hinário e a Rádio IPB." width="1024"
           height="500" loading="lazy">
+
         <div class="shots">
           <img src="img/ipi/screens/01-home.webp" alt="Tela inicial: agenda da semana, avisos em destaque e o boletim" width="540" height="1169" loading="lazy">
           <img src="img/ipi/screens/02-agenda.webp" alt="Agenda da semana: culto, EBD, oração e estudo, cada um com o seu horário" width="540" height="1169" loading="lazy">
@@ -252,6 +288,35 @@
           <img src="img/ipi/screens/06-hino.webp" alt="Um hino aberto: estrofes completas e o controle para aumentar a letra" width="540" height="1169" loading="lazy">
         </div>
         <p class="shots-hint">Arraste para ver as seis telas</p>
+
+        <!-- VÍDEO EXPLICATIVO, desligado: ipi_app/store/video/ ainda não existia em 19/10/2026. Mesmo padrão do #lastro.
+             Quando o app tiver store/video/ com site.mp4, site.webm, poster.jpg,
+             legendas.vtt e narracao.txt (e o áudio NÃO for o substituto, que leva
+             `.placeholder` no nome), copiar os cinco para img/ipi/video/, colar o
+             texto de narracao.txt no <details> e trocar este comentário pelo bloco.
+             O mp4 vem antes do webm de propósito: todo navegador toca H.264, e o
+             Safari antigo não toca WebM. A legenda já vai gravada no vídeo; a
+             <track> é para leitor de tela e para quem liga a legenda do player.
+
+        <figure class="showcase-video">
+          <div class="bars-h" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+          <video controls playsinline preload="none" poster="img/ipi/video/poster.jpg" width="1080" height="1920">
+            <source src="img/ipi/video/site.mp4" type="video/mp4">
+            <source src="img/ipi/video/site.webm" type="video/webm">
+            <track kind="captions" srclang="pt-BR" label="Português" src="img/ipi/video/legendas.vtt">
+            Seu navegador não toca este vídeo. <a href="img/ipi/video/site.mp4">Baixe o arquivo</a>.
+          </video>
+          <figcaption>
+            <p class="video-kicker">Em vídeo</p>
+            <h3 class="video-title">O IPI App em meio minuto</h3>
+            <p>As seis telas em movimento, narradas em português. Sem som, a legenda conta a mesma história.</p>
+            <details class="transcript">
+              <summary>Transcrição</summary>
+              <p>(o texto de narracao.txt, um parágrafo por frase)</p>
+            </details>
+          </figcaption>
+        </figure>
+        -->
       </div>
     </section>
     <!-- Vitrine do Ararinha -->
@@ -264,18 +329,50 @@
           <p class="section-sub">Nem conta, nem anúncio, nem internet. A criança toca na foto e ouve a palavra; o adulto
             escolhe o idioma e é o único que chega na compra.</p>
         </div>
-        <img class="showcase-capa" src="img/ararinha/capa.png"
-          alt="Ararinha — primeiras palavras em português e inglês. Fotos e sons de verdade. Sem anúncio." width="1024"
-          height="500" loading="lazy">
+        <!-- Capa 16:9 e capturas: cópias de ararinha/store/site/ (gerado pelo kit,
+             flutter-app-kit/docs/store-mockups.md § 9). Copiadas em 19/10/2026. -->
+        <img class="showcase-capa" src="img/ararinha/capa.webp"
+          alt="Ararinha — primeiras palavras em português e inglês. Fotos e sons de verdade. Sem anúncio." width="1600"
+          height="900" loading="lazy">
+
         <div class="shots">
-          <img src="img/ararinha/screens/01-animais.webp" alt="Tema Animais em português: fotos reais com o nome de cada bicho" width="540" height="1169" loading="lazy">
-          <img src="img/ararinha/screens/02-estante.webp" alt="A estante: alfabeto, números, animais e música grátis, a Lousa logo abaixo e os outros temas com cadeado" width="540" height="1169" loading="lazy">
-          <img src="img/ararinha/screens/03-sons.webp" alt="Modo Sons: tocar no bicho e ouvir o som de verdade" width="540" height="1169" loading="lazy">
-          <img src="img/ararinha/screens/04-encontre.webp" alt="O Encontre: o livro pergunta onde está o papagaio, e a criança toca na foto" width="540" height="1169" loading="lazy">
-          <img src="img/ararinha/screens/05-musica-english.webp" alt="Tema Música em inglês: os instrumentos com o nome em inglês" width="540" height="1169" loading="lazy">
-          <img src="img/ararinha/screens/06-lousa.webp" alt="A Lousa com a letra A para traçar por cima, meio traçada em vermelho, e as cores para escolher" width="540" height="1169" loading="lazy">
+          <img src="img/ararinha/screens/01-animais.webp" alt="Tema Animais em português: fotos reais com o nome de cada bicho" width="540" height="1174" loading="lazy">
+          <img src="img/ararinha/screens/02-estante.webp" alt="A estante: alfabeto, números, animais e música grátis, a Lousa logo abaixo e os outros temas com cadeado" width="540" height="1174" loading="lazy">
+          <img src="img/ararinha/screens/03-sons.webp" alt="Modo Sons: tocar no bicho e ouvir o som de verdade" width="540" height="1174" loading="lazy">
+          <img src="img/ararinha/screens/04-encontre.webp" alt="O Encontre: o livro pergunta onde está o papagaio, e a criança toca na foto" width="540" height="1174" loading="lazy">
+          <img src="img/ararinha/screens/05-musica-english.webp" alt="Tema Música em inglês: os instrumentos com o nome em inglês" width="540" height="1174" loading="lazy">
+          <img src="img/ararinha/screens/06-lousa.webp" alt="A Lousa com a letra A para traçar por cima, meio traçada em vermelho, e as cores para escolher" width="540" height="1174" loading="lazy">
         </div>
         <p class="shots-hint">Arraste para ver as seis telas</p>
+
+        <!-- VÍDEO EXPLICATIVO, desligado: ararinha/store/video/ ainda não existia em 19/10/2026. Mesmo padrão do #lastro.
+             Quando o app tiver store/video/ com site.mp4, site.webm, poster.jpg,
+             legendas.vtt e narracao.txt (e o áudio NÃO for o substituto, que leva
+             `.placeholder` no nome), copiar os cinco para img/ararinha/video/, colar o
+             texto de narracao.txt no <details> e trocar este comentário pelo bloco.
+             O mp4 vem antes do webm de propósito: todo navegador toca H.264, e o
+             Safari antigo não toca WebM. A legenda já vai gravada no vídeo; a
+             <track> é para leitor de tela e para quem liga a legenda do player.
+
+        <figure class="showcase-video">
+          <div class="bars-h" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+          <video controls playsinline preload="none" poster="img/ararinha/video/poster.jpg" width="1080" height="1920">
+            <source src="img/ararinha/video/site.mp4" type="video/mp4">
+            <source src="img/ararinha/video/site.webm" type="video/webm">
+            <track kind="captions" srclang="pt-BR" label="Português" src="img/ararinha/video/legendas.vtt">
+            Seu navegador não toca este vídeo. <a href="img/ararinha/video/site.mp4">Baixe o arquivo</a>.
+          </video>
+          <figcaption>
+            <p class="video-kicker">Em vídeo</p>
+            <h3 class="video-title">O Ararinha em meio minuto</h3>
+            <p>As seis telas em movimento, narradas em português. Sem som, a legenda conta a mesma história.</p>
+            <details class="transcript">
+              <summary>Transcrição</summary>
+              <p>(o texto de narracao.txt, um parágrafo por frase)</p>
+            </details>
+          </figcaption>
+        </figure>
+        -->
       </div>
     </section>
     <!-- Como trabalhamos -->

@@ -73,11 +73,14 @@ public/
 │   ├── logo-mark.png             # os mesmos logos com alfa, para uso na página
 │   ├── logo-wordmark.png
 │   ├── og.png                    # capa de compartilhamento 1200×630
-│   ├── lastro/{icon,capa}.png    # ícone e feature graphic, de lastro/store/
-│   ├── lastro/screens/*.webp     # as 6 capturas da App Store, reduzidas
-│   ├── ipi/{icon,capa}.png       # idem, de ipi_app/store/
+│   ├── lastro/icon.png           # ícone, de lastro/store/
+│   ├── lastro/capa.webp          # a capa 16:9 (1600×900), de lastro/store/site/
+│   ├── lastro/screens/*.webp     # as 6 capturas da App Store, 540×1174, de lastro/store/site/screens/
+│   ├── lastro/video/             # (quando houver) site.mp4, site.webm, poster.jpg, legendas.vtt e narracao.txt, de lastro/store/video/
+│   ├── ipi/{icon,capa}.png       # ainda a arte antiga (capa 1024×500, capturas 540×1169), de ipi_app/store/
 │   ├── ipi/screens/*.webp
-│   ├── ararinha/{icon,capa}.png  # idem, de ararinha/store/
+│   ├── ararinha/icon.png         # idem ao Lastro, de ararinha/store/ e ararinha/store/site/
+│   ├── ararinha/capa.webp
 │   └── ararinha/screens/*.webp
 ├── lastro/{privacidade,termos}/  # texto legal do Lastro
 ├── ordinal/{privacidade,termos}/ # texto legal do Ordinal (versão provisória)
@@ -88,10 +91,14 @@ public/
 ```
 
 As imagens dos apps são **cópias**. Cada app tem vitrine própria na home
-(`#lastro`, `#ipi` e `#ararinha`), e quem gera essas imagens é o repositório do app — o
-passo que as copia para cá está no `store/README.md` de cada um. Não edite nem
-regere nada de `img/<app>/` por aqui: este repositório é o site,
-e o que ele sabe sobre um app é só onde a imagem dele mora.
+(`#lastro`, `#ipi` e `#ararinha`): a capa 16:9, as seis capturas em rolagem
+horizontal e, quando o app tiver, o vídeo explicativo em retrato com
+transcrição. Quem gera tudo isso é o gerador do kit, a partir do `store/` do
+app (`flutter-app-kit/docs/store-mockups.md` § 9); o site só recebe a cópia em
+`img/<app>/`. Não edite nem regere nada de `img/<app>/` por aqui: este
+repositório é o site, e o que ele sabe sobre um app é só onde a imagem dele
+mora. O bloco de vídeo de um app sem `store/video/` fica como comentário HTML
+na seção dele, pronto para ligar.
 
 **Quando um app entra aqui:** a política antes do primeiro envio a qualquer
 trilha das lojas (com a linha na tabela de URLs acima); o cartão e a vitrine
