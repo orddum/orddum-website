@@ -1,10 +1,19 @@
 Lastro — narração do vídeo (pt-BR)
 
-1. Lançar um gasto leva segundos
-Um gasto lançado em segundos, direto no cartão.
+1. O mês inteiro numa tela
+O mês inteiro numa tela, com o previsto e o realizado lado a lado.
 
-2. A fatura fecha com um toque
-Um toque quita todas as compras daquela fatura.
+2. Compra parcelada, lançada uma vez
+Lance a compra parcelada uma vez só, e as parcelas caem nos meses seguintes.
 
-3. Quanto já gastei com isso?
-Busque e veja quanto já gastou, mês a mês.
+3. A fatura do cartão fecha com um toque
+Veja quando a fatura fecha e quite todas as compras com um toque.
+
+4. Os valores somem quando você quiser
+Um toque no olho esconde os valores; outro os mostra de volta.
+
+5. Quanto já gastei com isso?
+Busque e veja quanto já gastou, e depois o ano inteiro somado.
+
+6. Seu patrimônio, ao longo do ano
+Acompanhe o patrimônio e registre um investimento em segundos.
