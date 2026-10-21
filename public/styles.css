@@ -604,22 +604,6 @@ h1, h2, h3, h4 { color: var(--text); font-weight: 600; line-height: 1.2; }
 .pillar h3 { font-size: 1.05rem; margin-bottom: 0.6rem; }
 .pillar p { font-size: 0.94rem; }
 
-.stack {
-   display: flex;
-   flex-wrap: wrap;
-   gap: 0.5rem;
-   margin-top: 2.5rem;
-}
-.stack-item {
-   font-family: var(--font-mono);
-   font-size: 0.76rem;
-   letter-spacing: 0.04em;
-   color: var(--text-dim);
-   background: var(--surface);
-   border: 1px solid var(--line);
-   border-radius: 3px;
-   padding: 0.4rem 0.7rem;
-}
 
 /* ---------------------------------------------------------------------------
    Contato
