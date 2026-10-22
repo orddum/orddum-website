@@ -12,28 +12,50 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/legal.css">
+  <script>document.documentElement.classList.add('js');</script>
   <link rel="icon" type="image/png" href="/img/logo-mark.png">
+  <link rel="apple-touch-icon" href="/img/logo-mark.png">
 </head>
 
-<body class="legal-page">
-  <header class="legal-header">
-    <a class="legal-brand" href="/">
-      <img src="/img/logo-mark.png" alt="Orddum" class="legal-logo">
-      <span>ORDDUM</span>
-    </a>
-    <a class="legal-back" href="/">← Voltar ao site</a>
+<body class="legal-page" data-app="green">
+  <!-- site-header -->
+  <a class="skip-link" href="#inicio">Pular para o conteúdo</a>
+
+  <header class="header">
+    <nav class="nav-container" aria-label="Principal">
+      <a class="nav-logo" href="/">
+        <img src="/img/logo-mark.png" alt="" width="30" height="30">
+        <span class="logo-text">ORDDUM</span>
+      </a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="/#apps" class="nav-link">Apps</a></li>
+        <li><a href="/#trabalho" class="nav-link">Como trabalhamos</a></li>
+        <li><a href="/#contato" class="nav-link">Contato</a></li>
+        <li><a href="/#privacidade" class="nav-link">Privacidade</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menu" aria-expanded="false"
+        aria-controls="navMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
   </header>
+  <!-- /site-header -->
 
-  <div class="legal-rule" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+  <div class="container">
+    <header class="page-head">
+      <a class="page-app" href="/#lastro"><img src="/img/lastro/icon.png" alt="" width="28" height="28">Lastro</a>
+      <p class="kicker"><span class="bars" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        Privacidade e termos</p>
+      <h1 class="page-title">Termos de Uso</h1>
+      <p class="legal-updated">Última atualização: 14 de outubro de 2026</p>
+    </header>
 
-  <main class="legal-main">
-    <p class="legal-kicker">Lastro</p>
-    <h1>Termos de Uso</h1>
-    <p class="legal-updated">Última atualização: 14 de outubro de 2026</p>
+    <div class="legal-layout">
+  <main class="legal-main" id="inicio">
 
     <div class="legal-callout">
       <p><strong>O mais importante, em duas frases.</strong> O Lastro guarda seus dados apenas no seu aparelho, então
@@ -142,10 +164,57 @@
 
     <p class="legal-crosslink">Veja também a <a href="../privacidade/">Política de Privacidade do Lastro</a>.</p>
   </main>
+    </div>
+  </div>
 
-  <footer class="legal-footer">
-    <p>© 2026 Orddum · Itabira, MG · <a href="mailto:luiz.gonzaga@orddum.com">luiz.gonzaga@orddum.com</a></p>
+  <!-- site-footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="/img/logo-wordmark.png" alt="Orddum" width="170" height="67">
+          <p>Serviços de tecnologia. Aplicativos para iOS e Android, do desenho à publicação nas
+            lojas.</p>
+        </div>
+        <div>
+          <h4>Apps</h4>
+          <ul>
+            <li><a href="https://apps.apple.com/br/app/lastro-controle-financeiro/id6814238551" target="_blank"
+                rel="noopener">Lastro — App Store</a></li>
+            <li><a href="https://play.google.com/store/apps/details?id=com.orddum.lastro" target="_blank"
+                rel="noopener">Lastro — Google Play</a></li>
+            <li><a href="https://apps.apple.com/br/app/ipi-app/id6741813317" target="_blank" rel="noopener">IPI App —
+                App Store</a></li>
+            <li><a href="https://play.google.com/store/apps/details?id=com.orddum.ipi" target="_blank"
+                rel="noopener">IPI App — Google Play</a></li>
+            <li><a href="https://apps.apple.com/br/app/ararinha-primeiras-palavras/id6819347905" target="_blank"
+                rel="noopener">Ararinha — App Store</a></li>
+            <li><a href="https://play.google.com/store/apps/details?id=com.orddum.ararinha" target="_blank"
+                rel="noopener">Ararinha — Google Play</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/lastro/privacidade/">Privacidade do Lastro</a></li>
+            <li><a href="/lastro/termos/">Termos do Lastro</a></li>
+            <li><a href="/ipi/privacidade/">Privacidade do IPI App</a></li>
+            <li><a href="/ipi/termos/">Termos do IPI App</a></li>
+            <li><a href="/ararinha/privacidade/">Privacidade do Ararinha</a></li>
+            <li><a href="/faco-agora/privacidade/">Privacidade do Faço Agora</a></li>
+            <li><a href="/faco-agora/termos/">Termos do Faço Agora</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Orddum Serviços de Tecnologia LTDA · Itabira, MG</p>
+        <span class="bars" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+      </div>
+    </div>
   </footer>
+  <!-- /site-footer -->
+
+  <script src="/script.js"></script>
 </body>
 
 </html>

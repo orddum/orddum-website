@@ -58,12 +58,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
    // Marcar no menu a seção que está na tela. IntersectionObserver em vez de
    // listener de scroll: o listener roda a cada quadro e recalcula offsets.
+   // Os links do menu são absolutos (`/#apps`), iguais em todas as páginas: só
+   // os que apontam para a página atual (`link.pathname`) viram seção na tela.
    var links = Array.prototype.slice.call(document.querySelectorAll('.nav-link'));
    var byId = {};
    links.forEach(function (link) {
-      var href = link.getAttribute('href') || '';
-      if (href.charAt(0) === '#') byId[href.slice(1)] = link;
+      if (link.pathname === location.pathname && link.hash) byId[link.hash.slice(1)] = link;
    });
+
+   // Nas páginas filhas não há seção para observar: o menu marca o grupo a que
+   // a página pertence, "Privacidade" para política e termos, "Apps" para o guia
+   // de importação do Lastro.
+   if (!Object.keys(byId).length) {
+      var group = /\/importar\/?$/.test(location.pathname) ? '#apps' : '#privacidade';
+      links.forEach(function (link) {
+         if (link.hash === group) {
+            link.classList.add('active');
+            link.setAttribute('aria-current', 'page');
+         }
+      });
+   }
 
    var sections = Object.keys(byId)
       .map(function (id) { return document.getElementById(id); })
@@ -89,6 +103,90 @@ document.addEventListener('DOMContentLoaded', function () {
       }, { rootMargin: '-45% 0px -45% 0px' });
 
       sections.forEach(function (section) { observer.observe(section); });
+   }
+
+   // ------------------------------------------------------------------------
+   // Páginas legais: sumário "Nesta página", montado a partir dos h2. Sem JS ele
+   // não existe e o texto inteiro funciona. Nenhum id existente é trocado (o
+   // #exclusao do IPI e os do Ordinal estão em URLs das lojas): o h2 que já tem
+   // id fica como está, e só o que não tem ganha um, derivado do texto.
+   // ------------------------------------------------------------------------
+   var layout = document.querySelector('.legal-layout');
+   var legalMain = layout && layout.querySelector('.legal-main');
+   var headings = legalMain ? Array.prototype.slice.call(legalMain.querySelectorAll('h2')) : [];
+
+   if (headings.length >= 3) {
+      var slug = function (text) {
+         return text
+            .replace(/^\s*\d+\.\s*/, '')
+            .toLowerCase()
+            .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-+|-+$/g, '') || 'secao';
+      };
+
+      var toc = document.createElement('nav');
+      toc.className = 'toc';
+      toc.setAttribute('aria-label', 'Nesta página');
+      var details = document.createElement('details');
+      var summary = document.createElement('summary');
+      summary.textContent = 'Nesta página';
+      var list = document.createElement('ol');
+
+      headings.forEach(function (heading) {
+         if (!heading.id) {
+            var base = slug(heading.textContent);
+            var id = base;
+            for (var n = 2; document.getElementById(id); n++) id = base + '-' + n;
+            heading.id = id;
+         }
+         var item = document.createElement('li');
+         var anchor = document.createElement('a');
+         anchor.href = '#' + heading.id;
+         anchor.textContent = heading.textContent;
+         item.appendChild(anchor);
+         list.appendChild(item);
+      });
+
+      details.appendChild(summary);
+      details.appendChild(list);
+      toc.appendChild(details);
+      layout.insertBefore(toc, legalMain);
+
+      // Largo: o sumário fica sempre aberto, ao lado do texto. Estreito: um
+      // <details> fechado logo abaixo do cabeçalho da página.
+      var wide = window.matchMedia('(min-width: 960px)');
+      var fit = function () {
+         details.open = wide.matches;
+         summary.tabIndex = wide.matches ? -1 : 0;
+      };
+      fit();
+      if (wide.addEventListener) wide.addEventListener('change', fit);
+      else if (wide.addListener) wide.addListener(fit);
+
+      // Escolher um item no celular fecha o sumário, senão ele cobre o texto.
+      list.addEventListener('click', function (event) {
+         if (event.target.closest('a') && !wide.matches) details.open = false;
+      });
+
+      // Marca o item da seção que está sob o cabeçalho. O observador dispara
+      // quando um h2 cruza a linha; a seção atual é o último h2 acima dela.
+      if ('IntersectionObserver' in window) {
+         var anchors = Array.prototype.slice.call(list.querySelectorAll('a'));
+         var mark = function () {
+            var index = -1;
+            headings.forEach(function (heading, i) {
+               if (heading.getBoundingClientRect().top <= 140) index = i;
+            });
+            anchors.forEach(function (a, i) {
+               if (i === index) a.setAttribute('aria-current', 'location');
+               else a.removeAttribute('aria-current');
+            });
+         };
+         var tocObserver = new IntersectionObserver(mark, { rootMargin: '-140px 0px 0px 0px' });
+         headings.forEach(function (heading) { tocObserver.observe(heading); });
+         mark();
+      }
    }
 
    // ------------------------------------------------------------------------

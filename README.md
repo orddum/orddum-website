@@ -66,7 +66,7 @@ colorido; inverter essa proporção transforma a marca num arco-íris.
 public/
 ├── index.html                    # portfólio (hero, palco de apps, como trabalhamos, contato, legal)
 ├── styles.css                    # tokens da marca + toda a landing page
-├── legal.css                     # só o texto corrido das páginas legais
+├── legal.css                     # topo, sumário e texto corrido das páginas filhas
 ├── script.js                     # menu mobile, marcação da seção ativa, palco de apps e diálogo do vídeo
 ├── app-ads.txt                   # autorização do AdMob (IAB app-ads.txt), lido pelo Google
 ├── robots.txt                    # explícito: sem ele o rewrite ** devolvia a home em HTML no lugar dele
@@ -111,6 +111,13 @@ trilha das lojas (com a linha na tabela de URLs acima); o cartão e a vitrine
 quando a ficha fica pública. O passo a passo é da empresa, não deste
 repositório: `flutter-app-kit/docs/conformidade.md` § O site, conferido pelo
 `scripts/kit-audit.py` do kit.
+
+## O site é um produto só
+
+Cabeçalho e rodapé são os mesmos em todas as páginas, entre `<!-- site-header -->`
+e `<!-- site-footer -->`, byte a byte; o que muda por página (link ativo do menu,
+sumário "Nesta página") é feito no `script.js`. `tools/check-coerencia.sh` confere
+isso, e o `.github/workflows/coerencia.yml` o roda em todo pull request.
 
 ## Rodar local
 
