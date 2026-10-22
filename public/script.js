@@ -273,14 +273,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
       setActive(0);
       if (openFromHash()) {
-         // As fontes chegam depois e mexem na altura do que vem antes; refaz uma
-         // vez, se a pessoa ainda não tiver rolado por conta própria.
-         var landedAt = window.scrollY;
-         if (document.fonts && document.fonts.ready) {
-            document.fonts.ready.then(function () {
-               if (Math.abs(window.scrollY - landedAt) < 4) openFromHash();
-            });
-         }
+         // Depois daqui, o navegador ainda faz a rolagem nativa até o painel do
+         // hash (no site no ar, com rede de verdade, ela vem por último e deixa
+         // as abas embaixo do cabeçalho), e as fontes chegam mexendo na altura
+         // do que vem antes. Refaz quando as fontes e a página terminam de
+         // carregar, se a pessoa ainda não tiver mexido na página. Comparar o
+         // scrollY não serve: a rolagem nativa também o muda.
+         var touched = false;
+         ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (type) {
+            window.addEventListener(type, function () { touched = true; }, { once: true, passive: true });
+         });
+         var reopen = function () { if (!touched) openFromHash(); };
+         if (document.fonts && document.fonts.ready) document.fonts.ready.then(reopen);
+         if (document.readyState === 'complete') reopen();
+         else window.addEventListener('load', function () { setTimeout(reopen, 0); });
       }
       window.addEventListener('hashchange', openFromHash);
    }

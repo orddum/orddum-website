@@ -47,6 +47,10 @@ firebase deploy --only hosting               # manual; o CI faz no merge da main
 - Imagens de app em `public/img/<app>/`; vêm das capturas geradas pelo app
   (`store/`), nunca de goldens.
 - Commit e push só quando o usuário pedir — push aqui é publicar.
+- Cache (`firebase.json` § headers): tudo `no-cache` (o navegador revalida
+  pelo ETag a cada visita) e só `/img/**` com 1 h. CSS e JS não têm versão no
+  nome, e com o padrão do Hosting (1 h para tudo) o deploy de 22/10/2026
+  deixou HTML novo com CSS velho no cache: a home apareceu quebrada.
 
 ## Conhecimento
 
