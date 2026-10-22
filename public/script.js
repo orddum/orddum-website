@@ -201,19 +201,30 @@ document.addEventListener('DOMContentLoaded', function () {
          });
       });
 
+      // A rolagem nativa até o painel do hash deixaria as abas, que ficam logo
+      // acima dele, embaixo do cabeçalho. E o Chrome a repete a cada mudança de
+      // layout (um banner que termina de carregar) até a pessoa rolar, então
+      // não adianta rolar para outro lugar: o jeito é ela parar onde queremos.
+      // O scroll-margin-top do painel é a altura das abas mais um respiro.
+      var alignMargin = function () {
+         var gap = panels[0].getBoundingClientRect().top - tablist.getBoundingClientRect().top;
+         panels.forEach(function (panel) { panel.style.scrollMarginTop = (gap + 21) + 'px'; });
+      };
+      alignMargin();
+
       window.addEventListener('resize', function () {
+         alignMargin();
          rail.scrollTo({ left: panels[current].offsetLeft - panels[0].offsetLeft, behavior: 'auto' });
       });
 
       // Âncora: /#lastro, /#ipi, /#ararinha e /#faco-agora (as URLs das antigas
-      // vitrines) abrem o palco no app certo. O navegador já rolaria a página
-      // até o painel, que fica abaixo das abas; aqui ela vai para o início do
-      // palco. O trilho vai sem animação.
+      // vitrines) abrem o palco no app certo, com as abas à vista. O trilho vai
+      // sem animação.
       var openFromHash = function () {
          var index = ids.indexOf(decodeURIComponent(location.hash.slice(1)));
          if (index < 0) return false;
          goTo(index, true);
-         document.getElementById('apps').scrollIntoView({ behavior: 'instant', block: 'start' });
+         panels[index].scrollIntoView({ behavior: 'instant', block: 'start' });
          return true;
       };
 
@@ -273,17 +284,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
       setActive(0);
       if (openFromHash()) {
-         // Depois daqui, o navegador ainda faz a rolagem nativa até o painel do
-         // hash (no site no ar, com rede de verdade, ela vem por último e deixa
-         // as abas embaixo do cabeçalho), e as fontes chegam mexendo na altura
-         // do que vem antes. Refaz quando as fontes e a página terminam de
+         // As fontes chegam depois e mudam a altura das abas e do que vem antes.
+         // Recalcula a margem e refaz quando as fontes e a página terminam de
          // carregar, se a pessoa ainda não tiver mexido na página. Comparar o
-         // scrollY não serve: a rolagem nativa também o muda.
+         // scrollY não serve: a rolagem nativa do navegador também o muda.
          var touched = false;
          ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (type) {
             window.addEventListener(type, function () { touched = true; }, { once: true, passive: true });
          });
-         var reopen = function () { if (!touched) openFromHash(); };
+         var reopen = function () { alignMargin(); if (!touched) openFromHash(); };
          if (document.fonts && document.fonts.ready) document.fonts.ready.then(reopen);
          if (document.readyState === 'complete') reopen();
          else window.addEventListener('load', function () { setTimeout(reopen, 0); });
