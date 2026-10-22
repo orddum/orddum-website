@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Orddum — Aplicativos para iOS e Android</title>
   <meta name="description"
-    content="Orddum, serviços de tecnologia. Aplicativos mobile em Flutter para iOS e Android: Lastro, controle financeiro offline; IPI App, gestão das atividades de uma igreja; e Ararinha, livro falante de primeiras palavras.">
+    content="Orddum, serviços de tecnologia. Aplicativos mobile em Flutter para iOS e Android: Lastro, controle financeiro offline; IPI App, gestão das atividades de uma igreja; Ararinha, livro falante de primeiras palavras; e, em teste, O Que Eu Faço Agora, que sorteia a tarefa que cabe no seu tempo.">
   <meta name="theme-color" content="#000000">
   <link rel="canonical" href="https://orddum.com/">
 
@@ -14,7 +14,7 @@
   <meta property="og:site_name" content="Orddum">
   <meta property="og:title" content="Orddum — Aplicativos para iOS e Android">
   <meta property="og:description"
-    content="Aplicativos mobile em Flutter para iOS e Android. Lastro, controle financeiro offline; IPI App, gestão das atividades de uma igreja; e Ararinha, livro falante de primeiras palavras.">
+    content="Aplicativos mobile em Flutter para iOS e Android. Lastro, controle financeiro offline; IPI App, gestão das atividades de uma igreja; Ararinha, livro falante de primeiras palavras; e, em teste, O Que Eu Faço Agora, que sorteia a tarefa que cabe no seu tempo.">
   <meta property="og:url" content="https://orddum.com/">
   <meta property="og:image" content="https://orddum.com/img/og.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -44,6 +44,7 @@
         <li><a href="#lastro" class="nav-link">Lastro</a></li>
         <li><a href="#ipi" class="nav-link">IPI App</a></li>
         <li><a href="#ararinha" class="nav-link">Ararinha</a></li>
+        <li><a href="#faco-agora" class="nav-link">Faço Agora</a></li>
         <li><a href="#trabalho" class="nav-link">Como trabalhamos</a></li>
         <li><a href="#contato" class="nav-link">Contato</a></li>
         <li><a href="#privacidade" class="nav-link">Privacidade</a></li>
@@ -66,7 +67,8 @@
           <h1 class="hero-title">Aplicativos que a gente <em>publica</em>, mantém e responde por.</h1>
           <p class="hero-sub">A Orddum desenvolve aplicativos para iOS e Android. São três produtos próprios, nas duas
             lojas: o Lastro, um controle financeiro que funciona sem internet e sem conta; o IPI App, que organiza as
-            atividades de uma igreja; e o Ararinha, um livro falante para crianças.</p>
+            atividades de uma igreja; e o Ararinha, um livro falante para crianças. O quarto, O Que Eu Faço Agora, sorteia a tarefa que cabe no seu
+            tempo livre; está em teste e chega às lojas em breve.</p>
           <div class="hero-actions">
             <a href="#apps" class="btn btn-primary">Ver os apps</a>
             <a href="#contato" class="btn btn-secondary">Falar com a gente</a>
@@ -197,6 +199,35 @@
             </div>
             <p class="app-note">
               <a href="/ararinha/privacidade/">Privacidade</a>
+            </p>
+          </article>
+
+          <!-- ================= O QUE EU FAÇO AGORA ================= -->
+          <article class="app-card">
+            <div class="bars-h" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+            <div class="app-head">
+              <img class="app-icon" src="img/faco-agora/icon.png" alt="Ícone do O Que Eu Faço Agora" width="64" height="64">
+              <div>
+                <h3 class="app-name">O Que Eu Faço Agora</h3>
+                <p class="app-tag">Tarefas · iOS e Android</p>
+              </div>
+            </div>
+            <p class="app-desc">Sorteia, da sua lista, <strong>uma tarefa que cabe no tempo livre</strong> que você tem
+              agora. Sem conta e sem cadastro: suas tarefas ficam só no aparelho. Para maiores de 13 anos.</p>
+            <ul class="app-points">
+              <li>Diga se tem 5 minutos, 15, 30 ou mais, e o app escolhe uma tarefa desse tamanho</li>
+              <li>Dias seguidos sem culpa: um dia de folga por semana não quebra a sequência</li>
+              <li>Um lembrete por dia, no horário que você escolher</li>
+              <li>Grátis, com um anúncio de banner no rodapé</li>
+            </ul>
+
+            <!-- SITUAÇÃO DAS LOJAS — verificado em 22/10/2026: o app ainda está em teste
+                 interno e TestFlight, sem ficha pública. Sem botões nem links de loja até
+                 a publicação; então: trocar o selo por badge-live e pôr os botões. -->
+            <p class="app-status"><span class="badge badge-soon">Em breve</span></p>
+            <p class="app-note">Em breve na App Store e no Google Play</p>
+            <p class="app-note">
+              <a href="/faco-agora/privacidade/">Privacidade</a> · <a href="/faco-agora/termos/">Termos de uso</a>
             </p>
           </article>
         </div>
@@ -356,6 +387,33 @@
         </figure>
       </div>
     </section>
+    <!-- Vitrine do O Que Eu Faço Agora (sem vídeo por enquanto: app em teste) -->
+    <section id="faco-agora">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker"><span class="bars" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+            O Que Eu Faço Agora, por dentro</p>
+          <h2 class="section-title">Uma tarefa, do tamanho do seu tempo</h2>
+          <p class="section-sub">Você diz quanto tempo tem, e o app sorteia uma tarefa da sua lista que cabe nele. Está em
+            teste e chega em breve às lojas.</p>
+        </div>
+        <!-- Capa 16:9 e capturas: cópias de o-que-eu-faco-agora/store/site/ (gerado pelo kit,
+             flutter-app-kit/docs/store-mockups.md § 9). Copiadas em 22/10/2026. -->
+        <img class="showcase-capa" src="img/faco-agora/capa.webp"
+          alt="O Que Eu Faço Agora — sorteia o que cabe agora. Uma tarefa da sua lista, do tamanho do seu tempo." width="1600"
+          height="900" loading="lazy">
+
+        <div class="shots">
+          <img src="img/faco-agora/screens/01-sorteio.webp" alt="A tela Hoje com a tarefa sorteada em destaque" width="540" height="1174" loading="lazy">
+          <img src="img/faco-agora/screens/02-tempo.webp" alt="A pergunta “Quanto tempo você tem?” com as opções de 5, 15, 30 minutos ou mais" width="540" height="1174" loading="lazy">
+          <img src="img/faco-agora/screens/03-feito.webp" alt="A tela Feito, com uma frase curta de incentivo" width="540" height="1174" loading="lazy">
+          <img src="img/faco-agora/screens/04-tarefas.webp" alt="A lista de tarefas, com tempo e dificuldade de cada uma" width="540" height="1174" loading="lazy">
+          <img src="img/faco-agora/screens/05-dias.webp" alt="Os dias seguidos e a grade dos últimos 14 dias" width="540" height="1174" loading="lazy">
+          <img src="img/faco-agora/screens/06-lembrete.webp" alt="Ajustes: o lembrete diário, o versículo opcional e os sons" width="540" height="1174" loading="lazy">
+        </div>
+        <p class="shots-hint">Arraste para ver as seis telas</p>
+      </div>
+    </section>
     <!-- Como trabalhamos -->
     <section id="trabalho" class="apps">
       <div class="container">
@@ -463,6 +521,13 @@
                    Apple (ararinha/docs/lancamento-1.0.md § 3). -->
             </ul>
           </div>
+          <div class="legal-card">
+            <h3><img src="img/faco-agora/icon.png" alt="" width="28" height="28" class="legal-card-icon"> O Que Eu Faço Agora</h3>
+            <ul>
+              <li><a href="/faco-agora/privacidade/">Política de Privacidade</a></li>
+              <li><a href="/faco-agora/termos/">Termos de Uso</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -502,6 +567,8 @@
             <li><a href="/ipi/privacidade/">Privacidade do IPI App</a></li>
             <li><a href="/ipi/termos/">Termos do IPI App</a></li>
             <li><a href="/ararinha/privacidade/">Privacidade do Ararinha</a></li>
+            <li><a href="/faco-agora/privacidade/">Privacidade do O Que Eu Faço Agora</a></li>
+            <li><a href="/faco-agora/termos/">Termos do O Que Eu Faço Agora</a></li>
           </ul>
         </div>
       </div>
