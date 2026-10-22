@@ -392,6 +392,7 @@ h1, h2, h3, h4 { color: var(--text); font-weight: 600; line-height: 1.2; }
 .tablist::-webkit-scrollbar { display: none; }
 
 .tab {
+   flex: 0 0 auto;
    display: inline-flex;
    align-items: center;
    gap: var(--s2);
@@ -436,6 +437,7 @@ h1, h2, h3, h4 { color: var(--text); font-weight: 600; line-height: 1.2; }
    display: flex;
    gap: 0;
    overflow-x: auto;
+   overflow-y: hidden;
    scroll-snap-type: x mandatory;
    overscroll-behavior-x: contain;
    scrollbar-width: none;
@@ -452,7 +454,7 @@ h1, h2, h3, h4 { color: var(--text); font-weight: 600; line-height: 1.2; }
    grid-template-columns: 38.2fr 61.8fr;
    column-gap: var(--s5);
    row-gap: var(--s4);
-   align-items: center;
+   align-items: start;
 }
 .panel-info { min-width: 0; }
 .strip { grid-column: 1 / -1; }
