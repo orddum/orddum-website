@@ -94,6 +94,13 @@ document.addEventListener('DOMContentLoaded', function () {
    // ------------------------------------------------------------------------
    // Palco de apps — padrão "tabbed carousel" do WAI-ARIA APG.
    // ------------------------------------------------------------------------
+   // O vídeo mudo de cada painel (bloco no começo da galeria) toca sozinho só
+   // quando é o app ativo e está a pelo menos 50% na janela. `wantPlay` é a
+   // vontade da pessoa: se ela pausar, o vídeo não volta sozinho; com
+   // movimento reduzido ou economia de dados, começa pausado.
+   var syncVideos = function () {};
+   var dialogOpen = false;
+
    var stage = document.querySelector('.stage');
    var rail = stage && stage.querySelector('.rail');
    var tablist = stage && stage.querySelector('[role="tablist"]');
@@ -124,6 +131,7 @@ document.addEventListener('DOMContentLoaded', function () {
             else panel.setAttribute('inert', '');
          });
          stage.setAttribute('data-active', String(index + 1));
+         syncVideos();
 
          // No celular as abas rolam; mantém a ativa à vista sem mexer na página
          // (scrollIntoView rolaria a janela também).
@@ -209,6 +217,60 @@ document.addEventListener('DOMContentLoaded', function () {
          return true;
       };
 
+      var saveData = navigator.connection && navigator.connection.saveData;
+      var clips = panels.map(function (panel, index) {
+         var block = panel.querySelector('.shot-video');
+         if (!block) return null;
+         return {
+            index: index,
+            block: block,
+            video: block.querySelector('video'),
+            toggle: block.querySelector('[data-video-toggle]'),
+            visible: false,
+            wantPlay: !reduceMotion.matches && !saveData
+         };
+      });
+
+      var paintToggle = function (clip) {
+         clip.toggle.classList.toggle('is-paused', !clip.wantPlay);
+         clip.toggle.setAttribute('aria-label', clip.wantPlay ? 'Pausar vídeo' : 'Tocar vídeo');
+      };
+
+      syncVideos = function () {
+         clips.forEach(function (clip) {
+            if (!clip) return;
+            var play = clip.wantPlay && !dialogOpen && clip.index === current && clip.visible;
+            if (play) {
+               var started = clip.video.play();
+               if (started && started.catch) started.catch(function () { /* o botão fica à mão */ });
+            } else {
+               clip.video.pause();
+            }
+         });
+      };
+
+      clips.forEach(function (clip) {
+         if (!clip) return;
+         paintToggle(clip);
+         clip.toggle.addEventListener('click', function () {
+            clip.wantPlay = !clip.wantPlay;
+            paintToggle(clip);
+            syncVideos();
+         });
+      });
+
+      if ('IntersectionObserver' in window) {
+         var clipObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+               clips.forEach(function (clip) {
+                  if (clip && clip.block === entry.target) clip.visible = entry.isIntersecting;
+               });
+            });
+            syncVideos();
+         }, { threshold: 0.5 });
+         clips.forEach(function (clip) { if (clip) clipObserver.observe(clip.block); });
+      }
+
       setActive(0);
       if (openFromHash()) {
          // As fontes chegam depois e mexem na altura do que vem antes; refaz uma
@@ -224,39 +286,53 @@ document.addEventListener('DOMContentLoaded', function () {
    }
 
    // ------------------------------------------------------------------------
-   // Vídeo: o bloco é um link para o mp4 (funciona sem JS); com JS abre o
-   // <dialog> nativo, que já traz o Esc, o foco preso e o fundo inerte.
+   // Vídeo completo: o bloco é um link para o mp4 (funciona sem JS); com JS, o
+   // link e o botão "Ver com som" abrem o <dialog> nativo, que já traz o Esc, o
+   // foco preso e o fundo inerte. O vídeo mudo do bloco pausa enquanto ele está
+   // aberto e só retoma se estava tocando.
    // ------------------------------------------------------------------------
+   var dialogs = {};
    Array.prototype.forEach.call(document.querySelectorAll('[data-dialog]'), function (trigger) {
-      var dialog = document.getElementById(trigger.getAttribute('data-dialog'));
+      var id = trigger.getAttribute('data-dialog');
+      var dialog = document.getElementById(id);
       if (!dialog || typeof dialog.showModal !== 'function') return;
       var video = dialog.querySelector('video');
+
+      if (!dialogs[id]) {
+         dialogs[id] = { opener: null };
+
+         dialog.querySelector('.dialog-close').addEventListener('click', function () { dialog.close(); });
+
+         // Clique no fundo escuro fecha. O alvo é o próprio <dialog> também nas
+         // margens internas dele, então confere se o ponto caiu fora da caixa.
+         dialog.addEventListener('click', function (event) {
+            var box = dialog.getBoundingClientRect();
+            var outside = event.clientX < box.left || event.clientX > box.right ||
+               event.clientY < box.top || event.clientY > box.bottom;
+            if (event.target === dialog && outside) dialog.close();
+         });
+
+         // `close` vale para o botão, o Esc e o fundo: pausa, devolve o foco a
+         // quem abriu e deixa o vídeo do bloco retomar.
+         dialog.addEventListener('close', function () {
+            if (video) video.pause();
+            dialogOpen = false;
+            syncVideos();
+            if (dialogs[id].opener) dialogs[id].opener.focus({ preventScroll: true });
+         });
+      }
 
       trigger.setAttribute('aria-haspopup', 'dialog');
       trigger.addEventListener('click', function (event) {
          event.preventDefault();
+         dialogs[id].opener = trigger;
+         dialogOpen = true;
+         syncVideos();
          dialog.showModal();
          if (video) {
             var started = video.play();
             if (started && started.catch) started.catch(function () { /* o controle fica à mão */ });
          }
-      });
-
-      dialog.querySelector('.dialog-close').addEventListener('click', function () { dialog.close(); });
-
-      // Clique no fundo escuro fecha. O alvo é o próprio <dialog> também nas
-      // margens internas dele, então confere se o ponto caiu fora da caixa.
-      dialog.addEventListener('click', function (event) {
-         var box = dialog.getBoundingClientRect();
-         var outside = event.clientX < box.left || event.clientX > box.right ||
-            event.clientY < box.top || event.clientY > box.bottom;
-         if (event.target === dialog && outside) dialog.close();
-      });
-
-      // `close` vale para o botão, o Esc e o fundo: pausa e devolve o foco.
-      dialog.addEventListener('close', function () {
-         if (video) video.pause();
-         trigger.focus({ preventScroll: true });
       });
    });
 });

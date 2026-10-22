@@ -447,35 +447,29 @@ h1, h2, h3, h4 { color: var(--text); font-weight: 600; line-height: 1.2; }
 .panel { padding-top: var(--s4); }
 .js .panel { flex: 0 0 100%; min-width: 0; scroll-snap-align: start; scroll-snap-stop: always; }
 
-/* 38,2 / 61,8: a razão áurea. À esquerda o texto, à direita a capa; a faixa de
-   telas ocupa as duas colunas. */
-.panel-grid {
-   display: grid;
-   grid-template-columns: 38.2fr 61.8fr;
-   column-gap: var(--s5);
-   row-gap: var(--s4);
-   align-items: start;
-}
-.panel-info { min-width: 0; }
-.strip { grid-column: 1 / -1; }
-
-.panel-capa {
-   width: 100%;
-   border-radius: var(--r-lg);
-   border: 1px solid var(--line);
+/* Ordem da página de um app na loja: cabeçalho, galeria com o vídeo primeiro,
+   texto embaixo. Tudo até o fim da galeria tem a mesma altura nos quatro apps,
+   então trocar de app não move nada; só o texto, no fim, varia. */
+.panel-head {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   gap: var(--s3);
+   height: 64px;
 }
 
-.app-head { display: flex; align-items: center; gap: var(--s2); margin-bottom: var(--s2); }
+.app-head { display: flex; align-items: center; gap: var(--s2); min-width: 0; }
 
 .app-icon {
-   width: 55px;
-   height: 55px;
-   border-radius: 13px;
+   width: 64px;
+   height: 64px;
+   border-radius: 15px;
    border: 1px solid var(--line);
    flex-shrink: 0;
 }
 
-.app-name { font-size: 1.4rem; letter-spacing: -0.01em; margin-bottom: 0.15rem; }
+.app-title { display: flex; align-items: center; gap: var(--s2); margin-bottom: 0.3rem; }
+.app-name { font-size: 1.4rem; letter-spacing: -0.01em; }
 
 .app-tag {
    font-family: var(--font-mono);
@@ -485,17 +479,131 @@ h1, h2, h3, h4 { color: var(--text); font-weight: 600; line-height: 1.2; }
    color: var(--text-faint);
 }
 
-.app-status { margin-bottom: var(--s3); }
+.app-actions { display: flex; flex-shrink: 0; gap: var(--s1); }
+.app-actions .btn,
+.app-soon { height: 38px; }
 
-.app-desc { margin-bottom: var(--s3); }
+/* O rótulo ocupa o lugar dos botões enquanto o app não está nas lojas. */
+.app-soon {
+   display: flex;
+   align-items: center;
+   max-width: 24ch;
+   font-size: 0.85rem;
+   line-height: 1.35;
+   text-align: right;
+   color: var(--text-faint);
+}
 
-.app-points { list-style: none; margin-bottom: var(--s4); }
+/* A galeria: o vídeo (9:16) e as seis capturas (540:1174), todos da mesma
+   altura. Cada bloco cresce na proporção do seu aspecto, então a altura é
+   (largura − vãos) ÷ soma das proporções, sem número mágico. */
+.gallery {
+   display: flex;
+   gap: var(--s2);
+   margin-top: var(--s4);
+}
+.gallery > img,
+.shot {
+   flex: 0.46 1 0;
+   min-width: 0;
+   border-radius: var(--r);
+   border: 1px solid var(--line);
+   aspect-ratio: 540 / 1174;
+   object-fit: cover;
+}
+.gallery > .shot-video,
+.gallery > .shot-soon { flex-grow: 0.5625; aspect-ratio: 9 / 16; }
+
+.shot-video {
+   position: relative;
+   overflow: hidden;
+   background: #000;
+}
+/* A barra de 2 px na cor do app: a mesma do sublinhado da aba. */
+.shot-video::before {
+   content: "";
+   position: absolute;
+   inset: 0 0 auto 0;
+   height: 2px;
+   background: var(--accent);
+   z-index: 1;
+}
+.video-link { display: block; height: 100%; }
+.shot-video video { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* Sem JS o bloco é só o link para o mp4, com o poster. */
+.video-controls { display: none; }
+.js .video-controls {
+   position: absolute;
+   left: var(--s1);
+   bottom: var(--s1);
+   display: flex;
+   gap: var(--s1);
+}
+.vbtn {
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   width: 28px;
+   height: 28px;
+   color: var(--text-dim);
+   background: rgba(0, 0, 0, 0.55);
+   border: 1px solid var(--line-strong);
+   border-radius: 50%;
+   cursor: pointer;
+   transition: color var(--transition), border-color var(--transition);
+}
+.vbtn:hover { color: var(--shell); border-color: var(--shell); }
+.vbtn .i-play { display: none; }
+.vbtn.is-paused .i-play { display: block; }
+.vbtn.is-paused .i-pause { display: none; }
+
+/* Sem vídeo ainda: um bloco neutro, do mesmo tamanho, para as telas não
+   se deslocarem. */
+.shot-soon {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   gap: var(--s2);
+   background: var(--surface);
+}
+.gallery > .shot-soon img {
+   width: 34%;
+   max-width: 55px;
+   height: auto;
+   aspect-ratio: 1;
+   border-radius: 13px;
+   border: 1px solid var(--line);
+   flex: none;
+}
+.shot-soon span {
+   font-family: var(--font-mono);
+   font-size: 0.62rem;
+   letter-spacing: 0.12em;
+   text-transform: uppercase;
+   text-align: center;
+   color: var(--text-faint);
+}
+
+/* Texto: a razão áurea de novo, descrição à esquerda e pontos à direita. */
+.panel-body {
+   display: grid;
+   grid-template-columns: 38.2fr 61.8fr;
+   column-gap: var(--s5);
+   row-gap: var(--s3);
+   margin-top: var(--s4);
+}
+.panel-body > * { min-width: 0; }
+
+.app-points { list-style: none; }
 .app-points li {
    position: relative;
    padding-left: var(--s3);
    margin-bottom: var(--s1);
    font-size: 0.94rem;
 }
+.app-points li:last-child { margin-bottom: 0; }
 .app-points li::before {
    content: "";
    position: absolute;
@@ -506,11 +614,8 @@ h1, h2, h3, h4 { color: var(--text); font-weight: 600; line-height: 1.2; }
    background: var(--accent);
 }
 
-.app-actions { display: flex; flex-wrap: wrap; gap: var(--s1); }
-.app-soon { font-size: 0.94rem; color: var(--text-dim); }
-
 .app-note {
-   margin-top: var(--s3);
+   grid-column: 1 / -1;
    padding-top: var(--s3);
    border-top: 1px solid var(--line);
    font-size: 0.85rem;
@@ -535,65 +640,6 @@ h1, h2, h3, h4 { color: var(--text); font-weight: 600; line-height: 1.2; }
 }
 .badge-live { color: var(--sfc-green-ink); border-color: rgba(53, 204, 112, 0.4); background: rgba(5, 168, 63, 0.1); }
 .badge-soon { color: var(--sfc-yellow); border-color: rgba(255, 214, 4, 0.38); background: rgba(255, 214, 4, 0.08); }
-
-/* A faixa de telas: as seis capturas da App Store (540×1174) e, quando o app
-   tem, o vídeo como sétima coluna. No desktop cabe sem rolar; no celular rola
-   na horizontal, e `overscroll-behavior-x: contain` impede que o fim da faixa
-   arraste o trilho de apps junto. */
-.strip {
-   display: grid;
-   grid-template-columns: repeat(7, 1fr);
-   gap: var(--s2);
-}
-.strip img,
-.shot {
-   width: 100%;
-   border-radius: var(--r);
-   border: 1px solid var(--line);
-   aspect-ratio: 540 / 1174;
-   object-fit: cover;
-}
-
-.shot-video {
-   position: relative;
-   display: block;
-   overflow: hidden;
-   background: #000;
-   transition: border-color var(--transition);
-}
-.shot-video img { height: 100%; border: 0; border-radius: 0; opacity: 0.7; transition: opacity var(--transition); }
-.shot-video:hover { border-color: var(--shell); }
-.shot-video:hover img { opacity: 0.9; }
-
-.play {
-   position: absolute;
-   left: 50%;
-   top: 50%;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   width: var(--s4);
-   height: var(--s4);
-   padding-left: 2px;
-   color: var(--text);
-   background: rgba(0, 0, 0, 0.55);
-   border: 1px solid var(--line-strong);
-   border-radius: 50%;
-   transform: translate(-50%, -50%);
-   transition: transform var(--transition), border-color var(--transition);
-}
-.shot-video:hover .play { transform: translate(-50%, -50%) scale(1.08); border-color: var(--shell); }
-
-.shot-label {
-   position: absolute;
-   left: var(--s1);
-   bottom: var(--s1);
-   font-family: var(--font-mono);
-   font-size: 0.66rem;
-   letter-spacing: 0.12em;
-   text-transform: uppercase;
-   color: var(--text);
-}
 
 /* Indicador: as quatro barras do logo, a do app ativo acesa. Decorativo. */
 .js .stage-dots {
@@ -839,7 +885,7 @@ a.contact-card:hover { border-color: var(--shell); background: var(--surface-2);
    .footer-grid { grid-template-columns: 1fr 1fr; }
    .footer-brand { grid-column: 1 / -1; }
 
-   .panel-grid { column-gap: var(--s4); }
+   .panel-body { column-gap: var(--s4); }
 }
 
 @media (max-width: 720px) {
@@ -872,8 +918,7 @@ a.contact-card:hover { border-color: var(--shell); background: var(--surface-2);
    .nav-link:hover,
    .nav-link.active { border-bottom-color: var(--line); color: var(--sfc-yellow); }
 
-   .hero-actions .btn,
-   .app-actions .btn { flex: 1 1 100%; }
+   .hero-actions .btn { flex: 1 1 100%; }
 
    /* O seletor vira uma fileira de chips que rola na horizontal; as setas
       saem (o dedo desliza o trilho) e o sublinhado fica dentro do chip. */
@@ -889,20 +934,28 @@ a.contact-card:hover { border-color: var(--shell); background: var(--surface-2);
    .js .tab[aria-selected="true"] { border-color: var(--line-strong); border-bottom-color: var(--accent); }
    .js .stage-arrows { display: none; }
 
-   .panel-grid { grid-template-columns: 1fr; row-gap: var(--s3); }
-   .panel-capa { order: -1; }
+   /* Cabeçalho em duas linhas de altura fixa: ícone, nome e tag; embaixo os
+      dois botões (ou o rótulo "em breve") lado a lado. */
+   .panel-head { flex-direction: column; align-items: stretch; height: calc(64px + var(--s2) + 38px); gap: var(--s2); }
+   .app-actions { flex-shrink: 1; }
+   .app-actions .btn { flex: 1 1 0; }
+   .app-soon { max-width: none; text-align: left; }
 
-   .strip {
-      display: flex;
+   /* A galeria vira uma faixa que rola: o vídeo inteiro e a primeira tela
+      espiando. `contain` impede que o fim da faixa arraste o trilho de apps. */
+   .gallery {
       overflow-x: auto;
       overscroll-behavior-x: contain;
       scroll-snap-type: x proximity;
-      padding-bottom: var(--s1);
       scrollbar-width: none;
    }
-   .strip::-webkit-scrollbar { display: none; }
-   .strip img,
-   .shot { flex: 0 0 138px; width: 138px; scroll-snap-align: start; }
+   .gallery::-webkit-scrollbar { display: none; }
+   .gallery > img,
+   .shot { flex: none; height: 400px; width: auto; scroll-snap-align: start; }
+   .gallery > .shot-video,
+   .gallery > .shot-soon { flex-grow: 0; }
+
+   .panel-body { grid-template-columns: 1fr; }
 
    .pillars {
       grid-template-columns: none;
@@ -921,9 +974,12 @@ a.contact-card:hover { border-color: var(--shell); background: var(--surface-2);
    .dialog-text { justify-self: stretch; max-width: none; }
 
    .legal-app { min-width: 0; flex: 1 1 100%; }
+
+   .contact-grid { grid-template-columns: repeat(2, 1fr); gap: var(--s2); }
+   .contact-card { padding: var(--s3) var(--s2); }
+   .contact-value { font-size: 0.9rem; overflow-wrap: anywhere; }
 }
 
 @media (max-width: 420px) {
-   .app-icon { width: 44px; height: 44px; }
    .app-name { font-size: 1.2rem; }
 }
