@@ -4,13 +4,13 @@ Lastro — narração do vídeo (pt-BR)
 O mês inteiro numa tela, com o previsto e o realizado lado a lado.
 
 2. Compra parcelada, lançada uma vez
-Lance a compra parcelada uma vez só, e as parcelas caem nos meses seguintes.
+Digite o total da compra e o app divide pelos meses.
 
 3. A fatura do cartão fecha com um toque
 Veja quando a fatura fecha e quite todas as compras com um toque.
 
 4. Os valores somem quando você quiser
-Um toque no olho esconde os valores; outro os mostra de volta.
+Esconda os valores num toque.
 
 5. Quanto já gastei com isso?
 Busque e veja quanto já gastou, e depois o ano inteiro somado.
