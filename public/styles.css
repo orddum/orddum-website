@@ -61,6 +61,14 @@
    --r-lg: 8px;
    --ring: 0 0 0 2px var(--shell);
 
+   /* espaçamento: Fibonacci. A proporção das colunas do palco é a áurea. */
+   --s1: 8px;
+   --s2: 13px;
+   --s3: 21px;
+   --s4: 34px;
+   --s5: 55px;
+   --s6: 89px;
+
    --page: 1140px;
    --transition: 180ms ease;
 }
@@ -145,18 +153,6 @@ a { color: var(--shell); }
 .bars span:nth-child(3) { background: var(--sfc-red); }
 .bars span:nth-child(4) { background: var(--sfc-yellow); }
 
-.bars-h {
-   display: flex;
-   gap: 0;
-   height: 3px;
-   width: 100%;
-}
-.bars-h span { flex: 1; }
-.bars-h span:nth-child(1) { background: var(--sfc-green); }
-.bars-h span:nth-child(2) { background: var(--sfc-blue); }
-.bars-h span:nth-child(3) { background: var(--sfc-red); }
-.bars-h span:nth-child(4) { background: var(--sfc-yellow); }
-
 /* ---------------------------------------------------------------------------
    Cabeçalho
    ------------------------------------------------------------------------- */
@@ -189,7 +185,7 @@ a { color: var(--shell); }
 .nav-logo img { height: 30px; width: auto; }
 .logo-text {
    font-family: var(--font-mono);
-   font-weight: 700;
+   font-weight: 600;
    letter-spacing: 0.16em;
    font-size: 0.95rem;
    color: var(--shell);
@@ -283,20 +279,15 @@ a { color: var(--shell); }
 
 .btn-sm { padding: 0.6rem 1rem; font-size: 0.76rem; }
 
-/* Botão desativado: a loja ainda não publicou. Não é link, é estado. */
-.btn-pending {
-   background: transparent;
-   color: var(--text-faint);
-   border: 1px dashed var(--line-strong);
-   cursor: default;
-}
-
 /* ---------------------------------------------------------------------------
    Seções
    ------------------------------------------------------------------------- */
-section { padding: 5.5rem 0; }
+section { padding: var(--s6) 0; }
 
-.section-head { margin-bottom: 3rem; max-width: 64ch; }
+/* Faixa levemente acima do preto, com hairlines: separa sem pôr caixa. */
+.raised { background: var(--bg-raised); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+.section-head { margin-bottom: var(--s4); max-width: 64ch; }
 
 .kicker {
    display: flex;
@@ -308,7 +299,7 @@ section { padding: 5.5rem 0; }
    letter-spacing: 0.22em;
    text-transform: uppercase;
    color: var(--text-faint);
-   margin-bottom: 1rem;
+   margin-bottom: var(--s2);
 }
 .kicker .bars { flex-direction: row; width: auto; gap: 3px; }
 .kicker .bars span { width: 4px; height: 12px; }
@@ -318,7 +309,7 @@ h1, h2, h3, h4 { color: var(--text); font-weight: 600; line-height: 1.2; }
 .section-title {
    font-size: clamp(1.75rem, 4vw, 2.4rem);
    letter-spacing: -0.02em;
-   margin-bottom: 0.85rem;
+   margin-bottom: var(--s2);
 }
 
 .section-sub { color: var(--text-dim); font-size: 1.05rem; }
@@ -327,7 +318,7 @@ h1, h2, h3, h4 { color: var(--text); font-weight: 600; line-height: 1.2; }
    Hero
    ------------------------------------------------------------------------- */
 .hero {
-   padding: 11rem 0 6rem;
+   padding: calc(var(--s5) + var(--s5)) 0 var(--s4);
    position: relative;
    overflow: hidden;
 }
@@ -348,13 +339,13 @@ h1, h2, h3, h4 { color: var(--text); font-weight: 600; line-height: 1.2; }
 
 .hero-inner { position: relative; max-width: 780px; }
 
-.hero-logo { margin-bottom: 2.25rem; }
-.hero-logo img { width: min(420px, 82vw); }
+.hero-logo { margin-bottom: var(--s3); }
+.hero-logo img { width: min(260px, 70vw); }
 
 .hero-title {
-   font-size: clamp(2rem, 5.6vw, 3.4rem);
+   font-size: clamp(1.9rem, 4.6vw, 2.9rem);
    letter-spacing: -0.03em;
-   margin-bottom: 1.25rem;
+   margin-bottom: var(--s2);
 }
 .hero-title em {
    font-style: normal;
@@ -362,52 +353,136 @@ h1, h2, h3, h4 { color: var(--text); font-weight: 600; line-height: 1.2; }
 }
 
 .hero-sub {
-   font-size: clamp(1.02rem, 2.2vw, 1.2rem);
+   font-size: clamp(1rem, 2.2vw, 1.15rem);
    color: var(--text-dim);
    max-width: 58ch;
-   margin-bottom: 2.25rem;
+   margin-bottom: var(--s4);
 }
 
-.hero-actions { display: flex; flex-wrap: wrap; gap: 0.85rem; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: var(--s2); }
 
 /* ---------------------------------------------------------------------------
-   Portfólio — os cards de app
+   Portfólio — o palco de apps
+   Seletor (tablist) em cima, trilho de painéis embaixo. O trilho é só CSS:
+   `overflow-x` + `scroll-snap`, então deslizar com o dedo troca de app sem
+   biblioteca. Sob `.js` ele vira carrossel; sem JS os painéis empilham.
+   Cada app tem a sua cor de acento (a barra do logo, na ordem), usada só no
+   sublinhado da aba, nos marcadores e no indicador — nunca como superfície.
    ------------------------------------------------------------------------- */
-.apps { background: var(--bg-raised); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+[data-app="green"] { --accent: var(--sfc-green); }
+[data-app="blue"] { --accent: var(--sfc-blue); }
+[data-app="red"] { --accent: var(--sfc-red); }
+[data-app="yellow"] { --accent: var(--sfc-yellow); }
 
-.app-grid {
-   display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-   gap: 1.5rem;
+.stage-bar {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   gap: var(--s3);
+   border-bottom: 1px solid var(--line);
 }
 
-.app-card {
+.tablist {
    position: relative;
    display: flex;
-   flex-direction: column;
-   background: var(--surface);
-   border: 1px solid var(--line);
-   border-radius: var(--r-lg);
-   padding: 2rem 1.75rem 1.75rem;
-   overflow: hidden;
-   transition: border-color var(--transition), transform var(--transition);
+   gap: var(--s4);
+   overflow-x: auto;
+   scrollbar-width: none;
 }
-.app-card:hover { border-color: var(--line-strong); transform: translateY(-2px); }
+.tablist::-webkit-scrollbar { display: none; }
 
-/* As quatro barras no topo do card: a assinatura da marca, repetida. */
-.app-card > .bars-h { position: absolute; inset: 0 0 auto 0; }
+.tab {
+   flex: 0 0 auto;
+   display: inline-flex;
+   align-items: center;
+   gap: var(--s2);
+   padding: var(--s2) 0;
+   margin-bottom: -1px;
+   font-size: 0.95rem;
+   font-weight: 500;
+   white-space: nowrap;
+   color: var(--text-dim);
+   text-decoration: none;
+   border-bottom: 2px solid transparent;
+   transition: color var(--transition), border-color var(--transition);
+}
+.tab img { width: 28px; height: 28px; border-radius: 7px; border: 1px solid var(--line); }
+.tab:hover { color: var(--text); }
+.js .tab[aria-selected="true"] { color: var(--text); border-bottom-color: var(--accent); }
 
-.app-head { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+/* Setas e indicador só fazem sentido com o carrossel ligado. */
+.stage-arrows,
+.stage-dots { display: none; }
+.js .stage-arrows { display: flex; gap: var(--s1); }
+
+.arrow {
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   width: var(--s4);
+   height: var(--s4);
+   color: var(--text-dim);
+   background: none;
+   border: 1px solid var(--line-strong);
+   border-radius: var(--r);
+   cursor: pointer;
+   transition: color var(--transition), border-color var(--transition);
+}
+.arrow:hover { color: var(--shell); border-color: var(--shell); }
+
+.rail { display: grid; gap: var(--s6); }
+
+.js .rail {
+   position: relative;
+   display: flex;
+   /* O vão vale por arredondamento de subpixel no snap: se sobrar 1 px, mostra
+      preto e não a borda do painel vizinho. */
+   gap: var(--s3);
+   overflow-x: auto;
+   overflow-y: hidden;
+   scroll-snap-type: x mandatory;
+   overscroll-behavior-x: contain;
+   scrollbar-width: none;
+}
+.js .rail::-webkit-scrollbar { display: none; }
+
+.panel { padding-top: var(--s4); }
+.js .panel { flex: 0 0 100%; min-width: 0; scroll-snap-align: start; scroll-snap-stop: always; }
+
+/* Ordem da página de um app na loja: cabeçalho, galeria com o vídeo primeiro,
+   texto embaixo. Tudo até o fim da galeria tem a mesma altura nos quatro apps,
+   então trocar de app não move nada; só o texto, no fim, varia. */
+.panel-banner {
+   display: block;
+   width: 100%;
+   aspect-ratio: 2.2 / 1;
+   object-fit: cover;
+   object-position: center;
+   border-radius: var(--r-lg);
+   border: 1px solid var(--line);
+}
+
+.panel-head {
+   display: flex;
+   margin-top: var(--s4);
+   align-items: center;
+   justify-content: space-between;
+   gap: var(--s3);
+   height: 64px;
+}
+
+.app-head { display: flex; align-items: center; gap: var(--s2); min-width: 0; }
 
 .app-icon {
    width: 64px;
    height: 64px;
-   border-radius: 14px;
+   border-radius: 15px;
    border: 1px solid var(--line);
    flex-shrink: 0;
 }
 
-.app-name { font-size: 1.4rem; letter-spacing: -0.01em; margin-bottom: 0.15rem; }
+.app-title { display: flex; align-items: center; gap: var(--s2); margin-bottom: 0.3rem; }
+.app-name { font-size: 1.4rem; letter-spacing: -0.01em; }
 
 .app-tag {
    font-family: var(--font-mono);
@@ -417,48 +492,149 @@ h1, h2, h3, h4 { color: var(--text); font-weight: 600; line-height: 1.2; }
    color: var(--text-faint);
 }
 
-.app-desc { margin-bottom: 1.25rem; }
+.app-actions { display: flex; flex-shrink: 0; gap: var(--s1); }
+.app-actions .btn,
+.app-soon { height: 38px; }
 
-.app-points { list-style: none; margin-bottom: 1.75rem; }
+/* O rótulo ocupa o lugar dos botões enquanto o app não está nas lojas. */
+.app-soon {
+   display: flex;
+   align-items: center;
+   white-space: nowrap;
+   font-size: 0.85rem;
+   text-align: right;
+   color: var(--text-faint);
+}
+
+/* A galeria: o vídeo (9:16) e as seis capturas (540:1174), todos da mesma
+   altura. Cada bloco cresce na proporção do seu aspecto, então a altura é
+   (largura − vãos) ÷ soma das proporções, sem número mágico. */
+.gallery {
+   display: flex;
+   gap: var(--s2);
+   margin-top: var(--s4);
+}
+.gallery > img,
+.shot {
+   flex: 0.46 1 0;
+   min-width: 0;
+   border-radius: var(--r);
+   border: 1px solid var(--line);
+   aspect-ratio: 540 / 1174;
+   object-fit: cover;
+}
+.gallery > .shot-video,
+.gallery > .shot-soon { flex-grow: 0.5625; aspect-ratio: 9 / 16; }
+
+.shot-video {
+   position: relative;
+   overflow: hidden;
+   background: #000;
+}
+/* A barra de 2 px na cor do app: a mesma do sublinhado da aba. */
+.shot-video::before {
+   content: "";
+   position: absolute;
+   inset: 0 0 auto 0;
+   height: 2px;
+   background: var(--accent);
+   z-index: 1;
+}
+.video-link { display: block; height: 100%; }
+.shot-video video { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* Sem JS o bloco é só o link para o mp4, com o poster. */
+.video-controls { display: none; }
+.js .video-controls {
+   position: absolute;
+   left: var(--s1);
+   bottom: var(--s1);
+   display: flex;
+   gap: var(--s1);
+}
+.vbtn {
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   width: 28px;
+   height: 28px;
+   color: var(--text-dim);
+   background: rgba(0, 0, 0, 0.55);
+   border: 1px solid var(--line-strong);
+   border-radius: 50%;
+   cursor: pointer;
+   transition: color var(--transition), border-color var(--transition);
+}
+.vbtn:hover { color: var(--shell); border-color: var(--shell); }
+.vbtn .i-play { display: none; }
+.vbtn.is-paused .i-play { display: block; }
+.vbtn.is-paused .i-pause { display: none; }
+
+/* Sem vídeo ainda: um bloco neutro, do mesmo tamanho, para as telas não
+   se deslocarem. */
+.shot-soon {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   gap: var(--s2);
+   background: var(--surface);
+}
+.gallery > .shot-soon img {
+   width: 34%;
+   max-width: 55px;
+   height: auto;
+   aspect-ratio: 1;
+   border-radius: 13px;
+   border: 1px solid var(--line);
+   flex: none;
+}
+.shot-soon span {
+   font-family: var(--font-mono);
+   font-size: 0.62rem;
+   letter-spacing: 0.12em;
+   text-transform: uppercase;
+   text-align: center;
+   color: var(--text-faint);
+}
+
+/* Texto: a razão áurea de novo, descrição à esquerda e pontos à direita. */
+.panel-body {
+   display: grid;
+   grid-template-columns: 38.2fr 61.8fr;
+   column-gap: var(--s5);
+   row-gap: var(--s3);
+   margin-top: var(--s4);
+}
+.panel-body > * { min-width: 0; }
+
+.app-points { list-style: none; }
 .app-points li {
    position: relative;
-   padding-left: 1.15rem;
-   margin-bottom: 0.45rem;
+   padding-left: var(--s3);
+   margin-bottom: var(--s1);
    font-size: 0.94rem;
 }
+.app-points li:last-child { margin-bottom: 0; }
 .app-points li::before {
    content: "";
    position: absolute;
    left: 0;
-   top: 0.62em;
-   width: 6px;
-   height: 6px;
-   border-radius: 1px;
-   background: var(--sfc-green);
-}
-.app-points li:nth-child(2)::before { background: var(--sfc-blue); }
-.app-points li:nth-child(3)::before { background: var(--sfc-red); }
-.app-points li:nth-child(4)::before { background: var(--sfc-yellow); }
-
-/* O selo empurra a si mesmo e aos botões para o rodapé do card: as duas listas
-   têm tamanhos diferentes, e sem isso os botões de um card ficam na altura do
-   texto do outro. */
-.app-status { margin-top: auto; padding-top: 0.5rem; margin-bottom: 1rem; }
-
-.app-actions {
-   display: flex;
-   flex-wrap: wrap;
-   gap: 0.6rem;
+   top: 0.8em;
+   width: 13px;
+   height: 1px;
+   background: var(--accent);
 }
 
 .app-note {
-   margin-top: 1rem;
-   padding-top: 1rem;
+   grid-column: 1 / -1;
+   padding-top: var(--s3);
    border-top: 1px solid var(--line);
    font-size: 0.85rem;
    color: var(--text-faint);
 }
 .app-note a { color: var(--text-dim); }
+.app-note a:hover { color: var(--shell); }
 
 /* Selo de situação na loja */
 .badge {
@@ -477,76 +653,75 @@ h1, h2, h3, h4 { color: var(--text); font-weight: 600; line-height: 1.2; }
 .badge-live { color: var(--sfc-green-ink); border-color: rgba(53, 204, 112, 0.4); background: rgba(5, 168, 63, 0.1); }
 .badge-soon { color: var(--sfc-yellow); border-color: rgba(255, 214, 4, 0.38); background: rgba(255, 214, 4, 0.08); }
 
+/* Indicador: as quatro barras do logo, a do app ativo acesa. Decorativo. */
+.js .stage-dots {
+   display: flex;
+   justify-content: center;
+   gap: var(--s1);
+   margin-top: var(--s4);
+}
+.stage-dots span { width: var(--s3); height: 3px; border-radius: 1px; opacity: 0.22; transition: opacity var(--transition); }
+.stage-dots span:nth-child(1) { background: var(--sfc-green); }
+.stage-dots span:nth-child(2) { background: var(--sfc-blue); }
+.stage-dots span:nth-child(3) { background: var(--sfc-red); }
+.stage-dots span:nth-child(4) { background: var(--sfc-yellow); }
+.stage[data-active="1"] .stage-dots span:nth-child(1),
+.stage[data-active="2"] .stage-dots span:nth-child(2),
+.stage[data-active="3"] .stage-dots span:nth-child(3),
+.stage[data-active="4"] .stage-dots span:nth-child(4) { opacity: 1; }
+
 /* ---------------------------------------------------------------------------
-   Vitrine por app — a capa, as capturas e o vídeo
-   Tudo é cópia do `store/` do app, gerado pelo kit (README § Estrutura): a capa
-   é a arte 16:9 (1600×900), as capturas são a fileira da App Store em 540×1174
-   e o vídeo é o explicativo em retrato (1080×1920), com legenda gravada.
+   Vídeo — o diálogo nativo
+   O vídeo explicativo é em retrato (1080×1920), com legenda. A altura fica
+   presa à janela: um 9:16 na largura da tela viraria uma coluna de dois
+   viewports.
    ------------------------------------------------------------------------- */
-.showcase-capa {
-   width: 100%;
+.video-dialog {
+   position: fixed;
+   inset: 0;
+   margin: auto;
+   width: min(860px, calc(100vw - var(--s3) * 2));
+   max-height: calc(100vh - var(--s3) * 2);
+   overflow-y: auto;
+   padding: var(--s4);
+   color: var(--text-dim);
+   background: var(--bg-raised);
+   border: 1px solid var(--line-strong);
    border-radius: var(--r-lg);
-   border: 1px solid var(--line);
-   margin-bottom: 3rem;
 }
+.video-dialog::backdrop { background: rgba(0, 0, 0, 0.82); }
+html:has(dialog[open]) { overflow: hidden; }
 
-/* Rolagem horizontal: seis telas de celular não cabem lado a lado num desktop,
-   e empilhá-las faria a seção ter três metros. */
-.shots {
-   display: grid;
-   grid-auto-flow: column;
-   grid-auto-columns: 270px;
-   gap: 1.25rem;
-   overflow-x: auto;
-   padding-bottom: 1.25rem;
-   scroll-snap-type: x mandatory;
-   scrollbar-width: thin;
-   scrollbar-color: var(--line-strong) transparent;
+.dialog-close {
+   position: absolute;
+   top: var(--s2);
+   right: var(--s2);
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   width: var(--s4);
+   height: var(--s4);
+   color: var(--text-dim);
+   background: none;
+   border: 1px solid var(--line-strong);
+   border-radius: var(--r);
+   cursor: pointer;
+   transition: color var(--transition), border-color var(--transition);
 }
-.shots::-webkit-scrollbar { height: 8px; }
-.shots::-webkit-scrollbar-track { background: var(--surface); border-radius: 4px; }
-.shots::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 4px; }
+.dialog-close:hover { color: var(--shell); border-color: var(--shell); }
 
-.shots img {
-   width: 100%;
-   border-radius: var(--r-lg);
-   border: 1px solid var(--line);
-   scroll-snap-align: start;
-}
-
-.shots-hint {
-   font-family: var(--font-mono);
-   font-size: 0.72rem;
-   letter-spacing: 0.1em;
-   text-transform: uppercase;
-   color: var(--text-faint);
-   margin-top: 0.5rem;
-}
-
-/* O vídeo em retrato ao lado do texto, num cartão como os do portfólio. No
-   celular ele empilha e fica centralizado, com a altura presa a 70vh: um
-   9:16 na largura da tela viraria uma coluna de dois viewports. */
-.showcase-video {
-   position: relative;
+.dialog-body {
    display: grid;
    grid-template-columns: auto 1fr;
    align-items: center;
-   gap: 2rem 3rem;
-   margin-top: 3rem;
-   padding: 2.25rem 2rem 2rem;
-   background: var(--surface);
-   border: 1px solid var(--line);
-   border-radius: var(--r-lg);
-   overflow: hidden;
+   gap: var(--s3) var(--s5);
 }
-.showcase-video > .bars-h { position: absolute; inset: 0 0 auto 0; }
 
-/* A largura NÃO pode ter `100%`: numa coluna `auto` a porcentagem é cíclica,
-   vira `auto`, e a coluna cresce até os 1080 px intrínsecos do <video>,
-   espremendo o texto. O teto do contêiner entra pelo max-width. */
-.showcase-video video {
+/* Sem `100%` na largura: numa coluna `auto` a porcentagem é cíclica, vira
+   `auto`, e a coluna cresce até os 1080 px intrínsecos do <video>. */
+.dialog-body video {
    display: block;
-   width: min(calc(70vh * 9 / 16), 360px);
+   width: min(calc(72vh * 9 / 16), 340px);
    max-width: 100%;
    height: auto;
    aspect-ratio: 9 / 16;
@@ -556,7 +731,7 @@ h1, h2, h3, h4 { color: var(--text); font-weight: 600; line-height: 1.2; }
    color-scheme: dark;   /* os controles nativos no tom da página */
 }
 
-.showcase-video figcaption { max-width: 52ch; }
+.dialog-text { max-width: 44ch; }
 
 .video-kicker {
    font-family: var(--font-mono);
@@ -564,13 +739,13 @@ h1, h2, h3, h4 { color: var(--text); font-weight: 600; line-height: 1.2; }
    letter-spacing: 0.16em;
    text-transform: uppercase;
    color: var(--text-faint);
-   margin-bottom: 0.6rem;
+   margin-bottom: var(--s1);
 }
-.video-title { font-size: 1.35rem; letter-spacing: -0.01em; margin-bottom: 0.6rem; }
+.video-title { font-size: 1.35rem; letter-spacing: -0.01em; margin-bottom: var(--s1); }
 
 .transcript {
-   margin-top: 1.25rem;
-   padding-top: 1rem;
+   margin-top: var(--s3);
+   padding-top: var(--s2);
    border-top: 1px solid var(--line);
 }
 .transcript summary {
@@ -583,33 +758,34 @@ h1, h2, h3, h4 { color: var(--text); font-weight: 600; line-height: 1.2; }
    transition: color var(--transition);
 }
 .transcript summary:hover { color: var(--shell); }
-.transcript p { margin-top: 0.85rem; font-size: 0.94rem; }
+.transcript p { margin-top: var(--s2); font-size: 0.94rem; }
 
 /* ---------------------------------------------------------------------------
    Como trabalhamos
+   Sem caixa: um fio no topo de cada coluna e um traço na cor da barra do logo.
    ------------------------------------------------------------------------- */
-.pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+.pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s4); }
 
-.pillar {
-   background: var(--surface);
-   border: 1px solid var(--line);
-   border-left: 3px solid var(--sfc-green);
-   border-radius: var(--r);
-   padding: 1.5rem;
+.pillar { position: relative; padding-top: var(--s3); border-top: 1px solid var(--line-strong); }
+.pillar::before {
+   content: "";
+   position: absolute;
+   left: 0;
+   top: -1px;
+   width: var(--s4);
+   height: 2px;
+   background: var(--sfc-green);
 }
-.pillar:nth-child(2) { border-left-color: var(--sfc-blue); }
-.pillar:nth-child(3) { border-left-color: var(--sfc-red); }
-.pillar:nth-child(4) { border-left-color: var(--sfc-yellow); }
+.pillar:nth-child(2)::before { background: var(--sfc-blue); }
+.pillar:nth-child(3)::before { background: var(--sfc-red); }
+.pillar:nth-child(4)::before { background: var(--sfc-yellow); }
 
-.pillar h3 { font-size: 1.05rem; margin-bottom: 0.6rem; }
+.pillar h3 { font-size: 1.05rem; margin-bottom: var(--s1); }
 .pillar p { font-size: 0.94rem; }
-
 
 /* ---------------------------------------------------------------------------
    Contato
    ------------------------------------------------------------------------- */
-.contact { background: var(--bg-raised); border-top: 1px solid var(--line); }
-
 .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.25rem; }
 
 .contact-card {
@@ -635,31 +811,37 @@ a.contact-card:hover { border-color: var(--shell); background: var(--surface-2);
 .contact-value { color: var(--text); font-size: 1rem; word-break: break-word; }
 
 /* ---------------------------------------------------------------------------
-   Central legal — as políticas dos dois apps
+   Central legal — uma linha por app
    ------------------------------------------------------------------------- */
-.legal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.25rem; }
+.legal-list { list-style: none; border-top: 1px solid var(--line); }
 
-.legal-card {
-   background: var(--surface);
-   border: 1px solid var(--line);
-   border-radius: var(--r);
-   padding: 1.5rem;
+.legal-list li {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   gap: var(--s1) var(--s4);
+   padding: var(--s2) 0;
+   border-bottom: 1px solid var(--line);
 }
-.legal-card h3 { font-size: 1.1rem; margin-bottom: 0.9rem; display: flex; align-items: center; gap: 0.6rem; }
-.legal-card-icon { border-radius: 6px; flex-shrink: 0; }
-.legal-card ul { list-style: none; }
-.legal-card li { margin-bottom: 0.55rem; }
-.legal-card li a {
+
+.legal-app {
+   display: inline-flex;
+   align-items: center;
+   gap: var(--s2);
+   min-width: 170px;
+   color: var(--text);
+   font-weight: 500;
+}
+.legal-icon { border-radius: 6px; border: 1px solid var(--line); flex-shrink: 0; }
+
+.legal-links { display: flex; flex-wrap: wrap; gap: var(--s1) var(--s3); font-size: 0.94rem; }
+.legal-links a {
    color: var(--text-dim);
    text-decoration: none;
    border-bottom: 1px solid var(--line-strong);
    transition: color var(--transition), border-color var(--transition);
 }
-.legal-card li a:hover { color: var(--shell); border-bottom-color: var(--shell); }
-.legal-card li span.pending {
-   color: var(--text-faint);
-   font-size: 0.92rem;
-}
+.legal-links a:hover { color: var(--shell); border-bottom-color: var(--shell); }
 
 /* ---------------------------------------------------------------------------
    Rodapé
@@ -714,11 +896,13 @@ a.contact-card:hover { border-color: var(--shell); background: var(--surface-2);
 @media (max-width: 860px) {
    .footer-grid { grid-template-columns: 1fr 1fr; }
    .footer-brand { grid-column: 1 / -1; }
+
+   .panel-body { column-gap: var(--s4); }
 }
 
-@media (max-width: 768px) {
-   section { padding: 4rem 0; }
-   .hero { padding: 8.5rem 0 4rem; }
+@media (max-width: 720px) {
+   section { padding: var(--s5) 0; }
+   .hero { padding: calc(var(--s5) + var(--s3)) 0 var(--s4); }
 
    .nav-toggle { display: flex; }
 
@@ -746,23 +930,73 @@ a.contact-card:hover { border-color: var(--shell); background: var(--surface-2);
    .nav-link:hover,
    .nav-link.active { border-bottom-color: var(--line); color: var(--sfc-yellow); }
 
-   .hero-actions .btn,
-   .app-actions .btn { flex: 1 1 100%; }
+   .hero-actions .btn { flex: 1 1 100%; }
 
-   .app-card { padding: 1.75rem 1.25rem 1.5rem; }
-   .shots { grid-auto-columns: 210px; }
-
-   .showcase-video {
-      grid-template-columns: 1fr;
-      justify-items: center;
-      gap: 1.5rem;
-      padding: 1.75rem 1.25rem 1.5rem;
+   /* O seletor vira uma fileira de chips que rola na horizontal; as setas
+      saem (o dedo desliza o trilho) e o sublinhado fica dentro do chip. */
+   .stage-bar { border-bottom: 0; }
+   .tablist { gap: var(--s1); padding-bottom: var(--s1); }
+   .tab {
+      padding: var(--s1) var(--s2);
+      margin-bottom: 0;
+      border: 1px solid var(--line-strong);
+      border-bottom-width: 2px;
+      border-radius: var(--r);
    }
-   .showcase-video figcaption { justify-self: stretch; max-width: none; }
+   .js .tab[aria-selected="true"] { border-color: var(--line-strong); border-bottom-color: var(--accent); }
+   .js .stage-arrows { display: none; }
+
+   /* Cabeçalho em duas linhas de altura fixa: ícone, nome e tag; embaixo os
+      dois botões (ou o rótulo "em breve") lado a lado. */
+   .panel-banner { aspect-ratio: 16 / 9; }
+   .panel-head { flex-direction: column; align-items: stretch; height: calc(64px + var(--s2) + 38px); gap: var(--s2); }
+   .app-actions { flex-shrink: 1; }
+   .app-actions .btn { flex: 1 1 0; }
+   .app-soon { text-align: left; }
+
+   /* A galeria vira uma faixa que rola: o vídeo inteiro e a primeira tela
+      espiando. `contain` impede que o fim da faixa arraste o trilho de apps. */
+   .gallery {
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scroll-snap-type: x proximity;
+      scrollbar-width: none;
+   }
+   .gallery::-webkit-scrollbar { display: none; }
+   .gallery > img,
+   .shot { flex: none; height: 400px; width: auto; scroll-snap-align: start; }
+   .gallery > .shot-video,
+   .gallery > .shot-soon { flex-grow: 0; }
+
+   .panel-body { grid-template-columns: 1fr; }
+
+   .pillars {
+      grid-template-columns: none;
+      grid-auto-flow: column;
+      grid-auto-columns: 82%;
+      gap: var(--s3);
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+   }
+   .pillars::-webkit-scrollbar { display: none; }
+   .pillar { scroll-snap-align: start; }
+
+   .video-dialog { padding: var(--s3); }
+   .dialog-body { grid-template-columns: 1fr; justify-items: center; }
+   .dialog-text { justify-self: stretch; max-width: none; }
+
+   .legal-app { min-width: 0; flex: 1 1 100%; }
+
+   .contact-grid { grid-template-columns: repeat(2, 1fr); gap: var(--s2); }
+   .contact-card { padding: var(--s3) var(--s2); }
+   .contact-value { font-size: 0.9rem; }
+   /* O e-mail é longo demais para meia coluna: ele e "Onde estamos" ocupam as
+      duas; WhatsApp e LinkedIn ficam lado a lado. */
+   .contact-grid > :nth-child(1),
+   .contact-grid > :nth-child(4) { grid-column: 1 / -1; }
 }
 
 @media (max-width: 420px) {
-   .app-head { gap: 0.8rem; }
-   .app-icon { width: 54px; height: 54px; }
    .app-name { font-size: 1.2rem; }
 }

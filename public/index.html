@@ -22,9 +22,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js');</script>
   <link rel="icon" type="image/png" href="img/logo-mark.png">
   <link rel="apple-touch-icon" href="img/logo-mark.png">
 </head>
@@ -41,10 +42,6 @@
       </a>
       <ul class="nav-menu" id="navMenu">
         <li><a href="#apps" class="nav-link">Apps</a></li>
-        <li><a href="#lastro" class="nav-link">Lastro</a></li>
-        <li><a href="#ipi" class="nav-link">IPI App</a></li>
-        <li><a href="#ararinha" class="nav-link">Ararinha</a></li>
-        <li><a href="#faco-agora" class="nav-link">Faço Agora</a></li>
         <li><a href="#trabalho" class="nav-link">Como trabalhamos</a></li>
         <li><a href="#contato" class="nav-link">Contato</a></li>
         <li><a href="#privacidade" class="nav-link">Privacidade</a></li>
@@ -65,10 +62,8 @@
             <img src="img/logo-wordmark.png" alt="Orddum — serviços de tecnologia" width="420" height="167">
           </div>
           <h1 class="hero-title">Aplicativos que a gente <em>publica</em>, mantém e responde por.</h1>
-          <p class="hero-sub">A Orddum desenvolve aplicativos para iOS e Android. São três produtos próprios, nas duas
-            lojas: o Lastro, um controle financeiro que funciona sem internet e sem conta; o IPI App, que organiza as
-            atividades de uma igreja; e o Ararinha, um livro falante para crianças. O quarto, Faço Agora, sorteia a tarefa que cabe no seu
-            tempo livre; está em teste e chega às lojas em breve.</p>
+          <p class="hero-sub">A Orddum desenvolve aplicativos para iOS e Android: produtos próprios nas duas lojas, do
+            desenho à ficha da loja.</p>
           <div class="hero-actions">
             <a href="#apps" class="btn btn-primary">Ver os apps</a>
             <a href="#contato" class="btn btn-secondary">Falar com a gente</a>
@@ -77,181 +72,96 @@
       </div>
     </section>
 
-    <!-- Portfólio -->
-    <section id="apps" class="apps">
+    <!-- Portfólio: o palco de apps.
+         Um painel por app num trilho com scroll-snap; o seletor segue o padrão
+         "tabbed carousel" do WAI-ARIA APG. Sem JS o trilho vira uma coluna de
+         painéis empilhados e os links do seletor são âncoras. Os ids dos painéis
+         são os das antigas vitrines (/#lastro, /#ipi, /#ararinha, /#faco-agora). -->
+    <section id="apps">
       <div class="container">
         <div class="section-head">
           <p class="kicker"><span class="bars" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
             Portfólio</p>
-          <h2 class="section-title">Três apps, três soluções</h2>
-          <p class="section-sub">Produtos próprios, do desenho à ficha da loja. Cada um com a sua política de
-            privacidade e os seus termos.</p>
+          <h2 class="section-title">Produtos próprios, do desenho à ficha da loja</h2>
+          <p class="section-sub">Escolha um app para ver as telas, o vídeo e onde baixar.</p>
         </div>
 
-        <div class="app-grid">
-          <!-- ================= LASTRO ================= -->
-          <article class="app-card">
-            <div class="bars-h" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-            <div class="app-head">
-              <img class="app-icon" src="img/lastro/icon.png" alt="Ícone do Lastro" width="64" height="64">
-              <div>
-                <h3 class="app-name">Lastro</h3>
-                <p class="app-tag">Finanças pessoais · iOS e Android</p>
-              </div>
+        <div class="stage" data-active="1">
+          <div class="stage-bar">
+            <div class="tablist" role="tablist" aria-label="Apps da Orddum">
+          <a class="tab" role="tab" id="tab-lastro" href="#lastro" aria-controls="lastro" aria-selected="true" data-app="green">
+            <img src="img/lastro/icon.png" alt="" width="28" height="28">Lastro</a>
+          <a class="tab" role="tab" id="tab-ipi" href="#ipi" aria-controls="ipi" aria-selected="false" data-app="blue">
+            <img src="img/ipi/icon.png" alt="" width="28" height="28">IPI App</a>
+          <a class="tab" role="tab" id="tab-ararinha" href="#ararinha" aria-controls="ararinha" aria-selected="false" data-app="red">
+            <img src="img/ararinha/icon.png" alt="" width="28" height="28">Ararinha</a>
+          <a class="tab" role="tab" id="tab-faco-agora" href="#faco-agora" aria-controls="faco-agora" aria-selected="false" data-app="yellow">
+            <img src="img/faco-agora/icon.png" alt="" width="28" height="28">Faço Agora</a>
             </div>
-            <p class="app-desc">Controle financeiro pessoal em que os dados <strong>nunca saem do aparelho</strong>:
-              sem servidor, sem cadastro e sem nuvem. Nasceu de uma planilha mantida por catorze anos.</p>
-            <ul class="app-points">
-              <li>O mês inteiro numa tela só: receitas, descontos, despesas e o que sobrou</li>
-              <li>Cartões com fatura, parcelas numeradas e despesas recorrentes</li>
-              <li>Busca que atravessa o histórico inteiro: "quanto já gastei com isso?"</li>
-              <li>Exportação completa e gratuita — o backup é seu, num arquivo que você leva</li>
-              <li>Traga seu histórico: um <a href="/lastro/importar/">modelo</a> para a sua IA converter planilha ou extratos no arquivo que o app importa</li>
-            </ul>
+            <div class="stage-arrows">
+              <button class="arrow" type="button" data-dir="-1" aria-label="App anterior">
+                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+              </button>
+              <button class="arrow" type="button" data-dir="1" aria-label="Próximo app">
+                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+              </button>
+            </div>
+          </div>
 
-            <!-- SITUAÇÃO DAS LOJAS — verificado em 23/09/2026: as duas respondem 200.
+          <div class="rail" aria-roledescription="carousel" aria-label="Apps da Orddum">
+
+      <!-- ================= LASTRO ================= -->
+      <div class="panel" id="lastro" role="tabpanel" aria-roledescription="slide" aria-label="Lastro, 1 de 4" data-app="green">
+        <!-- Capa 16:9 e capturas: cópias de lastro/store/site/ (gerado pelo kit,
+             flutter-app-kit/docs/store-mockups.md § 9). Copiadas em 19/10/2026. -->
+        <img class="panel-banner" src="img/lastro/capa.webp"
+          alt="Lastro — controle financeiro que não sai do celular. Sem conta, sem login, sem nuvem." width="1600" height="900" fetchpriority="high">
+
+        <div class="panel-head">
+          <div class="app-head">
+            <img class="app-icon" src="img/lastro/icon.png" alt="Ícone do Lastro" width="64" height="64">
+            <div>
+              <div class="app-title">
+                <h3 class="app-name">Lastro</h3>
+                <span class="badge badge-live">Disponível</span>
+              </div>
+              <p class="app-tag">Finanças pessoais · iOS e Android</p>
+            </div>
+          </div>
+          <div class="app-actions">
+            <a class="btn btn-primary btn-sm" href="https://apps.apple.com/br/app/lastro-controle-financeiro/id6814238551"
+              target="_blank" rel="noopener">App Store</a>
+            <a class="btn btn-secondary btn-sm" href="https://play.google.com/store/apps/details?id=com.orddum.lastro"
+              target="_blank" rel="noopener">Google Play</a>
+          </div>
+        </div>
+        <!-- SITUAÇÃO DAS LOJAS — verificado em 23/09/2026: as duas respondem 200.
                    Play  ...details?id=com.orddum.lastro                               -> 200
                    Apple apps.apple.com/br/app/lastro-controle-financeiro/id6814238551 -> 200 (v1.0.0)
                  A URL da App Store PRECISA do /br/: o app é distribuído só no
                  Brasil, e a forma sem país (apps.apple.com/app/id6814238551)
                  devolve 404. O nome na App Store é "Lastro: Controle Financeiro";
                  na Play o título recebeu o mesmo descritor em 23/09/2026. -->
-            <p class="app-status"><span class="badge badge-live">Disponível</span></p>
-            <div class="app-actions">
-              <a class="btn btn-primary btn-sm" href="https://apps.apple.com/br/app/lastro-controle-financeiro/id6814238551"
-                target="_blank" rel="noopener">App Store</a>
-              <a class="btn btn-secondary btn-sm" href="https://play.google.com/store/apps/details?id=com.orddum.lastro"
-                target="_blank" rel="noopener">Google Play</a>
+
+        <div class="gallery">
+          <div class="shot shot-video">
+            <a class="video-link" href="img/lastro/video/site.mp4" data-dialog="video-lastro"
+              aria-label="Assistir ao vídeo: O Lastro em ação">
+              <video muted loop playsinline preload="none" poster="img/lastro/video/poster.jpg" width="1080" height="1920">
+                <source src="img/lastro/video/site.mp4" type="video/mp4">
+                <source src="img/lastro/video/site.webm" type="video/webm">
+              </video>
+            </a>
+            <div class="video-controls">
+              <button class="vbtn" type="button" data-video-toggle aria-label="Pausar vídeo">
+                <svg class="i-pause" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg>
+                <svg class="i-play" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>
+              </button>
+              <button class="vbtn" type="button" data-dialog="video-lastro" aria-label="Ver com som" title="Ver com som">
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5zM15.5 9a4 4 0 010 6M18 6.5a8 8 0 010 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="currentColor" fill-opacity=".15"/></svg>
+              </button>
             </div>
-            <p class="app-note">
-              <a href="/lastro/privacidade/">Privacidade</a> · <a href="/lastro/termos/">Termos de uso</a> ·
-              <a href="/lastro/importar/">Trazer seus dados</a>
-            </p>
-          </article>
-
-          <!-- ================= IPI APP ================= -->
-          <article class="app-card">
-            <div class="bars-h" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-            <div class="app-head">
-              <img class="app-icon" src="img/ipi/icon.png" alt="Ícone do IPI App" width="64" height="64">
-              <div>
-                <h3 class="app-name">IPI App</h3>
-                <p class="app-tag">Gestão de igreja · iOS e Android</p>
-              </div>
-            </div>
-            <p class="app-desc">O aplicativo da Igreja Presbiteriana de Itabira. Reúne o que antes se espalhava entre
-              boletim impresso, mural e grupos de mensagem.</p>
-            <ul class="app-points">
-              <li>Agenda da semana, avisos e boletim num lugar só</li>
-              <li>Grupos e sociedades internas</li>
-              <li>Hinário com busca e as confissões de fé</li>
-              <li>Gestão feita pela própria liderança, sem depender de desenvolvedor</li>
-            </ul>
-
-            <!-- SITUAÇÃO DAS LOJAS — verificado em 21/09/2026: as duas respondem 200.
-                   Play  ...details?id=com.orddum.ipi                 -> 200
-                   Apple apps.apple.com/br/app/ipi-app/id6741813317   -> 200 (v1.14.1)
-                 A URL da App Store PRECISA do /br/: o app é distribuído só no
-                 Brasil, e a forma sem país (apps.apple.com/app/id6741813317)
-                 devolve 404. -->
-            <p class="app-status"><span class="badge badge-live">Disponível</span></p>
-            <div class="app-actions">
-              <a class="btn btn-primary btn-sm" href="https://apps.apple.com/br/app/ipi-app/id6741813317"
-                target="_blank" rel="noopener">App Store</a>
-              <a class="btn btn-secondary btn-sm" href="https://play.google.com/store/apps/details?id=com.orddum.ipi"
-                target="_blank" rel="noopener">Google Play</a>
-            </div>
-            <p class="app-note">
-              <a href="/ipi/privacidade/">Privacidade</a> · <a href="/ipi/termos/">Termos de uso</a>
-            </p>
-          </article>
-          <!-- ================= ARARINHA ================= -->
-          <article class="app-card">
-            <div class="bars-h" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-            <div class="app-head">
-              <img class="app-icon" src="img/ararinha/icon.png" alt="Ícone do Ararinha" width="64" height="64">
-              <div>
-                <h3 class="app-name">Ararinha</h3>
-                <p class="app-tag">Livro falante infantil · iOS e Android</p>
-              </div>
-            </div>
-            <p class="app-desc">Um livro de primeiras palavras para crianças de 2 a 6 anos: toca na foto e ouve o nome em
-              português ou em inglês, ou o som que o bicho faz. <strong>Sem anúncio, sem conta e sem
-              rastreamento</strong>, e funciona sem internet.</p>
-            <ul class="app-points">
-              <li>25 temas e mais de 650 fotos reais, escolhidas uma a uma</li>
-              <li>Sons de verdade: bichos, veículos e 37 instrumentos</li>
-              <li>O Encontre, um jogo sem pontos nem relógio, e a Lousa para traçar letras e números</li>
-              <li>Alfabeto, números, animais e música grátis; o resto numa compra única, liberada pelo adulto</li>
-            </ul>
-
-            <!-- SITUAÇÃO DAS LOJAS — verificado em 21/10/2026: as duas respondem 200.
-                   Apple apps.apple.com/br/app/ararinha-primeiras-palavras/id6819347905 -> 200 (v1.1.0, desde 19/10)
-                   Play  ...details?id=com.orddum.ararinha                              -> 200 (v1.1.0, desde 20/10)
-                 A URL da App Store PRECISA do /br/: o app é distribuído só no
-                 Brasil. -->
-            <p class="app-status"><span class="badge badge-live">Disponível</span></p>
-            <div class="app-actions">
-              <a class="btn btn-primary btn-sm" href="https://apps.apple.com/br/app/ararinha-primeiras-palavras/id6819347905"
-                target="_blank" rel="noopener">App Store</a>
-              <a class="btn btn-secondary btn-sm" href="https://play.google.com/store/apps/details?id=com.orddum.ararinha"
-                target="_blank" rel="noopener">Google Play</a>
-            </div>
-            <p class="app-note">
-              <a href="/ararinha/privacidade/">Privacidade</a>
-            </p>
-          </article>
-
-          <!-- ================= FAÇO AGORA ================= -->
-          <article class="app-card">
-            <div class="bars-h" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-            <div class="app-head">
-              <img class="app-icon" src="img/faco-agora/icon.png" alt="Ícone do Faço Agora" width="64" height="64">
-              <div>
-                <h3 class="app-name">Faço Agora</h3>
-                <p class="app-tag">Tarefas · iOS e Android</p>
-              </div>
-            </div>
-            <p class="app-desc">Sorteia, da sua lista, <strong>uma tarefa que cabe no tempo livre</strong> que você tem
-              agora. Sem conta e sem cadastro: suas tarefas ficam só no aparelho. Para maiores de 13 anos.</p>
-            <ul class="app-points">
-              <li>Diga se tem 5 minutos, 15, 30 ou mais, e o app escolhe uma tarefa desse tamanho</li>
-              <li>Dias seguidos sem culpa: um dia de folga por semana não quebra a sequência</li>
-              <li>Um lembrete por dia, no horário que você escolher</li>
-              <li>Grátis, com um anúncio de banner no rodapé</li>
-            </ul>
-
-            <!-- SITUAÇÃO DAS LOJAS — verificado em 22/10/2026: o app ainda está em teste
-                 interno e TestFlight, sem ficha pública. Sem botões nem links de loja até
-                 a publicação; então: trocar o selo por badge-live e pôr os botões. -->
-            <p class="app-status"><span class="badge badge-soon">Em breve</span></p>
-            <p class="app-note">Em breve na App Store e no Google Play</p>
-            <p class="app-note">
-              <a href="/faco-agora/privacidade/">Privacidade</a> · <a href="/faco-agora/termos/">Termos de uso</a>
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Vitrine do Lastro -->
-    <section id="lastro">
-      <div class="container">
-        <div class="section-head">
-          <p class="kicker"><span class="bars" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
-            Lastro, por dentro</p>
-          <h2 class="section-title">Controle financeiro que não sai do celular</h2>
-          <p class="section-sub">O app não tem servidor para onde mandar seus lançamentos. Isso não é uma promessa de
-            conduta — é como ele foi construído.</p>
-        </div>
-
-        <!-- Capa 16:9 e capturas: cópias de lastro/store/site/ (gerado pelo kit,
-             flutter-app-kit/docs/store-mockups.md § 9). Copiadas em 19/10/2026. -->
-        <img class="showcase-capa" src="img/lastro/capa.webp"
-          alt="Lastro — controle financeiro que não sai do celular. Sem conta, sem login, sem nuvem." width="1600"
-          height="900" loading="lazy">
-
-        <div class="shots">
+          </div>
           <img src="img/lastro/screens/01-mes.webp" alt="Tela do mês: receita líquida, a barra que a divide e a lista de lançamentos" width="540" height="1174" loading="lazy">
           <img src="img/lastro/screens/02-ano.webp" alt="Visão do ano inteiro, mês a mês" width="540" height="1174" loading="lazy">
           <img src="img/lastro/screens/03-busca.webp" alt="Busca que atravessa todo o histórico" width="540" height="1174" loading="lazy">
@@ -259,49 +169,99 @@
           <img src="img/lastro/screens/05-carteira.webp" alt="Carteira: cartões, Pix e dinheiro, cada um com o seu vencimento" width="540" height="1174" loading="lazy">
           <img src="img/lastro/screens/06-patrimonio.webp" alt="Patrimônio: investimentos e bens, mês a mês" width="540" height="1174" loading="lazy">
         </div>
-        <p class="shots-hint">Arraste para ver as seis telas</p>
 
-        <figure class="showcase-video">
-          <div class="bars-h" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-          <video controls playsinline preload="none" poster="img/lastro/video/poster.jpg" width="1080" height="1920">
-            <source src="img/lastro/video/site.mp4" type="video/mp4">
-            <source src="img/lastro/video/site.webm" type="video/webm">
-            <track kind="captions" srclang="pt-BR" label="Português" src="img/lastro/video/legendas.vtt">
-            Seu navegador não toca este vídeo. <a href="img/lastro/video/site.mp4">Baixe o arquivo</a>.
-          </video>
-          <figcaption>
-            <p class="video-kicker">Em vídeo</p>
-            <h3 class="video-title">O Lastro em ação</h3>
-            <p>Seis fluxos reais do app em menos de um minuto, narrados. A transcrição está logo abaixo.</p>
-            <details class="transcript">
-              <summary>Transcrição</summary>
-              <p>O mês inteiro numa tela, com o previsto e o realizado lado a lado.</p>
-              <p>Digite o total da compra e o app divide pelos meses.</p>
-              <p>Veja quando a fatura fecha e quite todas as compras com um toque.</p>
-              <p>Esconda os valores num toque.</p>
-              <p>Busque e veja quanto já gastou, e depois o ano inteiro somado.</p>
-              <p>Acompanhe o patrimônio e registre um investimento em segundos.</p>
-            </details>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- Vitrine do IPI App -->
-    <section id="ipi">
-      <div class="container">
-        <div class="section-head">
-          <p class="kicker"><span class="bars" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
-            IPI App, por dentro</p>
-          <h2 class="section-title">Tudo o que a igreja publica, no bolso de cada membro</h2>
-          <p class="section-sub">O que antes se espalhava entre boletim impresso, mural da entrada e grupo de mensagem
-            cabe numa tela — e quem atualiza é a própria liderança, sem passar por desenvolvedor.</p>
+        <div class="panel-body">
+          <p class="app-desc">Controle financeiro pessoal em que os dados <strong>nunca saem do aparelho</strong>: sem servidor, sem cadastro e sem nuvem. Nasceu de uma planilha mantida por catorze anos.</p>
+          <ul class="app-points">
+            <li>O mês inteiro numa tela só: receitas, descontos, despesas e o que sobrou</li>
+            <li>Cartões com fatura, parcelas numeradas e despesas recorrentes</li>
+            <li>Busca que atravessa o histórico inteiro: "quanto já gastei com isso?"</li>
+            <li>Exportação completa e gratuita — o backup é seu, num arquivo que você leva</li>
+            <li>Traga seu histórico: um <a href="/lastro/importar/">modelo</a> para a sua IA converter planilha ou extratos no arquivo que o app importa</li>
+          </ul>
+          <p class="app-note">
+            <a href="/lastro/privacidade/">Privacidade</a> · <a href="/lastro/termos/">Termos de uso</a> ·
+            <a href="/lastro/importar/">Trazer seus dados</a>
+          </p>
         </div>
-        <img class="showcase-capa" src="img/ipi/capa.webp"
-          alt="IPI App — tudo da igreja, num lugar só. Agenda, avisos, boletim, hinário e a Rádio IPB." width="1600"
-          height="900" loading="lazy">
+        <dialog class="video-dialog" id="video-lastro" aria-labelledby="video-lastro-title">
+          <button class="dialog-close" type="button" aria-label="Fechar vídeo">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg>
+          </button>
+          <div class="dialog-body">
+            <video controls playsinline preload="none" poster="img/lastro/video/poster.jpg" width="1080" height="1920">
+              <source src="img/lastro/video/site.mp4" type="video/mp4">
+              <source src="img/lastro/video/site.webm" type="video/webm">
+              <track kind="captions" srclang="pt-BR" label="Português" src="img/lastro/video/legendas.vtt">
+              Seu navegador não toca este vídeo. <a href="img/lastro/video/site.mp4">Baixe o arquivo</a>.
+            </video>
+            <div class="dialog-text">
+              <p class="video-kicker">Em vídeo</p>
+              <h4 class="video-title" id="video-lastro-title">O Lastro em ação</h4>
+              <p>Seis fluxos reais do app em menos de um minuto, narrados. A transcrição está logo abaixo.</p>
+              <details class="transcript">
+                <summary>Transcrição</summary>
+                <p>O mês inteiro numa tela, com o previsto e o realizado lado a lado.</p>
+                <p>Digite o total da compra e o app divide pelos meses.</p>
+                <p>Veja quando a fatura fecha e quite todas as compras com um toque.</p>
+                <p>Esconda os valores num toque.</p>
+                <p>Busque e veja quanto já gastou, e depois o ano inteiro somado.</p>
+                <p>Acompanhe o patrimônio e registre um investimento em segundos.</p>
+              </details>
+            </div>
+          </div>
+        </dialog>
+      </div>
 
-        <div class="shots">
+      <!-- ================= IPI APP ================= -->
+      <div class="panel" id="ipi" role="tabpanel" aria-roledescription="slide" aria-label="IPI App, 2 de 4" data-app="blue">
+        <img class="panel-banner" src="img/ipi/capa.webp"
+          alt="IPI App — tudo da igreja, num lugar só. Agenda, avisos, boletim, hinário e a Rádio IPB." width="1600" height="900" loading="lazy">
+
+        <div class="panel-head">
+          <div class="app-head">
+            <img class="app-icon" src="img/ipi/icon.png" alt="Ícone do IPI App" width="64" height="64">
+            <div>
+              <div class="app-title">
+                <h3 class="app-name">IPI App</h3>
+                <span class="badge badge-live">Disponível</span>
+              </div>
+              <p class="app-tag">Gestão de igreja · iOS e Android</p>
+            </div>
+          </div>
+          <div class="app-actions">
+            <a class="btn btn-primary btn-sm" href="https://apps.apple.com/br/app/ipi-app/id6741813317"
+              target="_blank" rel="noopener">App Store</a>
+            <a class="btn btn-secondary btn-sm" href="https://play.google.com/store/apps/details?id=com.orddum.ipi"
+              target="_blank" rel="noopener">Google Play</a>
+          </div>
+        </div>
+        <!-- SITUAÇÃO DAS LOJAS — verificado em 21/09/2026: as duas respondem 200.
+                   Play  ...details?id=com.orddum.ipi                 -> 200
+                   Apple apps.apple.com/br/app/ipi-app/id6741813317   -> 200 (v1.14.1)
+                 A URL da App Store PRECISA do /br/: o app é distribuído só no
+                 Brasil, e a forma sem país (apps.apple.com/app/id6741813317)
+                 devolve 404. -->
+
+        <div class="gallery">
+          <div class="shot shot-video">
+            <a class="video-link" href="img/ipi/video/site.mp4" data-dialog="video-ipi"
+              aria-label="Assistir ao vídeo: O IPI App em meio minuto">
+              <video muted loop playsinline preload="none" poster="img/ipi/video/poster.jpg" width="1080" height="1920">
+                <source src="img/ipi/video/site.mp4" type="video/mp4">
+                <source src="img/ipi/video/site.webm" type="video/webm">
+              </video>
+            </a>
+            <div class="video-controls">
+              <button class="vbtn" type="button" data-video-toggle aria-label="Pausar vídeo">
+                <svg class="i-pause" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg>
+                <svg class="i-play" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>
+              </button>
+              <button class="vbtn" type="button" data-dialog="video-ipi" aria-label="Ver com som" title="Ver com som">
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5zM15.5 9a4 4 0 010 6M18 6.5a8 8 0 010 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="currentColor" fill-opacity=".15"/></svg>
+              </button>
+            </div>
+          </div>
           <img src="img/ipi/screens/01-home.webp" alt="Tela inicial: agenda da semana, avisos em destaque e o boletim" width="540" height="1174" loading="lazy">
           <img src="img/ipi/screens/02-agenda.webp" alt="Agenda da semana: culto, EBD, oração e estudo, cada um com o seu horário" width="540" height="1174" loading="lazy">
           <img src="img/ipi/screens/03-hinario.webp" alt="Hinário: os 400 hinos do Novo Cântico, com busca por número ou título" width="540" height="1174" loading="lazy">
@@ -309,50 +269,98 @@
           <img src="img/ipi/screens/05-biblioteca.webp" alt="Biblioteca: o acervo com capa, busca e os livros emprestados" width="540" height="1174" loading="lazy">
           <img src="img/ipi/screens/06-hino.webp" alt="Um hino aberto: estrofes completas e o controle para aumentar a letra" width="540" height="1174" loading="lazy">
         </div>
-        <p class="shots-hint">Arraste para ver as seis telas</p>
 
-        <figure class="showcase-video">
-          <div class="bars-h" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-          <video controls playsinline preload="none" poster="img/ipi/video/poster.jpg" width="1080" height="1920">
-            <source src="img/ipi/video/site.mp4" type="video/mp4">
-            <source src="img/ipi/video/site.webm" type="video/webm">
-            <track kind="captions" srclang="pt-BR" label="Português" src="img/ipi/video/legendas.vtt">
-            Seu navegador não toca este vídeo. <a href="img/ipi/video/site.mp4">Baixe o arquivo</a>.
-          </video>
-          <figcaption>
-            <p class="video-kicker">Em vídeo</p>
-            <h3 class="video-title">O IPI App em meio minuto</h3>
-            <p>As seis telas em movimento, sem voz: a legenda conta a história, e a transcrição está logo abaixo.</p>
-            <details class="transcript">
-              <summary>Transcrição</summary>
-              <p>A agenda, os avisos e o boletim da igreja num só lugar.</p>
-              <p>Veja o que tem esta semana, dia a dia.</p>
-              <p>O Novo Cântico inteiro, com busca por número ou título.</p>
-              <p>Todos os avisos da igreja reunidos numa tela.</p>
-              <p>A biblioteca da igreja no bolso, com busca.</p>
-              <p>A letra do hino inteira, no tamanho que você precisa.</p>
-            </details>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-    <!-- Vitrine do Ararinha -->
-    <section id="ararinha">
-      <div class="container">
-        <div class="section-head">
-          <p class="kicker"><span class="bars" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
-            Ararinha, por dentro</p>
-          <h2 class="section-title">O livro falante que não pede nada a ninguém</h2>
-          <p class="section-sub">Nem conta, nem anúncio, nem internet. A criança toca na foto e ouve a palavra; o adulto
-            escolhe o idioma e é o único que chega na compra.</p>
+        <div class="panel-body">
+          <p class="app-desc">O aplicativo da Igreja Presbiteriana de Itabira. Reúne o que antes se espalhava entre boletim impresso, mural e grupos de mensagem.</p>
+          <ul class="app-points">
+            <li>Agenda da semana, avisos e boletim num lugar só</li>
+            <li>Grupos e sociedades internas</li>
+            <li>Hinário com busca e as confissões de fé</li>
+            <li>Gestão feita pela própria liderança, sem depender de desenvolvedor</li>
+          </ul>
+          <p class="app-note">
+            <a href="/ipi/privacidade/">Privacidade</a> · <a href="/ipi/termos/">Termos de uso</a>
+          </p>
         </div>
+        <dialog class="video-dialog" id="video-ipi" aria-labelledby="video-ipi-title">
+          <button class="dialog-close" type="button" aria-label="Fechar vídeo">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg>
+          </button>
+          <div class="dialog-body">
+            <video controls playsinline preload="none" poster="img/ipi/video/poster.jpg" width="1080" height="1920">
+              <source src="img/ipi/video/site.mp4" type="video/mp4">
+              <source src="img/ipi/video/site.webm" type="video/webm">
+              <track kind="captions" srclang="pt-BR" label="Português" src="img/ipi/video/legendas.vtt">
+              Seu navegador não toca este vídeo. <a href="img/ipi/video/site.mp4">Baixe o arquivo</a>.
+            </video>
+            <div class="dialog-text">
+              <p class="video-kicker">Em vídeo</p>
+              <h4 class="video-title" id="video-ipi-title">O IPI App em meio minuto</h4>
+              <p>As seis telas em movimento, sem voz: a legenda conta a história, e a transcrição está logo abaixo.</p>
+              <details class="transcript">
+                <summary>Transcrição</summary>
+                <p>A agenda, os avisos e o boletim da igreja num só lugar.</p>
+                <p>Veja o que tem esta semana, dia a dia.</p>
+                <p>O Novo Cântico inteiro, com busca por número ou título.</p>
+                <p>Todos os avisos da igreja reunidos numa tela.</p>
+                <p>A biblioteca da igreja no bolso, com busca.</p>
+                <p>A letra do hino inteira, no tamanho que você precisa.</p>
+              </details>
+            </div>
+          </div>
+        </dialog>
+      </div>
+
+      <!-- ================= ARARINHA ================= -->
+      <div class="panel" id="ararinha" role="tabpanel" aria-roledescription="slide" aria-label="Ararinha, 3 de 4" data-app="red">
         <!-- Capa 16:9 e capturas: cópias de ararinha/store/site/ (gerado pelo kit,
              flutter-app-kit/docs/store-mockups.md § 9). Copiadas em 19/10/2026. -->
-        <img class="showcase-capa" src="img/ararinha/capa.webp"
-          alt="Ararinha — primeiras palavras em português e inglês. Fotos e sons de verdade. Sem anúncio." width="1600"
-          height="900" loading="lazy">
+        <img class="panel-banner" src="img/ararinha/capa.webp"
+          alt="Ararinha — primeiras palavras em português e inglês. Fotos e sons de verdade. Sem anúncio." width="1600" height="900" loading="lazy">
 
-        <div class="shots">
+        <div class="panel-head">
+          <div class="app-head">
+            <img class="app-icon" src="img/ararinha/icon.png" alt="Ícone do Ararinha" width="64" height="64">
+            <div>
+              <div class="app-title">
+                <h3 class="app-name">Ararinha</h3>
+                <span class="badge badge-live">Disponível</span>
+              </div>
+              <p class="app-tag">Livro falante infantil · iOS e Android</p>
+            </div>
+          </div>
+          <div class="app-actions">
+            <a class="btn btn-primary btn-sm" href="https://apps.apple.com/br/app/ararinha-primeiras-palavras/id6819347905"
+              target="_blank" rel="noopener">App Store</a>
+            <a class="btn btn-secondary btn-sm" href="https://play.google.com/store/apps/details?id=com.orddum.ararinha"
+              target="_blank" rel="noopener">Google Play</a>
+          </div>
+        </div>
+        <!-- SITUAÇÃO DAS LOJAS — verificado em 21/10/2026: as duas respondem 200.
+                   Apple apps.apple.com/br/app/ararinha-primeiras-palavras/id6819347905 -> 200 (v1.1.0, desde 19/10)
+                   Play  ...details?id=com.orddum.ararinha                              -> 200 (v1.1.0, desde 20/10)
+                 A URL da App Store PRECISA do /br/: o app é distribuído só no
+                 Brasil. -->
+
+        <div class="gallery">
+          <div class="shot shot-video">
+            <a class="video-link" href="img/ararinha/video/site.mp4" data-dialog="video-ararinha"
+              aria-label="Assistir ao vídeo: O Ararinha em meio minuto">
+              <video muted loop playsinline preload="none" poster="img/ararinha/video/poster.jpg" width="1080" height="1920">
+                <source src="img/ararinha/video/site.mp4" type="video/mp4">
+                <source src="img/ararinha/video/site.webm" type="video/webm">
+              </video>
+            </a>
+            <div class="video-controls">
+              <button class="vbtn" type="button" data-video-toggle aria-label="Pausar vídeo">
+                <svg class="i-pause" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg>
+                <svg class="i-play" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>
+              </button>
+              <button class="vbtn" type="button" data-dialog="video-ararinha" aria-label="Ver com som" title="Ver com som">
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5zM15.5 9a4 4 0 010 6M18 6.5a8 8 0 010 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="currentColor" fill-opacity=".15"/></svg>
+              </button>
+            </div>
+          </div>
           <img src="img/ararinha/screens/01-animais.webp" alt="Tema Animais em português: fotos reais com o nome de cada bicho" width="540" height="1174" loading="lazy">
           <img src="img/ararinha/screens/02-estante.webp" alt="A estante: alfabeto, números, animais e música grátis, a Lousa logo abaixo e os outros temas com cadeado" width="540" height="1174" loading="lazy">
           <img src="img/ararinha/screens/03-sons.webp" alt="Modo Sons: tocar no bicho e ouvir o som de verdade" width="540" height="1174" loading="lazy">
@@ -360,50 +368,78 @@
           <img src="img/ararinha/screens/05-musica-english.webp" alt="Tema Música em inglês: os instrumentos com o nome em inglês" width="540" height="1174" loading="lazy">
           <img src="img/ararinha/screens/06-lousa.webp" alt="A Lousa com a letra A para traçar por cima, meio traçada em vermelho, e as cores para escolher" width="540" height="1174" loading="lazy">
         </div>
-        <p class="shots-hint">Arraste para ver as seis telas</p>
 
-        <figure class="showcase-video">
-          <div class="bars-h" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-          <video controls playsinline preload="none" poster="img/ararinha/video/poster.jpg" width="1080" height="1920">
-            <source src="img/ararinha/video/site.mp4" type="video/mp4">
-            <source src="img/ararinha/video/site.webm" type="video/webm">
-            <track kind="captions" srclang="pt-BR" label="Português" src="img/ararinha/video/legendas.vtt">
-            Seu navegador não toca este vídeo. <a href="img/ararinha/video/site.mp4">Baixe o arquivo</a>.
-          </video>
-          <figcaption>
-            <p class="video-kicker">Em vídeo</p>
-            <h3 class="video-title">O Ararinha em meio minuto</h3>
-            <p>As seis telas em movimento, sem voz: a legenda conta a história, e a transcrição está logo abaixo.</p>
-            <details class="transcript">
-              <summary>Transcrição</summary>
-              <p>Toque na foto e ouça o nome do bichinho.</p>
-              <p>Sem anúncio e sem internet, em qualquer lugar.</p>
-              <p>Ouça o som de verdade dos bichos e dos instrumentos.</p>
-              <p>Brinque de encontrar, sem pressa e sem pontos.</p>
-              <p>Português ou inglês, um idioma de cada vez.</p>
-              <p>Desenhe e trace letras e números por cima.</p>
-            </details>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-    <!-- Vitrine do Faço Agora (sem vídeo por enquanto: app em teste) -->
-    <section id="faco-agora">
-      <div class="container">
-        <div class="section-head">
-          <p class="kicker"><span class="bars" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
-            Faço Agora, por dentro</p>
-          <h2 class="section-title">Uma tarefa, do tamanho do seu tempo</h2>
-          <p class="section-sub">Você diz quanto tempo tem, e o app sorteia uma tarefa da sua lista que cabe nele. Está em
-            teste e chega em breve às lojas.</p>
+        <div class="panel-body">
+          <p class="app-desc">Um livro de primeiras palavras para crianças de 2 a 6 anos: toca na foto e ouve o nome em português ou em inglês, ou o som que o bicho faz. <strong>Sem anúncio, sem conta e sem rastreamento</strong>, e funciona sem internet.</p>
+          <ul class="app-points">
+            <li>25 temas e mais de 650 fotos reais, escolhidas uma a uma</li>
+            <li>Sons de verdade: bichos, veículos e 37 instrumentos</li>
+            <li>O Encontre, um jogo sem pontos nem relógio, e a Lousa para traçar letras e números</li>
+            <li>Alfabeto, números, animais e música grátis; o resto numa compra única, liberada pelo adulto</li>
+          </ul>
+          <p class="app-note">
+            <a href="/ararinha/privacidade/">Privacidade</a>
+          </p>
         </div>
-        <!-- Capa 16:9 e capturas: cópias de faco-agora/store/site/ (gerado pelo kit,
-             flutter-app-kit/docs/store-mockups.md § 9). Copiadas em 22/10/2026. -->
-        <img class="showcase-capa" src="img/faco-agora/capa.webp"
-          alt="Faço Agora — sorteia o que cabe agora. Uma tarefa da sua lista, do tamanho do seu tempo." width="1600"
-          height="900" loading="lazy">
+        <dialog class="video-dialog" id="video-ararinha" aria-labelledby="video-ararinha-title">
+          <button class="dialog-close" type="button" aria-label="Fechar vídeo">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg>
+          </button>
+          <div class="dialog-body">
+            <video controls playsinline preload="none" poster="img/ararinha/video/poster.jpg" width="1080" height="1920">
+              <source src="img/ararinha/video/site.mp4" type="video/mp4">
+              <source src="img/ararinha/video/site.webm" type="video/webm">
+              <track kind="captions" srclang="pt-BR" label="Português" src="img/ararinha/video/legendas.vtt">
+              Seu navegador não toca este vídeo. <a href="img/ararinha/video/site.mp4">Baixe o arquivo</a>.
+            </video>
+            <div class="dialog-text">
+              <p class="video-kicker">Em vídeo</p>
+              <h4 class="video-title" id="video-ararinha-title">O Ararinha em meio minuto</h4>
+              <p>As seis telas em movimento, sem voz: a legenda conta a história, e a transcrição está logo abaixo.</p>
+              <details class="transcript">
+                <summary>Transcrição</summary>
+                <p>Toque na foto e ouça o nome do bichinho.</p>
+                <p>Sem anúncio e sem internet, em qualquer lugar.</p>
+                <p>Ouça o som de verdade dos bichos e dos instrumentos.</p>
+                <p>Brinque de encontrar, sem pressa e sem pontos.</p>
+                <p>Português ou inglês, um idioma de cada vez.</p>
+                <p>Desenhe e trace letras e números por cima.</p>
+              </details>
+            </div>
+          </div>
+        </dialog>
+      </div>
 
-        <div class="shots">
+      <!-- ================= FAÇO AGORA ================= -->
+      <div class="panel" id="faco-agora" role="tabpanel" aria-roledescription="slide" aria-label="Faço Agora, 4 de 4" data-app="yellow">
+        <!-- Capa 16:9 e capturas: cópias de faco-agora/store/site/ (gerado pelo kit,
+             flutter-app-kit/docs/store-mockups.md § 9). Copiadas em 22/10/2026.
+             Sem vídeo por enquanto: app em teste. -->
+        <img class="panel-banner" src="img/faco-agora/capa.webp"
+          alt="Faço Agora — sorteia o que cabe agora. Uma tarefa da sua lista, do tamanho do seu tempo." width="1600" height="900" loading="lazy">
+
+        <div class="panel-head">
+          <div class="app-head">
+            <img class="app-icon" src="img/faco-agora/icon.png" alt="Ícone do Faço Agora" width="64" height="64">
+            <div>
+              <div class="app-title">
+                <h3 class="app-name">Faço Agora</h3>
+                <span class="badge badge-soon">Em breve</span>
+              </div>
+              <p class="app-tag">Tarefas · iOS e Android</p>
+            </div>
+          </div>
+          <p class="app-soon">Em breve nas lojas</p>
+        </div>
+        <!-- SITUAÇÃO DAS LOJAS — verificado em 22/10/2026: o app ainda está em teste
+                 interno e TestFlight, sem ficha pública. Sem botões nem links de loja até
+                 a publicação; então: trocar o selo por badge-live e pôr os botões. -->
+
+        <div class="gallery">
+          <div class="shot shot-soon">
+            <img src="img/faco-agora/icon.png" alt="" width="55" height="55" loading="lazy">
+            <span>Vídeo em breve</span>
+          </div>
           <img src="img/faco-agora/screens/01-sorteio.webp" alt="A tela Hoje com a tarefa sorteada em destaque" width="540" height="1174" loading="lazy">
           <img src="img/faco-agora/screens/02-tempo.webp" alt="A pergunta “Quanto tempo você tem?” com as opções de 5, 15, 30 minutos ou mais" width="540" height="1174" loading="lazy">
           <img src="img/faco-agora/screens/03-feito.webp" alt="A tela Feito, com uma frase curta de incentivo" width="540" height="1174" loading="lazy">
@@ -411,11 +447,29 @@
           <img src="img/faco-agora/screens/05-dias.webp" alt="Os dias seguidos e a grade dos últimos 14 dias" width="540" height="1174" loading="lazy">
           <img src="img/faco-agora/screens/06-lembrete.webp" alt="Ajustes: o lembrete diário, o versículo opcional e os sons" width="540" height="1174" loading="lazy">
         </div>
-        <p class="shots-hint">Arraste para ver as seis telas</p>
+
+        <div class="panel-body">
+          <p class="app-desc">Sorteia, da sua lista, <strong>uma tarefa que cabe no tempo livre</strong> que você tem agora. Sem conta e sem cadastro: suas tarefas ficam só no aparelho. Para maiores de 13 anos.</p>
+          <ul class="app-points">
+            <li>Diga se tem 5 minutos, 15, 30 ou mais, e o app escolhe uma tarefa desse tamanho</li>
+            <li>Dias seguidos sem culpa: um dia de folga por semana não quebra a sequência</li>
+            <li>Um lembrete por dia, no horário que você escolher</li>
+            <li>Grátis, com um anúncio de banner no rodapé</li>
+          </ul>
+          <p class="app-note">
+            <a href="/faco-agora/privacidade/">Privacidade</a> · <a href="/faco-agora/termos/">Termos de uso</a>
+          </p>
+        </div>
+      </div>
+          </div>
+
+          <div class="stage-dots" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        </div>
       </div>
     </section>
+
     <!-- Como trabalhamos -->
-    <section id="trabalho" class="apps">
+    <section id="trabalho" class="raised">
       <div class="container">
         <div class="section-head">
           <p class="kicker"><span class="bars" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
@@ -485,7 +539,7 @@
          Privacidade" dentro do IPI App aponta para https://www.orddum.com, e
          /#privacidade já circulou. Quem chegar por qualquer um dos dois tem que
          encontrar a política — daqui, em um clique. -->
-    <section id="privacidade" class="apps">
+    <section id="privacidade" class="raised">
       <div class="container">
         <div class="section-head">
           <p class="kicker"><span class="bars" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
@@ -496,39 +550,27 @@
             teria que mentir sobre algum deles.</p>
         </div>
 
-        <div class="legal-grid">
-          <div class="legal-card">
-            <h3><img src="img/lastro/icon.png" alt="" width="28" height="28" class="legal-card-icon"> Lastro</h3>
-            <ul>
-              <li><a href="/lastro/privacidade/">Política de Privacidade</a></li>
-              <li><a href="/lastro/termos/">Termos de Uso</a></li>
-            </ul>
-          </div>
-          <div class="legal-card">
-            <h3><img src="img/ipi/icon.png" alt="" width="28" height="28" class="legal-card-icon"> IPI App</h3>
-            <ul>
-              <li><a href="/ipi/privacidade/">Política de Privacidade</a></li>
-              <li><a href="/ipi/privacidade/#exclusao">Excluir a conta</a></li>
-              <li><a href="/ipi/termos/">Termos de Uso</a></li>
-            </ul>
-          </div>
-          <div class="legal-card">
-            <h3><img src="img/ararinha/icon.png" alt="" width="28" height="28" class="legal-card-icon"> Ararinha</h3>
-            <ul>
-              <li><a href="/ararinha/privacidade/">Política de Privacidade</a></li>
+        <ul class="legal-list">
+            <li>
+              <span class="legal-app"><img src="img/lastro/icon.png" alt="" width="24" height="24" class="legal-icon">Lastro</span>
+              <span class="legal-links"><a href="/lastro/privacidade/">Política de Privacidade</a><a href="/lastro/termos/">Termos de Uso</a></span>
+            </li>
+            <li>
+              <span class="legal-app"><img src="img/ipi/icon.png" alt="" width="24" height="24" class="legal-icon">IPI App</span>
+              <span class="legal-links"><a href="/ipi/privacidade/">Política de Privacidade</a><a href="/ipi/privacidade/#exclusao">Excluir a conta</a><a href="/ipi/termos/">Termos de Uso</a></span>
+            </li>
+            <li>
+              <span class="legal-app"><img src="img/ararinha/icon.png" alt="" width="24" height="24" class="legal-icon">Ararinha</span>
+              <span class="legal-links"><a href="/ararinha/privacidade/">Política de Privacidade</a></span>
               <!-- Sem Termos de Uso de propósito: compra única pela loja, sem
                    conta — nenhuma das duas lojas exige, e vale o EULA padrão da
                    Apple (ararinha/docs/lancamento-1.0.md § 3). -->
-            </ul>
-          </div>
-          <div class="legal-card">
-            <h3><img src="img/faco-agora/icon.png" alt="" width="28" height="28" class="legal-card-icon"> Faço Agora</h3>
-            <ul>
-              <li><a href="/faco-agora/privacidade/">Política de Privacidade</a></li>
-              <li><a href="/faco-agora/termos/">Termos de Uso</a></li>
-            </ul>
-          </div>
-        </div>
+            </li>
+            <li>
+              <span class="legal-app"><img src="img/faco-agora/icon.png" alt="" width="24" height="24" class="legal-icon">Faço Agora</span>
+              <span class="legal-links"><a href="/faco-agora/privacidade/">Política de Privacidade</a><a href="/faco-agora/termos/">Termos de Uso</a></span>
+            </li>
+        </ul>
       </div>
     </section>
   </main>
