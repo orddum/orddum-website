@@ -23,6 +23,8 @@ qualquer uma delas derruba a ficha de um app em produção — e a revisão das 
 | `/ordinal/privacidade/` | `AppConfig.privacyPolicyUrl` e o aceite LGPD do app Ordinal; URL de privacidade e de exclusão de dados (âncora `#exclusao`) nas fichas das duas lojas |
 | `/ordinal/termos/` | `AppConfig.termsOfUseUrl` do Ordinal |
 | `/ararinha/privacidade/` | Play Console e App Store Connect do Ararinha (`AppConfig.privacyPolicyUrl`); o mesmo texto está dentro do app, na área dos adultos. Canônico: `ararinha/docs/politica-de-privacidade.md` |
+| `/faco-agora/privacidade/` | `AppConfig.privacyPolicyUrl` do O Que Eu Faço Agora (Ajustes › Política de privacidade) e as fichas das lojas, quando o app for publicado. Canônico: `o-que-eu-faco-agora/docs/politica-de-privacidade.md` |
+| `/faco-agora/termos/` | `AppConfig.termsOfUseUrl` do O Que Eu Faço Agora. Canônico: `o-que-eu-faco-agora/docs/termos-de-uso.md` |
 | `/sinete/privacidade/` | Play Console e App Store Connect do Sinete; o mesmo texto está dentro do app (Estante › rodapé › Privacidade). Canônico: `sinete/docs/politica-de-privacidade.md` |
 | `/app-ads.txt` | **AdMob**: é onde ele confere que o `pub-2322862933504397` pode vender o inventário do Lastro. Sem o arquivo, boa parte dos compradores não dá lance, e o painel avisa. Tem que ser `text/plain` na RAIZ do domínio da ficha, e a ficha diz `orddum.com` |
 | `/` (raiz) | as versões do IPI App **já instaladas** (até a 1.14.1): o link do diálogo "Sobre" delas abre `www.orddum.com`, e vai continuar abrindo por todo o tempo em que alguém não atualizar |
