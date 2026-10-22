@@ -70,6 +70,10 @@ a.page-app:hover { color: var(--shell); }
 
 .toc { margin: 0 0 var(--s4); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .toc summary {
+   display: flex;
+   align-items: center;
+   gap: var(--s1);
+   list-style: none;
    padding: var(--s2) 0;
    cursor: pointer;
    font-family: var(--font-mono);
@@ -79,6 +83,18 @@ a.page-app:hover { color: var(--shell); }
    text-transform: uppercase;
    color: var(--text-faint);
 }
+.toc summary::-webkit-details-marker { display: none; }
+/* Chevron em CSS, a 8 px do texto, girando 90° quando aberto. */
+.toc summary::before {
+   content: "";
+   width: 6px;
+   height: 6px;
+   border-right: 1.5px solid currentColor;
+   border-bottom: 1.5px solid currentColor;
+   transform: rotate(-45deg);
+   transition: transform var(--transition);
+}
+.toc details[open] > summary::before { transform: rotate(45deg); }
 .toc ol { list-style: none; padding: 0 0 var(--s2); }
 .toc li { margin: 0; }
 .toc a {
@@ -109,7 +125,7 @@ a.page-app:hover { color: var(--shell); }
    }
    /* Aberto sempre: o resumo vira só o título da lista. */
    .toc summary { pointer-events: none; list-style: none; cursor: default; }
-   .toc summary::-webkit-details-marker { display: none; }
+   .toc summary::before { display: none; }
    .legal-main { grid-column: 2; }
    .toc { grid-column: 1; grid-row: 1; }
    .legal-main { grid-row: 1; }
@@ -125,8 +141,11 @@ a.page-app:hover { color: var(--shell); }
    padding-top: var(--s4);
    border-top: 1px solid var(--line);
 }
+/* Um só espaço de 34 px entre o sumário, o resumo e a primeira seção: o h2 que
+   abre o texto, ou que vem logo depois do resumo, não leva fio nem margem. */
 .legal-main > h2:first-child,
-.legal-main > .legal-callout + h2 { margin-top: var(--s4); }
+.legal-main > .legal-callout + h2,
+.legal-main > .legal-flag + h2 { margin-top: 0; padding-top: 0; border-top: 0; }
 
 .legal-main h3 {
    color: var(--text);
@@ -179,7 +198,7 @@ a.page-app:hover { color: var(--shell); }
    border: 1px solid var(--line);
    border-radius: var(--r-lg);
    padding: var(--s3) var(--s4);
-   margin: 0 0 var(--s3);
+   margin: 0 0 var(--s4);
 }
 .legal-callout::before {
    content: "";
@@ -198,7 +217,7 @@ a.page-app:hover { color: var(--shell); }
    border: 1px dashed rgba(255, 214, 4, 0.4);
    border-radius: var(--r-lg);
    padding: var(--s2) var(--s3);
-   margin: 0 0 var(--s3);
+   margin: 0 0 var(--s4);
    font-size: 0.92rem;
    color: var(--text-dim);
 }

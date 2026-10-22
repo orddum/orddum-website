@@ -82,14 +82,18 @@
 }
 
 html {
-   scroll-behavior: smooth;
    /* O cabeçalho é fixo: sem isso a âncora para embaixo dele. */
    scroll-padding-top: 88px;
    -webkit-text-size-adjust: 100%;
 }
 
+/* A rolagem suave só liga depois do load (o script põe `is-ready`): quem chega
+   por um link de fora (/#ipi, /ipi/privacidade/#exclusao) cai direto no alvo,
+   sem atravessar a página numa animação. O clique dentro da página continua suave. */
+html.is-ready { scroll-behavior: smooth; }
+
 @media (prefers-reduced-motion: reduce) {
-   html { scroll-behavior: auto; }
+   html, html.is-ready { scroll-behavior: auto; }
    *, *::before, *::after {
       animation-duration: 0.01ms !important;
       transition-duration: 0.01ms !important;
@@ -918,19 +922,25 @@ a.contact-card:hover { border-color: var(--shell); background: var(--surface-2);
       align-items: stretch;
       gap: 0;
       /* Opaco de verdade, não 98%: o cabeçalho pai já tem `backdrop-filter`,
-         e sobre ele qualquer transparência deixa o wordmark do hero aparecer
+         e sobre ele qualquer transparência deixa o texto da página aparecer
          atrás dos itens do menu. */
-      background: #000;
+      background: var(--bg);
       border-bottom: 1px solid var(--line);
-      padding: 0.5rem 1.25rem 1.25rem;
+      padding: 0;
    }
    .nav-menu.open { display: flex; }
+   .nav-menu li + li { border-top: 1px solid var(--line); }
+   /* 48 px de altura de toque, hairline de largura inteira entre os itens. O
+      ativo se marca só pela cor, como no desktop. */
    .nav-link {
-      padding: 0.85rem 0;
-      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      min-height: 48px;
+      padding: 0 1.25rem;
+      border-bottom: 0;
    }
    .nav-link:hover,
-   .nav-link.active { border-bottom-color: var(--line); color: var(--sfc-yellow); }
+   .nav-link.active { color: var(--text); }
 
    .hero-actions .btn { flex: 1 1 100%; }
 

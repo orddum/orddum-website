@@ -23,6 +23,13 @@
 // página não piscar empilhada); aqui só garante o caso de ela ter sido tirada.
 document.documentElement.classList.add('js');
 
+// Rolagem suave só depois do load: link de fora chega direto no alvo.
+var ready = function () {
+   window.requestAnimationFrame(function () { document.documentElement.classList.add('is-ready'); });
+};
+if (document.readyState === 'complete') ready();
+else window.addEventListener('load', ready);
+
 document.addEventListener('DOMContentLoaded', function () {
    var toggle = document.getElementById('navToggle');
    var menu = document.getElementById('navMenu');
@@ -169,24 +176,31 @@ document.addEventListener('DOMContentLoaded', function () {
          if (event.target.closest('a') && !wide.matches) details.open = false;
       });
 
-      // Marca o item da seção que está sob o cabeçalho. O observador dispara
-      // quando um h2 cruza a linha; a seção atual é o último h2 acima dela.
-      if ('IntersectionObserver' in window) {
-         var anchors = Array.prototype.slice.call(list.querySelectorAll('a'));
-         var mark = function () {
-            var index = -1;
-            headings.forEach(function (heading, i) {
-               if (heading.getBoundingClientRect().top <= 140) index = i;
-            });
-            anchors.forEach(function (a, i) {
-               if (i === index) a.setAttribute('aria-current', 'location');
-               else a.removeAttribute('aria-current');
-            });
-         };
-         var tocObserver = new IntersectionObserver(mark, { rootMargin: '-140px 0px 0px 0px' });
-         headings.forEach(function (heading) { tocObserver.observe(heading); });
-         mark();
-      }
+      // Marca o item da seção que está sob o cabeçalho: o último h2 acima da
+      // linha. Um listener de scroll passivo, uma vez por quadro: o observador
+      // não dispara em saltos de rolagem (âncora, fim da página). No fim da
+      // página, a última seção, que nunca chega ao topo, é a marcada.
+      var anchors = Array.prototype.slice.call(list.querySelectorAll('a'));
+      var marking = false;
+      var mark = function () {
+         marking = false;
+         var index = -1;
+         headings.forEach(function (heading, i) {
+            if (heading.getBoundingClientRect().top <= 140) index = i;
+         });
+         if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+            index = headings.length - 1;
+         }
+         anchors.forEach(function (a, i) {
+            if (i === index) a.setAttribute('aria-current', 'location');
+            else a.removeAttribute('aria-current');
+         });
+      };
+      window.addEventListener('scroll', function () {
+         if (!marking) { marking = true; window.requestAnimationFrame(mark); }
+      }, { passive: true });
+      window.addEventListener('resize', mark);
+      mark();
    }
 
    // ------------------------------------------------------------------------
