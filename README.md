@@ -83,7 +83,10 @@ public/
 │   ├── ipi/screens/*.webp
 │   ├── ararinha/icon.png         # idem ao Lastro, de ararinha/store/ e ararinha/store/site/
 │   ├── ararinha/capa.webp
-│   └── ararinha/screens/*.webp
+│   ├── ararinha/screens/*.webp
+│   ├── faco-agora/icon.png       # idem, de o-que-eu-faco-agora/store/ (sem vídeo por enquanto)
+│   ├── faco-agora/capa.webp
+│   └── faco-agora/screens/*.webp
 ├── lastro/{privacidade,termos}/  # texto legal do Lastro
 ├── ordinal/{privacidade,termos}/ # texto legal do Ordinal (versão provisória)
 ├── lastro/importar/              # o modelo de importação para IA (página + .md + .json copiados do app)
@@ -93,7 +96,7 @@ public/
 ```
 
 As imagens dos apps são **cópias**. Cada app tem vitrine própria na home
-(`#lastro`, `#ipi` e `#ararinha`): a capa 16:9, as seis capturas em rolagem
+(`#lastro`, `#ipi`, `#ararinha` e `#faco-agora`): a capa 16:9, as seis capturas em rolagem
 horizontal e, quando o app tiver, o vídeo explicativo em retrato com
 transcrição. Quem gera tudo isso é o gerador do kit, a partir do `store/` do
 app (`flutter-app-kit/docs/store-mockups.md` § 9); o site só recebe a cópia em
