@@ -18,3 +18,6 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_ORDDUM }}
           projectId: orddum
+          # Fixo: a 15.34.1 passou a consultar o serviceusage, que a conta de deploy não pode
+          # ler, e o deploy quebrou com 403 (22/10/2026). Suba de versão de propósito, não sozinho.
+          firebaseToolsVersion: 15.34.0
