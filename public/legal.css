@@ -1,17 +1,19 @@
-/* Páginas legais — privacidade e termos, de todos os apps.
+/* Páginas filhas — privacidade, termos e o guia de importação do Lastro.
  *
  * Elas existem fora da página principal de propósito: as duas lojas pedem uma
  * URL que abra DIRETO no texto, e um link que cai numa âncora de uma landing
  * page longa é reprovado na revisão — o revisor precisa ver a política, não
  * rolar até ela.
  *
- * Este arquivo mora na RAIZ (`/legal.css`) e não dentro de `/lastro/`, porque
- * agora serve também o IPI App. As URLs das páginas em si não mudaram: elas
- * continuam em /lastro/privacidade/, /lastro/termos/ e /ipi/privacidade/, que
- * é o que está gravado nos apps publicados e nos painéis das lojas.
+ * O site é um produto só: cabeçalho e rodapé são os da home (blocos
+ * `site-header` e `site-footer`, conferidos por tools/check-coerencia.sh), e
+ * aqui mora só o que é de texto corrido longo, que a landing page não tem.
+ * Herda os tokens de `styles.css`. A cor do app vem de `data-app` no <body>
+ * (`--accent`).
  *
- * Herda os tokens de `styles.css`; aqui só mora o que é de texto corrido longo,
- * que a landing page não tem.
+ * Este arquivo mora na RAIZ (`/legal.css`) e não dentro de `/lastro/`, porque
+ * serve todos os apps. As URLs das páginas em si não mudam: são as que estão
+ * gravadas nos apps publicados e nos painéis das lojas.
  */
 
 .legal-page {
@@ -20,116 +22,161 @@
    line-height: 1.75;
 }
 
-.legal-header {
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   gap: 1rem;
-   padding: 1rem 1.5rem;
-   border-bottom: 1px solid var(--line);
-   background: rgba(0, 0, 0, 0.94);
-   backdrop-filter: blur(12px);
-   -webkit-backdrop-filter: blur(12px);
-   position: sticky;
-   top: 0;
-   z-index: 10;
+/* ---------------------------------------------------------------------------
+   Topo da página: o app, o kicker com as quatro barras, o título e a data
+   ------------------------------------------------------------------------- */
+.page-head {
+   /* O cabeçalho do site é fixo: o topo começa abaixo dele. */
+   padding: calc(var(--s5) + var(--s5)) 0 var(--s4);
 }
 
-.legal-brand {
-   display: flex;
+.page-app {
+   display: inline-flex;
    align-items: center;
-   gap: 0.6rem;
-   color: var(--shell);
-   text-decoration: none;
-   font-family: var(--font-mono);
-   font-weight: 700;
-   letter-spacing: 0.16em;
-   font-size: 0.9rem;
-}
-
-.legal-logo { height: 28px; width: auto; }
-
-.legal-back {
-   font-family: var(--font-mono);
-   font-size: 0.76rem;
-   letter-spacing: 0.06em;
-   text-transform: uppercase;
-   color: var(--text-faint);
+   gap: var(--s2);
+   margin: 0 0 var(--s3);
+   font-weight: 500;
+   color: var(--text);
    text-decoration: none;
    transition: color var(--transition);
 }
-.legal-back:hover { color: var(--shell); }
+a.page-app:hover { color: var(--shell); }
+.page-app img { width: 28px; height: 28px; border-radius: 7px; border: 1px solid var(--line); }
 
-/* As quatro barras da marca, atravessando a página inteira abaixo do
-   cabeçalho. É o único enfeite aqui: o resto é texto. */
-.legal-rule { height: 3px; display: flex; }
-.legal-rule span { flex: 1; }
-.legal-rule span:nth-child(1) { background: var(--sfc-green); }
-.legal-rule span:nth-child(2) { background: var(--sfc-blue); }
-.legal-rule span:nth-child(3) { background: var(--sfc-red); }
-.legal-rule span:nth-child(4) { background: var(--sfc-yellow); }
-
-.legal-main {
-   /* 68ch: a medida em que um parágrafo longo continua legível. Uma política de
-      privacidade que ocupa a largura inteira de um monitor não é lida. */
-   max-width: 68ch;
-   margin: 0 auto;
-   padding: 3.5rem 1.5rem 4rem;
-}
-
-.legal-kicker {
-   display: inline-block;
-   font-family: var(--font-mono);
-   text-transform: uppercase;
-   letter-spacing: 0.2em;
-   font-size: 0.72rem;
-   font-weight: 500;
-   color: var(--sfc-yellow);
-   margin: 0 0 0.75rem;
-}
-
-.legal-main h1 {
-   color: var(--text);
-   font-size: clamp(1.9rem, 5vw, 2.5rem);
+.page-title {
+   font-size: clamp(1.75rem, 4vw, 2.4rem);
    letter-spacing: -0.02em;
    line-height: 1.15;
-   margin: 0 0 0.6rem;
+   margin-bottom: var(--s2);
 }
 
 .legal-updated {
    font-family: var(--font-mono);
    color: var(--text-faint);
    font-size: 0.8rem;
-   margin: 0 0 2.5rem;
 }
 
+/* ---------------------------------------------------------------------------
+   Leitura: sumário à esquerda e texto à direita (38,2 / 61,8). O sumário é
+   gerado por JS a partir dos h2; sem JS ele não existe e o texto basta.
+   ------------------------------------------------------------------------- */
+.legal-layout {
+   display: grid;
+   grid-template-columns: 1fr;
+   padding-bottom: var(--s6);
+}
+
+.legal-main { min-width: 0; max-width: 68ch; }
+
+.toc { margin: 0 0 var(--s4); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.toc summary {
+   display: flex;
+   align-items: center;
+   gap: var(--s1);
+   list-style: none;
+   padding: var(--s2) 0;
+   cursor: pointer;
+   font-family: var(--font-mono);
+   font-size: 0.74rem;
+   font-weight: 500;
+   letter-spacing: 0.22em;
+   text-transform: uppercase;
+   color: var(--text-faint);
+}
+.toc summary::-webkit-details-marker { display: none; }
+/* Chevron em CSS, a 8 px do texto, girando 90° quando aberto. */
+.toc summary::before {
+   content: "";
+   width: 6px;
+   height: 6px;
+   border-right: 1.5px solid currentColor;
+   border-bottom: 1.5px solid currentColor;
+   transform: rotate(-45deg);
+   transition: transform var(--transition);
+}
+.toc details[open] > summary::before { transform: rotate(45deg); }
+.toc ol { list-style: none; padding: 0 0 var(--s2); }
+.toc li { margin: 0; }
+.toc a {
+   display: block;
+   padding: 0.35rem 0;
+   font-size: 0.88rem;
+   line-height: 1.4;
+   color: var(--text-dim);
+   text-decoration: none;
+   transition: color var(--transition);
+}
+.toc a:hover,
+.toc a[aria-current="location"] { color: var(--text); }
+.toc a[aria-current="location"] { box-shadow: -13px 0 0 -12px var(--accent); }
+
+@media (min-width: 960px) {
+   .legal-layout { grid-template-columns: 38.2fr 61.8fr; column-gap: var(--s5); }
+
+   .toc {
+      position: sticky;
+      top: calc(var(--s5) + var(--s4));
+      align-self: start;
+      max-height: calc(100vh - 140px);
+      overflow-y: auto;
+      margin: 0;
+      padding-right: var(--s3);
+      border-bottom: 0;
+   }
+   /* Aberto sempre: o resumo vira só o título da lista. */
+   .toc summary { pointer-events: none; list-style: none; cursor: default; }
+   .toc summary::before { display: none; }
+   .legal-main { grid-column: 2; }
+   .toc { grid-column: 1; grid-row: 1; }
+   .legal-main { grid-row: 1; }
+}
+
+/* ---------------------------------------------------------------------------
+   Texto corrido
+   ------------------------------------------------------------------------- */
 .legal-main h2 {
    color: var(--text);
    font-size: 1.2rem;
-   margin: 2.75rem 0 0.75rem;
-   padding-top: 1.75rem;
+   margin: var(--s5) 0 var(--s2);
+   padding-top: var(--s4);
    border-top: 1px solid var(--line);
 }
+/* Um só espaço de 34 px entre o sumário, o resumo e a primeira seção: o h2 que
+   abre o texto, ou que vem logo depois do resumo, não leva fio nem margem. */
+.legal-main > h2:first-child,
+.legal-main > .legal-callout + h2,
+.legal-main > .legal-flag + h2 { margin-top: 0; padding-top: 0; border-top: 0; }
 
 .legal-main h3 {
    color: var(--text);
    font-size: 1.02rem;
-   margin: 1.75rem 0 0.5rem;
+   margin: var(--s4) 0 var(--s1);
 }
 
 .legal-main p,
 .legal-main li { color: var(--text-dim); }
 
-.legal-main p { margin-bottom: 1rem; }
+.legal-main p { margin-bottom: var(--s3); }
 
-.legal-main ul {
-   padding-left: 1.25rem;
-   margin: 0.75rem 0 1.25rem;
+.legal-main ul,
+.legal-main ol {
+   padding-left: var(--s3);
+   margin: var(--s2) 0 var(--s3);
 }
-.legal-main li { margin-bottom: 0.6rem; }
+.legal-main li { margin-bottom: var(--s2); }
 .legal-main li::marker { color: var(--text-faint); }
 
 .legal-main strong { color: var(--text); font-weight: 600; }
+
+.legal-main code {
+   font-family: var(--font-mono);
+   font-size: 0.86em;
+   padding: 0.1em 0.4em;
+   color: var(--text);
+   background: var(--surface);
+   border: 1px solid var(--line);
+   border-radius: var(--r);
+}
 
 .legal-main a {
    color: var(--shell);
@@ -142,14 +189,23 @@
 
 /* O resumo do topo. Ele carrega o peso da página: quem lê uma política de
    privacidade quase sempre lê só as primeiras linhas, e num app que vende
-   privacidade essas linhas são a resposta inteira. */
+   privacidade essas linhas são a resposta inteira. A barra de 2 px no topo é
+   a cor do app, a mesma do bloco do vídeo na home. */
 .legal-callout {
+   position: relative;
+   overflow: hidden;
    background: var(--surface);
    border: 1px solid var(--line);
-   border-left: 3px solid var(--sfc-yellow);
-   border-radius: var(--r);
-   padding: 1.25rem 1.5rem;
-   margin: 0 0 1rem;
+   border-radius: var(--r-lg);
+   padding: var(--s3) var(--s4);
+   margin: 0 0 var(--s4);
+}
+.legal-callout::before {
+   content: "";
+   position: absolute;
+   inset: 0 0 auto 0;
+   height: 2px;
+   background: var(--accent);
 }
 .legal-callout p { margin: 0; }
 
@@ -159,33 +215,61 @@
 .legal-flag {
    background: rgba(255, 214, 4, 0.07);
    border: 1px dashed rgba(255, 214, 4, 0.4);
-   border-radius: var(--r);
-   padding: 1rem 1.25rem;
-   margin: 0 0 2rem;
+   border-radius: var(--r-lg);
+   padding: var(--s2) var(--s3);
+   margin: 0 0 var(--s4);
    font-size: 0.92rem;
    color: var(--text-dim);
 }
 .legal-flag p { margin: 0; }
 
 .legal-crosslink {
-   margin-top: 3rem;
-   padding-top: 1.5rem;
+   margin-top: var(--s5);
+   padding-top: var(--s3);
    border-top: 1px solid var(--line);
    color: var(--text-faint);
    font-size: 0.92rem;
 }
 
-.legal-footer {
-   border-top: 1px solid var(--line);
-   padding: 2rem 1.5rem;
-   text-align: center;
+/* ---------------------------------------------------------------------------
+   Só o guia de importação do Lastro: os botões de download e os passos
+   ------------------------------------------------------------------------- */
+/* `.legal-main a` pinta todo link de bege e o sublinha, e vence o `.btn-primary`
+   por especificidade; os botões precisam da cor deles de volta. */
+.download-row { display: flex; flex-wrap: wrap; gap: var(--s2); margin: var(--s3) 0 var(--s1); }
+.legal-main .download-row a.btn { text-decoration: none; }
+.legal-main .download-row a.btn-primary { color: #000; }
+.legal-main .download-row a.btn-secondary { color: var(--text); }
+.legal-main .download-row a.btn-secondary:hover { color: var(--shell); }
+.download-meta {
+   font-family: var(--font-mono);
+   font-size: 0.76rem;
    color: var(--text-faint);
-   font-size: 0.85rem;
+   margin: 0 0 var(--s4);
 }
-.legal-footer a { color: var(--text-dim); }
 
-@media (max-width: 520px) {
-   .legal-header { padding: 0.85rem 1rem; }
-   .legal-brand span { display: none; }
-   .legal-main { padding: 2.5rem 1.25rem 3rem; }
+.legal-main .steps { counter-reset: passo; list-style: none; padding: 0; margin: var(--s2) 0 var(--s3); }
+.steps li { position: relative; padding-left: var(--s4); margin-bottom: var(--s3); }
+.steps li::before {
+   counter-increment: passo;
+   content: counter(passo);
+   position: absolute;
+   left: 0;
+   top: 0.1rem;
+   width: var(--s3);
+   height: var(--s3);
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   font-family: var(--font-mono);
+   font-weight: 500;
+   font-size: 0.78rem;
+   color: var(--text);
+   border: 1px solid var(--line-strong);
+   border-radius: var(--r);
+}
+
+@media (max-width: 720px) {
+   .page-head { padding-top: calc(var(--s5) + var(--s4)); }
+   .legal-callout { padding: var(--s3); }
 }

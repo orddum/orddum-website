@@ -1,6 +1,6 @@
 # CLAUDE.md — orddum-website (orddum.com)
 
-> Última atualização: 2026-10-15
+> Última atualização: 2026-10-22
 
 Site estático da Orddum no Firebase Hosting (projeto `orddum`). Repositório
 **PÚBLICO** com deploy automático a cada push na `main` (GitHub Actions): nada
@@ -17,6 +17,23 @@ canônica: **com barra final**.
 
 Todo path responde 200 (rewrite `**` → `index.html`): status HTTP não prova que
 uma página existe; compare o conteúdo (`curl -s <url> | grep <texto>`).
+
+## Regra: o site é um produto só
+
+O orddum.com é o portfólio principal da Orddum. Toda melhoria de design ou de
+estrutura (cabeçalho, rodapé, tipografia, espaçamento, componentes, movimento)
+vale para TODAS as páginas — home e filhas (`/<app>/privacidade/`,
+`/<app>/termos/`, `/lastro/importar/` e as que vierem) — no mesmo PR. Nunca
+deixe uma página com o visual antigo. (Regra do Luiz, 22/10/2026.)
+
+- Cabeçalho e rodapé são blocos idênticos em todas as páginas, entre
+  `<!-- site-header -->` e `<!-- site-footer -->`; o que muda por página
+  (link ativo) é feito no `script.js`.
+- `tools/check-coerencia.sh` confere isso e roda em todo PR
+  (`.github/workflows/coerencia.yml`).
+- Página nova nasce do molde de uma filha existente, não do zero.
+- Antes de publicar, verificar na tela a home e pelo menos uma filha de cada
+  tipo (política, termos, importar), no desktop e no celular.
 
 ## Páginas por app
 

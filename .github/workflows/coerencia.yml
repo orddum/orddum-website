@@ -1,0 +1,12 @@
+name: Coerência do site
+
+# O site é um produto só: cabeçalho e rodapé idênticos em todas as páginas.
+on: pull_request
+
+jobs:
+  coerencia:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Conferir cabeçalho, rodapé, styles.css e script.js
+        run: bash tools/check-coerencia.sh
