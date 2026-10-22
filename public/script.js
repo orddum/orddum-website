@@ -12,7 +12,16 @@
  *    âncora parava embaixo do cabeçalho fixo.
  *  - O CABEÇALHO QUE SUMIA ao rolar para baixo: numa página curta ele piscava.
  *  - O CSS injetado por JS, que agora mora no `styles.css`.
+ *
+ * O que entrou: o PALCO DE APPS. O trilho de painéis é scroll-snap puro, então
+ * deslizar já troca de app sem JS nenhum; o script só sincroniza o seletor
+ * (abas, setas, teclado, âncoras) com o trilho e liga o diálogo do vídeo. Sem
+ * rotação automática: quem decide o ritmo é quem lê.
  */
+
+// A classe `js` também é posta no <head> (antes da primeira pintura, para a
+// página não piscar empilhada); aqui só garante o caso de ela ter sido tirada.
+document.documentElement.classList.add('js');
 
 document.addEventListener('DOMContentLoaded', function () {
    var toggle = document.getElementById('navToggle');
@@ -81,4 +90,173 @@ document.addEventListener('DOMContentLoaded', function () {
 
       sections.forEach(function (section) { observer.observe(section); });
    }
+
+   // ------------------------------------------------------------------------
+   // Palco de apps — padrão "tabbed carousel" do WAI-ARIA APG.
+   // ------------------------------------------------------------------------
+   var stage = document.querySelector('.stage');
+   var rail = stage && stage.querySelector('.rail');
+   var tablist = stage && stage.querySelector('[role="tablist"]');
+
+   if (stage && rail && tablist) {
+      var tabs = Array.prototype.slice.call(tablist.querySelectorAll('[role="tab"]'));
+      var panels = Array.prototype.slice.call(rail.querySelectorAll('[role="tabpanel"]'));
+      var ids = panels.map(function (panel) { return panel.id; });
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      var current = 0;
+      var pending = null;   // painel para onde uma rolagem animada está indo
+      var pendingTimer = null;
+
+      var behavior = function (instant) {
+         return (instant || reduceMotion.matches) ? 'auto' : 'smooth';
+      };
+
+      // Marca a aba e o painel ativos. Os painéis fora da tela ficam `inert`:
+      // sem isso o Tab do teclado entraria em botões e links que ninguém vê.
+      var setActive = function (index) {
+         current = index;
+         tabs.forEach(function (tab, i) {
+            tab.setAttribute('aria-selected', i === index ? 'true' : 'false');
+            tab.tabIndex = i === index ? 0 : -1;
+         });
+         panels.forEach(function (panel, i) {
+            if (i === index) panel.removeAttribute('inert');
+            else panel.setAttribute('inert', '');
+         });
+         stage.setAttribute('data-active', String(index + 1));
+
+         // No celular as abas rolam; mantém a ativa à vista sem mexer na página
+         // (scrollIntoView rolaria a janela também).
+         var tab = tabs[index];
+         if (tablist.scrollWidth > tablist.clientWidth) {
+            tablist.scrollTo({
+               left: tab.offsetLeft - (tablist.clientWidth - tab.offsetWidth) / 2,
+               behavior: behavior(false)
+            });
+         }
+      };
+
+      // Rola o trilho até o painel. Enquanto a rolagem animada passa pelos
+      // painéis do meio, o observador fica calado, senão as abas piscariam.
+      var goTo = function (index, instant) {
+         index = (index + panels.length) % panels.length;
+         pending = index;
+         clearTimeout(pendingTimer);
+         pendingTimer = setTimeout(function () { pending = null; }, instant ? 60 : 1500);
+         rail.scrollTo({ left: index * rail.clientWidth, behavior: behavior(instant) });
+         setActive(index);
+      };
+
+      rail.addEventListener('scrollend', function () { pending = null; });
+
+      // Quem desliza com o dedo: o painel que ocupa 60% do trilho é o ativo.
+      if ('IntersectionObserver' in window) {
+         var railObserver = new IntersectionObserver(function (entries) {
+            if (pending !== null) return;
+            entries.forEach(function (entry) {
+               if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
+                  var index = panels.indexOf(entry.target);
+                  if (index !== current) setActive(index);
+               }
+            });
+         }, { root: rail, threshold: 0.6 });
+         panels.forEach(function (panel) { railObserver.observe(panel); });
+      }
+
+      tabs.forEach(function (tab, index) {
+         tab.addEventListener('click', function (event) {
+            event.preventDefault();
+            goTo(index);
+            // O endereço acompanha o app aberto, para o link ser compartilhável.
+            // replaceState não dispara `hashchange` nem rola a página.
+            try { history.replaceState(null, '', '#' + ids[index]); } catch (e) { /* file:// */ }
+         });
+      });
+
+      // Setas, Home e End dentro do seletor; o foco anda junto com a aba.
+      tablist.addEventListener('keydown', function (event) {
+         var next = null;
+         if (event.key === 'ArrowRight') next = current + 1;
+         else if (event.key === 'ArrowLeft') next = current - 1;
+         else if (event.key === 'Home') next = 0;
+         else if (event.key === 'End') next = panels.length - 1;
+         if (next === null) return;
+         event.preventDefault();
+         next = (next + panels.length) % panels.length;
+         goTo(next);
+         tabs[next].focus({ preventScroll: true });
+      });
+
+      Array.prototype.forEach.call(stage.querySelectorAll('.arrow'), function (arrow) {
+         arrow.addEventListener('click', function () {
+            goTo(current + Number(arrow.getAttribute('data-dir')));
+         });
+      });
+
+      window.addEventListener('resize', function () {
+         rail.scrollTo({ left: current * rail.clientWidth, behavior: 'auto' });
+      });
+
+      // Âncora: /#lastro, /#ipi, /#ararinha e /#faco-agora (as URLs das antigas
+      // vitrines) abrem o palco no app certo. O navegador já rolaria a página
+      // até o painel, que fica abaixo das abas; aqui ela vai para o início do
+      // palco. O trilho vai sem animação.
+      var openFromHash = function () {
+         var index = ids.indexOf(decodeURIComponent(location.hash.slice(1)));
+         if (index < 0) return false;
+         goTo(index, true);
+         document.getElementById('apps').scrollIntoView({ behavior: 'instant', block: 'start' });
+         return true;
+      };
+
+      setActive(0);
+      if (openFromHash()) {
+         // As fontes chegam depois e mexem na altura do que vem antes; refaz uma
+         // vez, se a pessoa ainda não tiver rolado por conta própria.
+         var landedAt = window.scrollY;
+         if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(function () {
+               if (Math.abs(window.scrollY - landedAt) < 4) openFromHash();
+            });
+         }
+      }
+      window.addEventListener('hashchange', openFromHash);
+   }
+
+   // ------------------------------------------------------------------------
+   // Vídeo: o bloco é um link para o mp4 (funciona sem JS); com JS abre o
+   // <dialog> nativo, que já traz o Esc, o foco preso e o fundo inerte.
+   // ------------------------------------------------------------------------
+   Array.prototype.forEach.call(document.querySelectorAll('[data-dialog]'), function (trigger) {
+      var dialog = document.getElementById(trigger.getAttribute('data-dialog'));
+      if (!dialog || typeof dialog.showModal !== 'function') return;
+      var video = dialog.querySelector('video');
+
+      trigger.setAttribute('aria-haspopup', 'dialog');
+      trigger.addEventListener('click', function (event) {
+         event.preventDefault();
+         dialog.showModal();
+         if (video) {
+            var started = video.play();
+            if (started && started.catch) started.catch(function () { /* o controle fica à mão */ });
+         }
+      });
+
+      dialog.querySelector('.dialog-close').addEventListener('click', function () { dialog.close(); });
+
+      // Clique no fundo escuro fecha. O alvo é o próprio <dialog> também nas
+      // margens internas dele, então confere se o ponto caiu fora da caixa.
+      dialog.addEventListener('click', function (event) {
+         var box = dialog.getBoundingClientRect();
+         var outside = event.clientX < box.left || event.clientX > box.right ||
+            event.clientY < box.top || event.clientY > box.bottom;
+         if (event.target === dialog && outside) dialog.close();
+      });
+
+      // `close` vale para o botão, o Esc e o fundo: pausa e devolve o foco.
+      dialog.addEventListener('close', function () {
+         if (video) video.pause();
+         trigger.focus({ preventScroll: true });
+      });
+   });
 });

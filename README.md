@@ -64,10 +64,10 @@ colorido; inverter essa proporção transforma a marca num arco-íris.
 
 ```
 public/
-├── index.html                    # portfólio (hero, apps, Lastro, contato, legal)
+├── index.html                    # portfólio (hero, palco de apps, como trabalhamos, contato, legal)
 ├── styles.css                    # tokens da marca + toda a landing page
 ├── legal.css                     # só o texto corrido das páginas legais
-├── script.js                     # menu mobile e marcação da seção ativa
+├── script.js                     # menu mobile, marcação da seção ativa, palco de apps e diálogo do vídeo
 ├── app-ads.txt                   # autorização do AdMob (IAB app-ads.txt), lido pelo Google
 ├── robots.txt                    # explícito: sem ele o rewrite ** devolvia a home em HTML no lugar dele
 ├── logo.png  logo_large.png      # material da marca, fundo preto chapado
@@ -95,10 +95,11 @@ public/
 └── sinete/privacidade/           # texto legal do Sinete (canônico em sinete/docs/)
 ```
 
-As imagens dos apps são **cópias**. Cada app tem vitrine própria na home
-(`#lastro`, `#ipi`, `#ararinha` e `#faco-agora`): a capa 16:9, as seis capturas em rolagem
-horizontal e, quando o app tiver, o vídeo explicativo em retrato com
-transcrição. Quem gera tudo isso é o gerador do kit, a partir do `store/` do
+As imagens dos apps são **cópias**. A home tem um **palco de apps**: um painel por
+app (`#lastro`, `#ipi`, `#ararinha` e `#faco-agora`, que continuam abrindo no app
+certo), com troca em carrossel por seletor, setas, teclado ou deslizando. Cada painel
+leva a capa 16:9, as seis capturas e, quando o app tiver, o vídeo explicativo em
+retrato com transcrição, que abre num diálogo. Quem gera tudo isso é o gerador do kit, a partir do `store/` do
 app (`flutter-app-kit/docs/store-mockups.md` § 9); o site só recebe a cópia em
 `img/<app>/`. Não edite nem regere nada de `img/<app>/` por aqui: este
 repositório é o site, e o que ele sabe sobre um app é só onde a imagem dele
