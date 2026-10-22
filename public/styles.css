@@ -435,7 +435,9 @@ h1, h2, h3, h4 { color: var(--text); font-weight: 600; line-height: 1.2; }
 .js .rail {
    position: relative;
    display: flex;
-   gap: 0;
+   /* O vão vale por arredondamento de subpixel no snap: se sobrar 1 px, mostra
+      preto e não a borda do painel vizinho. */
+   gap: var(--s3);
    overflow-x: auto;
    overflow-y: hidden;
    scroll-snap-type: x mandatory;
@@ -487,9 +489,8 @@ h1, h2, h3, h4 { color: var(--text); font-weight: 600; line-height: 1.2; }
 .app-soon {
    display: flex;
    align-items: center;
-   max-width: 24ch;
+   white-space: nowrap;
    font-size: 0.85rem;
-   line-height: 1.35;
    text-align: right;
    color: var(--text-faint);
 }
@@ -939,7 +940,7 @@ a.contact-card:hover { border-color: var(--shell); background: var(--surface-2);
    .panel-head { flex-direction: column; align-items: stretch; height: calc(64px + var(--s2) + 38px); gap: var(--s2); }
    .app-actions { flex-shrink: 1; }
    .app-actions .btn { flex: 1 1 0; }
-   .app-soon { max-width: none; text-align: left; }
+   .app-soon { text-align: left; }
 
    /* A galeria vira uma faixa que rola: o vídeo inteiro e a primeira tela
       espiando. `contain` impede que o fim da faixa arraste o trilho de apps. */
@@ -977,7 +978,11 @@ a.contact-card:hover { border-color: var(--shell); background: var(--surface-2);
 
    .contact-grid { grid-template-columns: repeat(2, 1fr); gap: var(--s2); }
    .contact-card { padding: var(--s3) var(--s2); }
-   .contact-value { font-size: 0.9rem; overflow-wrap: anywhere; }
+   .contact-value { font-size: 0.9rem; }
+   /* O e-mail é longo demais para meia coluna: ele e "Onde estamos" ocupam as
+      duas; WhatsApp e LinkedIn ficam lado a lado. */
+   .contact-grid > :nth-child(1),
+   .contact-grid > :nth-child(4) { grid-column: 1 / -1; }
 }
 
 @media (max-width: 420px) {

@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function () {
          pending = index;
          clearTimeout(pendingTimer);
          pendingTimer = setTimeout(function () { pending = null; }, instant ? 60 : 1500);
-         rail.scrollTo({ left: index * rail.clientWidth, behavior: behavior(instant) });
+         rail.scrollTo({ left: panels[index].offsetLeft - panels[0].offsetLeft, behavior: behavior(instant) });
          setActive(index);
       };
 
@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
 
       window.addEventListener('resize', function () {
-         rail.scrollTo({ left: current * rail.clientWidth, behavior: 'auto' });
+         rail.scrollTo({ left: panels[current].offsetLeft - panels[0].offsetLeft, behavior: 'auto' });
       });
 
       // Âncora: /#lastro, /#ipi, /#ararinha e /#faco-agora (as URLs das antigas
