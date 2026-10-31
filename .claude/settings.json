@@ -1,5 +1,5 @@
 {
-  "$comment": "Settings do site (HTML estático no Firebase Hosting; cada push na main publica o orddum.com). Sandbox, deny e credenciais copiados de prompts/claude/settings.json do kit, sem hooks nem permissões de Flutter. O push fica em ask porque publica. Por que cada exceção existe: docs/ambiente-ia.md do kit.",
+  "$comment": "Settings do site (HTML estático no Firebase Hosting; cada push na main publica o orddum.com). Sandbox, deny e credenciais copiados de prompts/claude/settings.json do kit, sem hooks nem permissões de Flutter. O push fica em ask porque publica. Por que cada exceção existe: docs/ambiente-ia.md do kit. Afrouxamento de 31/10/2026 (sem ask, jaula desligada; o modo auto é a trava): docs/decisoes/2026-10-31-sem-ask-sem-jaula.md do kit.",
   "permissions": {
     "allow": [
       "Bash(git status *)",
@@ -17,18 +17,8 @@
     "ask": [
       "Bash(git push)",
       "Bash(git push *)",
-      "Bash(firebase deploy *)",
       "Bash(gh pr merge *)",
-      "Bash(rm -r *)",
-      "Bash(rm -rf *)",
-      "Bash(rm -fr *)",
-      "Bash(rm -Rf *)",
-      "Bash(gh release *)",
-      "Bash(git push --tags*)",
-      "Bash(git push * --tags*)",
-      "Bash(git push origin v*)",
-      "Bash(git push origin refs/tags/*)",
-      "Read(~/Library/CloudStorage/OneDrive-Pessoal/Orddum/Projetos/*/* keys/**)"
+      "Bash(firebase deploy *)"
     ],
     "deny": [
       "Bash(sudo *)",
@@ -50,7 +40,7 @@
     ]
   },
   "sandbox": {
-    "enabled": true,
+    "enabled": false,
     "allowUnsandboxedCommands": false,
     "enableWeakerNetworkIsolation": true,
     "filesystem": {
