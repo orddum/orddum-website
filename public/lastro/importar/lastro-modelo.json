@@ -6,7 +6,7 @@
     "formato": 1
   },
   "schemaVersion": 1,
-  "exportedAt": "2026-09-23T12:00:00.000Z",
+  "exportedAt": "2026-11-01T12:00:00.000Z",
   "appVersion": "modelo",
   "household": {
     "id": "casa-aurora",
@@ -1634,7 +1634,8 @@
           "balance": 1100000,
           "source": "manual",
           "impliedYield": null,
-          "confirmedAt": null
+          "confirmedAt": null,
+          "asOf": null
         },
         {
           "wealthItemId": "tesouro-selic",
@@ -1643,7 +1644,8 @@
           "balance": 730000,
           "source": "manual",
           "impliedYield": null,
-          "confirmedAt": null
+          "confirmedAt": null,
+          "asOf": null
         },
         {
           "wealthItemId": "carro",
@@ -1652,7 +1654,8 @@
           "balance": 5800000,
           "source": "manual",
           "impliedYield": null,
-          "confirmedAt": null
+          "confirmedAt": null,
+          "asOf": null
         },
         {
           "wealthItemId": "bitcoin",
@@ -1661,7 +1664,8 @@
           "balance": 250000,
           "source": "manual",
           "impliedYield": null,
-          "confirmedAt": null
+          "confirmedAt": null,
+          "asOf": null
         },
         {
           "wealthItemId": "poupanca-caixa",
@@ -1670,7 +1674,8 @@
           "balance": 0,
           "source": "manual",
           "impliedYield": null,
-          "confirmedAt": null
+          "confirmedAt": null,
+          "asOf": null
         }
       ]
     },
@@ -2580,7 +2585,8 @@
           "balance": 1210000,
           "source": "manual",
           "impliedYield": null,
-          "confirmedAt": null
+          "confirmedAt": null,
+          "asOf": null
         },
         {
           "wealthItemId": "tesouro-selic",
@@ -2589,7 +2595,8 @@
           "balance": 785000,
           "source": "manual",
           "impliedYield": null,
-          "confirmedAt": null
+          "confirmedAt": null,
+          "asOf": null
         },
         {
           "wealthItemId": "bitcoin",
@@ -2598,7 +2605,8 @@
           "balance": 285000,
           "source": "manual",
           "impliedYield": null,
-          "confirmedAt": null
+          "confirmedAt": null,
+          "asOf": null
         }
       ]
     },
@@ -3473,7 +3481,8 @@
           "balance": 1235000,
           "source": "manual",
           "impliedYield": null,
-          "confirmedAt": null
+          "confirmedAt": null,
+          "asOf": null
         },
         {
           "wealthItemId": "tesouro-selic",
@@ -3482,7 +3491,8 @@
           "balance": 840000,
           "source": "manual",
           "impliedYield": null,
-          "confirmedAt": null
+          "confirmedAt": null,
+          "asOf": null
         },
         {
           "wealthItemId": "bitcoin",
@@ -3491,7 +3501,8 @@
           "balance": 310000,
           "source": "manual",
           "impliedYield": null,
-          "confirmedAt": null
+          "confirmedAt": null,
+          "asOf": null
         }
       ]
     }

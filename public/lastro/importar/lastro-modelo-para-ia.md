@@ -1,6 +1,6 @@
 # Lastro — modelo de importação, para você e para a sua IA
 
-> Formato 1 · gerado em 23/09/2026 · <https://orddum.com/lastro/importar/>
+> Formato 1 · gerado em 01/11/2026 · <https://orddum.com/lastro/importar/>
 
 ## Para você, que vai usar
 
@@ -29,9 +29,12 @@ Passo a passo:
 
 Três coisas para saber antes:
 
-- **A importação substitui tudo que está no app.** O Lastro grava uma cópia do
-  que havia, mas o gesto é de troca, não de soma. Faça isto **antes** de
-  começar a lançar à mão — ou exporte o que já tem e peça à IA para juntar.
+- **A importação entra como um caderno.** O Lastro guarda vários cadernos (a
+  casa, a empresa, o pessoal). Se o arquivo tem o `id` de um caderno que já
+  existe no app, ele substitui só esse caderno — e o app grava uma cópia do que
+  havia antes; se o `id` é novo, o caderno entra ao lado dos seus, sem mexer
+  neles. Para trazer o histórico para o caderno que você já usa, exporte-o
+  antes e peça à IA para juntar os dois no mesmo arquivo, com o mesmo `id`.
 - **Você vai entregar seus dados financeiros a um serviço de terceiros.** O
   Lastro não participa disso e nunca vê esses dados; a escolha da IA, e do que
   compartilhar com ela, é sua. Tire o que não precisa — número de cartão, CPF,
@@ -71,7 +74,8 @@ recusar e que reproduza o que a pessoa tem — nem mais, nem menos.**
 - **Depois do JSON**, em uma linha por item: o que ficou de fora, o que foi
   assumido e o que a pessoa deve conferir no app.
 - Histórico longo: monte por blocos de meses se precisar, mas **entregue um
-  arquivo final único** — a importação é tudo-ou-nada e substitui o que há.
+  arquivo final único** — a importação é tudo-ou-nada: o arquivo vira um
+  caderno inteiro, e substitui o caderno de mesmo `id`, se houver.
 
 ### O modelo em uma página
 
@@ -548,7 +552,7 @@ A **Casa Aurora**: Ana (dona da conta) e Bruno. Três meses — julho e agosto d
 ```json
 {
   "schemaVersion": 1,
-  "exportedAt": "2026-09-23T12:00:00.000Z",
+  "exportedAt": "2026-11-01T12:00:00.000Z",
   "appVersion": "modelo",
   "household": {
     "id": "casa-aurora",
