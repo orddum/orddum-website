@@ -419,8 +419,8 @@
       <!-- ================= FAÇO AGORA ================= -->
       <div class="panel" id="faco-agora" role="tabpanel" aria-roledescription="slide" aria-label="Faço Agora, 4 de 4" data-app="yellow">
         <!-- Capa 16:9 e capturas: cópias de faco-agora/store/site/ (gerado pelo kit,
-             flutter-app-kit/docs/store-mockups.md § 9). Copiadas em 22/10/2026.
-             Sem vídeo por enquanto. -->
+             flutter-app-kit/docs/store-mockups.md § 9) e o vídeo de faco-agora/store/video/.
+             Copiadas em 02/11/2026. -->
         <img class="panel-banner" src="img/faco-agora/capa.webp"
           alt="Faço Agora — sorteia o que cabe agora. Uma tarefa da sua lista, do tamanho do seu tempo." width="1600" height="900" loading="lazy">
 
@@ -448,9 +448,23 @@
                  tirar o "App Store em breve" e pôr a linha da Apple no rodapé de todas as páginas. -->
 
         <div class="gallery">
-          <div class="shot shot-soon">
-            <img src="img/faco-agora/icon.png" alt="" width="55" height="55" loading="lazy">
-            <span>Vídeo em breve</span>
+          <div class="shot shot-video">
+            <a class="video-link" href="img/faco-agora/video/site.mp4" data-dialog="video-faco-agora"
+              aria-label="Assistir ao vídeo: O Faço Agora em meio minuto">
+              <video muted loop playsinline preload="none" poster="img/faco-agora/video/poster.jpg" width="1080" height="1920">
+                <source src="img/faco-agora/video/site.mp4" type="video/mp4">
+                <source src="img/faco-agora/video/site.webm" type="video/webm">
+              </video>
+            </a>
+            <div class="video-controls">
+              <button class="vbtn" type="button" data-video-toggle aria-label="Pausar vídeo">
+                <svg class="i-pause" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg>
+                <svg class="i-play" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>
+              </button>
+              <button class="vbtn" type="button" data-dialog="video-faco-agora" aria-label="Ver com som" title="Ver com som">
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5zM15.5 9a4 4 0 010 6M18 6.5a8 8 0 010 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="currentColor" fill-opacity=".15"/></svg>
+              </button>
+            </div>
           </div>
           <img src="img/faco-agora/screens/01-sorteio.webp" alt="A tela Hoje com a tarefa sorteada em destaque" width="540" height="1174" loading="lazy">
           <img src="img/faco-agora/screens/02-tempo.webp" alt="A pergunta “Quanto tempo você tem?” com as opções de 5, 15, 30 minutos ou mais" width="540" height="1174" loading="lazy">
@@ -472,6 +486,31 @@
             <a href="/faco-agora/privacidade/">Privacidade</a> · <a href="/faco-agora/termos/">Termos de uso</a>
           </p>
         </div>
+        <dialog class="video-dialog" id="video-faco-agora" aria-labelledby="video-faco-agora-title">
+          <button class="dialog-close" type="button" aria-label="Fechar vídeo">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg>
+          </button>
+          <div class="dialog-body">
+            <video controls playsinline preload="none" poster="img/faco-agora/video/poster.jpg" width="1080" height="1920">
+              <source src="img/faco-agora/video/site.mp4" type="video/mp4">
+              <source src="img/faco-agora/video/site.webm" type="video/webm">
+              <track kind="captions" srclang="pt-BR" label="Português" src="img/faco-agora/video/legendas.vtt">
+              Seu navegador não toca este vídeo. <a href="img/faco-agora/video/site.mp4">Baixe o arquivo</a>.
+            </video>
+            <div class="dialog-text">
+              <p class="video-kicker">Em vídeo</p>
+              <h4 class="video-title" id="video-faco-agora-title">O Faço Agora em meio minuto</h4>
+              <p>Quatro fluxos reais do app em meio minuto, narrados. A transcrição está logo abaixo.</p>
+              <details class="transcript">
+                <summary>Transcrição</summary>
+                <p>Diga o tempo que tem e o app sorteia. Terminou? Toque em Feito.</p>
+                <p>Toque em Adicionar, escreva a tarefa, diga o tempo e a dificuldade, e ela entra na lista.</p>
+                <p>Um dia de folga por semana não quebra a sequência.</p>
+                <p>Um lembrete por dia, no horário que você escolher.</p>
+              </details>
+            </div>
+          </div>
+        </dialog>
       </div>
           </div>
 
