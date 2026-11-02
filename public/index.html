@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Orddum — Aplicativos para iOS e Android</title>
   <meta name="description"
-    content="Orddum, serviços de tecnologia. Aplicativos mobile em Flutter para iOS e Android: Lastro, controle financeiro offline; IPI App, gestão das atividades de uma igreja; Ararinha, livro falante de primeiras palavras; e, em teste, Faço Agora, que sorteia a tarefa que cabe no seu tempo.">
+    content="Orddum, serviços de tecnologia. Aplicativos mobile em Flutter para iOS e Android: Lastro, controle financeiro offline; IPI App, gestão das atividades de uma igreja; Ararinha, livro falante de primeiras palavras; e Faço Agora, que sorteia a tarefa que cabe no seu tempo.">
   <meta name="theme-color" content="#000000">
   <link rel="canonical" href="https://orddum.com/">
 
@@ -14,7 +14,7 @@
   <meta property="og:site_name" content="Orddum">
   <meta property="og:title" content="Orddum — Aplicativos para iOS e Android">
   <meta property="og:description"
-    content="Aplicativos mobile em Flutter para iOS e Android. Lastro, controle financeiro offline; IPI App, gestão das atividades de uma igreja; Ararinha, livro falante de primeiras palavras; e, em teste, Faço Agora, que sorteia a tarefa que cabe no seu tempo.">
+    content="Aplicativos mobile em Flutter para iOS e Android. Lastro, controle financeiro offline; IPI App, gestão das atividades de uma igreja; Ararinha, livro falante de primeiras palavras; e Faço Agora, que sorteia a tarefa que cabe no seu tempo.">
   <meta property="og:url" content="https://orddum.com/">
   <meta property="og:image" content="https://orddum.com/img/lastro/capa-16x9.png">
   <meta property="og:image:width" content="1920">
@@ -418,7 +418,7 @@
       <div class="panel" id="faco-agora" role="tabpanel" aria-roledescription="slide" aria-label="Faço Agora, 4 de 4" data-app="yellow">
         <!-- Capa 16:9 e capturas: cópias de faco-agora/store/site/ (gerado pelo kit,
              flutter-app-kit/docs/store-mockups.md § 9). Copiadas em 22/10/2026.
-             Sem vídeo por enquanto: app em teste. -->
+             Sem vídeo por enquanto. -->
         <img class="panel-banner" src="img/faco-agora/capa.webp"
           alt="Faço Agora — sorteia o que cabe agora. Uma tarefa da sua lista, do tamanho do seu tempo." width="1600" height="900" loading="lazy">
 
@@ -428,16 +428,22 @@
             <div>
               <div class="app-title">
                 <h3 class="app-name">Faço Agora</h3>
-                <span class="badge badge-soon">Em breve</span>
+                <span class="badge badge-live">Disponível</span>
               </div>
               <p class="app-tag">Tarefas · iOS e Android</p>
             </div>
           </div>
-          <p class="app-soon">Em breve nas lojas</p>
+          <div class="app-actions">
+            <p class="app-soon">App Store em breve</p>
+            <a class="btn btn-secondary btn-sm" href="https://play.google.com/store/apps/details?id=com.orddum.facoagora"
+              target="_blank" rel="noopener">Google Play</a>
+          </div>
         </div>
-        <!-- SITUAÇÃO DAS LOJAS — verificado em 22/10/2026: o app ainda está em teste
-                 interno e TestFlight, sem ficha pública. Sem botões nem links de loja até
-                 a publicação; então: trocar o selo por badge-live e pôr os botões. -->
+        <!-- SITUAÇÃO DAS LOJAS — verificado em 02/11/2026:
+                   Play  ...details?id=com.orddum.facoagora -> 200 (v1.0.0, produção desde 02/11)
+                   Apple app 6825797614, 1.0.0 em revisão (WAITING_FOR_REVIEW): sem
+                 ficha pública. Quando sair: botão App Store (btn-primary, URL com /br/),
+                 tirar o "App Store em breve" e pôr a linha da Apple no rodapé de todas as páginas. -->
 
         <div class="gallery">
           <div class="shot shot-soon">
@@ -603,6 +609,8 @@
                 rel="noopener">Ararinha — App Store</a></li>
             <li><a href="https://play.google.com/store/apps/details?id=com.orddum.ararinha" target="_blank"
                 rel="noopener">Ararinha — Google Play</a></li>
+            <li><a href="https://play.google.com/store/apps/details?id=com.orddum.facoagora" target="_blank"
+                rel="noopener">Faço Agora — Google Play</a></li>
           </ul>
         </div>
         <div>
