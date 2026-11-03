@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Orddum — Aplicativos para iOS e Android</title>
   <meta name="description"
-    content="Orddum, serviços de tecnologia. Aplicativos mobile em Flutter para iOS e Android: Lastro, controle financeiro offline; IPI App, gestão das atividades de uma igreja; Ararinha, livro falante de primeiras palavras; e Faço Agora, que sorteia a tarefa que cabe no seu tempo.">
+    content="Orddum, serviços de tecnologia. Aplicativos mobile em Flutter para iOS e Android: Lastro, controle financeiro offline; IPI App, gestão das atividades de uma igreja; Ararinha, livro falante de primeiras palavras; e Faço Agora, que sorteia a tarefa que cabe no seu tempo. E o Kerux, software para Mac que projeta letras, Bíblia e slides no telão da igreja e na transmissão.">
   <meta name="theme-color" content="#000000">
   <link rel="canonical" href="https://orddum.com/">
 
@@ -14,7 +14,7 @@
   <meta property="og:site_name" content="Orddum">
   <meta property="og:title" content="Orddum — Aplicativos para iOS e Android">
   <meta property="og:description"
-    content="Aplicativos mobile em Flutter para iOS e Android. Lastro, controle financeiro offline; IPI App, gestão das atividades de uma igreja; Ararinha, livro falante de primeiras palavras; e Faço Agora, que sorteia a tarefa que cabe no seu tempo.">
+    content="Aplicativos mobile em Flutter para iOS e Android. Lastro, controle financeiro offline; IPI App, gestão das atividades de uma igreja; Ararinha, livro falante de primeiras palavras; e Faço Agora, que sorteia a tarefa que cabe no seu tempo. E o Kerux, software para Mac que projeta letras, Bíblia e slides no telão da igreja e na transmissão.">
   <meta property="og:url" content="https://orddum.com/">
   <meta property="og:image" content="https://orddum.com/img/lastro/capa-16x9.png">
   <meta property="og:image:width" content="1920">
@@ -45,6 +45,7 @@
       </a>
       <ul class="nav-menu" id="navMenu">
         <li><a href="/#apps" class="nav-link">Apps</a></li>
+        <li><a href="/#software" class="nav-link">Software</a></li>
         <li><a href="/#trabalho" class="nav-link">Como trabalhamos</a></li>
         <li><a href="/#contato" class="nav-link">Contato</a></li>
         <li><a href="/#privacidade" class="nav-link">Privacidade</a></li>
@@ -519,6 +520,45 @@
       </div>
     </section>
 
+    <!-- Software: o Kerux é o primeiro produto de desktop da Orddum. Fica fora
+         da vitrine dos apps de propósito: não é app de celular. O Kerux App
+         (controle remoto) aparece só aqui e na página do Kerux, como acessório. -->
+    <section id="software" class="sw">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker"><span class="bars" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+            Software</p>
+          <h2 class="section-title">Para o Mac da mesa de som da igreja</h2>
+          <p class="section-sub">Além dos apps de celular, a Orddum faz software de desktop. O primeiro é o Kerux.</p>
+        </div>
+
+        <div class="sw-grid">
+          <div class="sw-text">
+            <p class="sw-brand"><img src="img/kerux/simbolo.svg" alt="" width="44" height="44"><span>Kerux</span></p>
+            <h3 class="sw-title">Projeção para igrejas, nativa de Mac, em português.</h3>
+            <p>Letras, versículos, mídia e apresentações no telão, e o mesmo conteúdo na transmissão, operado por um
+              voluntário com o teclado ou com o celular.</p>
+            <ul class="sw-list">
+              <li><strong>Bíblia navegável</strong> e músicas a três toques do telão.</li>
+              <li><strong>PDF e apresentações</strong> passam no telão, mesmo sem PowerPoint ou Keynote.</li>
+              <li><strong>Transmissão resolvida:</strong> texto com fundo transparente no OBS e legenda ao vivo no YouTube.</li>
+              <li><strong>Sem conta e sem nuvem:</strong> tudo fica no Mac, funciona sem internet.</li>
+            </ul>
+            <div class="hero-actions">
+              <a href="/kerux/" class="btn btn-primary">Conhecer o Kerux</a>
+              <a href="/kerux/#baixar" class="btn btn-secondary">Baixar para Mac</a>
+            </div>
+            <p class="sw-note">Versão de testes, gratuita. macOS 14 ou mais novo, chip Apple. O
+              <a href="/kerux/#kerux-app">Kerux App</a> é o controle remoto de celular, em teste.</p>
+          </div>
+          <a class="sw-shot" href="/kerux/" aria-label="Ver a página do Kerux">
+            <img src="img/kerux/controle.jpg" width="1600" height="1000" loading="lazy"
+              alt="Janela de controle do Kerux: biblioteca de músicas à esquerda, a letra no ar e os slides ao centro, e a ordem do culto à direita.">
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- Como trabalhamos -->
     <section id="trabalho" class="raised">
       <div class="container">
@@ -595,7 +635,7 @@
         <div class="section-head">
           <p class="kicker"><span class="bars" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
             Privacidade e termos</p>
-          <h2 class="section-title">Cada app tem a sua política</h2>
+          <h2 class="section-title">Cada produto tem a sua política</h2>
           <p class="section-sub">Não existe uma política genérica da Orddum que sirva para todos: o Lastro não tem
             servidor nem cadastro, o IPI App tem os dois, e o Ararinha não coleta nada da criança. Uma política única
             teria que mentir sobre algum deles.</p>
@@ -621,6 +661,14 @@
               <span class="legal-app"><img src="img/faco-agora/icon.png" alt="" width="24" height="24" class="legal-icon">Faço Agora</span>
               <span class="legal-links"><a href="/faco-agora/privacidade/">Política de Privacidade</a><a href="/faco-agora/termos/">Termos de Uso</a></span>
             </li>
+            <li>
+              <span class="legal-app"><img src="img/kerux/icon.png" alt="" width="24" height="24" class="legal-icon">Kerux</span>
+              <span class="legal-links"><a href="/kerux/privacidade/">Política de Privacidade</a></span>
+            </li>
+            <li>
+              <span class="legal-app"><img src="img/kerux/icon.png" alt="" width="24" height="24" class="legal-icon">Kerux App</span>
+              <span class="legal-links"><a href="/kerux-app/privacidade/">Política de Privacidade</a></span>
+            </li>
         </ul>
       </div>
     </section>
@@ -632,8 +680,8 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <img src="/img/logo-wordmark.png" alt="Orddum" width="170" height="67">
-          <p>Serviços de tecnologia. Aplicativos para iOS e Android, do desenho à publicação nas
-            lojas.</p>
+          <p>Serviços de tecnologia. Aplicativos para iOS e Android e software para Mac, do desenho à
+            publicação.</p>
         </div>
         <div>
           <h4>Apps</h4>
@@ -655,6 +703,14 @@
           </ul>
         </div>
         <div>
+          <h4>Software</h4>
+          <ul>
+            <li><a href="/kerux/">Kerux — projeção para igrejas</a></li>
+            <li><a href="/kerux/#baixar">Baixar o Kerux para Mac</a></li>
+            <li><a href="/kerux/#kerux-app">Kerux App — controle remoto</a></li>
+          </ul>
+        </div>
+        <div>
           <h4>Legal</h4>
           <ul>
             <li><a href="/lastro/privacidade/">Privacidade do Lastro</a></li>
@@ -664,6 +720,8 @@
             <li><a href="/ararinha/privacidade/">Privacidade do Ararinha</a></li>
             <li><a href="/faco-agora/privacidade/">Privacidade do Faço Agora</a></li>
             <li><a href="/faco-agora/termos/">Termos do Faço Agora</a></li>
+            <li><a href="/kerux/privacidade/">Privacidade do Kerux</a></li>
+            <li><a href="/kerux-app/privacidade/">Privacidade do Kerux App</a></li>
           </ul>
         </div>
       </div>

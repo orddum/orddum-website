@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="400" height="400">
+  <title>Kerux — símbolo</title>
+  <desc>A haste do K é a borda da tela; os dois braços são as bordas do facho de luz que sai do ponto de emissão. Proporções em φ: haste 76, facho 47 (76/φ), abertura 29 (47/φ).</desc>
+  <defs>
+    <linearGradient id="facho" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#F5A524" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#F5A524" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <!-- facho de luz: o cone entre os dois braços do K -->
+  <path d="M28 50 L75 21 L75 79 Z" fill="url(#facho)"/>
+  <!-- o K: haste e os dois braços -->
+  <path d="M28 12 V88 M28 50 L75 21 M28 50 L75 79" fill="none" stroke="#E8EEF4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- a fonte de luz -->
+  <circle cx="28" cy="50" r="4.5" fill="#F5A524"/>
+</svg>
