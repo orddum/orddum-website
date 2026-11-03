@@ -31,7 +31,7 @@ qualquer uma delas derruba a ficha de um app em produção — e a revisão das 
 | `/sinete/privacidade/` | Play Console e App Store Connect do Sinete; o mesmo texto está dentro do app (Estante › rodapé › Privacidade). Canônico: `sinete/docs/politica-de-privacidade.md` |
 | `/kerux/privacidade/` | Política do Kerux (software de Mac), linkada na página `/kerux/` e no instalador quando houver. Canônico: `kerux-mac/docs/politica-de-privacidade.md` |
 | `/kerux-app/privacidade/` | **App Store Connect e Play Console do Kerux App** ("Kerux: Controle Remoto", `com.orddum.keruxapp`): URL de privacidade das duas fichas, a gravar antes de sair do teste interno. Canônico: `kerux-app/docs/politica-de-privacidade.md` |
-| `/kerux/` e `/kerux/#baixar` | A página do Kerux; o `#baixar` é o link do botão de download e do que a igreja recebe por WhatsApp. O botão aponta para a hospedagem do DMG (ver o PR do Kerux): se ela mudar, atualize o link, não a URL da página |
+| `/kerux/` e `/kerux/#baixar` | A página do Kerux; o `#baixar` é o link do botão de download e do que a igreja recebe por WhatsApp. O botão aponta para o GitHub Releases de `orddum/kerux-releases` (`/releases/download/v<versão>/Kerux-<versão>.dmg`); a cada versão nova, atualize o link, a versão, o tamanho e o SHA-256 da página |
 | `/app-ads.txt` | **AdMob**: é onde ele confere que o `pub-2322862933504397` pode vender o inventário do Lastro. Sem o arquivo, boa parte dos compradores não dá lance, e o painel avisa. Tem que ser `text/plain` na RAIZ do domínio da ficha, e a ficha diz `orddum.com` |
 | `/` (raiz) | as versões do IPI App **já instaladas** (até a 1.14.1): o link do diálogo "Sobre" delas abre `www.orddum.com`, e vai continuar abrindo por todo o tempo em que alguém não atualizar |
 
