@@ -4,11 +4,14 @@ Site estático da **Orddum Serviços de Tecnologia LTDA** (Itabira, MG), hospeda
 no Firebase Hosting em [orddum.com](https://orddum.com).
 
 Ele é um **portfólio**: apresenta os apps da empresa, leva para as lojas e
-publica a política de privacidade e os termos de cada um.
+publica a política de privacidade e os termos de cada um. Além dos apps de
+celular, tem a seção **Software** (`#software`), com o Kerux, o primeiro
+produto de desktop; o Kerux App, controle remoto dele, fica dentro dessa
+seção e **não** entra na vitrine dos apps.
 
 ## As URLs que NÃO podem quebrar
 
-Estas quatro estão gravadas em app publicado e/ou nos painéis das lojas. Mudar
+Estas estão gravadas em app publicado e/ou nos painéis das lojas. Mudar
 qualquer uma delas derruba a ficha de um app em produção — e a revisão das lojas
 **abre o link**.
 
@@ -26,6 +29,9 @@ qualquer uma delas derruba a ficha de um app em produção — e a revisão das 
 | `/faco-agora/privacidade/` | `AppConfig.privacyPolicyUrl` do Faço Agora (Ajustes › Política de privacidade) e as fichas das lojas, quando o app for publicado. Canônico: `faco-agora/docs/politica-de-privacidade.md` |
 | `/faco-agora/termos/` | `AppConfig.termsOfUseUrl` do Faço Agora. Canônico: `faco-agora/docs/termos-de-uso.md` |
 | `/sinete/privacidade/` | Play Console e App Store Connect do Sinete; o mesmo texto está dentro do app (Estante › rodapé › Privacidade). Canônico: `sinete/docs/politica-de-privacidade.md` |
+| `/kerux/privacidade/` | Política do Kerux (software de Mac), linkada na página `/kerux/` e no instalador quando houver. Canônico: `kerux-mac/docs/politica-de-privacidade.md` |
+| `/kerux-app/privacidade/` | **App Store Connect e Play Console do Kerux App** ("Kerux: Controle Remoto", `com.orddum.keruxapp`): URL de privacidade das duas fichas, a gravar antes de sair do teste interno. Canônico: `kerux-app/docs/politica-de-privacidade.md` |
+| `/kerux/` e `/kerux/#baixar` | A página do Kerux; o `#baixar` é o link do botão de download e do que a igreja recebe por WhatsApp. O botão aponta para a hospedagem do DMG (ver o PR do Kerux): se ela mudar, atualize o link, não a URL da página |
 | `/app-ads.txt` | **AdMob**: é onde ele confere que o `pub-2322862933504397` pode vender o inventário do Lastro. Sem o arquivo, boa parte dos compradores não dá lance, e o painel avisa. Tem que ser `text/plain` na RAIZ do domínio da ficha, e a ficha diz `orddum.com` |
 | `/` (raiz) | as versões do IPI App **já instaladas** (até a 1.14.1): o link do diálogo "Sobre" delas abre `www.orddum.com`, e vai continuar abrindo por todo o tempo em que alguém não atualizar |
 
@@ -86,13 +92,17 @@ public/
 │   ├── ararinha/screens/*.webp
 │   ├── faco-agora/icon.png       # idem, de faco-agora/store/ (sem vídeo por enquanto)
 │   ├── faco-agora/capa.webp
-│   └── faco-agora/screens/*.webp
+│   ├── faco-agora/screens/*.webp
+│   └── kerux/                    # símbolo, ícone, capturas do Mac (jpg) e do Kerux App, de kerux-mac e kerux-app (docs/historico/imagens/)
 ├── lastro/{privacidade,termos}/  # texto legal do Lastro
 ├── ordinal/{privacidade,termos}/ # texto legal do Ordinal (versão provisória)
 ├── lastro/importar/              # o modelo de importação para IA (página + .md + .json copiados do app)
 ├── ipi/{privacidade,termos}/     # texto legal do IPI App (canônico em ipi_app/docs/)
 ├── ararinha/privacidade/         # texto legal do Ararinha (canônico em ararinha/docs/)
-└── sinete/privacidade/           # texto legal do Sinete (canônico em sinete/docs/)
+├── sinete/privacidade/           # texto legal do Sinete (canônico em sinete/docs/)
+├── kerux/                        # página do Kerux (software de Mac) e o botão de download; o DMG NÃO mora aqui
+├── kerux/privacidade/            # texto legal do Kerux (canônico em kerux-mac/docs/)
+└── kerux-app/privacidade/        # texto legal do Kerux App (canônico em kerux-app/docs/)
 ```
 
 As imagens dos apps são **cópias**. A home tem um **palco de apps**: um painel por
