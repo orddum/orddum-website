@@ -834,7 +834,7 @@ a.contact-card:hover { border-color: var(--shell); background: var(--surface-2);
    display: inline-flex;
    align-items: center;
    gap: var(--s2);
-   min-width: 170px;
+   min-width: 220px;
    color: var(--text);
    font-weight: 500;
 }
