@@ -1,13 +1,19 @@
 Faço Agora — narração do vídeo (pt-BR)
 
 1. Sorteia o que cabe agora
-Diga o tempo que tem e o app sorteia. Terminou? Toque em Feito.
+Escolha o tempo.
 
-2. A lista é toda sua
+2. Não deu? Peça uma mais leve
+Peça uma mais leve.
+
+3. A lista é toda sua
 Toque em Adicionar, escreva a tarefa, diga o tempo e a dificuldade, e ela entra na lista.
 
-3. Dias seguidos sem culpa
-Um dia de folga por semana não quebra a sequência.
+4. Dias seguidos sem culpa
+Um dia de folga não quebra a sequência.
 
-4. Um lembrete por dia
+5. Um lembrete por dia
 Um lembrete por dia, no horário que você escolher.
+
+6. Claro ou escuro, como você preferir
+Claro ou escuro.
