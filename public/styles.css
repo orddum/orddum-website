@@ -30,6 +30,7 @@
    --sfc-red: #F20103;
    --sfc-yellow: #FFD604;
    --shell: #D1CDB6;
+   --kerux-amber: #F5A524; /* o "facho" da marca Kerux (kerux-mac/docs/marca.md) */
 
    /* --- variantes legíveis sobre preto (>= 4.5:1) ------------------------ */
    --sfc-green-ink: #35CC70;
@@ -377,6 +378,8 @@ h1, h2, h3, h4 { color: var(--text); font-weight: 600; line-height: 1.2; }
 [data-app="blue"] { --accent: var(--sfc-blue); }
 [data-app="red"] { --accent: var(--sfc-red); }
 [data-app="yellow"] { --accent: var(--sfc-yellow); }
+/* O 5º app não tem barra no logo: usa o âmbar da própria marca Kerux. */
+[data-app="amber"] { --accent: var(--kerux-amber); }
 /* Ordinal e Sinete não estão na home: o acento é o bege da carcaça. */
 [data-app="shell"] { --accent: var(--shell); }
 
