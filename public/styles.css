@@ -635,6 +635,10 @@ h1, h2, h3, h4 { color: var(--text); font-weight: 600; line-height: 1.2; }
    background: var(--accent);
 }
 
+/* Kerux Controle Remoto: o atalho para baixar o Kerux para Mac (seção Software),
+   fora dos botões das lojas. */
+.app-mac { grid-column: 1 / -1; margin: 0; }
+
 .app-note {
    grid-column: 1 / -1;
    padding-top: var(--s3);
