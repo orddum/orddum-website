@@ -235,6 +235,24 @@
         <!-- Capa e capturas: cópias de kerux-app/store/site/ (gerado pelo kit,
              flutter-app-kit/docs/store-mockups.md § 9). Copiadas em 06/11/2026. -->
         <div class="gallery">
+          <div class="shot shot-video">
+            <a class="video-link" href="/img/kerux/app/video/site.mp4" data-dialog="video-kerux-app"
+              aria-label="Assistir ao vídeo: o Kerux Controle Remoto em ação">
+              <video muted loop playsinline preload="none" poster="/img/kerux/app/video/poster.jpg" width="1080" height="1920">
+                <source src="/img/kerux/app/video/site.mp4" type="video/mp4">
+                <source src="/img/kerux/app/video/site.webm" type="video/webm">
+              </video>
+            </a>
+            <div class="video-controls">
+              <button class="vbtn" type="button" data-video-toggle aria-label="Pausar vídeo">
+                <svg class="i-pause" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg>
+                <svg class="i-play" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>
+              </button>
+              <button class="vbtn" type="button" data-dialog="video-kerux-app" aria-label="Ver com som" title="Ver com som">
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5zM15.5 9a4 4 0 010 6M18 6.5a8 8 0 010 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="currentColor" fill-opacity=".15"/></svg>
+              </button>
+            </div>
+          </div>
           <img src="/img/kerux/app/screens/01-no-ar.webp" alt="Passe a letra sem olhar o Mac: a música no ar como no telão, o próximo e os botões Anterior e Próximo" width="540" height="1174" loading="lazy">
           <img src="/img/kerux/app/screens/02-conectar.webp" alt="Conecta sozinho, sem conta: acha o Mac pela rede, por QR code ou IP" width="540" height="1174" loading="lazy">
           <img src="/img/kerux/app/screens/03-biblia.webp" alt="O versículo citado, no ar em três toques: livro, capítulo e versículo" width="540" height="1174" loading="lazy">
@@ -242,6 +260,32 @@
           <img src="/img/kerux/app/screens/05-musicas.webp" alt="Ache a música pela letra: busca por título, autor ou trecho" width="540" height="1174" loading="lazy">
           <img src="/img/kerux/app/screens/06-palco.webp" alt="O texto grande, no púlpito: retorno de palco com o próximo e o relógio" width="540" height="1174" loading="lazy">
         </div>
+        <dialog class="video-dialog" id="video-kerux-app" aria-labelledby="video-kerux-app-title">
+          <button class="dialog-close" type="button" aria-label="Fechar vídeo">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg>
+          </button>
+          <div class="dialog-body">
+            <video controls playsinline preload="none" poster="/img/kerux/app/video/poster.jpg" width="1080" height="1920">
+              <source src="/img/kerux/app/video/site.mp4" type="video/mp4">
+              <source src="/img/kerux/app/video/site.webm" type="video/webm">
+              <track kind="captions" srclang="pt-BR" label="Português" src="/img/kerux/app/video/legendas.vtt">
+              Seu navegador não toca este vídeo. <a href="/img/kerux/app/video/site.mp4">Baixe o arquivo</a>.
+            </video>
+            <div class="dialog-text">
+              <p class="video-kicker">Em vídeo</p>
+              <h4 class="video-title" id="video-kerux-app-title">O Kerux Controle Remoto em ação</h4>
+              <p>Cinco usos reais do app, narrados, com a demonstração que funciona sem Mac. A transcrição está logo abaixo.</p>
+              <details class="transcript">
+                <summary>Transcrição</summary>
+                <p>Veja o slide no telão e passe a letra com Próximo e Anterior.</p>
+                <p>A ordem do culto com o horário previsto de cada item.</p>
+                <p>Escolha o livro, o capítulo e os versículos, e projete.</p>
+                <p>Busque a música pelo título ou pela letra.</p>
+                <p>No tablet do púlpito, o texto grande no modo palco.</p>
+              </details>
+            </div>
+          </div>
+        </dialog>
       </section>
 
       <section class="sw-sec" id="privacidade-kerux">

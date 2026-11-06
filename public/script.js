@@ -414,6 +414,57 @@ document.addEventListener('DOMContentLoaded', function () {
    }
 
    // ------------------------------------------------------------------------
+   // Vídeo mudo fora da vitrine (a galeria do Kerux Controle Remoto em /kerux/):
+   // a mesma regra dos painéis — toca quando metade aparece, nunca com
+   // "reduzir movimento" ou economia de dados, pausa com o diálogo aberto e o
+   // botão alterna.
+   // ------------------------------------------------------------------------
+   var looseClips = Array.prototype.filter.call(document.querySelectorAll('.shot-video'), function (block) {
+      return !block.closest('.panel');
+   }).map(function (block) {
+      var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      var saving = navigator.connection && navigator.connection.saveData;
+      return { block: block, video: block.querySelector('video'), toggle: block.querySelector('[data-video-toggle]'),
+         visible: false, wantPlay: !motion.matches && !saving };
+   });
+   if (looseClips.length) {
+      var paintLoose = function (clip) {
+         if (!clip.toggle) return;
+         clip.toggle.classList.toggle('is-paused', !clip.wantPlay);
+         clip.toggle.setAttribute('aria-label', clip.wantPlay ? 'Pausar vídeo' : 'Tocar vídeo');
+      };
+      var syncLoose = function () {
+         looseClips.forEach(function (clip) {
+            if (clip.wantPlay && clip.visible && !dialogOpen) {
+               var started = clip.video.play();
+               if (started && started.catch) started.catch(function () { /* o botão fica à mão */ });
+            } else {
+               clip.video.pause();
+            }
+         });
+      };
+      var syncPanels = syncVideos;
+      syncVideos = function () { syncPanels(); syncLoose(); };
+      looseClips.forEach(function (clip) {
+         paintLoose(clip);
+         if (clip.toggle) clip.toggle.addEventListener('click', function () {
+            clip.wantPlay = !clip.wantPlay;
+            paintLoose(clip);
+            syncLoose();
+         });
+      });
+      if ('IntersectionObserver' in window) {
+         var looseObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+               looseClips.forEach(function (clip) { if (clip.block === entry.target) clip.visible = entry.isIntersecting; });
+            });
+            syncLoose();
+         }, { threshold: 0.5 });
+         looseClips.forEach(function (clip) { looseObserver.observe(clip.block); });
+      }
+   }
+
+   // ------------------------------------------------------------------------
    // Vídeo completo: o bloco é um link para o mp4 (funciona sem JS); com JS, o
    // link e o botão "Ver com som" abrem o <dialog> nativo, que já traz o Esc, o
    // foco preso e o fundo inerte. O vídeo mudo do bloco pausa enquanto ele está
