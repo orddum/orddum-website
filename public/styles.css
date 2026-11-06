@@ -942,7 +942,8 @@ a.contact-card:hover { border-color: var(--shell); background: var(--surface-2);
 .sw-dl .download-row { margin-top: 0; }
 .sw-hash { font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-dim); word-break: break-all; margin: var(--s1) 0 0; }
 .sw-soon { font-size: 0.9rem; color: var(--text-dim); margin: var(--s2) 0 0; }
-.sw-phones { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s3); max-width: 420px; }
+.sw-sec h2.sw-app-title { display: flex; align-items: center; gap: var(--s2); }
+.sw-sec h2.sw-app-title img { border-radius: 9px; flex: none; }
 .sw-app-grid { display: grid; grid-template-columns: 61.8fr 38.2fr; gap: var(--s5); align-items: start; }
 .sw-sec .steps { counter-reset: passo; list-style: none; padding: 0; margin: var(--s2) 0 var(--s3); max-width: 64ch; }
 .sw-badge { display: inline-block; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--sfc-yellow-ink); border: 1px solid rgba(255, 214, 4, 0.4); border-radius: var(--r); padding: 2px var(--s1); margin-bottom: var(--s2); }
