@@ -102,8 +102,6 @@
             <img src="img/ararinha/icon.png" alt="" width="28" height="28">Ararinha</a>
           <a class="tab" role="tab" id="tab-faco-agora" href="#faco-agora" aria-controls="faco-agora" aria-selected="false" data-app="yellow">
             <img src="img/faco-agora/icon.png" alt="" width="28" height="28">Faço Agora</a>
-          <a class="tab" role="tab" id="tab-kerux-app" href="#kerux-app" aria-controls="kerux-app" aria-selected="false" data-app="amber">
-            <img src="img/kerux/app/icon.png" alt="" width="28" height="28">Kerux Controle Remoto</a>
             </div>
             <div class="stage-arrows">
               <button class="arrow" type="button" data-dir="-1" aria-label="App anterior">
@@ -118,7 +116,7 @@
           <div class="rail" aria-roledescription="carousel" aria-label="Apps da Orddum">
 
       <!-- ================= LASTRO ================= -->
-      <div class="panel" id="lastro" role="tabpanel" aria-roledescription="slide" aria-label="Lastro, 1 de 5" data-app="green">
+      <div class="panel" id="lastro" role="tabpanel" aria-roledescription="slide" aria-label="Lastro, 1 de 4" data-app="green">
         <!-- Capa 16:9 e capturas: cópias de lastro/store/site/ (gerado pelo kit,
              flutter-app-kit/docs/store-mockups.md § 9). Copiadas em 05/11/2026. -->
         <img class="panel-banner" src="img/lastro/capa.webp"
@@ -223,7 +221,7 @@
       </div>
 
       <!-- ================= IPI APP ================= -->
-      <div class="panel" id="ipi" role="tabpanel" aria-roledescription="slide" aria-label="IPI App, 2 de 5" data-app="blue">
+      <div class="panel" id="ipi" role="tabpanel" aria-roledescription="slide" aria-label="IPI App, 2 de 4" data-app="blue">
         <!-- Capa 16:9, capturas e vídeo: cópias de ipi_app/store/site/ e store/video/ (gerado pelo kit,
              flutter-app-kit/docs/store-mockups.md § 9). Copiadas em 05/11/2026. -->
         <img class="panel-banner" src="img/ipi/capa.webp"
@@ -323,7 +321,7 @@
       </div>
 
       <!-- ================= ARARINHA ================= -->
-      <div class="panel" id="ararinha" role="tabpanel" aria-roledescription="slide" aria-label="Ararinha, 3 de 5" data-app="red">
+      <div class="panel" id="ararinha" role="tabpanel" aria-roledescription="slide" aria-label="Ararinha, 3 de 4" data-app="red">
         <!-- Capa 16:9 e capturas: cópias de ararinha/store/site/ (gerado pelo kit,
              flutter-app-kit/docs/store-mockups.md § 9). Copiadas em 04/11/2026. -->
         <img class="panel-banner" src="img/ararinha/capa.webp"
@@ -422,7 +420,7 @@
       </div>
 
       <!-- ================= FAÇO AGORA ================= -->
-      <div class="panel" id="faco-agora" role="tabpanel" aria-roledescription="slide" aria-label="Faço Agora, 4 de 5" data-app="yellow">
+      <div class="panel" id="faco-agora" role="tabpanel" aria-roledescription="slide" aria-label="Faço Agora, 4 de 4" data-app="yellow">
         <!-- Capa 16:9 e capturas: cópias de faco-agora/store/site/ (gerado pelo kit,
              flutter-app-kit/docs/store-mockups.md § 9) e o vídeo de faco-agora/store/video/.
              Copiadas em 04/11/2026. -->
@@ -521,119 +519,17 @@
         </dialog>
       </div>
 
-      <!-- ================= KERUX CONTROLE REMOTO ================= -->
-      <div class="panel" id="kerux-app" role="tabpanel" aria-roledescription="slide" aria-label="Kerux Controle Remoto, 5 de 5" data-app="amber">
-        <!-- Capa 16:9, capturas e vídeo: cópias de kerux-app/store/site/ e store/video/
-             (gerado pelo kit, flutter-app-kit/docs/store-mockups.md § 9), já em
-             img/kerux/app/ para a página /kerux/. Entrou na vitrine em 07/11/2026,
-             quando a Play publicou; o acento é o âmbar da marca Kerux. -->
-        <img class="panel-banner" src="img/kerux/app/capa.webp"
-          alt="Kerux Controle Remoto — Passe a letra sem olhar o Mac. O celular mostra a música no ar em fundo preto, como no telão." width="1600" height="900" loading="lazy">
-
-        <div class="panel-head">
-          <div class="app-head">
-            <img class="app-icon" src="img/kerux/app/icon.png" alt="Ícone do Kerux Controle Remoto" width="64" height="64">
-            <div>
-              <div class="app-title">
-                <h3 class="app-name">Kerux Controle Remoto</h3>
-                <span class="badge badge-live">Disponível</span>
-              </div>
-              <p class="app-tag">Controle do telão da igreja · iOS e Android</p>
-            </div>
-          </div>
-          <div class="app-actions">
-            <p class="app-soon">App Store em breve</p>
-            <a class="btn btn-secondary btn-sm" href="https://play.google.com/store/apps/details?id=com.orddum.keruxapp"
-              target="_blank" rel="noopener">Google Play</a>
-          </div>
-        </div>
-        <!-- SITUAÇÃO DAS LOJAS — verificado em 07/11/2026:
-                   Play  ...details?id=com.orddum.keruxapp -> 200 (v1.0.0, produção, só Brasil)
-                   Apple id6830302625 -> em revisão (WAITING_FOR_REVIEW): sem ficha
-                 pública. Quando sair: botão App Store (btn-primary, URL com /br/) no
-                 lugar do "App Store em breve" e a linha da Apple no rodapé de todas as
-                 páginas. O Kerux para Mac não entra nos botões das lojas: o
-                 "Baixar o Kerux para Mac" do corpo leva à página /kerux/. -->
-
-        <div class="gallery">
-          <div class="shot shot-video">
-            <a class="video-link" href="img/kerux/app/video/site.mp4" data-dialog="video-kerux-app-home"
-              aria-label="Assistir ao vídeo: o Kerux Controle Remoto em ação">
-              <video muted loop playsinline preload="none" poster="img/kerux/app/video/poster.jpg" width="1080" height="1920">
-                <source src="img/kerux/app/video/site.mp4" type="video/mp4">
-                <source src="img/kerux/app/video/site.webm" type="video/webm">
-              </video>
-            </a>
-            <div class="video-controls">
-              <button class="vbtn" type="button" data-video-toggle aria-label="Pausar vídeo">
-                <svg class="i-pause" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg>
-                <svg class="i-play" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>
-              </button>
-              <button class="vbtn" type="button" data-dialog="video-kerux-app-home" aria-label="Ver com som" title="Ver com som">
-                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5zM15.5 9a4 4 0 010 6M18 6.5a8 8 0 010 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="currentColor" fill-opacity=".15"/></svg>
-              </button>
-            </div>
-          </div>
-          <img src="img/kerux/app/screens/01-no-ar.webp" alt="Passe a letra sem olhar o Mac: a música no ar como no telão, o próximo e os botões Anterior e Próximo" width="540" height="1174" loading="lazy">
-          <img src="img/kerux/app/screens/02-conectar.webp" alt="Conecta sozinho, sem conta: acha o Mac pela rede, por QR code ou IP" width="540" height="1174" loading="lazy">
-          <img src="img/kerux/app/screens/03-biblia.webp" alt="O versículo citado, no ar em três toques: livro, capítulo e versículo" width="540" height="1174" loading="lazy">
-          <img src="img/kerux/app/screens/04-culto.webp" alt="A ordem do culto na palma da mão: o horário previsto de cada item, o contador e o item no ar" width="540" height="1174" loading="lazy">
-          <img src="img/kerux/app/screens/05-musicas.webp" alt="Ache a música pela letra: busca por título, autor ou trecho" width="540" height="1174" loading="lazy">
-          <img src="img/kerux/app/screens/06-palco.webp" alt="O texto grande, no púlpito: retorno de palco com o próximo e o relógio" width="540" height="1174" loading="lazy">
-        </div>
-
-        <div class="panel-body">
-          <p class="app-desc"><strong>O telão da igreja na palma da mão.</strong> O controle de celular do <a href="/kerux/">Kerux</a>, o software de projeção para igrejas no Mac: funciona com o Kerux aberto no Mac, na mesma rede Wi-Fi, sem conta e sem nuvem.</p>
-          <ul class="app-points">
-            <li>Passe a letra sem olhar o Mac: o slide no ar como no telão, Anterior e Próximo, Limpar, Preto, Logo e Imagem</li>
-            <li>A ordem do culto com o horário previsto de cada item e o contador; toque para projetar</li>
-            <li>O versículo citado no ar em três toques, e a música achada pela letra</li>
-            <li>Retorno de palco no tablet; conecta sozinho pela rede ou pelo QR code</li>
-            <li>Grátis, sem anúncio</li>
-          </ul>
-          <p class="app-mac"><a class="btn btn-secondary btn-sm" href="/kerux/">Baixar o Kerux para Mac</a></p>
-          <p class="app-note">
-            <a href="/kerux-app/privacidade/">Privacidade</a> · <a href="/kerux/#kerux-app">Mais sobre o app</a>
-          </p>
-        </div>
-        <dialog class="video-dialog" id="video-kerux-app-home" aria-labelledby="video-kerux-app-home-title">
-          <button class="dialog-close" type="button" aria-label="Fechar vídeo">
-            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg>
-          </button>
-          <div class="dialog-body">
-            <video controls playsinline preload="none" poster="img/kerux/app/video/poster.jpg" width="1080" height="1920">
-              <source src="img/kerux/app/video/site.mp4" type="video/mp4">
-              <source src="img/kerux/app/video/site.webm" type="video/webm">
-              <track kind="captions" srclang="pt-BR" label="Português" src="img/kerux/app/video/legendas.vtt">
-              Seu navegador não toca este vídeo. <a href="img/kerux/app/video/site.mp4">Baixe o arquivo</a>.
-            </video>
-            <div class="dialog-text">
-              <p class="video-kicker">Em vídeo</p>
-              <h4 class="video-title" id="video-kerux-app-home-title">O Kerux Controle Remoto em ação</h4>
-              <p>Cinco usos reais do app, narrados, com a demonstração que funciona sem Mac. A transcrição está logo abaixo.</p>
-              <details class="transcript">
-                <summary>Transcrição</summary>
-                <p>Veja o slide no telão e passe a letra com Próximo e Anterior.</p>
-                <p>A ordem do culto com o horário previsto de cada item.</p>
-                <p>Escolha o livro, o capítulo e os versículos, e projete.</p>
-                <p>Busque a música pelo título ou pela letra.</p>
-                <p>No tablet do púlpito, o texto grande no modo palco.</p>
-              </details>
-            </div>
-          </div>
-        </dialog>
-      </div>
           </div>
 
-          <div class="stage-dots" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+          <div class="stage-dots" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
         </div>
       </div>
     </section>
 
     <!-- Software: o Kerux é o primeiro produto de desktop da Orddum. Fica fora
          da vitrine dos apps de propósito: não é app de celular. O Kerux Controle Remoto
-         (app de celular) entrou na vitrine como o 5º app em 07/11/2026, quando a Play
-         publicou (decisão do Luiz); aqui segue citado como o controle do Kerux. -->
+         (app de celular) esteve na vitrine de 07/11 a 09/11/2026 e saiu dela para não repetir
+         o Kerux (decisão do Luiz): fica só aqui e na página /kerux/. -->
     <section id="software" class="sw">
       <div class="container">
         <div class="section-head">
