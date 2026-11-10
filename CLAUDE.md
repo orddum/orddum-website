@@ -5,7 +5,7 @@
 Site estático da Orddum no Firebase Hosting (projeto `orddum`). Repositório
 **PÚBLICO** com deploy automático a cada push na `main` (GitHub Actions): nada
 reservado entra aqui, nem em branch. O que é da empresa e dos apps está no
-`~/projects/flutter-app-kit` (ver `WORKSPACE.md` e `docs/portfolio.md` lá).
+`~/projects/orddum-kit` (ver `WORKSPACE.md` e `docs/portfolio.md` lá).
 
 ## O que não pode quebrar
 

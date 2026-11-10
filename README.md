@@ -110,7 +110,7 @@ app (`#lastro`, `#ipi`, `#ararinha` e `#faco-agora`, que continuam abrindo no ap
 certo), com troca em carrossel por seletor, setas, teclado ou deslizando. Cada painel
 leva a capa 16:9, as seis capturas e, quando o app tiver, o vídeo explicativo em
 retrato com transcrição, que abre num diálogo. Quem gera tudo isso é o gerador do kit, a partir do `store/` do
-app (`flutter-app-kit/docs/store-mockups.md` § 9); o site só recebe a cópia em
+app (`orddum-kit/docs/store-mockups.md` § 9); o site só recebe a cópia em
 `img/<app>/`. Não edite nem regere nada de `img/<app>/` por aqui: este
 repositório é o site, e o que ele sabe sobre um app é só onde a imagem dele
 mora. O bloco de vídeo de um app sem `store/video/` fica como comentário HTML
@@ -119,7 +119,7 @@ na seção dele, pronto para ligar.
 **Quando um app entra aqui:** a política antes do primeiro envio a qualquer
 trilha das lojas (com a linha na tabela de URLs acima); o cartão e a vitrine
 quando a ficha fica pública. O passo a passo é da empresa, não deste
-repositório: `flutter-app-kit/docs/conformidade.md` § O site, conferido pelo
+repositório: `orddum-kit/docs/conformidade.md` § O site, conferido pelo
 `scripts/kit-audit.py` do kit.
 
 ## O site é um produto só
