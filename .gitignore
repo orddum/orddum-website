@@ -65,3 +65,9 @@ node_modules/
 # dotenv environment variables file
 .env
 .DS_Store
+
+# Configuração do Claude Code desta máquina: lista caminhos locais (onde ficam as chaves) e
+# não pertence a um repositório público. As regras vivem em .claude/settings.local.json.
+.claude/settings.json
+.claude/settings.local.json
+.claude/worktrees/
