@@ -29,7 +29,7 @@ qualquer uma delas derruba a ficha de um app em produção — e a revisão das 
 | `/faco-agora/privacidade/` | `AppConfig.privacyPolicyUrl` do Faço Agora (Ajustes › Política de privacidade) e as fichas das lojas, quando o app for publicado. Canônico: `faco-agora/docs/politica-de-privacidade.md` |
 | `/faco-agora/termos/` | `AppConfig.termsOfUseUrl` do Faço Agora. Canônico: `faco-agora/docs/termos-de-uso.md` |
 | `/sinete/privacidade/` | Play Console e App Store Connect do Sinete; o mesmo texto está dentro do app (Estante › rodapé › Privacidade). Canônico: `sinete/docs/politica-de-privacidade.md` |
-| `/sinete/` | A imagem da lista de desejos que o app gera e a pessoa compartilha traz `orddum.com/sinete` no rodapé, e o app grava `https://orddum.com/sinete/` (`AppLinks.sinete`). A página `/sinete/` tem o bloco `#teste` com os links do teste público das lojas |
+| `/sinete/` | A imagem da lista de desejos que o app gera e a pessoa compartilha traz `orddum.com/sinete` no rodapé, e o app grava `https://orddum.com/sinete/` (`AppLinks.sinete`). A seção `#teste` da página guarda, em comentário, onde entram os links do teste público das lojas |
 | `/kerux/privacidade/` | Política do Kerux (software de Mac), linkada na página `/kerux/` e no instalador quando houver. Canônico: `kerux-mac/docs/politica-de-privacidade.md` |
 | `/kerux-app/privacidade/` | **App Store Connect e Play Console do Kerux Controle Remoto** ("Kerux: Controle Remoto", `com.orddum.keruxapp`): URL de privacidade das duas fichas, a gravar antes de sair do teste interno. Canônico: `kerux-app/docs/politica-de-privacidade.md` |
 | `/kerux/` e `/kerux/#baixar` | A página do Kerux; o `#baixar` é o link do botão de download e do que a igreja recebe por WhatsApp. O botão aponta para o GitHub Releases de `orddum/kerux-releases` (`/releases/download/v<versão>/Kerux-<versão>.dmg`); a cada versão nova, atualize o link, a versão, o tamanho e o SHA-256 da página |
@@ -101,7 +101,7 @@ public/
 ├── lastro/importar/              # o modelo de importação para IA (página + .md + .json copiados do app)
 ├── ipi/{privacidade,termos}/     # texto legal do IPI App (canônico em ipi_app/docs/)
 ├── ararinha/privacidade/         # texto legal do Ararinha (canônico em ararinha/docs/)
-├── sinete/                       # página do app (com o bloco #teste) e vitrine na home
+├── sinete/                       # página do app e vitrine na home
 ├── sinete/privacidade/           # texto legal do Sinete (canônico em sinete/docs/)
 ├── kerux/                        # página do Kerux (software de Mac) e o botão de download; o DMG NÃO mora aqui
 ├── kerux/privacidade/            # texto legal do Kerux (canônico em kerux-mac/docs/)
