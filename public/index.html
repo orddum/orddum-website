@@ -81,7 +81,7 @@
          Um painel por app num trilho com scroll-snap; o seletor segue o padrão
          "tabbed carousel" do WAI-ARIA APG. Sem JS o trilho vira uma coluna de
          painéis empilhados e os links do seletor são âncoras. Os ids dos painéis
-         são os das antigas vitrines (/#lastro, /#ipi, /#ararinha, /#faco-agora). -->
+         são os das antigas vitrines (/#lastro, /#ipi, /#ararinha, /#faco-agora, /#sinete). -->
     <section id="apps">
       <div class="container">
         <div class="section-head">
@@ -102,6 +102,8 @@
             <img src="img/ararinha/icon.png" alt="" width="28" height="28">Ararinha</a>
           <a class="tab" role="tab" id="tab-faco-agora" href="#faco-agora" aria-controls="faco-agora" aria-selected="false" data-app="yellow">
             <img src="img/faco-agora/icon.png" alt="" width="28" height="28">Faço Agora</a>
+          <a class="tab" role="tab" id="tab-sinete" href="#sinete" aria-controls="sinete" aria-selected="false" data-app="shell">
+            <img src="img/sinete/icon.png" alt="" width="28" height="28">Sinete</a>
             </div>
             <div class="stage-arrows">
               <button class="arrow" type="button" data-dir="-1" aria-label="App anterior">
@@ -116,7 +118,7 @@
           <div class="rail" aria-roledescription="carousel" aria-label="Apps da Orddum">
 
       <!-- ================= LASTRO ================= -->
-      <div class="panel" id="lastro" role="tabpanel" aria-roledescription="slide" aria-label="Lastro, 1 de 4" data-app="green">
+      <div class="panel" id="lastro" role="tabpanel" aria-roledescription="slide" aria-label="Lastro, 1 de 5" data-app="green">
         <!-- Capa 16:9 e capturas: cópias de lastro/store/site/ (gerado pelo kit,
              orddum-kit/docs/store-mockups.md § 9). Copiadas em 05/11/2026. -->
         <img class="panel-banner" src="img/lastro/capa.webp"
@@ -221,7 +223,7 @@
       </div>
 
       <!-- ================= IPI APP ================= -->
-      <div class="panel" id="ipi" role="tabpanel" aria-roledescription="slide" aria-label="IPI App, 2 de 4" data-app="blue">
+      <div class="panel" id="ipi" role="tabpanel" aria-roledescription="slide" aria-label="IPI App, 2 de 5" data-app="blue">
         <!-- Capa 16:9, capturas e vídeo: cópias de ipi_app/store/site/ e store/video/ (gerado pelo kit,
              orddum-kit/docs/store-mockups.md § 9). Copiadas em 05/11/2026. -->
         <img class="panel-banner" src="img/ipi/capa.webp"
@@ -321,7 +323,7 @@
       </div>
 
       <!-- ================= ARARINHA ================= -->
-      <div class="panel" id="ararinha" role="tabpanel" aria-roledescription="slide" aria-label="Ararinha, 3 de 4" data-app="red">
+      <div class="panel" id="ararinha" role="tabpanel" aria-roledescription="slide" aria-label="Ararinha, 3 de 5" data-app="red">
         <!-- Capa 16:9 e capturas: cópias de ararinha/store/site/ (gerado pelo kit,
              orddum-kit/docs/store-mockups.md § 9). Copiadas em 04/11/2026. -->
         <img class="panel-banner" src="img/ararinha/capa.webp"
@@ -420,7 +422,7 @@
       </div>
 
       <!-- ================= FAÇO AGORA ================= -->
-      <div class="panel" id="faco-agora" role="tabpanel" aria-roledescription="slide" aria-label="Faço Agora, 4 de 4" data-app="yellow">
+      <div class="panel" id="faco-agora" role="tabpanel" aria-roledescription="slide" aria-label="Faço Agora, 4 de 5" data-app="yellow">
         <!-- Capa 16:9 e capturas: cópias de faco-agora/store/site/ (gerado pelo kit,
              orddum-kit/docs/store-mockups.md § 9) e o vídeo de faco-agora/store/video/.
              Copiadas em 04/11/2026. -->
@@ -519,9 +521,45 @@
         </dialog>
       </div>
 
+
+      <!-- ================= SINETE ================= -->
+      <div class="panel" id="sinete" role="tabpanel" aria-roledescription="slide" aria-label="Sinete, 5 de 5" data-app="shell">
+        <!-- Ainda sem capa 16:9, capturas e vídeo: entram quando a ficha das lojas
+             do Sinete (sinete/store/) estiver pronta. A página própria é /sinete/. -->
+        <div class="panel-head">
+          <div class="app-head">
+            <img class="app-icon" src="img/sinete/icon.png" alt="Ícone do Sinete" width="64" height="64">
+            <div>
+              <div class="app-title">
+                <h3 class="app-name">Sinete</h3>
+                <span class="badge badge-soon">Em teste</span>
+              </div>
+              <p class="app-tag">Biblioteca de casa · iOS e Android</p>
+            </div>
+          </div>
+          <div class="app-actions">
+            <a class="btn btn-primary btn-sm" href="/sinete/#teste">Entrar no teste</a>
+            <a class="btn btn-secondary btn-sm" href="/sinete/">Conhecer</a>
+          </div>
+        </div>
+
+        <div class="panel-body">
+          <p class="app-desc"><strong>A biblioteca de casa, livro por livro.</strong> Cataloga os livros pelo código de barras e guarda onde está cada um. Sem conta e sem internet: tudo fica no seu aparelho.</p>
+          <ul class="app-points">
+            <li>Aponte a câmera para o código de barras e o livro entra, com título, autor e capa</li>
+            <li>O lugar de cada livro na casa, a situação de leitura, a nota e o favorito</li>
+            <li>Empréstimos anotados, com o “pedir de volta”</li>
+            <li>Lista de desejos com preço e link, que vira uma imagem para compartilhar</li>
+          </ul>
+          <p class="app-note">
+            <a href="/sinete/">Página do Sinete</a> · <a href="/sinete/privacidade/">Privacidade</a>
+          </p>
+        </div>
+      </div>
+
           </div>
 
-          <div class="stage-dots" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+          <div class="stage-dots" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
         </div>
       </div>
     </section>
@@ -709,6 +747,7 @@
                 rel="noopener">Faço Agora — App Store</a></li>
             <li><a href="https://play.google.com/store/apps/details?id=com.orddum.facoagora" target="_blank"
                 rel="noopener">Faço Agora — Google Play</a></li>
+            <li><a href="/sinete/">Sinete — a biblioteca de casa</a></li>
             <li><a href="https://apps.apple.com/br/app/kerux-controle-remoto/id6830302625" target="_blank"
                 rel="noopener">Kerux Controle Remoto — App Store</a></li>
             <li><a href="https://play.google.com/store/apps/details?id=com.orddum.keruxapp" target="_blank"
@@ -733,6 +772,7 @@
             <li><a href="/ararinha/privacidade/">Privacidade do Ararinha</a></li>
             <li><a href="/faco-agora/privacidade/">Privacidade do Faço Agora</a></li>
             <li><a href="/faco-agora/termos/">Termos do Faço Agora</a></li>
+            <li><a href="/sinete/privacidade/">Privacidade do Sinete</a></li>
             <li><a href="/kerux/privacidade/">Privacidade do Kerux</a></li>
             <li><a href="/kerux-app/privacidade/">Privacidade do Kerux Controle Remoto</a></li>
           </ul>

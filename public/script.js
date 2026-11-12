@@ -75,9 +75,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
    // Nas páginas filhas não há seção para observar: o menu marca o grupo a que
    // a página pertence, "Privacidade" para política e termos, "Apps" para o guia
-   // de importação do Lastro e "Software" para a página do Kerux.
+   // de importação do Lastro e a página do Sinete e "Software" para a página do Kerux.
    if (!Object.keys(byId).length) {
-      var group = /\/importar\/?$/.test(location.pathname) ? '#apps'
+      var group = /\/(importar|sinete)\/?$/.test(location.pathname) ? '#apps'
          : /^\/kerux\/?$/.test(location.pathname) ? '#software' : '#privacidade';
       links.forEach(function (link) {
          if (link.hash === group) {

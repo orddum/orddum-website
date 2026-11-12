@@ -678,10 +678,12 @@ h1, h2, h3, h4 { color: var(--text); font-weight: 600; line-height: 1.2; }
 .stage-dots span:nth-child(2) { background: var(--sfc-blue); }
 .stage-dots span:nth-child(3) { background: var(--sfc-red); }
 .stage-dots span:nth-child(4) { background: var(--sfc-yellow); }
+.stage-dots span:nth-child(5) { background: var(--shell); }
 .stage[data-active="1"] .stage-dots span:nth-child(1),
 .stage[data-active="2"] .stage-dots span:nth-child(2),
 .stage[data-active="3"] .stage-dots span:nth-child(3),
-.stage[data-active="4"] .stage-dots span:nth-child(4) { opacity: 1; }
+.stage[data-active="4"] .stage-dots span:nth-child(4),
+.stage[data-active="5"] .stage-dots span:nth-child(5) { opacity: 1; }
 
 /* ---------------------------------------------------------------------------
    Vídeo — o diálogo nativo
