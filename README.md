@@ -94,7 +94,9 @@ public/
 │   ├── faco-agora/icon.png       # idem, de faco-agora/store/ (sem vídeo por enquanto)
 │   ├── faco-agora/capa.webp
 │   ├── faco-agora/screens/*.webp
-│   ├── sinete/icon.png           # ícone, de sinete/assets/images/app_icon.png (capa e capturas entram com a ficha das lojas)
+│   ├── sinete/icon.png           # ícone, de sinete/assets/images/app_icon.png
+│   ├── sinete/capa.webp          # a capa 16:9 (1600×900), de sinete/store/site/
+│   ├── sinete/screens/*.webp     # as 6 capturas, 540×1174, de sinete/store/site/screens/ (sem vídeo)
 │   └── kerux/                    # símbolo, ícone, capturas do Mac (jpg) e do Kerux Controle Remoto, de kerux-mac e kerux-app (docs/historico/imagens/)
 ├── lastro/{privacidade,termos}/  # texto legal do Lastro
 ├── ordinal/{privacidade,termos}/ # texto legal do Ordinal (versão provisória)
