@@ -514,4 +514,138 @@ document.addEventListener('DOMContentLoaded', function () {
          }
       });
    });
+
+   // ------------------------------------------------------------------------
+   // Visualizador de imagens: `data-gallery="<nome>"` põe uma imagem (ou todas
+   // as de um contêiner) num grupo. Clicar, ou Enter/Espaço com a miniatura em
+   // foco, abre UM <dialog> por página com a imagem grande; ← →, os botões e o
+   // deslizar no toque passam para as outras do mesmo grupo, dando a volta.
+   // Logos, ícones e imagens dentro de link ficam de fora mesmo que estejam num
+   // contêiner marcado. Sem JS a página é a mesma de antes.
+   // ------------------------------------------------------------------------
+   var groups = {};
+   Array.prototype.forEach.call(document.querySelectorAll('[data-gallery]'), function (mark) {
+      var name = mark.getAttribute('data-gallery');
+      var found = mark.tagName === 'IMG' ? [mark] :
+         Array.prototype.slice.call(mark.querySelectorAll('img'));
+      found.forEach(function (img) {
+         if (img.closest('a, .app-icon, .shot-soon') || !img.getAttribute('alt')) return;
+         (groups[name] = groups[name] || []).push(img);
+      });
+   });
+
+   var viewer = null;
+   var buildViewer = function () {
+      var arrow = function (d) {
+         return '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="' + d +
+            '" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>';
+      };
+      var dlg = document.createElement('dialog');
+      dlg.className = 'image-dialog';
+      dlg.setAttribute('aria-label', 'Visualizador de imagens');
+      dlg.innerHTML =
+         '<button class="dialog-close" type="button" aria-label="Fechar imagem">' +
+            '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg>' +
+         '</button>' +
+         '<div class="image-stage">' +
+            '<button class="image-nav image-prev" type="button" aria-label="Imagem anterior">' + arrow('M15 5l-7 7 7 7') + '</button>' +
+            '<img class="image-big" alt="">' +
+            '<button class="image-nav image-next" type="button" aria-label="Próxima imagem">' + arrow('M9 5l7 7-7 7') + '</button>' +
+         '</div>' +
+         '<p class="image-caption" aria-live="polite"><span class="image-text"></span><span class="image-count"></span></p>';
+      document.body.appendChild(dlg);
+
+      var v = {
+         dialog: dlg,
+         big: dlg.querySelector('.image-big'),
+         text: dlg.querySelector('.image-text'),
+         count: dlg.querySelector('.image-count'),
+         prev: dlg.querySelector('.image-prev'),
+         next: dlg.querySelector('.image-next'),
+         list: [],
+         index: 0,
+         opened: 0
+      };
+
+      v.show = function (i) {
+         var n = v.list.length;
+         v.index = (i + n) % n;
+         var img = v.list[v.index];
+         v.big.src = img.currentSrc || img.src;
+         v.big.alt = img.getAttribute('alt');
+         v.text.textContent = img.getAttribute('alt');
+         v.count.textContent = (v.index + 1) + ' / ' + n;
+         // Pré-carrega a vizinha dos dois lados: a troca não espera a rede.
+         if (n > 1) [1, -1].forEach(function (d) { new Image().src = v.list[(v.index + d + n) % n].src; });
+      };
+      v.step = function (d) { if (v.list.length > 1) v.show(v.index + d); };
+
+      v.prev.addEventListener('click', function () { v.step(-1); });
+      v.next.addEventListener('click', function () { v.step(1); });
+      dlg.querySelector('.dialog-close').addEventListener('click', function () { dlg.close(); });
+
+      // Clique no fundo (no <dialog> ou na área vazia ao redor da imagem) fecha.
+      dlg.addEventListener('click', function (event) {
+         if (event.target === dlg || event.target.classList.contains('image-stage')) dlg.close();
+      });
+
+      dlg.addEventListener('keydown', function (event) {
+         if (event.key === 'ArrowLeft') { event.preventDefault(); v.step(-1); }
+         else if (event.key === 'ArrowRight') { event.preventDefault(); v.step(1); }
+      });
+
+      // Deslizar no toque: só vale o movimento mais horizontal que vertical.
+      var touch = null;
+      dlg.addEventListener('touchstart', function (event) {
+         touch = event.touches.length === 1 ? { x: event.touches[0].clientX, y: event.touches[0].clientY } : null;
+      }, { passive: true });
+      dlg.addEventListener('touchend', function (event) {
+         if (!touch) return;
+         var dx = event.changedTouches[0].clientX - touch.x;
+         var dy = event.changedTouches[0].clientY - touch.y;
+         touch = null;
+         if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) v.step(dx < 0 ? 1 : -1);
+      }, { passive: true });
+
+      // `close` vale para o botão, o Esc e o fundo: devolve o foco à miniatura
+      // da imagem que estava na tela (não à que abriu) e deixa os vídeos voltarem.
+      dlg.addEventListener('close', function () {
+         dialogOpen = false;
+         syncVideos();
+         var thumb = v.list[v.index];
+         if (thumb) thumb.focus({ preventScroll: v.index === v.opened });
+      });
+      return v;
+   };
+
+   var openViewer = function (list, index) {
+      if (!viewer) viewer = buildViewer();
+      viewer.list = list;
+      viewer.opened = index;
+      viewer.dialog.classList.toggle('is-single', list.length < 2);
+      viewer.show(index);
+      dialogOpen = true;
+      syncVideos();
+      viewer.dialog.showModal();
+   };
+
+   if (typeof HTMLDialogElement === 'function') {
+      Object.keys(groups).forEach(function (name) {
+         var list = groups[name];
+         list.forEach(function (img, index) {
+            img.classList.add('zoomable');
+            img.setAttribute('tabindex', '0');
+            img.setAttribute('role', 'button');
+            img.setAttribute('aria-haspopup', 'dialog');
+            img.setAttribute('aria-label', 'Ampliar: ' + img.getAttribute('alt'));
+            img.addEventListener('click', function () { openViewer(list, index); });
+            img.addEventListener('keydown', function (event) {
+               if (event.key === 'Enter' || event.key === ' ') {
+                  event.preventDefault();
+                  openViewer(list, index);
+               }
+            });
+         });
+      });
+   }
 });
