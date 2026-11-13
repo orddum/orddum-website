@@ -725,6 +725,92 @@ html:has(dialog[open]) { overflow: hidden; }
 }
 .dialog-close:hover { color: var(--shell); border-color: var(--shell); }
 
+/* ---------------------------------------------------------------------------
+   Visualizador de imagens — um <dialog> por página, criado pelo script.
+   Ocupa a janela inteira: a imagem (retrato 540×1174 ou paisagem 16:10) usa o
+   máximo da área, com `contain`, e a legenda fica embaixo. O `display` só vale
+   com [open]; senão o fechado apareceria.
+   ------------------------------------------------------------------------- */
+.zoomable { cursor: zoom-in; }
+
+.image-dialog {
+   position: fixed;
+   inset: 0;
+   margin: 0;
+   width: 100vw;
+   height: 100vh;
+   height: 100dvh;
+   max-width: none;
+   max-height: none;
+   padding: var(--s5) var(--s3) var(--s3);
+   color: var(--text-dim);
+   background: transparent;
+   border: 0;
+}
+.image-dialog[open] {
+   display: grid;
+   grid-template-rows: minmax(0, 1fr) auto;
+   gap: var(--s2);
+}
+.image-dialog::backdrop { background: rgba(0, 0, 0, 0.97); }
+.image-dialog .dialog-close { background: var(--bg-raised); }
+
+.image-stage {
+   position: relative;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   min-height: 0;
+}
+.image-big {
+   width: 100%;
+   height: 100%;
+   object-fit: contain;
+   border-radius: var(--r);
+}
+.image-nav {
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   width: var(--s4);
+   height: var(--s5);
+   color: var(--text);
+   background: rgba(16, 16, 16, 0.8);
+   border: 1px solid var(--line-strong);
+   border-radius: var(--r);
+   cursor: pointer;
+   transition: color var(--transition), border-color var(--transition);
+}
+.image-nav:hover { color: var(--shell); border-color: var(--shell); }
+.image-prev { left: 0; }
+.image-next { right: 0; }
+.image-dialog.is-single .image-nav { display: none; }
+
+.image-caption {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: baseline;
+   justify-content: center;
+   gap: var(--s1) var(--s3);
+   max-width: 72ch;
+   margin: 0 auto;
+   max-height: 24vh;
+   overflow-y: auto;
+   font-size: 0.9rem;
+   line-height: 1.45;
+   text-align: center;
+}
+.image-count {
+   font-family: var(--font-mono);
+   font-size: 0.72rem;
+   letter-spacing: 0.12em;
+   color: var(--text-faint);
+}
+.image-dialog.is-single .image-count { display: none; }
+
 .dialog-body {
    display: grid;
    grid-template-columns: auto 1fr;
