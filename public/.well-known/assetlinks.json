@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.orddum.keruxapp",
+      "sha256_cert_fingerprints": [
+        "2B:37:55:98:B6:60:5C:D9:2B:FC:46:4F:9B:9E:4A:5C:E9:8F:E2:81:FF:A1:CE:66:4F:BE:E6:7D:FC:D9:6E:97",
+        "44:13:06:39:1B:D8:E0:BD:CF:B8:05:74:00:F0:8B:80:0D:3C:4A:3F:2E:90:82:35:8B:C7:E9:95:87:60:9C:C9"
+      ]
+    }
+  }
+]

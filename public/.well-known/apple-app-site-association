@@ -1,0 +1,10 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["7W383R4N2W.com.orddum.keruxapp"],
+        "components": [{ "/": "/kerux/acompanhar/*" }]
+      }
+    ]
+  }
+}

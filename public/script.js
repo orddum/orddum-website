@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
    // de importação do Lastro e a página do Sinete e "Software" para a página do Kerux.
    if (!Object.keys(byId).length) {
       var group = /\/(importar|sinete)\/?$/.test(location.pathname) ? '#apps'
-         : /^\/kerux\/?$/.test(location.pathname) ? '#software' : '#privacidade';
+         : /^\/kerux\/(acompanhar\/?)?$/.test(location.pathname) ? '#software' : '#privacidade';
       links.forEach(function (link) {
          if (link.hash === group) {
             link.classList.add('active');
