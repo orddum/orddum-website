@@ -52,7 +52,7 @@
       <p class="kicker"><span class="bars" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
         Privacidade e termos</p>
       <h1 class="page-title">Política de Privacidade</h1>
-      <p class="legal-updated">Última atualização: 4 de novembro de 2026</p>
+      <p class="legal-updated">Última atualização: 11 de novembro de 2026</p>
     </header>
 
     <div class="legal-layout">
@@ -65,6 +65,7 @@
       <li><strong>Você não cria conta.</strong> O app não pede nome, e-mail nem telefone.</li>
       <li><strong>Suas tarefas ficam só no seu aparelho.</strong> Nada do que você escreve vai para a Orddum nem para ninguém.</li>
       <li><strong>O app mostra um anúncio</strong> do Google AdMob na parte de baixo de todas as telas. Esse anúncio <strong>não é personalizado</strong> e o app <strong>não solicita o identificador de publicidade</strong> do aparelho.</li>
+      <li><strong>Você pode pagar uma vez para tirar o anúncio.</strong> O pagamento é da Apple ou do Google. Para saber que você já comprou e restaurar a compra, o app usa o RevenueCat, que guarda o registro da compra ligado a um código aleatório, sem nome nem e-mail. Quem não compra só deixa com ele o código aleatório e os dados técnicos da consulta (seção 5).</li>
     </ul>
     <h2>3. O que fica no seu aparelho</h2>
     <ul>
@@ -81,22 +82,38 @@
     <h2>4. O anúncio (Google AdMob)</h2>
     <p>O anúncio aparece em uma faixa na parte de baixo de <strong>todas as telas</strong> do app. Para mostrá-lo, o SDK do Google AdMob recebe do aparelho dados técnicos: o endereço IP (do qual se tira uma região aproximada), informações do aparelho e do sistema, dados de diagnóstico e as interações com o anúncio (por exemplo, se ele foi exibido ou tocado). Quem decide como esses dados são tratados é o Google, conforme a política dele: <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a>.</p>
     <p>O app pede ao Google anúncios <strong>não personalizados</strong> (sem perfil de interesses) e com conteúdo adequado a adolescentes. O app <strong>não solicita</strong> o identificador de publicidade do aparelho (no Android, a permissão <code>AD_ID</code> foi retirada; no iPhone, o app não pede a autorização de rastreamento).</p>
-    <h2>5. Notificações</h2>
+    <h2>5. A compra que tira o anúncio (RevenueCat)</h2>
+    <p>O app tem uma <strong>compra única</strong>, cobrada uma vez e sem renovação, que tira o anúncio. Ela não libera mais nada: o app inteiro funciona sem pagar.</p>
+    <p><strong>O pagamento é da loja.</strong> Quem cobra e guarda os dados do seu cartão e da sua conta é a <strong>App Store</strong> (Apple) ou o <strong>Google Play</strong> (Google), conforme o aparelho, pelas políticas deles: <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a> e <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a>. A Orddum e o app <strong>nunca recebem</strong> dados de cartão, de meio de pagamento, nem seu nome ou e-mail da conta da loja.</p>
+    <p><strong>O que o RevenueCat recebe.</strong> Para confirmar a compra e restaurá-la, o app usa o <strong>RevenueCat</strong> (RevenueCat, Inc., Estados Unidos). Ele recebe:</p>
+    <ul>
+      <li>o <strong>histórico da compra</strong>: qual produto, quando foi feita, os identificadores da transação na loja, se está ativa ou foi reembolsada, e o país e a moeda da loja;</li>
+      <li>um <strong>código aleatório</strong> que o próprio SDK cria no aparelho. Ele não é derivado de você nem do aparelho e não identifica ninguém por si só; o app não o liga a nome, e-mail ou qualquer outro dado; e</li>
+      <li><strong>dados técnicos da conexão</strong>, como o endereço IP e a versão do sistema e do app.</li>
+    </ul>
+    <p>O app consulta o RevenueCat ao abrir, para saber se há compra e mostrar o produto, <strong>mesmo que você nunca compre</strong>: nesse caso ele recebe o código aleatório e os dados técnicos da consulta, sem histórico de compra.</p>
+    <p><strong>O que ele não recebe:</strong> seu nome, e-mail, telefone, tarefas, horários, ajustes, nem o identificador de publicidade. O app desliga a coleta automática de identificadores do aparelho pelo SDK e não envia nenhum atributo seu. Nada do que você escreve no app sai do aparelho por causa da compra.</p>
+    <p><strong>Para que serve:</strong> saber que você já comprou, para tirar o anúncio, e devolver a compra quando você reinstala o app ou troca de aparelho (botão <strong>Restaurar compras</strong>). <strong>Base legal:</strong> a execução do que você contratou ao comprar, e o legítimo interesse de conferir e registrar a compra (LGPD, art. 7º, V e IX).</p>
+    <p><strong>Por quanto tempo.</strong> O RevenueCat mantém o registro enquanto a compra puder ser restaurada, porque é isso que permite a restauração. Nós recebemos das lojas relatórios de venda, sem nome nem e-mail, que guardamos pelo prazo das obrigações fiscais. O prazo de guarda no RevenueCat é o da política dele (<a href="https://www.revenuecat.com/privacy">https://www.revenuecat.com/privacy</a>).</p>
+    <p><strong>Fora do Brasil.</strong> O RevenueCat guarda os dados nos servidores dele, nos Estados Unidos.</p>
+    <p><strong>Como pedir a exclusão.</strong> Escreva para o contato da seção 1 com o número do pedido que a loja enviou, e apagamos o registro no RevenueCat em até 15 dias. Apagar o registro não cancela nem reembolsa a compra: ela continua na sua conta da loja e volta com <strong>Restaurar compras</strong>. Reembolso se pede à loja (veja os Termos de Uso).</p>
+    <h2>6. Notificações</h2>
     <p>Os lembretes são notificações <strong>locais</strong>: são agendadas e mostradas pelo próprio aparelho, sem servidor, nos horários que você escolher. A permissão é pedida só quando você escolhe o horário do lembrete. Se você negar, o app funciona normalmente e os lembretes não chegam.</p>
     <p>O timer da tarefa usa a mesma permissão: ao tocar em "Iniciar", o app agenda no próprio aparelho um aviso para quando o tempo da tarefa acabar. Se você negar, o timer funciona só com o app aberto.</p>
-    <h2>6. Estatísticas e falhas</h2>
+    <h2>7. Estatísticas e falhas</h2>
     <p>O app não usa ferramenta de estatística de uso nem de relatório de falhas.</p>
-    <h2>7. Adolescentes</h2>
-    <p>O app é voltado a pessoas de 13 anos ou mais e não é direcionado a crianças. Adolescentes o usam, e por isso: não há conta, nada do que a pessoa escreve sai do aparelho e o anúncio é não personalizado e com conteúdo adequado à idade.</p>
-    <h2>8. Seus direitos e como apagar seus dados</h2>
-    <p>Como seus dados ficam só no seu aparelho, você mesmo os controla:</p>
+    <h2>8. Adolescentes</h2>
+    <p>O app é voltado a pessoas de 13 anos ou mais e não é direcionado a crianças. Adolescentes o usam, e por isso: não há conta, nada do que a pessoa escreve sai do aparelho e o anúncio é não personalizado e com conteúdo adequado à idade. A compra é cobrada pela loja, que cuida das regras de idade da conta dela.</p>
+    <h2>9. Seus direitos e como apagar seus dados</h2>
+    <p>Suas tarefas e ajustes ficam só no seu aparelho, e você mesmo os controla:</p>
     <ul>
       <li><strong>Apagar tudo:</strong> em Ajustes › Apagar tudo, o app apaga suas tarefas, os dias seguidos e os ajustes.</li>
       <li><strong>Desinstalar o app</strong> também apaga tudo o que ele guardou no aparelho.</li>
       <li>Os dados tratados pelo Google para o anúncio seguem a política do Google.</li>
+      <li><strong>Compra:</strong> o registro dela no RevenueCat se apaga a pedido, como descrito na seção 5. Para parar de ver o anúncio, basta ter a compra; para não tê-la registrada, não compre.</li>
     </ul>
     <p>Para qualquer dúvida sobre seus dados, escreva para o contato da seção 1. Respondemos em até 15 dias.</p>
-    <h2>9. Mudanças</h2>
+    <h2>10. Mudanças</h2>
     <p>Se esta política mudar, a nova versão terá outra data no topo e será publicada no mesmo endereço.</p>
 
     <p class="legal-crosslink">Veja também os <a href="../termos/">Termos de Uso do Faço Agora</a>.</p>
