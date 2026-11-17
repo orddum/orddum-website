@@ -9,6 +9,10 @@
     ],
     "rewrites": [
       {
+        "source": "/sinete/convite/**",
+        "destination": "/sinete/convite/index.html"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
