@@ -273,3 +273,21 @@ a.page-app:hover { color: var(--shell); }
    .page-head { padding-top: calc(var(--s5) + var(--s4)); }
    .legal-callout { padding: var(--s3); }
 }
+
+/* Tabelas (política do Sponsor): rolagem horizontal própria no celular. */
+.legal-main table {
+   display: block;
+   overflow-x: auto;
+   border-collapse: collapse;
+   margin: var(--s3) 0 var(--s4);
+   font-size: 0.92rem;
+}
+.legal-main th,
+.legal-main td {
+   padding: var(--s1) var(--s2);
+   border: 1px solid var(--line);
+   text-align: left;
+   vertical-align: top;
+   color: var(--text-dim);
+}
+.legal-main th { color: var(--text); font-weight: 600; background: var(--surface); }
