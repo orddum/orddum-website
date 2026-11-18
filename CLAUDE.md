@@ -1,6 +1,6 @@
 # CLAUDE.md — orddum-website (orddum.com)
 
-> Última atualização: 2026-10-22
+> Última atualização: 2026-11-18
 
 Site estático da Orddum no Firebase Hosting (projeto `orddum`). Repositório
 **PÚBLICO** com deploy automático a cada push na `main` (GitHub Actions): nada
@@ -34,6 +34,23 @@ deixe uma página com o visual antigo. (Regra do Luiz, 22/10/2026.)
 - Página nova nasce do molde de uma filha existente, não do zero.
 - Antes de publicar, verificar na tela a home e pelo menos uma filha de cada
   tipo (política, termos, importar), no desktop e no celular.
+
+## Versões dos apps: automáticas, não se editam à mão
+
+O número da versão de cada app (home e `/kerux/`) e o download do Kerux para Mac
+(botão, nome, tamanho e SHA-256 do `.dmg`) são escritos por `tools/versoes.py`,
+que lê o que está **de fato disponível**: App Store (lookup público), Google Play
+(página do app) e a última release de `orddum/kerux-releases`. O workflow
+`.github/workflows/versoes.yml` roda de hora em hora, à mão
+(`gh workflow run versoes.yml -R orddum/orddum-website`) e no aviso
+`repository_dispatch` `versao-nova`; se algo mudou, commita na `main` e publica
+(ele mesmo faz o deploy: push do `GITHUB_TOKEN` não dispara outro workflow).
+Última leitura boa em `public/versoes.json` (falha de rede não apaga versão).
+App novo: entrada em `APPS` no script e `<span data-versao="<app>"></span>` na
+página. Por isso o release de um app **não** precisa abrir PR no site só para
+trocar número ou link do `.dmg` (aconteceu em 17/11/2026: a página do Kerux
+Controle Remoto 1.5.0 ficou num commit local esperando a loja aprovar, e
+ninguém voltou para publicar).
 
 ## Páginas por app
 
