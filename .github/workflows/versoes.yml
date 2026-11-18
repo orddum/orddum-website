@@ -1,0 +1,58 @@
+# Versões dos apps no site: lê a App Store, o Google Play e as releases do Kerux para Mac
+# (tools/versoes.py), commita na main e publica. Roda de hora em hora (a aprovação das lojas
+# chega a qualquer hora), à mão e no aviso de versão nova:
+#   gh workflow run versoes.yml -R orddum/orddum-website
+#   gh api repos/orddum/orddum-website/dispatches -f event_type=versao-nova
+# O push feito com o GITHUB_TOKEN não dispara o firebase-hosting-merge.yml (regra do GitHub),
+# por isso o deploy está aqui também, com a mesma action fixada no mesmo commit.
+name: Versões dos apps
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+  repository_dispatch:
+    types: [versao-nova]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: versoes
+  cancel-in-progress: false
+
+jobs:
+  versoes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Ler as lojas e reescrever as páginas
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 tools/versoes.py
+
+      - name: Commitar e enviar
+        id: commit
+        run: |
+          if [ -z "$(git status --porcelain public)" ]; then
+            echo "mudou=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public
+          git commit -m "Versões dos apps nas lojas (automático)"
+          git pull --rebase origin main
+          git push origin HEAD:main
+          echo "mudou=true" >> "$GITHUB_OUTPUT"
+
+      - name: Publicar no Firebase Hosting
+        if: steps.commit.outputs.mudou == 'true'
+        uses: FirebaseExtended/action-hosting-deploy@500ac625ca2dd40cbd15f7659af953801858032a # v0.11.0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_ORDDUM }}
+          channelId: live
+          projectId: orddum
+          firebaseToolsVersion: 15.34.0
