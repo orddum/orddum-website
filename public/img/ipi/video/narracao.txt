@@ -1,0 +1,19 @@
+IPI App — narração do vídeo (pt-BR)
+
+1. Abriu o app? Está tudo ali
+Ao abrir, a agenda, os avisos e os atalhos já estão na tela.
+
+2. A semana da igreja a um toque
+A programação da semana inteira, a um toque.
+
+3. Do número do hino à letra grande
+Digite o número do hino e leia a letra no tamanho certo.
+
+4. Avisos e boletim sempre à mão
+Os avisos chegam com imagem, e o boletim está na barra.
+
+5. Grupos familiares com dia e horário
+Veja o dia e o horário de cada grupo familiar.
+
+6. O livro está na estante?
+Busque na biblioteca e veja se o livro está emprestado.
