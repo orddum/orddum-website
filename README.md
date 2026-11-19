@@ -108,6 +108,7 @@ public/
 ├── sinete/                       # página do app e vitrine na home
 ├── sinete/privacidade/           # texto legal do Sinete (canônico em sinete/docs/)
 ├── kerux/                        # página do Kerux (software de Mac) e o botão de download; o DMG NÃO mora aqui
+├── kerux/doar/                   # doação ao Kerux por Pix (não linkar em /kerux/acompanhar/ nem nas políticas: abertas pelo app das lojas)
 ├── kerux/privacidade/            # texto legal do Kerux (canônico em kerux-mac/docs/)
 └── kerux-app/privacidade/        # texto legal do Kerux Controle Remoto (canônico em kerux-app/docs/)
 ```
