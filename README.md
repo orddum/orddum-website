@@ -6,8 +6,8 @@ no Firebase Hosting em [orddum.com](https://orddum.com).
 Ele é um **portfólio**: apresenta os apps da empresa, leva para as lojas e
 publica a política de privacidade e os termos de cada um. Além dos apps de
 celular, tem a seção **Software** (`#software`), com o Kerux, o primeiro
-produto de desktop; o Kerux Controle Remoto, app de celular dele, fica dentro dessa
-seção e **não** entra na vitrine dos apps.
+produto de desktop. O Kerux Controle Remoto, app de celular dele, também é descrito
+nessa seção e em `/kerux/`, e tem painel próprio na vitrine dos apps (`#kerux-app`).
 
 ## As URLs que NÃO podem quebrar
 
@@ -96,7 +96,9 @@ public/
 │   ├── faco-agora/screens/*.webp
 │   ├── sinete/icon.png           # ícone, de sinete/assets/images/app_icon.png
 │   ├── sinete/capa.webp          # a capa 16:9 (1600×900), de sinete/store/site/
-│   ├── sinete/screens/*.webp     # as 6 capturas, 540×1174, de sinete/store/site/screens/ (sem vídeo)
+│   ├── sinete/screens/*.webp     # as 6 capturas, 540×1174, de sinete/store/site/screens/
+│   ├── sinete/video/             # site.mp4, site.webm, poster.jpg, legendas.vtt e narracao.txt, de sinete/store/video/
+│   ├── kerux-app/                # vitrine do Kerux Controle Remoto: icon.png, capa.webp, screens/*.webp e video/, de kerux-app/store/site/ e store/video/
 │   └── kerux/                    # símbolo, ícone, capturas do Mac (jpg) e do Kerux Controle Remoto, de kerux-mac e kerux-app (docs/historico/imagens/)
 ├── lastro/{privacidade,termos}/  # texto legal do Lastro
 ├── ordinal/{privacidade,termos}/ # texto legal do Ordinal (versão provisória)
@@ -111,7 +113,7 @@ public/
 ```
 
 As imagens dos apps são **cópias**. A home tem um **palco de apps**: um painel por
-app (`#lastro`, `#ipi`, `#ararinha`, `#faco-agora` e `#sinete`, que continuam abrindo no app
+app (`#lastro`, `#ipi`, `#ararinha`, `#faco-agora`, `#sinete` e `#kerux-app`, que continuam abrindo no app
 certo), com troca em carrossel por seletor, setas, teclado ou deslizando. Cada painel
 leva a capa 16:9, as seis capturas e, quando o app tiver, o vídeo explicativo em
 retrato com transcrição, que abre num diálogo. Quem gera tudo isso é o gerador do kit, a partir do `store/` do
