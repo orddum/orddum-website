@@ -81,7 +81,7 @@
          Um painel por app num trilho com scroll-snap; o seletor segue o padrão
          "tabbed carousel" do WAI-ARIA APG. Sem JS o trilho vira uma coluna de
          painéis empilhados e os links do seletor são âncoras. Os ids dos painéis
-         são os das antigas vitrines (/#lastro, /#ipi, /#ararinha, /#faco-agora, /#sinete). -->
+         são os das antigas vitrines (/#lastro, /#ipi, /#ararinha, /#faco-agora, /#sinete, /#kerux-app). -->
     <section id="apps">
       <div class="container">
         <div class="section-head">
@@ -104,6 +104,8 @@
             <img src="img/faco-agora/icon.png" alt="" width="28" height="28">Faço Agora</a>
           <a class="tab" role="tab" id="tab-sinete" href="#sinete" aria-controls="sinete" aria-selected="false" data-app="shell">
             <img src="img/sinete/icon.png" alt="" width="28" height="28">Sinete</a>
+          <a class="tab" role="tab" id="tab-kerux-app" href="#kerux-app" aria-controls="kerux-app" aria-selected="false" data-app="amber">
+            <img src="img/kerux-app/icon.png" alt="" width="28" height="28">Kerux Controle Remoto</a>
             </div>
             <div class="stage-arrows">
               <button class="arrow" type="button" data-dir="-1" aria-label="App anterior">
@@ -118,7 +120,7 @@
           <div class="rail" aria-roledescription="carousel" aria-label="Apps da Orddum">
 
       <!-- ================= LASTRO ================= -->
-      <div class="panel" id="lastro" role="tabpanel" aria-roledescription="slide" aria-label="Lastro, 1 de 5" data-app="green">
+      <div class="panel" id="lastro" role="tabpanel" aria-roledescription="slide" aria-label="Lastro, 1 de 6" data-app="green">
         <!-- Capa 16:9 e capturas: cópias de lastro/store/site/ (gerado pelo kit,
              orddum-kit/docs/store-mockups.md § 9). Copiadas em 05/11/2026. -->
         <img class="panel-banner" data-gallery="lastro" src="img/lastro/capa.webp"
@@ -223,7 +225,7 @@
       </div>
 
       <!-- ================= IPI APP ================= -->
-      <div class="panel" id="ipi" role="tabpanel" aria-roledescription="slide" aria-label="IPI App, 2 de 5" data-app="blue">
+      <div class="panel" id="ipi" role="tabpanel" aria-roledescription="slide" aria-label="IPI App, 2 de 6" data-app="blue">
         <!-- Capa 16:9, capturas e vídeo: cópias de ipi_app/store/site/ e store/video/ (gerado pelo kit,
              orddum-kit/docs/store-mockups.md § 9). Copiadas em 05/11/2026. -->
         <img class="panel-banner" data-gallery="ipi" src="img/ipi/capa.webp"
@@ -323,7 +325,7 @@
       </div>
 
       <!-- ================= ARARINHA ================= -->
-      <div class="panel" id="ararinha" role="tabpanel" aria-roledescription="slide" aria-label="Ararinha, 3 de 5" data-app="red">
+      <div class="panel" id="ararinha" role="tabpanel" aria-roledescription="slide" aria-label="Ararinha, 3 de 6" data-app="red">
         <!-- Capa 16:9 e capturas: cópias de ararinha/store/site/ (gerado pelo kit,
              orddum-kit/docs/store-mockups.md § 9). Copiadas em 04/11/2026. -->
         <img class="panel-banner" data-gallery="ararinha" src="img/ararinha/capa.webp"
@@ -422,7 +424,7 @@
       </div>
 
       <!-- ================= FAÇO AGORA ================= -->
-      <div class="panel" id="faco-agora" role="tabpanel" aria-roledescription="slide" aria-label="Faço Agora, 4 de 5" data-app="yellow">
+      <div class="panel" id="faco-agora" role="tabpanel" aria-roledescription="slide" aria-label="Faço Agora, 4 de 6" data-app="yellow">
         <!-- Capa 16:9 e capturas: cópias de faco-agora/store/site/ (gerado pelo kit,
              orddum-kit/docs/store-mockups.md § 9) e o vídeo de faco-agora/store/video/.
              Copiadas em 04/11/2026. -->
@@ -523,9 +525,9 @@
 
 
       <!-- ================= SINETE ================= -->
-      <div class="panel" id="sinete" role="tabpanel" aria-roledescription="slide" aria-label="Sinete, 5 de 5" data-app="shell">
+      <div class="panel" id="sinete" role="tabpanel" aria-roledescription="slide" aria-label="Sinete, 5 de 6" data-app="shell">
         <!-- Capa 16:9 e capturas: cópias de sinete/store/site/ (gerado pelo kit,
-             orddum-kit/docs/store-mockups.md § 9). Copiadas em 13/11/2026. Sem vídeo. -->
+             orddum-kit/docs/store-mockups.md § 9). Copiadas em 13/11/2026; vídeo de sinete/store/video/ copiado em 19/11/2026. -->
         <img class="panel-banner" data-gallery="sinete" src="img/sinete/capa.webp"
           alt="Sinete: seus livros, cada um no seu lugar. Catálogo da casa pelo código de barras, no seu aparelho." width="1600" height="900" loading="lazy">
 
@@ -547,6 +549,24 @@
         </div>
 
         <div class="gallery" data-gallery="sinete">
+          <div class="shot shot-video">
+            <a class="video-link" href="img/sinete/video/site.mp4" data-dialog="video-sinete"
+              aria-label="Assistir ao vídeo: o Sinete em um minuto">
+              <video muted loop playsinline preload="none" poster="img/sinete/video/poster.jpg" width="1080" height="1920">
+                <source src="img/sinete/video/site.mp4" type="video/mp4">
+                <source src="img/sinete/video/site.webm" type="video/webm">
+              </video>
+            </a>
+            <div class="video-controls">
+              <button class="vbtn" type="button" data-video-toggle aria-label="Pausar vídeo">
+                <svg class="i-pause" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg>
+                <svg class="i-play" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>
+              </button>
+              <button class="vbtn" type="button" data-dialog="video-sinete" aria-label="Ver com som" title="Ver com som">
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5zM15.5 9a4 4 0 010 6M18 6.5a8 8 0 010 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="currentColor" fill-opacity=".15"/></svg>
+              </button>
+            </div>
+          </div>
           <img src="img/sinete/screens/01-estante.webp" alt="Seus livros, cada um no seu lugar: a Estante do Sinete." width="540" height="1174" loading="lazy">
           <img src="img/sinete/screens/02-escaner.webp" alt="Aponte a câmera e o livro entra: o escâner lê o código de barras. Título, autor e capa vêm do código de barras." width="540" height="1174" loading="lazy">
           <img src="img/sinete/screens/03-capa.webp" alt="Toda capa fica bonita: foto, galeria ou capa gerada, em Mudar a capa." width="540" height="1174" loading="lazy">
@@ -567,19 +587,142 @@
             <a href="/sinete/">Página do Sinete</a> · <a href="/sinete/privacidade/">Privacidade</a>
           </p>
         </div>
+        <dialog class="video-dialog" id="video-sinete" aria-labelledby="video-sinete-title">
+          <button class="dialog-close" type="button" aria-label="Fechar vídeo">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg>
+          </button>
+          <div class="dialog-body">
+            <video controls playsinline preload="none" poster="img/sinete/video/poster.jpg" width="1080" height="1920">
+              <source src="img/sinete/video/site.mp4" type="video/mp4">
+              <source src="img/sinete/video/site.webm" type="video/webm">
+              <track kind="captions" srclang="pt-BR" label="Português" src="img/sinete/video/legendas.vtt">
+              Seu navegador não toca este vídeo. <a href="img/sinete/video/site.mp4">Baixe o arquivo</a>.
+            </video>
+            <div class="dialog-text">
+              <p class="video-kicker">Em vídeo</p>
+              <h4 class="video-title" id="video-sinete-title">O Sinete em um minuto</h4>
+              <p>Seis fluxos reais do app em um minuto, narrados. A transcrição está logo abaixo.</p>
+              <details class="transcript">
+                <summary>Transcrição</summary>
+                <p>Todos os livros da casa, com a capa de cada um. Busque até pelo que você anotou.</p>
+                <p>Cadastre pelo código de barras: título, autor e capa entram sozinhos, vários em seguida.</p>
+                <p>Livro sem foto ganha uma capa bonita. Escolha o modelo e a cor.</p>
+                <p>Anote o que o livro disse, com a página.</p>
+                <p>Veja quem está com os seus livros e peça de volta.</p>
+                <p>Mande a lista de desejos a quem vai presentear.</p>
+              </details>
+            </div>
+          </div>
+        </dialog>
+      </div>
+
+      <!-- ================= KERUX CONTROLE REMOTO ================= -->
+      <div class="panel" id="kerux-app" role="tabpanel" aria-roledescription="slide" aria-label="Kerux Controle Remoto, 6 de 6" data-app="amber">
+        <!-- Capa 16:9, capturas e vídeo: cópias de kerux/kerux-app/store/site/ e store/video/
+             (gerado pelo kit, orddum-kit/docs/store-mockups.md § 9). Copiadas em 19/11/2026. -->
+        <img class="panel-banner" data-gallery="kerux-app" src="img/kerux-app/capa.webp"
+          alt="Kerux Controle Remoto: o celular mostra a música no ar em fundo preto, como no telão, com os botões Anterior e Próximo." width="1600" height="900" loading="lazy">
+
+        <div class="panel-head">
+          <div class="app-head">
+            <img class="app-icon" src="img/kerux-app/icon.png" alt="Ícone do Kerux Controle Remoto" width="64" height="64">
+            <div>
+              <div class="app-title">
+                <h3 class="app-name">Kerux Controle Remoto</h3>
+                <span class="badge badge-live">Disponível</span>
+              </div>
+              <p class="app-tag">Igrejas · iOS e Android · <span class="app-versao" data-versao="kerux-app">versão 1.5.0</span></p>
+            </div>
+          </div>
+          <div class="app-actions">
+            <a class="btn btn-primary btn-sm" href="https://apps.apple.com/br/app/kerux-controle-remoto/id6830302625"
+              target="_blank" rel="noopener">App Store</a>
+            <a class="btn btn-secondary btn-sm" href="https://play.google.com/store/apps/details?id=com.orddum.keruxapp"
+              target="_blank" rel="noopener">Google Play</a>
+          </div>
+        </div>
+
+        <div class="gallery" data-gallery="kerux-app">
+          <div class="shot shot-video">
+            <a class="video-link" href="img/kerux-app/video/site.mp4" data-dialog="video-kerux-app"
+              aria-label="Assistir ao vídeo: o Kerux Controle Remoto em ação">
+              <video muted loop playsinline preload="none" poster="img/kerux-app/video/poster.jpg" width="1080" height="1920">
+                <source src="img/kerux-app/video/site.mp4" type="video/mp4">
+                <source src="img/kerux-app/video/site.webm" type="video/webm">
+              </video>
+            </a>
+            <div class="video-controls">
+              <button class="vbtn" type="button" data-video-toggle aria-label="Pausar vídeo">
+                <svg class="i-pause" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg>
+                <svg class="i-play" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>
+              </button>
+              <button class="vbtn" type="button" data-dialog="video-kerux-app" aria-label="Ver com som" title="Ver com som">
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5zM15.5 9a4 4 0 010 6M18 6.5a8 8 0 010 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="currentColor" fill-opacity=".15"/></svg>
+              </button>
+            </div>
+          </div>
+          <img src="img/kerux-app/screens/01-no-ar.webp" alt="No ar: o slide no telão, o próximo e os botões Anterior e Próximo." width="540" height="1174" loading="lazy">
+          <img src="img/kerux-app/screens/02-acompanhar-inicio.webp" alt="Acompanhar a letra: a tela inicial para escanear o QR do telão." width="540" height="1174" loading="lazy">
+          <img src="img/kerux-app/screens/03-acompanhar-leitura.webp" alt="A letra do telão lida no celular, só leitura." width="540" height="1174" loading="lazy">
+          <img src="img/kerux-app/screens/06-biblia.webp" alt="Bíblia: o versículo citado em poucos toques, por livro, capítulo e versículo." width="540" height="1174" loading="lazy">
+          <img src="img/kerux-app/screens/07-culto.webp" alt="Culto: a ordem do culto com o horário previsto de cada item." width="540" height="1174" loading="lazy">
+          <img src="img/kerux-app/screens/09-palco.webp" alt="Palco: o texto grande para o púlpito, no tablet." width="540" height="1174" loading="lazy">
+        </div>
+
+        <div class="panel-body">
+          <p class="app-desc"><strong>O telão da igreja na palma da mão.</strong> Controle remoto do Kerux, sem conta e sem nuvem. Funciona junto com o Kerux aberto no Mac, na mesma rede Wi-Fi.</p>
+          <ul class="app-points">
+            <li>Passe a letra sem olhar o Mac: o slide no ar, o próximo, Anterior e Próximo</li>
+            <li>A ordem do culto com o horário previsto de cada item, e o versículo citado em poucos toques</li>
+            <li>Ache a música pela letra e veja o texto grande no púlpito, no modo palco</li>
+            <li>Quem está no culto acompanha a letra no próprio celular, sem senha</li>
+          </ul>
+          <p class="app-note">
+            <a href="/kerux/#kerux-app">Página do Kerux</a> · <a href="/kerux-app/privacidade/">Privacidade</a>
+          </p>
+        </div>
+        <dialog class="video-dialog" id="video-kerux-app" aria-labelledby="video-kerux-app-title">
+          <button class="dialog-close" type="button" aria-label="Fechar vídeo">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg>
+          </button>
+          <div class="dialog-body">
+            <video controls playsinline preload="none" poster="img/kerux-app/video/poster.jpg" width="1080" height="1920">
+              <source src="img/kerux-app/video/site.mp4" type="video/mp4">
+              <source src="img/kerux-app/video/site.webm" type="video/webm">
+              <track kind="captions" srclang="pt-BR" label="Português" src="img/kerux-app/video/legendas.vtt">
+              Seu navegador não toca este vídeo. <a href="img/kerux-app/video/site.mp4">Baixe o arquivo</a>.
+            </video>
+            <div class="dialog-text">
+              <p class="video-kicker">Em vídeo</p>
+              <h4 class="video-title" id="video-kerux-app-title">O Kerux Controle Remoto em ação</h4>
+              <p>Sete fluxos reais do app em pouco mais de um minuto, narrados. A transcrição está logo abaixo.</p>
+              <details class="transcript">
+                <summary>Transcrição</summary>
+                <p>Veja o slide no telão e passe a letra com Próximo e Anterior.</p>
+                <p>Projete um PDF ou uma apresentação e veja a página no ar e a próxima, em miniatura.</p>
+                <p>A ordem do culto com o horário previsto de cada item.</p>
+                <p>Escolha o livro, o capítulo e os versículos, e projete.</p>
+                <p>Busque a música pelo título ou pela letra.</p>
+                <p>No tablet do púlpito, o texto grande no modo palco.</p>
+                <p>Quem está no culto lê a letra no próprio celular, sem senha, do jeito que preferir.</p>
+              </details>
+            </div>
+          </div>
+        </dialog>
       </div>
 
           </div>
 
-          <div class="stage-dots" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+          <div class="stage-dots" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
         </div>
       </div>
     </section>
 
     <!-- Software: o Kerux é o primeiro produto de desktop da Orddum. Fica fora
          da vitrine dos apps de propósito: não é app de celular. O Kerux Controle Remoto
-         (app de celular) esteve na vitrine de 07/11 a 09/11/2026 e saiu dela para não repetir
-         o Kerux (decisão do Luiz): fica só aqui e na página /kerux/. -->
+         (app de celular) esteve na vitrine de 07/11 a 09/11/2026, saiu para não repetir
+         o Kerux e voltou em 19/11/2026 como painel próprio (#kerux-app), com vídeo, depois de
+         publicado nas duas lojas; aqui e em /kerux/ ele segue descrito como parte do Kerux. -->
     <section id="software" class="sw">
       <div class="container">
         <div class="section-head">
