@@ -23,11 +23,11 @@
     "version": "1.2.1"
   },
   "kerux-windows": {
-    "name": "Kerux-1.0.0-Setup.exe",
-    "sha256": "6b5c5bd25f0d55a4d069f3786afa58a001abad4327b0b6d92ab37e1ba7f18284",
-    "size": 72779464,
-    "url": "https://github.com/orddum/kerux-releases/releases/download/windows-v1.0.0/Kerux-1.0.0-Setup.exe",
-    "version": "1.0.0"
+    "name": "Kerux-1.1.0-Setup.exe",
+    "sha256": "3940120abdfb7bcbf3b8920db1270fb9ef75ac4d1d900b78826c80ebce80efcd",
+    "size": 73316463,
+    "url": "https://github.com/orddum/kerux-releases/releases/download/windows-v1.1.0/Kerux-1.1.0-Setup.exe",
+    "version": "1.1.0"
   },
   "lastro": {
     "android": "1.4.1",
