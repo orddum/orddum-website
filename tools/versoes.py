@@ -9,6 +9,8 @@ Fontes (públicas, sem chave):
   App Store       itunes.apple.com/lookup?id=<id>&country=br
   Google Play     a página do app (não há API pública; leitura frágil, por isso com memória)
   Kerux para Mac  a última release de github.com/orddum/kerux-releases (nome, tamanho e SHA-256 do .dmg)
+  Kerux Windows   a release mais nova com tag windows-v* no mesmo repositório (o -Setup.exe);
+                  escreve só dentro de <!-- kerux-windows-download --> … <!-- /kerux-windows-download -->
 
 Onde escreve:
   - todo <span data-versao="<app>">…</span> em public/**/*.html recebe o texto da versão
@@ -104,6 +106,71 @@ def kerux_mac_release() -> dict[str, object] | None:
     }
 
 
+def kerux_windows_release() -> dict[str, object] | None:
+    """A release mais nova com tag windows-v* (as do Windows não são a "Latest": essa é a do Mac)."""
+    headers = {"Accept": "application/vnd.github+json"}
+    token = os.environ.get("GITHUB_TOKEN")
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+    try:
+        releases = json.loads(get(f"https://api.github.com/repos/{KERUX_RELEASES}/releases?per_page=50", headers))
+    except Exception as exc:  # noqa: BLE001
+        print(f"  aviso: GitHub Releases (Windows): {exc}", file=sys.stderr)
+        return None
+    rel = next((r for r in releases if str(r.get("tag_name", "")).startswith("windows-v")
+                and not r.get("draft") and not r.get("prerelease")), None)
+    if not rel:
+        return None
+    version = str(rel["tag_name"])[len("windows-v"):]
+    exe = next((a for a in rel.get("assets", []) if str(a.get("name", "")).endswith("-Setup.exe")), None)
+    digest = str(exe.get("digest") or "") if exe else ""
+    if not VERSION_RE.match(version) or not exe or not digest.startswith("sha256:"):
+        print("  aviso: release do Kerux para Windows sem versão, instalador ou SHA-256; mantendo o site", file=sys.stderr)
+        return None
+    return {
+        "version": version,
+        "name": exe["name"],
+        "size": int(exe["size"]),
+        "sha256": digest.split(":", 1)[1],
+        "url": exe["browser_download_url"],
+    }
+
+
+# O bloco do download do Windows na página do Kerux: as trocas do Mac (SHA-256, tamanho) não entram nele.
+WINDOWS_BLOCK = re.compile(r"(<!-- kerux-windows-download -->)(.*?)(<!-- /kerux-windows-download -->)", re.S)
+
+
+def apply_kerux_windows(html: str, rel: dict[str, object]) -> str:
+    v, name, url = rel["version"], rel["name"], rel["url"]
+
+    def block(m: re.Match[str]) -> str:
+        b = m.group(2)
+        b = re.sub(r"https://github\.com/orddum/kerux-releases/releases/download/windows-v[^\"\s]+\.exe", str(url), b)
+        b = re.sub(r"Baixar Kerux \d+(?:\.\d+)+ para Windows", f"Baixar Kerux {v} para Windows", b)
+        b = re.sub(r"Kerux-\d+(?:\.\d+)+-Setup\.exe", str(name), b)
+        b = re.sub(r"(<strong>SHA-256:</strong> )[0-9a-f]{64}", lambda s: s.group(1) + str(rel["sha256"]), b)
+
+        def size_sub(s: re.Match[str]) -> str:
+            seps = re.findall(r"\d([^\d])\d", s.group(2))
+            return fmt_size(int(rel["size"]), seps[0] if seps else " ")
+
+        b = re.sub(r"(\d+,\d MB \()([\d   ]+)( bytes\))", size_sub, b)
+        return m.group(1) + b + m.group(3)
+
+    return WINDOWS_BLOCK.sub(block, html)
+
+
+def outside_windows_block(html: str, change) -> str:
+    """Aplica `change` só fora do bloco de download do Windows."""
+    parts, last = [], 0
+    for m in WINDOWS_BLOCK.finditer(html):
+        parts.append(change(html[last:m.start()]))
+        parts.append(m.group(0))
+        last = m.end()
+    parts.append(change(html[last:]))
+    return "".join(parts)
+
+
 def label(ios: str | None, android: str | None) -> str | None:
     if ios and android and ios != android:
         return f"iOS {ios} · Android {android}"
@@ -160,6 +227,14 @@ def main() -> int:
         texts["kerux-mac"] = str(rel["version"])
         print(f"{'kerux-mac':12} {rel['version']} · {rel['name']} · {rel['size']} bytes")
 
+    win = kerux_windows_release()
+    if win:
+        state["kerux-windows"] = win
+    win = win or state.get("kerux-windows")
+    if win:
+        texts["kerux-windows"] = str(win["version"])
+        print(f"{'kerux-win':12} {win['version']} · {win['name']} · {win['size']} bytes")
+
     changed: list[str] = []
     for path in sorted(PUBLIC.rglob("*.html")):
         old = path.read_text()
@@ -171,7 +246,9 @@ def main() -> int:
                 new,
             )
         if path == KERUX_PAGE and rel:
-            new = apply_kerux_mac(new, rel)
+            new = outside_windows_block(new, lambda part, r=rel: apply_kerux_mac(part, r))
+        if path == KERUX_PAGE and win:
+            new = apply_kerux_windows(new, win)
         if new != old:
             changed.append(str(path.relative_to(ROOT)))
             if not args.check:
